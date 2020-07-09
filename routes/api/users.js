@@ -11,6 +11,25 @@ const validateLoginInput = require("../../validation/login");
 // Load User model
 const User = require("../../models/UserSchema");
 
+
+// @route GET api/user/:username
+// @desc Retrieves info of single user if found
+// @access Public
+
+router.get("/:username", (req, res) => {
+    User.findOne({username: req.params.username})
+        .then(user=>{
+            if(!user){
+                res.status(404).send('No user found with this username');
+            } else {
+                res.json(user);
+            }
+        })
+        .catch(err =>{
+            console.log(err);
+        });
+});
+
 // @route POST api/users/register
 // @desc Register user
 // @access Public
@@ -82,6 +101,7 @@ router.post("/login",(req,res) => {
             // Create JWT Payload
             const payload = {
                 id: user.id,
+                name: user.name,
                 username: user.username
             };
 
