@@ -16,7 +16,7 @@ render() {
         <div className="row">
           <div className="col-sm-12">
             <h4>
-              Hey there, <b className="name-lable">{user.name.split(" ")[0]}</b>
+              Hey there, <b className="name-lable">{user.username}</b>
               <p className="mt-4">
                 You are logged into{" "}
                 <span style={{ fontFamily: "monospace" }}>RostersGG</span>

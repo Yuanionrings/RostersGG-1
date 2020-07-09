@@ -35,12 +35,12 @@ function App() {
       <Router>
         <div className="App">
           <Navbar/>
-          <Route path="/" component = {Landing} exact />
+          <Route path="/" component={Landing} exact />
           <Route path="/register" component={Register} exact/>
           <Route path="/login" component={Login} exact/>
           <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            </Switch>
+          </Switch>
         </div>
       </Router>
     </Provider>

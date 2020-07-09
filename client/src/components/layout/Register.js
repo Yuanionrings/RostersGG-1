@@ -10,6 +10,7 @@ class Register extends Component{
         super();
         this.state = {
             name:"",
+            username:"",
             email:"",
             password:"",
             password2:"",
@@ -38,17 +39,18 @@ class Register extends Component{
         e.preventDefault();
 
         const newUser = {
-            name:this.state.name,
-            email:this.state.email,
-            password:this.state.password,
-            password2:this.state.password2
+            name: this.state.name,
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+            password2: this.state.password2
         }
 
         this.props.registerUser(newUser, this.props.history); 
     }
 
     render(){
-        const {name, email, password, password2 ,errors} = this.state;
+        const {name, username, email, password, password2 ,errors} = this.state;
 
         return(
             <div className="form-box ">
@@ -69,6 +71,20 @@ class Register extends Component{
                             invalid: errors.name
                           })}/> 
                         <span className="red-text">{errors.name}</span>
+
+                </div>
+
+                <div className="form-group">
+                    <input type="text" 
+                           id="username" 
+                           placeholder="Username" 
+                           value={username}
+                           error={errors.username} 
+                           onChange={this.onChange} 
+                           className={classnames("form-control", {
+                            invalid: errors.username
+                          })}/> 
+                        <span className="red-text">{errors.username}</span>
 
                 </div>
 
