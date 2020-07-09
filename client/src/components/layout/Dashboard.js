@@ -11,15 +11,20 @@ class Dashboard extends Component {
 
 render() {
     const { user } = this.props.auth;
+    //console.log()
     return (
       <div  className="container text-center mt-15">
         <div className="row">
           <div className="col-sm-12">
             <h4>
-              Hey there, <b className="name-lable">{user.username}</b>
+              Hey there, <b className="name-lable">{user.name}</b>
               <p className="mt-4">
                 You are logged into{" "}
                 <span style={{ fontFamily: "monospace" }}>RostersGG</span>
+              </p>
+              <p className="">
+                under the username,{" "}
+                <span style={{ fontFamily: "monospace" }}>{user.username}</span>
               </p>
             </h4>
             <button
