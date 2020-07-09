@@ -18,8 +18,8 @@ render() {
             <h4>
               Hey there, <b className="name-lable">{user.name.split(" ")[0]}</b>
               <p className="mt-4">
-                You are logged into a full-stack{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
+                You are logged into{" "}
+                <span style={{ fontFamily: "monospace" }}>RostersGG</span>
               </p>
             </h4>
             <button
