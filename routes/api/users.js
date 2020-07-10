@@ -15,7 +15,6 @@ const User = require("../../models/UserSchema");
 // @route GET api/user/:username
 // @desc Retrieves info of single user if found
 // @access Public
-
 router.get("/:username", (req, res) => {
     User.findOne({username: req.params.username})
         .then(user=>{
@@ -30,10 +29,10 @@ router.get("/:username", (req, res) => {
         });
 });
 
+
 // @route POST api/users/register
 // @desc Register user
 // @access Public
-
 router.post("/register", (req, res) => {
     
     //Form validation
@@ -44,39 +43,42 @@ router.post("/register", (req, res) => {
     }
 
     User.findOne({email: req.body.email}).then(user=>{
-
         if(user){
             return res.status(400).json({email:"Email already exists"});
         } else{
-            const newUser = new User({
-                name: req.body.name,
-                username: req.body.username,
-                password: req.body.password,
-                email: req.body.email
-            });
-
-            // Hash password before storing in database
-            const rounds  = 10;
-            bcrypt.genSalt(rounds, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                if (err) throw err;
-                newUser.password = hash;
-                newUser
-                    .save()
-                    .then(user => res.json(user))
-                    .catch(err => console.log(err));
-                });
-            });
+            User.findOne({username: req.body.username}).then(user=>{
+                if(user){
+                    return res.status(400).json({username:"Username already exists"})
+                } else {
+                    const newUser = new User({
+                        name: req.body.name,
+                        username: req.body.username,
+                        password: req.body.password,
+                        email: req.body.email
+                    });
+        
+                    // Hash password before storing in database
+                    const rounds  = 10;
+                    bcrypt.genSalt(rounds, (err, salt) => {
+                        bcrypt.hash(newUser.password, salt, (err, hash) => {
+                        if (err) throw err;
+                        newUser.password = hash;
+                        newUser
+                            .save()
+                            .then(user => res.json(user))
+                            .catch(err => console.log(err));
+                        });
+                    });
+                }
+            })
         }
-
     });
-
 });
+
 
 // @route POST api/users/login
 // @desc Login user and return JWT token
 // @access Public
-
 router.post("/login",(req,res) => {
 
     //Form Valdiation
@@ -95,36 +97,36 @@ router.post("/login",(req,res) => {
             return res.status(404).json({ emailnotfound: "Email not found" });
         }
 
-    // Check password
-    bcrypt.compare(password, user.password).then(isMatch => {
-        if (isMatch) {
-            // Create JWT Payload
-            const payload = {
-                id: user.id,
-                name: user.name,
-                username: user.username
-            };
+        // Check password
+        bcrypt.compare(password, user.password).then(isMatch => {
+            if (isMatch) {
+                // Create JWT Payload
+                const payload = {
+                    id: user.id,
+                    name: user.name,
+                    username: user.username
+                };
 
-            // Sign token
-            jwt.sign(
-                payload,
-                keys.secretOrKey,
-                {
-                 expiresIn: 31556926 
-                },
-                (err, token) => {
-                res.json({
-                    success: true,
-                    token: "Bearer " + token
-                });
-                }
-            );
-        } else {
-          return res
-            .status(400)
-            .json({ passwordincorrect: "Password incorrect" });
-        }
-      });
+                // Sign token
+                jwt.sign(
+                    payload,
+                    keys.secretOrKey,
+                    {
+                    expiresIn: 31556926 
+                    },
+                    (err, token) => {
+                    res.json({
+                        success: true,
+                        token: "Bearer " + token
+                    });
+                    }
+                );
+            } else {
+            return res
+                .status(400)
+                .json({ passwordincorrect: "Password incorrect" });
+            }
+        });
     });
 });
 
