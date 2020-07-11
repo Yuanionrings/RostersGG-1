@@ -12,8 +12,8 @@ const validateLoginInput = require("../../validation/login");
 const User = require("../../models/UserSchema");
 
 
-// @route GET api/user/:username
-// @desc Retrieves info of single user if found
+// @route GET api/users/user/:username
+// @desc Retrieves public info of single user if found
 // @access Public
 router.get("/:username", (req, res) => {
     User.findOne({username: req.params.username})
@@ -27,6 +27,40 @@ router.get("/:username", (req, res) => {
         .catch(err =>{
             console.log(err);
         });
+});
+
+
+// @route POST api/users/user/:username/update
+// @desc Update user information
+// @access Public
+router.post("/:username/update", (req, res) =>{
+    const filter = {username: req.params.username};
+    const updatedInfo = req.body;
+    User.findOneAndUpdate(filter, updatedInfo, {new: true}).then(user =>{
+        if(!user){
+            res.status(404).send('User info not found for this username');
+        } else {
+            if(updatedInfo.password){
+                // Hash password before storing in database
+                const rounds  = 10;
+                bcrypt.genSalt(rounds, (err, salt) => {
+                    bcrypt.hash(user.password, salt, (err, hash) => {
+                    if (err) throw err;
+                    user.password = hash;
+                    user.save()
+                        .then(user => res.json('User information/password successfully updated'))
+                        .catch(err => res.status(400).send('User information/password not successfully updated'));
+                    });
+                });
+            }else{
+                user.save().then(user =>{
+                    res.json('User information successfully updated')
+                }).catch(err =>{
+                    res.status(400).send('User information not successfully updated')
+                });
+            }
+        }
+    });
 });
 
 

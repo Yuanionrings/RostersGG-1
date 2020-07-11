@@ -14,6 +14,11 @@ class Dashboard extends Component {
         }
     }
 
+    onEdit = e =>{
+      e.preventDefault();
+      this.props.history.push('/editprofile')
+    }
+
     onLogout = e => {
       e.preventDefault();
       this.props.logoutUser();
@@ -53,12 +58,21 @@ class Dashboard extends Component {
                 </p>
                 <p>{this.state.email}</p>
               </h4>
+
+              <button
+                onClick={this.onEdit}
+                className="btn btn-large btn-light hoverable font-weight-bold"
+              >
+                Edit Profile
+              </button>
+
               <button
                 onClick={this.onLogout}
                 className="btn btn-large btn-light hoverable font-weight-bold"
               >
                 Logout
               </button>
+              
             </div>
           </div>
         </div>
