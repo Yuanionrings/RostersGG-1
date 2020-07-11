@@ -16,15 +16,15 @@ const User = require("../../models/UserSchema");
 // @desc Retrieves public info of single user if found
 // @access Public
 router.get("/:username", (req, res) => {
-    User.findOne({username: req.params.username})
-        .then(user=>{
-            if(!user){
+    User.findOne({ username: req.params.username })
+        .then(user => {
+            if (!user) {
                 res.status(404).send('No user found with this username');
             } else {
                 res.json(user);
             }
         })
-        .catch(err =>{
+        .catch(err => {
             console.log(err);
         });
 });
@@ -33,29 +33,29 @@ router.get("/:username", (req, res) => {
 // @route POST api/users/user/:username/update
 // @desc Update user information
 // @access Public
-router.post("/:username/update", (req, res) =>{
-    const filter = {username: req.params.username};
+router.post("/:username/update", (req, res) => {
+    const filter = { username: req.params.username };
     const updatedInfo = req.body;
-    User.findOneAndUpdate(filter, updatedInfo, {new: true}).then(user =>{
-        if(!user){
+    User.findOneAndUpdate(filter, updatedInfo, { new: true }).then(user => {
+        if (!user) {
             res.status(404).send('User info not found for this username');
         } else {
-            if(updatedInfo.password){
+            if (updatedInfo.password) {
                 // Hash password before storing in database
-                const rounds  = 10;
+                const rounds = 10;
                 bcrypt.genSalt(rounds, (err, salt) => {
                     bcrypt.hash(user.password, salt, (err, hash) => {
-                    if (err) throw err;
-                    user.password = hash;
-                    user.save()
-                        .then(user => res.json('User information/password successfully updated'))
-                        .catch(err => res.status(400).send('User information/password not successfully updated'));
+                        if (err) throw err;
+                        user.password = hash;
+                        user.save()
+                            .then(user => res.json('User information/password successfully updated'))
+                            .catch(err => res.status(400).send('User information/password not successfully updated'));
                     });
                 });
-            }else{
-                user.save().then(user =>{
+            } else {
+                user.save().then(user => {
                     res.json('User information successfully updated')
-                }).catch(err =>{
+                }).catch(err => {
                     res.status(400).send('User information not successfully updated')
                 });
             }
@@ -68,21 +68,21 @@ router.post("/:username/update", (req, res) =>{
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
-    
+
     //Form validation
-    const {errors, isValid} = validateRegisterInput(req.body);
-    
-    if(!isValid){
+    const { errors, isValid } = validateRegisterInput(req.body);
+
+    if (!isValid) {
         return res.status(400).json(errors);
     }
 
-    User.findOne({email: req.body.email}).then(user=>{
-        if(user){
-            return res.status(400).json({email:"Email already exists"});
-        } else{
-            User.findOne({username: req.body.username}).then(user=>{
-                if(user){
-                    return res.status(400).json({username:"Username already exists"})
+    User.findOne({ email: req.body.email }).then(user => {
+        if (user) {
+            return res.status(400).json({ email: "Email already exists" });
+        } else {
+            User.findOne({ username: req.body.username }).then(user => {
+                if (user) {
+                    return res.status(400).json({ username: "Username already exists" })
                 } else {
                     const newUser = new User({
                         name: req.body.name,
@@ -90,17 +90,17 @@ router.post("/register", (req, res) => {
                         password: req.body.password,
                         email: req.body.email
                     });
-        
+
                     // Hash password before storing in database
-                    const rounds  = 10;
+                    const rounds = 10;
                     bcrypt.genSalt(rounds, (err, salt) => {
                         bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if (err) throw err;
-                        newUser.password = hash;
-                        newUser
-                            .save()
-                            .then(user => res.json(user))
-                            .catch(err => console.log(err));
+                            if (err) throw err;
+                            newUser.password = hash;
+                            newUser
+                                .save()
+                                .then(user => res.json(user))
+                                .catch(err => console.log(err));
                         });
                     });
                 }
@@ -113,10 +113,10 @@ router.post("/register", (req, res) => {
 // @route POST api/users/login
 // @desc Login user and return JWT token
 // @access Public
-router.post("/login",(req,res) => {
+router.post("/login", (req, res) => {
 
     //Form Valdiation
-    const {errors, isValid} = validateLoginInput(req.body);
+    const { errors, isValid } = validateLoginInput(req.body);
 
     if (!isValid) {
         return res.status(400).json(errors);
@@ -124,10 +124,10 @@ router.post("/login",(req,res) => {
 
     const email = req.body.email;
     const password = req.body.password;
-   
+
     //Find user by Email
-    User.findOne({email}).then(user=>{
-        if(!user){
+    User.findOne({ email }).then(user => {
+        if (!user) {
             return res.status(404).json({ emailnotfound: "Email not found" });
         }
 
@@ -146,19 +146,19 @@ router.post("/login",(req,res) => {
                     payload,
                     keys.secretOrKey,
                     {
-                    expiresIn: 31556926 
+                        expiresIn: 31556926
                     },
                     (err, token) => {
-                    res.json({
-                        success: true,
-                        token: "Bearer " + token
-                    });
+                        res.json({
+                            success: true,
+                            token: "Bearer " + token
+                        });
                     }
                 );
             } else {
-            return res
-                .status(400)
-                .json({ passwordincorrect: "Password incorrect" });
+                return res
+                    .status(400)
+                    .json({ passwordincorrect: "Password incorrect" });
             }
         });
     });

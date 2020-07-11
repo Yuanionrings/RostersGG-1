@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './store';
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./util/setAuthToken";
@@ -23,7 +23,7 @@ if (localStorage.jwtToken) {
   setAuthToken(token);
   const decoded = jwt_decode(token);
   store.dispatch(setCurrentUser(decoded));
-  const currentTime = Date.now() / 1000; 
+  const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     store.dispatch(logoutUser());
     window.location.href = "./login";
@@ -35,18 +35,18 @@ function App() {
     <Provider store={store} >
       <Router>
         <div className="App">
-          <Navbar/>
+          <Navbar />
           <Route path="/" component={Landing} exact />
-          <Route path="/register" component={Register} exact/>
-          <Route path="/login" component={Login} exact/>
+          <Route path="/register" component={Register} exact />
+          <Route path="/login" component={Login} exact />
           <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute exact path="/editprofile" component={EditUser} />
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/editprofile" component={EditUser} />
           </Switch>
         </div>
       </Router>
     </Provider>
-    
+
   );
 }
 
