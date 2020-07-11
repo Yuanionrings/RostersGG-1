@@ -8,7 +8,7 @@ const keys = require("../../config/keys");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
-// Load User model
+// Load mongoose User model
 const User = require("../../models/UserSchema");
 
 
@@ -34,6 +34,9 @@ router.get("/:username", (req, res) => {
 // @desc Update user information
 // @access Public
 router.post("/:username/update", (req, res) => {
+
+    // TODO - Add "Edit User" form validation!!!
+
     const filter = { username: req.params.username };
     const updatedInfo = req.body;
     User.findOneAndUpdate(filter, updatedInfo, { new: true }).then(user => {
