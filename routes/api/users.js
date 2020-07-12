@@ -7,6 +7,7 @@ const keys = require("../../config/keys");
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
+const validateEditUserInput = require("../../validation/edituser")
 
 // Load mongoose User model
 const User = require("../../models/UserSchema");
@@ -30,12 +31,16 @@ router.get("/:username", (req, res) => {
 });
 
 
-// @route POST api/users/user/:username/update
+// @route PATCH api/users/user/:username/update
 // @desc Update user information
 // @access Public
-router.post("/:username/update", (req, res) => {
+router.patch("/:username/update", (req, res) => {
 
-    // TODO - Add "Edit User" form validation!!!
+    //Form validation
+    const { errors, isValid } = validateEditUserInput(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
 
     const filter = { username: req.params.username };
     const updatedInfo = req.body;
@@ -59,6 +64,7 @@ router.post("/:username/update", (req, res) => {
                 user.save().then(user => {
                     res.json('User information successfully updated')
                 }).catch(err => {
+                    console.log(err)
                     res.status(400).send('User information not successfully updated')
                 });
             }
@@ -74,7 +80,6 @@ router.post("/register", (req, res) => {
 
     //Form validation
     const { errors, isValid } = validateRegisterInput(req.body);
-
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -120,7 +125,6 @@ router.post("/login", (req, res) => {
 
     //Form Valdiation
     const { errors, isValid } = validateLoginInput(req.body);
-
     if (!isValid) {
         return res.status(400).json(errors);
     }
