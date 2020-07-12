@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../../actions/authActions";
+import { editUser } from "../../actions/authActions";
 import classnames from "classnames";
 
 class EditUser extends Component {
@@ -50,21 +50,18 @@ class EditUser extends Component {
         if (this.state.password) {
             updatedUser = {
                 name: this.state.name,
+                username: this.state.username,
                 email: this.state.email,
                 password: this.state.password
             }
         } else {
             updatedUser = {
                 name: this.state.name,
+                username: this.state.username,
                 email: this.state.email
             }
         }
-
-        axios.post('http://localhost:5000/api/users/' + this.state.username + '/update', updatedUser)
-            .then(res => {
-                console.log(res.data)
-            })
-        this.props.history.push('/dashboard');
+        this.props.editUser(updatedUser, this.props.history);
     }
 
     render() {
@@ -99,7 +96,6 @@ class EditUser extends Component {
                             placeholder="Username"
                             value={username}
                             error={errors.username}
-                            onChange={this.onChange}
                             className={classnames("form-control", {
                                 invalid: errors.username
                             })} />
@@ -145,6 +141,7 @@ class EditUser extends Component {
 }
 
 EditUser.propTypes = {
+    editUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 };
@@ -154,4 +151,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { registerUser })(withRouter(EditUser));
+export default connect(mapStateToProps, { editUser })(withRouter(EditUser));

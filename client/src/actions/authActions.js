@@ -14,6 +14,16 @@ export const registerUser = (userData, history) => dispatch => {
     }))
 }
 
+//Edit User
+export const editUser = (userData, history) => dispatch => {
+  axios.patch('http://localhost:5000/api/users/' + userData.username + '/update', userData)
+    .then(res => history.push("/dashboard"))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
+}
+
 //Login
 export const loginUser = (userData) => dispatch => {
   axios.post("/api/users/login", userData)
