@@ -61,6 +61,7 @@ class Register extends Component {
           <h2>Register</h2>
           <hr />
           <div className="form-group">
+            <label>Display Name: </label>
             <input type="text"
               id="name"
               placeholder="Name"
@@ -75,6 +76,7 @@ class Register extends Component {
           </div>
 
           <div className="form-group">
+          <label>Username (cannot be changed): </label>
             <input type="text"
               id="username"
               placeholder="Username"
@@ -89,6 +91,7 @@ class Register extends Component {
           </div>
 
           <div className="form-group">
+          <label>Email: </label>
             <input type="email"
               id="email"
               placeholder="Email Address"
@@ -102,6 +105,7 @@ class Register extends Component {
           </div>
 
           <div className="form-group">
+          <label>Password: </label>
             <input type="password"
               id="password"
               placeholder="Password"

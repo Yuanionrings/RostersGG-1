@@ -32,10 +32,12 @@ class Dashboard extends Component {
           user_name: res.data.name,
           user_username: res.data.username,
           user_email: res.data.email
-        })
+        });
       })
       .catch(function (err) {
         console.log(err);
+        //this.props.logoutUser();
+        //this.props.history.push('/')
       });
   }
 

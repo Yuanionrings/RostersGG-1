@@ -22,7 +22,6 @@ class EditUser extends Component {
         if (!this.props.auth.isAuthenticated) {
             this.props.history.push("/login");
         }
-        console.log(this.props)
         axios.get("http://localhost:5000/api/users/" + this.props.auth.user.username)
             .then(res => {
                 this.setState({
@@ -75,11 +74,12 @@ class EditUser extends Component {
             <div className="form-box ">
                 <form className="signup-form" onSubmit={this.onSubmit}>
 
-                    <div><Link to="/"><i className="fa fa-arrow-circle-left  "></i> Back to Home</Link></div>
+                    <div><Link to="/dashboard"><i className="fa fa-arrow-circle-left  "></i> Back to Dashboard</Link></div>
 
                     <h2>Edit User</h2>
                     <hr />
                     <div className="form-group">
+                        <label>Display Name: </label>
                         <input type="text"
                             id="name"
                             placeholder="Name"
@@ -93,6 +93,7 @@ class EditUser extends Component {
                     </div>
 
                     <div className="form-group">
+                        <label>Username (cannot be changed): </label>
                         <input type="text"
                             id="username"
                             placeholder="Username"
@@ -106,6 +107,7 @@ class EditUser extends Component {
                     </div>
 
                     <div className="form-group">
+                        <label>Change Email: </label>
                         <input type="email"
                             id="email"
                             placeholder="Email Address"
@@ -119,6 +121,7 @@ class EditUser extends Component {
                     </div>
 
                     <div className="form-group">
+                        <label>Change Password: </label>
                         <input type="password"
                             id="password"
                             placeholder="Password"
