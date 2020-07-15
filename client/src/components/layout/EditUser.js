@@ -29,6 +29,12 @@ class EditUser extends Component {
                     username: res.data.username,
                     email: res.data.email
                 })
+            }).catch(err => {
+                console.log(err);
+
+                // This seems like it's the only way to "log out" of session if user isn't found.
+                localStorage.removeItem("jwtToken");
+                window.location.reload(false);
             })
     }
 

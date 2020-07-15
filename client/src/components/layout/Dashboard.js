@@ -27,7 +27,6 @@ class Dashboard extends Component {
   componentDidMount() {
     axios.get("http://localhost:5000/api/users/" + this.props.auth.user.username)
       .then(res => {
-        console.log(res.data);
         this.setState({
           user_name: res.data.name,
           user_username: res.data.username,
@@ -36,8 +35,10 @@ class Dashboard extends Component {
       })
       .catch(function (err) {
         console.log(err);
-        //this.props.logoutUser();
-        //this.props.history.push('/')
+
+        // This seems like it's the only way to "log out" of session if user isn't found.
+        localStorage.removeItem("jwtToken");
+        window.location.reload(false);
       });
   }
 
@@ -62,16 +63,12 @@ class Dashboard extends Component {
             <button
               onClick={this.onEdit}
               className="btn btn-large btn-light hoverable font-weight-bold"
-            >
-              Edit Profile
-              </button>
+            >Edit Profile</button>
 
             <button
               onClick={this.onLogout}
               className="btn btn-large btn-light hoverable font-weight-bold ml-2"
-            >
-              Logout
-              </button>
+            >Logout</button>
 
           </div>
         </div>
