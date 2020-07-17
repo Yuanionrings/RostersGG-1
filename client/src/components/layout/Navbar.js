@@ -1,16 +1,36 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import PropTypes from "prop-types";
+import Navbar from "react-bootstrap/Navbar";
+import NavbarBrand from "react-bootstrap/NavbarBrand";
+import Nav from "react-bootstrap/Nav";
 
-class Navbar extends Component {
-    render() {
-        return (
-            <div>
-                <nav className="navbar bg-light justify-content-center">
-                    <Link className="navbar-brand text-dark font-weight-bold" to="/">RostersGG</Link>
-                </nav>
-            </div>
-        )
+let NavBar = (props) => {
+
+    console.log(props);
+    const conditionalNavItems = (auth) => {
+        return auth.isAuthenticated ?
+        <Nav className="ml-auto">
+            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+            <Nav.Link href="/editprofile">Edit Profile</Nav.Link>
+        </Nav>
+        :
+        <Nav className="ml-auto">
+            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/register">Register</Nav.Link>
+        </Nav>
     }
+
+    return (
+        <Navbar bg="dark" variant="dark">
+            <NavbarBrand className="mr-auto" href="/">RostersGG</NavbarBrand>
+            {conditionalNavItems(props.auth)}
+        </Navbar>
+    )
+    
 }
 
-export default Navbar;
+NavBar.propTypes = {
+    auth: PropTypes.object.isRequired
+};
+
+export default NavBar;
