@@ -15,6 +15,24 @@ body {
     color: #264653 !important;
 }
 
+.display-box {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+.display-box div {
+    color: #264653;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    background: #fffffc;
+    padding: 30px;
+}
+.form-box h2 {
+    color: #264653 !important;
+    font-weight: bold !important;
+    margin-top: 0;
+}
+
 .form-control {
     min-height: 41px;
     box-shadow: none;   
@@ -27,7 +45,7 @@ body {
     border-radius: 3px;
 }    
 .form-box {
-    width: 400px;
+    width: 80%;
     margin: 0 auto;
     padding: 30px 0;
 }	

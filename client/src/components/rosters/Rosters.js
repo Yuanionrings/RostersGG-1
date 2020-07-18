@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 const RosterInfo = props => (
     <tr>
         <td className="">{props.roster.teamname}</td>
@@ -49,21 +53,25 @@ export default class Rosters extends Component {
 
     render() {
         return (
-            <div>
-                <h3 className="mt-4">List of Rosters</h3>
-                <table className="table table-striped" style={{ marginTop: 10 }}>
-                    <thead>
-                        <tr>
-                            <th>Team Name</th>
-                            <th>Leader</th>
-                            <th># Players</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { this.rosterList() }
-                    </tbody>
-                </table>
-            </div>
+            <Container className="display-box" fluid={true}>
+                <Row>
+                    <Col>
+                        <h2 className="">My Rosters</h2>
+                        <table className="table table-striped" style={{ marginTop: 10 }}>
+                            <thead>
+                                <tr>
+                                    <th>Team Name</th>
+                                    <th>Leader</th>
+                                    <th># Players</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                { this.rosterList() }
+                            </tbody>
+                        </table>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }
