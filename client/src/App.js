@@ -9,6 +9,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import './App.css';
 
 import NavBar from "./components/layout/NavBar";
+import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/layout/Register";
 import Login from "./components/layout/Login";
@@ -51,6 +52,7 @@ function App() {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/editprofile" component={EditUser} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     </Provider>
