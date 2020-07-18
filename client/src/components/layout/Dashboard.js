@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import Rosters from "../rosters/Rosters";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -74,6 +75,8 @@ class Dashboard extends Component {
               variant="outline-primary"
               onClick={this.onLogout}
             >Logout</Button>
+
+            <Rosters username={this.props.auth.user.username} />
 
           </Col>
         </Row>

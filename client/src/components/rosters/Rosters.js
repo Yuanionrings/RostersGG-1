@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Roster = props => (
+const RosterInfo = props => (
     <tr>
-        <td className="">{props.roster.roster_teamname}</td>
-        <td className="">{props.roster.roster_leader}</td>
-        <td className="">{props.roster.roster_captain}</td>
-        <td className="">{props.roster.roster_players.length}</td>
-        <td>
-            <Link to={"/edit/"+props.roster._id}>Edit</Link>
-        </td>
+        <td className="">{props.roster.teamname}</td>
+        <td className="">{props.roster.leader}</td>
+        <td className="">{props.roster.players.length}</td>
     </tr>
 );
 
@@ -19,23 +14,30 @@ export default class Rosters extends Component {
     constructor(props){
         super(props);
         this.state = {
+            username: this.props.username,
             rosters: []
         }
+        console.log("ROSTERS")
+        console.log(this.state)
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/rosters')
+        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/rosters')
             .then(res => {
-                this.setState({rosters: res.data});
+                this.setState({
+                    username: this.state.username,
+                    rosters: res.data});
             }).catch(function(err) {
                 console.log(err);
             });
     }
 
     componentDidUpdate() {
-        axios.get('http://localhost:4000/rosters')
+        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/rosters')
             .then(res => {
-                this.setState({rosters: res.data});
+                this.setState({
+                    username: this.state.username,
+                    rosters: res.data});
             }).catch(function(err) {
                 console.log(err);
             });
@@ -43,7 +45,7 @@ export default class Rosters extends Component {
 
     rosterList(){
         return this.state.rosters.map(function(currentRoster, i){
-            return <Roster roster={currentRoster} key={i} />
+            return <RosterInfo roster={currentRoster} key={i} />
         });
     }
 
@@ -56,9 +58,7 @@ export default class Rosters extends Component {
                         <tr>
                             <th>Team Name</th>
                             <th>Leader</th>
-                            <th>Captain</th>
-                            <th>Size</th>
-                            <th>Actions</th>
+                            <th># Players</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,5 +69,3 @@ export default class Rosters extends Component {
         );
     }
 }
-
-export default Rosters;
