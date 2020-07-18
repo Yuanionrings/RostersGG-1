@@ -17,8 +17,6 @@ export default class Rosters extends Component {
             username: this.props.username,
             rosters: []
         }
-        console.log("ROSTERS")
-        console.log(this.state)
     }
 
     componentDidMount() {
