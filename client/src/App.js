@@ -8,7 +8,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import './App.css';
 
-import Navbar from "./components/layout/Navbar";
+import NavBar from "./components/layout/NavBar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/layout/Register";
 import Login from "./components/layout/Login";
@@ -18,7 +18,7 @@ import EditUser from "./components/layout/EditUser";
 
 
 if (localStorage.jwtToken) {
-
+  //console.log("JWT found, refreshing auth token")
   const token = localStorage.jwtToken;
   setAuthToken(token);
   const decoded = jwt_decode(token);
@@ -30,12 +30,20 @@ if (localStorage.jwtToken) {
   }
 }
 
+var authenticated = () => {
+  if(localStorage.jwtToken){
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function App() {
   return (
     <Provider store={store} >
       <Router>
-        <div className="App">
-          <Navbar />
+        <div className="app-bg">
+          <NavBar authenticated={authenticated()}/>
           <Route path="/" component={Landing} exact />
           <Route path="/register" component={Register} exact />
           <Route path="/login" component={Login} exact />

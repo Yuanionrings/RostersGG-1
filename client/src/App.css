@@ -3,13 +3,25 @@ body {
     background: #4c535d;
     font-family: 'Roboto', sans-serif;
 }
+.app-bg {
+    background: #264653;
+}
+
+.navbar-spec {
+    background: #fffffc;
+}
+.navbar-brand {
+    font-weight: bold;
+    color: #264653 !important;
+}
+
 .form-control {
     min-height: 41px;
     box-shadow: none;   
-    border-color: #e1e4e5;
+    border-color: #e5e5e5;
 }
 .form-control:focus {
-    border-color: #5fcaba;
+    border-color: #2a9d8f;
 }
 .form-control, .btn {        
     border-radius: 3px;
@@ -20,7 +32,7 @@ body {
     padding: 30px 0;
 }	
 .form-box form {
-    color: #9ba5a8;
+    color: #8d99ae;
     border-radius: 3px;
     margin-bottom: 15px;
     background: #fff;
@@ -28,7 +40,7 @@ body {
     padding: 30px;
 }
 .form-box h2 {
-    color: #333;
+    color: #264653;
     font-weight: bold;
     margin-top: 0;
 }
@@ -45,12 +57,12 @@ body {
 .form-box .btn {        
     font-size: 16px;
     font-weight: bold;
-    background: #5fcaba;
+    background: #2a9d8f;
     border: none;
     min-width: 140px;
 }
 .form-box .btn:hover, .form-box .btn:focus {
-    background: #3fc0ad;
+    background: #264653;
     outline: none !important;
 }
 .form-box a {
@@ -61,7 +73,7 @@ body {
     text-decoration: none;
 }
 .form-box form a {
-    color: #5fcaba;
+    color: #2a9d8f;
     text-decoration: none;
 }	
 .form-box form a:hover {

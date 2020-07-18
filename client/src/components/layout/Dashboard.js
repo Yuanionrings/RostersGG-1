@@ -4,6 +4,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button"
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -44,9 +49,9 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="container text-center mt-15">
-        <div className="row">
-          <div className="col-sm-12">
+      <Container>
+        <Row>
+          <Col>
             <h4>
               Hey there, <b className="name-lable">{this.state.user_name}</b>
               <p className="mt-4">
@@ -60,19 +65,19 @@ class Dashboard extends Component {
               <p>{this.state.email}</p>
             </h4>
 
-            <button
+            <Button
+              variant="outline-primary"
               onClick={this.onEdit}
-              className="btn btn-large btn-light hoverable font-weight-bold"
-            >Edit Profile</button>
+            >Edit Profile</Button>
 
-            <button
+            <Button
+              variant="outline-primary"
               onClick={this.onLogout}
-              className="btn btn-large btn-light hoverable font-weight-bold ml-2"
-            >Logout</button>
+            >Logout</Button>
 
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

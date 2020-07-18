@@ -101,7 +101,8 @@ class EditUser extends Component {
                             id="username"
                             placeholder="Username"
                             value={username}
-                            error={errors.username}
+                            error={errors.username} 
+                            readOnly={true}
                             className={classnames("form-control", {
                                 invalid: errors.username
                             })} />
