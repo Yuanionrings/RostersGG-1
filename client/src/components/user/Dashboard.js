@@ -32,9 +32,11 @@ class Dashboard extends Component {
                   </div>
                 </div>
                 <UserInfo
-                  given_username={this.props.auth.user.username} 
-                  history={this.props.history}/>
-                <MyRosters username={this.props.auth.user.username} />
+                    given_username={this.props.auth.user.username} 
+                    history={this.props.history}/>
+                <MyRosters 
+                    username={this.props.auth.user.username} 
+                    history={this.props.history}/>
             </div>
         );
     }

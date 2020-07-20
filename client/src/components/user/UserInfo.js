@@ -37,15 +37,18 @@ class UserInfo extends Component {
         return (
             <div className="userinfo-display-box">
                 <div>
-                    <h2 className="">Welcome back, <i>{this.state.user_name}</i>!</h2>
+                    <h2 className="">
+                        Welcome back, <i>{this.state.user_name}</i>!
+                        <Button
+                            onClick={this.onEdit}
+                            className="float-right"
+                            >Edit Profile</Button>
+                    </h2>
                     <hr />
                     <p className="">
                         <b>Username:</b> {this.state.user_username}<br/>
                         <b>Email:</b> {this.state.user_email}
                     </p>
-                    <Button
-                        onClick={this.onEdit}
-                    >Edit Profile</Button>
                 </div>
             </div>
         )

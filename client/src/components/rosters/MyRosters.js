@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const RosterInfo = props => (
     <tr>
         <td className="">{props.roster.teamname}</td>
+        <td className="">{props.roster.team_desc}</td>
         <td className="">{props.roster.leader}</td>
         <td className="">{props.roster.players.length}</td>
         <td>
@@ -17,6 +19,7 @@ const RosterInfo = props => (
 export default class MyRosters extends Component {
 
     constructor(props){
+        console.log(props);
         super(props);
         this.state = {
             username: this.props.username,
@@ -52,15 +55,28 @@ export default class MyRosters extends Component {
         });
     }
 
+    onCreate = e => {
+        e.preventDefault();
+        this.props.history.push('/roster/create')
+    }
+
     render() {
         return (
             <div className="roster-display-box">
                 <div>
-                    <h2 className="">My Rosters</h2>
+                    <h2 className="">
+                        My Rosters
+                        <Button
+                          className="float-right"
+                          onClick={this.onCreate}
+                        >Create Roster</Button>
+                    </h2>
+                    
                     <table className="table table-striped" style={{ marginTop: 10 }}>
                         <thead>
                             <tr>
                                 <th>Team Name</th>
+                                <th>Description</th>
                                 <th>Leader</th>
                                 <th># Players</th>
                                 <th>Actions</th>

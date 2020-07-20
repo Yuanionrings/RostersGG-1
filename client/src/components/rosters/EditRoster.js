@@ -75,7 +75,7 @@ class EditRoster extends Component {
 
                 <div className="form-group">
                     <label>Team Description: </label>
-                    <input type="text"
+                    <input type="textarea"
                         id="team_desc"
                         placeholder="Description"
                         value={team_desc}
