@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Rosters from "../rosters/Rosters";
-import UserInfo from "../layout/UserInfo";
+import UserInfo from "./UserInfo";
 import Button from "react-bootstrap/Button";
 
 
