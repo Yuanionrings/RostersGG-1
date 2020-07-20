@@ -8,12 +8,13 @@ const RosterInfo = props => (
         <td className="">{props.roster.leader}</td>
         <td className="">{props.roster.players.length}</td>
         <td>
-            <Link to={"/edit/" + props.roster._id}>Edit</Link>
+            <Link to={"/roster/" + props.roster._id}>View</Link>
+            <Link to={"/roster/" + props.roster._id + "/edit"}>Edit</Link>
         </td>
     </tr>
 );
 
-export default class Rosters extends Component {
+export default class MyRosters extends Component {
 
     constructor(props){
         super(props);

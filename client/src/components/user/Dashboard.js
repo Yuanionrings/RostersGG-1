@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import Rosters from "../rosters/Rosters";
+import MyRosters from "../rosters/MyRosters";
 import UserInfo from "./UserInfo";
 import Button from "react-bootstrap/Button";
 
@@ -34,7 +34,7 @@ class Dashboard extends Component {
                 <UserInfo
                   given_username={this.props.auth.user.username} 
                   history={this.props.history}/>
-                <Rosters username={this.props.auth.user.username} />
+                <MyRosters username={this.props.auth.user.username} />
             </div>
         );
     }
