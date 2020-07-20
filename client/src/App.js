@@ -47,14 +47,14 @@ function App() {
       <Router>
         <div className="app-bg">
           <NavigationBar authenticated={authenticated()}/>
-          <Route path="/" component={Landing} exact />
-          <Route path="/register" component={Register} exact />
-          <Route path="/login" component={Login} exact />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/editprofile" component={EditUser} />
-            <PrivateRoute path="/roster/:id" component={ViewRoster} />
-            <PrivateRoute path="/roster/:id/edit" component={EditRoster} />
+            <PrivateRoute exact path="/roster/:id" component={ViewRoster} />
+            <PrivateRoute exact path="/roster/:id/edit" component={EditRoster} />
           </Switch>
           <Footer />
         </div>

@@ -8,6 +8,10 @@ const RosterSchema = new Schema({
     required: true,
     index: true
   },
+  team_desc: {
+    type: String,
+    required: true
+  },
   leader: {
     type: String,
     required: true,

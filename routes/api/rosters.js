@@ -18,7 +18,7 @@ const User = require("../../models/UserSchema");
 // @desc Retrieves public info of single roster if found
 // @access Public
 router.get("/roster/:id", (req, res) => {
-    Roster.findOne({ id: req.params.id })
+    Roster.findOne({ _id: req.params.id })
         .then(roster => {
             if (!roster) {
                 res.status(404).send('No roster found with this id');
@@ -63,10 +63,10 @@ router.get("/:username/rosters", (req, res) => {
 });
 
 
-// @route POST api/rosters/:id/add
+// @route POST api/rosters/roster/:id/add
 // @desc Add player to "players" field of already established roster
 // @access Public
-router.post("/:id/add", (req, res) => {
+router.post("/roster/:id/add", (req, res) => {
 
     //Form validation
     /*const { errors, isValid } = validateEditUserInput(req.body);
@@ -103,6 +103,32 @@ router.post("/:id/add", (req, res) => {
     });
 });
 
+// @route POST api/rosters/roster/:id/edit
+// @desc Edit roster information
+// @access Public
+router.post("/roster/:id/edit", (req, res) => {
+    Roster.findById(req.params.id)
+        .then(roster => {
+            if(!roster){
+                res.status(404).send('Roster with this id not found')
+            } else {
+                roster.teamname = req.body.teamname;
+                roster.team_desc = req.body.team_desc;
+
+                roster.save()
+                    .then(roster =>{
+                        res.json('Roster information successfully updated')
+                    })
+                    .catch(err => {
+                        res.status(400).send('Roster information not successfully updated')
+                    })
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(400).send('Roster update not successful')
+        })
+})
 
 // @route POST api/rosters/create
 // @desc Create team
@@ -135,6 +161,7 @@ router.post("/create", (req, res) => {
                         } else {
                             const newRoster = new Roster({
                                 teamname: req.body.teamname,
+                                team_desc: req.body.team_desc,
                                 leader: username,
                                 players: [username]
                             });
