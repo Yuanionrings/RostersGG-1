@@ -19,7 +19,6 @@ const RosterInfo = props => (
 export default class MyRosters extends Component {
 
     constructor(props){
-        console.log(props);
         super(props);
         this.state = {
             username: this.props.username,

@@ -46,8 +46,8 @@ class UserInfo extends Component {
                     </h2>
                     <hr />
                     <p className="">
-                        <b>Username:</b> {this.state.user_username}<br/>
-                        <b>Email:</b> {this.state.user_email}
+                        <b>Username: </b> {this.state.user_username}<br/>
+                        <b>Email: </b> {this.state.user_email}
                     </p>
                 </div>
             </div>
