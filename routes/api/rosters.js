@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const axios = require("axios");
 
 // Load input validation
 //const validateRegisterInput = require("../../validation/register");
@@ -34,17 +33,16 @@ router.get("/roster/:id", (req, res) => {
 
 
 // @route GET api/rosters/:username/rosters
-// @desc Retrieves public info of every roster with user ObjectId as leader
+// @desc Retrieves public info of every roster with user's username in players
 // @access Public
 router.get("/:username/rosters", (req, res) => {
     const userFilter = { username: req.params.username };
-    var userId;
     User.findOne(userFilter)
         .then(user => {
             if (!user) {
                 res.status(404).send('No user found with this username');
             } else {
-                const rosterFilter = { players: user._id };
+                const rosterFilter = { players: user.username };
                 Roster.find(rosterFilter)
                     .then(rosters => {
                         if (!rosters) {
@@ -87,7 +85,7 @@ router.post("/:id/add", (req, res) => {
                 User.findOne({ username: newPlayer.username })
                     .then(user => {
                         // User successfully found, add to roster and save to db
-                        roster.players.push(user._id)
+                        roster.players.push(user.username)
                         roster.save()
                             .then(roster => {
                                 res.json('Roster player successfully added')
@@ -123,16 +121,13 @@ router.post("/create", (req, res) => {
         return res.status(400).json(errors);
     }*/
     const userFilter = { username: req.body.username };
-    var userId;
+    var username;
     User.findOne(userFilter)
         .then(user => {
             if (!user) {
                 res.status(404).send('No user found with this username');
             } else {
-                console.log("USER ID FOUND?")
-                console.log(user._id)
-
-                userId = user._id;
+                username = user.username;
                 Roster.findOne({ teamname: req.body.teamname })
                     .then(roster => {
                         if (roster) {
@@ -140,8 +135,8 @@ router.post("/create", (req, res) => {
                         } else {
                             const newRoster = new Roster({
                                 teamname: req.body.teamname,
-                                leader: userId,
-                                players: [userId]
+                                leader: username,
+                                players: [username]
                             });
                             newRoster.save()
                                 .then(roster => res.json(roster))
@@ -153,9 +148,6 @@ router.post("/create", (req, res) => {
         .catch(err => {
             console.log(err);
         });
-
-    
 });
-
 
 module.exports = router;

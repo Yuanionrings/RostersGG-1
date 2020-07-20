@@ -9,12 +9,12 @@ const RosterSchema = new Schema({
     index: true
   },
   leader: {
-    type: Schema.Types.ObjectId,
+    type: String,
     required: true,
     index: true
   },
   players: {
-    type: [Schema.Types.ObjectId]
+    type: [String]
   }
 });
 

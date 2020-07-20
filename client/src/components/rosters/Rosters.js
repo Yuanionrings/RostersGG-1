@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const RosterInfo = props => (
     <tr>
         <td className="">{props.roster.teamname}</td>
         <td className="">{props.roster.leader}</td>
         <td className="">{props.roster.players.length}</td>
+        <td>
+            <Link to={"/edit/" + props.roster._id}>Edit</Link>
+        </td>
     </tr>
 );
 
@@ -20,7 +24,6 @@ export default class Rosters extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/rosters')
             .then(res => {
                 this.setState({
@@ -59,6 +62,7 @@ export default class Rosters extends Component {
                                 <th>Team Name</th>
                                 <th>Leader</th>
                                 <th># Players</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
