@@ -5,6 +5,12 @@ body {
 }
 .app-bg {
     background: #264653;
+    height: 100%;
+}
+.fluid-container {
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 
 .navbar-spec {
@@ -16,19 +22,22 @@ body {
 }
 
 .footer-spec {
-    color: #264653;
-    background: #fffffc;
+    color: #fffffc;
+    background: #262626;
+    margin-top: 1rem;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
-.display-box {
+.roster-display-box {
     width: 100%;
     margin: 0 auto;
-    padding: 30px 0;
 }
-.display-box div {
+.roster-display-box div {
     color: #264653;
-    border-radius: 3px;
-    margin-bottom: 15px;
     background: #fffffc;
     padding: 30px;
 }
@@ -101,9 +110,6 @@ body {
 }	
 .form-box form a:hover {
     text-decoration: underline;
-}
-.container {
-    margin-top: 150px;
 }
 .red-text {
     color: red  ;

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import Rosters from "../rosters/Rosters";
 
-import Container from "react-bootstrap/Container";
+//import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button"
@@ -50,7 +50,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <Container>
+      <div className="fluid-container">
         <Row>
           <Col>
             <h4>
@@ -80,7 +80,7 @@ class Dashboard extends Component {
 
           </Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }

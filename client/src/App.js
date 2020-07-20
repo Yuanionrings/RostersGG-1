@@ -8,7 +8,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import './App.css';
 
-import NavBar from "./components/layout/NavBar";
+import NavigationBar from "./components/layout/NavigationBar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/layout/Register";
@@ -44,7 +44,7 @@ function App() {
     <Provider store={store} >
       <Router>
         <div className="app-bg">
-          <NavBar authenticated={authenticated()}/>
+          <NavigationBar authenticated={authenticated()}/>
           <Route path="/" component={Landing} exact />
           <Route path="/register" component={Register} exact />
           <Route path="/login" component={Login} exact />

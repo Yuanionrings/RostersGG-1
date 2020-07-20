@@ -3,9 +3,9 @@ import Navbar from "react-bootstrap/Navbar";
 import NavbarBrand from "react-bootstrap/NavbarBrand";
 import Nav from "react-bootstrap/Nav";
 
-let NavBar = (props) => {
+let NavigationBar = (props) => {
 
-    //console.log(props);
+    console.log(props);
     var conditionalNavItems = () => {
         return props.authenticated ?
         <Nav className="ml-auto">
@@ -28,4 +28,4 @@ let NavBar = (props) => {
     
 }
 
-export default NavBar;
+export default NavigationBar;

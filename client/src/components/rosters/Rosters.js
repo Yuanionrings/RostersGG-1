@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -53,7 +52,7 @@ export default class Rosters extends Component {
 
     render() {
         return (
-            <Container className="display-box" fluid={true}>
+            <div className="roster-display-box fluid-container">
                 <Row>
                     <Col>
                         <h2 className="">My Rosters</h2>
@@ -71,7 +70,7 @@ export default class Rosters extends Component {
                         </table>
                     </Col>
                 </Row>
-            </Container>
+            </div>
         );
     }
 }
