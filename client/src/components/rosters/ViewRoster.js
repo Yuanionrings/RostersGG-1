@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const PlayerInfo = props => (
     <tr>
@@ -36,6 +37,10 @@ class ViewRoster extends Component {
         return (
             <div className="roster-display-box">
                 <div>
+                    <Link to="/dashboard">
+                        <i className="fa fa-arrow-circle-left  "></i>
+                        Back to Dashboard
+                    </Link>
                     <h2 className="">
                         Roster View
                     </h2>

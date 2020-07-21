@@ -68,6 +68,14 @@ body {
     font-weight: bold;
     margin-top: 0;
 }
+.roster a {
+    color: #2a9d8f;
+    font-weight: bold;
+}
+.roster-display-box a:hover, .roster-display-box a:focus {
+    color: #264653;
+    outline: none !important;
+}
 
 .userinfo-display-box {
     width: 85%;
@@ -151,6 +159,7 @@ body {
     width: 85%;
     margin: 0 auto;
     padding: 30px 0;
+    margin-bottom: 100px;
 }	
 .form-box form {
     color: #8d99ae;
