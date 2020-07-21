@@ -61,7 +61,7 @@ export default class MyRosters extends Component {
 
     render() {
         return (
-            <div className="roster-display-box">
+            <div className="general-display-box">
                 <div>
                     <h2 className="">
                         My Rosters
@@ -70,8 +70,9 @@ export default class MyRosters extends Component {
                           onClick={this.onCreate}
                         >Create Roster</Button>
                     </h2>
+                    <h6>These are the rosters that I lead:</h6>
                     
-                    <table className="table table-striped" style={{ marginTop: 10 }}>
+                    <table className="table table-striped" style={{ marginTop: 15 }}>
                         <thead>
                             <tr>
                                 <th>Team Name</th>

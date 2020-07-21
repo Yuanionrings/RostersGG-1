@@ -22,7 +22,7 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="fluid-container">
-                <div className="userinfo-thin-display-box">
+                <div className="general-thin-display-box">
                   <div>
                     <p><b>You are currently logged in as: </b> {this.props.auth.user.username}</p>
                     <Button

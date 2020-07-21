@@ -1,32 +1,39 @@
 body {
     color: #fffffc;
-    background: #264653;
+    background: #2c2c54;
     font-family: 'Roboto', sans-serif;
 }
+
+/* app-bg used to set background in App.js main div element */
 .app-bg {
-    background: #264653;
+    background: #2c2c54;
     height: 100%;
 }
+/* fluid-container used instead of container-fluid for no padding */
 .fluid-container {
     width: 100%;
     margin-right: 0px;
     margin-left: 0px;
 }
 
+
+/* navbar related styling */
 .navbar-spec {
     background: #fffffc;
 }
 .navbar-brand {
     font-weight: bold;
-    color: #264653 !important;
+    color: #2c2c54 !important;
 }
 
+
+/* footer related styling */
 .footer-spec {
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fffffc;
-    background: #262626;
+    background: #111111;
     margin-top: 1rem;
     padding: 1rem;
     position: fixed;
@@ -34,115 +41,129 @@ body {
     left: 0;
     width: 100%;
 }
-.footer-spec p{
+.footer-spec p {
     margin: 0px;
 }
+.footer-spec a {
+    color: #fffffc;
+}
+.footer-spec a {
+    color: #fffffc;
+}
+.footer-spec a:hover, .footer-spec a:focus {
+    color: #33d9b2;
+    outline: none !important;
+}
 
-.roster-display-box {
+
+/* general-display-box used for every display box (not specialized) */
+@keyframes general-display-animation {
+    0%   {background-color:#2c2c54;}
+    100% {background-color:#40407a;}
+}
+.general-display-box {
     width: 85%;
     margin: 0 auto;
     margin-top: 30px;
-    margin-bottom: 100px;
 }
-.roster-display-box div {
-    color: #264653;
+.general-display-box div {
+    color: #fffffc;
     border-radius: 5px;
     margin-bottom: 15px;
-    background: #fffffc;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    background: #40407a;
+    animation-name: general-display-animation;
+    animation-duration: 3s;
+    box-shadow: 0px 0px 3px 1px rgba(51, 217, 178, 1);
     padding: 30px;
 }
-.roster-display-box .btn {        
+.general-display-box .btn {        
     font-size: 16px;
     font-weight: bold;
-    background: #2a9d8f;
+    background: #40407a;
+    box-shadow: 0px 0px 1px 1px rgba(51, 217, 178, 1);
     border: none;
     min-width: 120px;
 }
-.roster-display-box .btn:hover, .roster-display-box .btn:focus {
-    background: #264653;
+.general-display-box .btn:hover, .general-display-box .btn:focus {
+    background: #33d9b2;
     outline: none !important;
 }
-.roster-display-box h2 {
-    color: #264653;
+.general-display-box h2 {
+    color: #fffffc;
     font-weight: bold;
     margin-top: 0;
 }
-.roster a {
-    color: #2a9d8f;
-    font-weight: bold;
+.general-display-box h6 {
+    color: #f7f7f7;
+    margin-top: 0;
 }
-.roster-display-box a:hover, .roster-display-box a:focus {
-    color: #264653;
+.general-display-box hr {
+    border: 2px solid #33d9b2;
+    margin-top: 15px;
+}
+.general-display-box a {
+    color: #33d9b2;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.general-display-box a:hover, .general-display-box a:focus {
+    color: #218c74;
     outline: none !important;
 }
+.general-display-box table {
+    color: #fffffc;
+    background: #2c2c54;
+}
+.general-display-box thead th {
+    border-bottom: 3px solid #33d9b2;
+}
+.general-display-box th {
+    border-top: 3px solid #33d9b2;
+}
+.general-display-box td {
+    border-top: 1px solid #33d9b2;
+}
 
-.userinfo-display-box {
+
+/* general-thin-display-box used for small user display boxes */
+.general-thin-display-box{
     width: 85%;
     margin: 0 auto;
     margin-top: 30px;
 }
-.userinfo-display-box div {
-    color: #264653;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    background: #fffffc;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    padding: 30px;
-}
-.userinfo-display-box hr {
-    margin-top: 0px;
-}
-.userinfo-display-box .btn {        
-    font-size: 16px;
-    font-weight: bold;
-    background: #2a9d8f;
-    border: none;
-    min-width: 120px;
-}
-.userinfo-display-box .btn:hover, .userinfo-display-box .btn:focus {
-    background: #264653;
-    outline: none !important;
-}
-.userinfo-display-box h2 {
-    color: #264653;
-    font-weight: bold;
-    margin-top: 0;
-}
-
-.userinfo-thin-display-box{
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 30px;
-}
-.userinfo-thin-display-box div {
+.general-thin-display-box div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #264653;
+    color: #fffffc;
     border-radius: 5px;
-    background: #fffffc;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    background: #40407a;
+    animation-name: general-display-animation;
+    animation-duration: 3s;
+    box-shadow: 0px 0px 3px 1px rgba(51, 217, 178, 1);
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 15px;
     padding-bottom: 15px;
 }
-.userinfo-thin-display-box p {
+.general-thin-display-box p {
     margin-bottom: 0px;
 }
-.userinfo-thin-display-box .btn {        
+.general-thin-display-box .btn {        
     font-size: 16px;
     font-weight: bold;
-    background: #2a9d8f;
+    background: #40407a;
+    box-shadow: 0px 0px 1px 1px rgba(51, 217, 178, 1);
     border: none;
     min-width: 120px;
 }
-.userinfo-thin-display-box .btn:hover, .userinfo-display-box .btn:focus {
-    background: #264653;
+.general-thin-display-box .btn:hover, .general-display-box .btn:focus {
+    background: #33d9b2;
     outline: none !important;
 }
 
+
+/* form-control used for each form */
 .form-control {
     min-height: 41px;
     box-shadow: none;   
@@ -150,7 +171,7 @@ body {
     background: #fffffc;
 }
 .form-control:focus {
-    border-color: #2a9d8f;
+    border-color: #218c74;
 }
 .form-control, .btn {        
     border-radius: 5px;
@@ -187,12 +208,12 @@ body {
 .form-box .btn {        
     font-size: 16px;
     font-weight: bold;
-    background: #2a9d8f;
+    background: #33d9b2;
     border: none;
     min-width: 140px;
 }
 .form-box .btn:hover, .form-box .btn:focus {
-    background: #264653;
+    background: #218c74;
     outline: none !important;
 }
 .form-box a {
@@ -203,16 +224,12 @@ body {
     text-decoration: none;
 }
 .form-box form a {
-    color: #2a9d8f;
+    color: #33d9b2;
     text-decoration: none;
 }	
 .form-box form a:hover {
     text-decoration: underline;
 }
 .red-text {
-    color: red  ;
-}
-.name-lable {
-    text-decoration: underline;
-    color: pink;
+    color: #ff5252;
 }

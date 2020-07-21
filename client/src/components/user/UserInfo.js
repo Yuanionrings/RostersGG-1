@@ -35,7 +35,7 @@ class UserInfo extends Component {
     }
     render() {
         return (
-            <div className="userinfo-display-box">
+            <div className="general-display-box">
                 <div>
                     <h2 className="">
                         Welcome back, <i>{this.state.user_name}</i>!
@@ -44,6 +44,7 @@ class UserInfo extends Component {
                             className="float-right"
                             >Edit Profile</Button>
                     </h2>
+                    <h6>Here is a snapshot of all of my profile information: </h6>
                     <hr />
                     <p className="">
                         <b>Username: </b> {this.state.user_username}<br/>
