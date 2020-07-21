@@ -21,10 +21,13 @@ let NavigationBar = (props) => {
     }
 
     return (
-        <Navbar className="navbar-spec">
-            <NavbarBrand className="mr-auto" href="/">RostersGG</NavbarBrand>
-            {conditionalNavItems(props.auth)}
-        </Navbar>
+        <div>
+            <Navbar className="navbar-spec">
+                <NavbarBrand className="mr-auto" href="/">RostersGG</NavbarBrand>
+                {conditionalNavItems(props.auth)}
+            </Navbar>
+            <div className="navbar-divider"></div>
+        </div>
     )
     
 }

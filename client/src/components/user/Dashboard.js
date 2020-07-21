@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/userAuthActions";
 import MyRosters from "../rosters/MyRosters";
 import UserInfo from "./UserInfo";
+import UserEvents from "./UserEvents";
 import Button from "react-bootstrap/Button";
 
 
@@ -24,7 +25,7 @@ class Dashboard extends Component {
             <div className="fluid-container">
                 <div className="general-thin-display-box">
                   <div>
-                    <p><b>You are currently logged in as: </b> {this.props.auth.user.username}</p>
+                    <p><b>You are currently viewing the Dashboard as: </b> <i>{this.props.auth.user.username}</i></p>
                     <Button
                           className="float-right"
                           onClick={this.onLogout}
@@ -33,10 +34,14 @@ class Dashboard extends Component {
                 </div>
                 <UserInfo
                     given_username={this.props.auth.user.username} 
-                    history={this.props.history}/>
+                    history={this.props.history} />
+                <UserEvents 
+                    username={this.props.auth.user.username} 
+                    history={this.props.history} />
                 <MyRosters 
                     username={this.props.auth.user.username} 
-                    history={this.props.history}/>
+                    history={this.props.history} />
+                <div className="filler-lg"></div>
             </div>
         );
     }

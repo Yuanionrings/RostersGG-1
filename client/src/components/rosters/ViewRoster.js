@@ -56,15 +56,16 @@ class ViewRoster extends Component {
                 <div>
                     <Link to="/dashboard">
                         <i className="fa fa-arrow-circle-left  "></i>
-                        Back to Dashboard
+                        {" "}Back to Dashboard
                     </Link>
-                    <h2 className="">
-                        Roster View - {this.state.teamname}
-                    </h2>
+
+                    <h2 className="">{this.state.teamname}</h2>
+                    <h6>MORDHAU - US EAST</h6>
+                    <hr />
 
                     <h6><b>Description:</b><br/>{this.state.team_desc}</h6>
                     
-                    <table className="table table-striped" style={{ marginTop: 10 }}>
+                    <table className="table table-striped" style={{ marginTop: 15 }}>
                         <thead>
                             <tr>
                                 <th>Name</th>

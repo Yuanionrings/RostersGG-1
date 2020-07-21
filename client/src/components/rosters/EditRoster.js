@@ -65,7 +65,7 @@ class EditRoster extends Component {
                 <div>
                     <Link to="/dashboard">
                         <i className="fa fa-arrow-circle-left  "></i>
-                        Back to Dashboard
+                        {" "}Back to Dashboard
                     </Link>
                 </div>
 

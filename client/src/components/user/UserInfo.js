@@ -38,16 +38,18 @@ class UserInfo extends Component {
             <div className="general-display-box">
                 <div>
                     <h2 className="">
-                        Welcome back, <i>{this.state.user_name}</i>!
+                        Welcome, <i>{this.state.user_name}</i>!
                         <Button
                             onClick={this.onEdit}
                             className="float-right"
                             >Edit Profile</Button>
                     </h2>
-                    <h6>Here is a snapshot of all of my profile information: </h6>
                     <hr />
+
+                    <h6>This is the where your user information and inbox notifications both appear: </h6>
                     <p className="">
-                        <b>Username: </b> {this.state.user_username}<br/>
+                        <b>Display Name: </b>{this.state.user_name}<br />
+                        <b>Username: </b> {this.state.user_username}<br />
                         <b>Email: </b> {this.state.user_email}
                     </p>
                 </div>
