@@ -2,15 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 // Load input validation
-//const validateRegisterInput = require("../../validation/register");
-//const validateLoginInput = require("../../validation/login");
-//const validateEditUserInput = require("../../validation/edituser")
+const validateCreateEditRosterInput = require("../../validation/roster/create_edit_roster");
 
-// TODO - Create validation scripts for Roster forms {CreateRoster, EditRoster}
-
-// Load mongoose Roster model
+// Load mongoose Roster and User models
 const Roster = require("../../models/RosterSchema");
-// Load mongoose User model
 const User = require("../../models/UserSchema");
 
 
@@ -59,7 +54,6 @@ router.get("/:username/rosters", (req, res) => {
         .catch(err => {
             console.log(err);
         });
-    
 });
 
 
@@ -67,12 +61,6 @@ router.get("/:username/rosters", (req, res) => {
 // @desc Add player to "players" field of already established roster
 // @access Public
 router.post("/roster/:id/add", (req, res) => {
-
-    //Form validation
-    /*const { errors, isValid } = validateEditUserInput(req.body);
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }*/
 
     const rosterFilter = { _id: req.params.id };
     const newPlayer = req.body;
@@ -103,10 +91,18 @@ router.post("/roster/:id/add", (req, res) => {
     });
 });
 
-// @route POST api/rosters/roster/:id/edit
+
+// @route PATCH api/rosters/roster/:id/edit
 // @desc Edit roster information
 // @access Public
-router.post("/roster/:id/edit", (req, res) => {
+router.patch("/roster/:id/edit", (req, res) => {
+
+    //Form validation
+    const { errors, isValid } = validateCreateEditRosterInput(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
     Roster.findById(req.params.id)
         .then(roster => {
             if(!roster){
@@ -130,22 +126,17 @@ router.post("/roster/:id/edit", (req, res) => {
         })
 })
 
+
 // @route POST api/rosters/create
 // @desc Create team
 // @access Public
-/*
-req.body: {
-    username: current user's username (add as roster.leader and to roster.players[])
-    teamname: new team's display name
-}
-*/
 router.post("/create", (req, res) => {
 
     //Form validation
-    /*const { errors, isValid } = validateRegisterInput(req.body);
+    const { errors, isValid } = validateCreateEditRosterInput(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
-    }*/
+    }
     const userFilter = { username: req.body.username };
     var username;
     User.findOne(userFilter)

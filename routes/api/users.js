@@ -5,9 +5,9 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 
 // Load input validation
-const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login");
-const validateEditUserInput = require("../../validation/edituser")
+const validateRegisterInput = require("../../validation/user/register");
+const validateLoginInput = require("../../validation/user/login");
+const validateEditUserInput = require("../../validation/user/edituser")
 
 // Load mongoose User model
 const User = require("../../models/UserSchema");

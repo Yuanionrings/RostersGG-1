@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import classnames from "classnames"
+import { editRoster } from "../../actions/rosterAuthActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class EditRoster extends Component {
   constructor() {
@@ -10,7 +13,8 @@ class EditRoster extends Component {
       teamname: "",
       team_desc: "",
       leader: "",
-      players: []
+      players: [],
+      errors: {}
     }
   }
   componentDidMount() {
@@ -30,6 +34,14 @@ class EditRoster extends Component {
         })
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
+
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value })
   }
@@ -37,20 +49,16 @@ class EditRoster extends Component {
   onSubmit = e => {
     e.preventDefault();
     const updatedRoster = {
-        teamname: this.state.teamname,
-        team_desc: this.state.team_desc
+        id: this.props.match.params.id,
+        data: {
+            teamname: this.state.teamname,
+            team_desc: this.state.team_desc
+        }
     };
-    axios.post("http://localhost:5000/api/rosters/roster/" + this.props.match.params.id + "/edit", updatedRoster)
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    this.props.history.push("/dashboard");
+    this.props.editRoster(updatedRoster, this.props.history);
 }
   render() {
-    const { teamname, team_desc, leader } = this.state;
+    const { teamname, team_desc, leader, errors } = this.state;
     return (
         <div className="form-box ">
             <form className="signup-form" onSubmit={this.onSubmit}>
@@ -69,19 +77,27 @@ class EditRoster extends Component {
                         id="teamname"
                         placeholder="Team Name"
                         value={teamname}
+                        error={errors.teamname}
                         onChange={this.onChange}
-                        className={classnames("form-control")} />
+                        className={classnames("form-control", {
+                            invalid: errors.teamname
+                        })} />
                 </div>
+                <span className="red-text">{errors.teamname}</span>
 
                 <div className="form-group">
                     <label>Team Description: </label>
-                    <input type="textarea"
+                    <input type="text"
                         id="team_desc"
                         placeholder="Description"
                         value={team_desc}
+                        error={errors.team_desc}
                         onChange={this.onChange}
-                        className={classnames("form-control")} />
+                        className={classnames("form-control", {
+                            invalid: errors.team_desc
+                        })} />
                 </div>
+                <span className="red-text">{errors.team_desc}</span>
 
                 <div className="form-group">
                     <label>Leader: </label>
@@ -105,4 +121,15 @@ class EditRoster extends Component {
   }
 }
 
-export default EditRoster;
+EditRoster.propTypes = {
+    editRoster: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps, { editRoster })(EditRoster);

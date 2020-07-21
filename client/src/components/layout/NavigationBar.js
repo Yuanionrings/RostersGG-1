@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 let NavigationBar = (props) => {
 
     console.log(props);
+    
     var conditionalNavItems = () => {
         return props.authenticated ?
         <Nav className="ml-auto">

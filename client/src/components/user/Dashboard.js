@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
+import { logoutUser } from "../../actions/userAuthActions";
 import MyRosters from "../rosters/MyRosters";
 import UserInfo from "./UserInfo";
 import Button from "react-bootstrap/Button";

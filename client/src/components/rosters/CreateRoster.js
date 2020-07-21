@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
-import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { createRoster } from "../../actions/rosterAuthActions";
 
 class CreateRoster extends Component {
   constructor(props) {
@@ -12,12 +12,21 @@ class CreateRoster extends Component {
     this.state = {
       username: this.props.auth.user.username,
       teamname: "",
-      team_desc: ""
+      team_desc: "",
+      errors: {}
     }
   }
 
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value })
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
   }
 
   onSubmit = e => {
@@ -28,18 +37,12 @@ class CreateRoster extends Component {
       team_desc: this.state.team_desc,
       username: this.state.username
     }
-    console.log(newRoster);
-    axios.post("http://localhost:5000/api/rosters/create", newRoster)
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+    
+    this.props.createRoster(newRoster, this.props.history);
   }
 
   render() {
-    const { teamname, team_desc } = this.state;
+    const { teamname, team_desc, errors } = this.state;
 
     return (
       <div className="form-box ">
@@ -60,9 +63,13 @@ class CreateRoster extends Component {
               id="teamname"
               placeholder="Team Name"
               value={teamname}
+              error={errors.teamname}
               onChange={this.onChange}
-              className={classnames("form-control")} />
+              className={classnames("form-control", {
+                invalid: errors.teamname
+              })} />
           </div>
+          <span className="red-text">{errors.teamname}</span>
 
           <div className="form-group">
           <label>Team Description: </label>
@@ -70,9 +77,13 @@ class CreateRoster extends Component {
               id="team_desc"
               placeholder="Description"
               value={team_desc}
+              error={errors.team_desc}
               onChange={this.onChange}
-              className={classnames("form-control")} />
+              className={classnames("form-control", {
+                invalid: errors.team_desc
+              })} />
           </div>
+          <span className="red-text">{errors.team_desc}</span>
 
           <div className="form-group">
             <button type="submit" className="btn btn-primary btn-block btn-lg">Create</button>
@@ -84,13 +95,14 @@ class CreateRoster extends Component {
 }
 
 CreateRoster.propTypes = {
-    auth: PropTypes.object.isRequired
+    createRoster: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    errors: state.errors
 });
 
-export default connect(
-    mapStateToProps
-)(CreateRoster);
+export default connect(mapStateToProps, { createRoster })(CreateRoster);
