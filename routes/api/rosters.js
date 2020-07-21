@@ -27,6 +27,31 @@ router.get("/roster/:id", (req, res) => {
 });
 
 
+// @route GET api/rosters/roster/:id/players
+// @desc Retrieves user info of each player on roster's playerlist
+// @access Public
+router.get("/roster/:id/players", (req, res) => {
+    Roster.findOne({ _id: req.params.id })
+        .then(roster => {
+            if (!roster) {
+                res.status(404).send('No roster found with this id');
+            } else {
+                const player_usernames = roster.players;
+                User.find({"username": {$in: player_usernames}})
+                    .then(users => {
+                        res.json(users)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+
+
 // @route GET api/rosters/:username/rosters
 // @desc Retrieves public info of every roster with user's username in players
 // @access Public
