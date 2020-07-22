@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import classnames from "classnames"
 import { editRoster } from "../../actions/rosterAuthActions";
+import { logoutUser } from "../../actions/userAuthActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -22,12 +23,16 @@ class EditRoster extends Component {
     console.log(this.props)
     axios.get("http://localhost:5000/api/rosters/roster/" + this.props.match.params.id)
         .then(res => {
-            this.setState({
-                teamname: res.data.teamname,
-                team_desc: res.data.team_desc,
-                leader: res.data.leader,
-                players: res.data.players
-            })
+            if(this.props.auth.user.username == res.data.leader){
+                this.setState({
+                    teamname: res.data.teamname,
+                    team_desc: res.data.team_desc,
+                    leader: res.data.leader,
+                    players: res.data.players
+                })
+            } else {
+                this.props.logoutUser();
+            }
         })
         .catch(err => {
             console.log(err);
@@ -122,6 +127,7 @@ class EditRoster extends Component {
 }
 
 EditRoster.propTypes = {
+    logoutUser: PropTypes.func.isRequired,
     editRoster: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
@@ -132,4 +138,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { editRoster })(EditRoster);
+export default connect(mapStateToProps, { editRoster, logoutUser })(EditRoster);
