@@ -8,7 +8,8 @@ class UserInfo extends Component {
         this.state = {
             user_name: '',
             user_username: '',
-            user_email: ''
+            user_email: '',
+            team_invitations: ''
         }
     }
     onEdit = e => {
@@ -22,7 +23,8 @@ class UserInfo extends Component {
                 this.setState({
                     user_name: res.data.name,
                     user_username: res.data.username,
-                    user_email: res.data.email
+                    user_email: res.data.email,
+                    team_invitations: res.data.invitations
                 });
             })
             .catch(function (err) {
@@ -50,7 +52,8 @@ class UserInfo extends Component {
                     <p className="">
                         <b>Display Name: </b>{this.state.user_name}<br />
                         <b>Username: </b> {this.state.user_username}<br />
-                        <b>Email: </b> {this.state.user_email}
+                        <b>Email: </b> {this.state.user_email}<br />
+                        <b>Invitations: </b> {this.state.team_invitations}
                     </p>
                 </div>
             </div>
