@@ -73,24 +73,27 @@ body {
 }
 
 .button-good {        
-    font-size: 16px;
+    font-size: 16px !important;
     font-weight: bold;
     background: #33d9b2 !important;
     box-shadow: none !important;
     border: none;
     min-width: 60px !important;
+    margin-right: 10px;
+    padding: .1rem .375rem !important;
 }
 .button-good:hover, .button-good:focus {
     background: #218c74 !important;
     outline: none !important;
 }
 .button-bad {        
-    font-size: 16px;
+    font-size: 16px !important;
     font-weight: bold;
     background: #ff5252 !important;
     box-shadow: none !important;
     border: none;
     min-width: 60px !important;
+    padding: .1rem .375rem !important;
 }
 .button-bad:hover, .button-bad:focus {
     background: #b33939 !important;
@@ -227,13 +230,11 @@ body {
 .form-box {
     width: 85%;
     margin: 0 auto;
-    padding: 30px 0;
-    margin-bottom: 100px;
+    padding-top: 30px;
 }
 .form-box form {
     color: #fffffc;
     border-radius: 5px;
-    margin-bottom: 15px;
     background-image: linear-gradient(to bottom, #4c4c96, #40407a);
     box-shadow: 0px 0px 3px 1px rgba(51, 217, 178, 1);
     padding: 30px;

@@ -117,12 +117,15 @@ class UserInfo extends Component {
                     </h2>
                     <hr />
 
-                    <h6>This is the where your user information and inbox notifications both appear: </h6>
+                    <h5><b>User Information: </b></h5>
                     <p className="">
                         <b>Display Name: </b>{this.state.user_name}<br />
                         <b>Username: </b> {this.state.user_username}<br />
                         <b>Email: </b> {this.state.user_email}
                     </p>
+
+                    <hr />
+                    <h5><b>Invitations: </b></h5>
                     {(this.state.user_invitations.length > 0) ?
                         <table className="table table-striped" style={{ marginTop: 15 }}>
                             <thead>

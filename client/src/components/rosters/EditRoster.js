@@ -126,6 +126,7 @@ class EditRoster extends Component {
                 </form>
             </div>
             <InvitePlayer team_id={this.props.match.params.id} />
+            <div className="filler-lg"></div>
         </div>
     )
   }
