@@ -100,7 +100,7 @@ router.post("/roster/:id/invite", (req, res) => {
     Roster.findOne(rosterFilter)
         .then(roster => {
             if (!roster) {
-                res.status(404).send('Roster info not found for this id');
+                res.status(404).json({ other_error: "No roster found with this id" });
             } else {
                 User.findOne({ username: newUsernameToInvite })
                     .then(user => {
@@ -111,12 +111,12 @@ router.post("/roster/:id/invite", (req, res) => {
                             })
                             .catch(err => {
                                 console.log(err)
-                                res.status(400).send('Error when inviting player')
+                                res.status(404).json({ other_error: "Error sending invitation to user" })
                             });
                     })
                     .catch(err =>{
                         console.log(err)
-                        res.status(404).send({'player_username':'User not found, cannot be invited'})
+                        res.status(404).json({ player_username: "No player found with this username" })
                     })
             }
     });

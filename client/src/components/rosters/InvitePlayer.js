@@ -31,14 +31,12 @@ class InvitePlayer extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-
         const rosterInviteData = {
             team_id: this.state.team_id,
             data: {
                 invited_player: this.state.player_username
             }
         };
-
         this.props.invitePlayerToRoster(rosterInviteData, this.props.history);
     }
   
@@ -51,11 +49,12 @@ class InvitePlayer extends Component {
                 <h2>Invite Player</h2>
                 <p>Please enter the username of the player you'd like to invite.</p>
                 <hr />
+                
                 <div className="form-group">
-                    <label>Player Username: </label>
+                    <label>Player's Username: </label>
                     <input type="text"
                         id="player_username"
-                        placeholder="Invitee's Username"
+                        placeholder="Player's Username"
                         value={player_username}
                         error={errors.player_username}
                         onChange={this.onChange}
