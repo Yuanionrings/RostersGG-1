@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import axios from "axios";
 import classnames from "classnames"
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { invitePlayerToRoster } from "../../actions/rosterAuthActions";
 
 class InvitePlayer extends Component {
     constructor(props) {
@@ -31,19 +31,15 @@ class InvitePlayer extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        const player = {
-            invited_player: this.state.player_username
+
+        const rosterInviteData = {
+            team_id: this.state.team_id,
+            data: {
+                invited_player: this.state.player_username
+            }
         };
 
-        axios.post("http://localhost:5000/api/rosters/roster/"+ this.state.team_id +"/invite", player)
-            .then(res => {
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-
-        window.location.reload(false);
+        this.props.invitePlayerToRoster(rosterInviteData, this.props.history);
     }
   
   render() {
@@ -82,6 +78,7 @@ class InvitePlayer extends Component {
 }
 
 InvitePlayer.propTypes = {
+    invitePlayerToRoster: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
 };
 
@@ -89,4 +86,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps)(InvitePlayer);
+export default connect(mapStateToProps, { invitePlayerToRoster })(InvitePlayer);

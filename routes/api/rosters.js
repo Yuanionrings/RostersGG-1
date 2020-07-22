@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Load input validation
 const validateCreateEditRosterInput = require("../../validation/roster/create_edit_roster");
+const validateInvitePlayerToRosterInput = require("../../validation/roster/invite_player");
 
 // Load mongoose Roster and User models
 const Roster = require("../../models/RosterSchema");
@@ -87,10 +88,14 @@ router.get("/:username/rosters", (req, res) => {
 // @access Public
 router.post("/roster/:id/invite", (req, res) => {
 
+    //Form validation
+    const { errors, isValid } = validateInvitePlayerToRosterInput(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
     const rosterFilter = { _id: req.params.id };
     const newUsernameToInvite = req.body.invited_player;
-
-    console.log(newUsernameToInvite)
 
     Roster.findOne(rosterFilter)
         .then(roster => {
@@ -111,7 +116,7 @@ router.post("/roster/:id/invite", (req, res) => {
                     })
                     .catch(err =>{
                         console.log(err)
-                        res.status(404).send('User not found, cannot be invited')
+                        res.status(404).send({'player_username':'User not found, cannot be invited'})
                     })
             }
     });
@@ -142,6 +147,7 @@ router.patch("/roster/:id/decline-invite", (req, res) => {
             res.status(404).send("Error finding user")
         })
 });
+
 
 // @route PATCH api/rosters/roster/:id/accept_invite
 // @desc Add player to "players" field of already established roster IF accepted

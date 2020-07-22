@@ -22,3 +22,14 @@ export const editRoster = (updatedRosterData, history) => dispatch => {
       payload: err.response.data
     }))
 }
+
+//Invite Player to Roster
+export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
+  axios.post('http://localhost:5000/api/rosters/roster/' + rosterInviteData.team_id + '/invite',
+    rosterInviteData.data)
+    .then(res => history.push("/roster/" + rosterInviteData.team_id + "/edit"))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
+}
