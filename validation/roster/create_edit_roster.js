@@ -13,20 +13,20 @@ module.exports = function validateCreateEditRosterInput(data) {
     if (Validator.isEmpty(data.teamname)) {
         errors.teamname = "Team Name field is required";
     }
-    if (!Validator.isLength(data.teamname, { min: 2, max: 16 })) {
-        errors.password = "Team Description must be between 2 and 16 characters";
+    if (!Validator.isLength(data.teamname, { min: 4, max: 20 })) {
+        errors.teamname = "Team Name must be between 4 and 20 characters";
     }
 
     //Team Description checks
     if (Validator.isEmpty(data.team_desc)) {
         errors.team_desc = "Team Description field is required";
     }
-    if (!Validator.isLength(data.team_desc, { min: 4, max: 60 })) {
-        errors.password = "Team Description must be between 4 and 60 characters";
+    if (!Validator.isLength(data.team_desc, { min: 2, max: 100 })) {
+        errors.team_desc = "Team Description must be between 2 and 100 characters";
     }
 
     return {
         errors,
         isValid: isEmpty(errors)
-    };
-};
+    }
+}

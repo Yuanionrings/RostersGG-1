@@ -15,10 +15,13 @@ const Roster = require("../../models/RosterSchema");
 
 
 // @route GET api/users/user/:username
-// @desc Retrieves public info of single user if found
-// @access Public
+// @desc Retrieves info of single user
 router.get("/:username", (req, res) => {
-    User.findOne({ username: req.params.username })
+
+    // Define filter for querying database
+    const userFilter = { username: req.params.username };
+
+    User.findOne(userFilter)
         .then(user => {
             if (!user) {
                 res.status(404).send('No user found with this username');
@@ -34,21 +37,24 @@ router.get("/:username", (req, res) => {
 
 // @route GET api/users/:username/invitations
 // @desc Retrieves roster info of each invitation on user's invitation list
-// @access Public
 router.get("/:username/invitations", (req, res) => {
-    User.findOne({ username: req.params.username })
+
+    // Define filter for querying database
+    const userFilter = { username: req.params.username };
+
+    User.findOne(userFilter)
         .then(user => {
             if (!user) {
                 res.status(404).send('No user found with this username');
             } else {
-                const team_ids = user.invitations;
-                Roster.find({ "_id": {$in: team_ids}})
+                const rosterFilter = { "_id" : {$in: user.invitations}};
+                Roster.find(rosterFilter)
                     .then(rosters => {
-                        res.json(rosters)
+                        res.json(rosters);
                     })
                     .catch(err => {
-                        console.log(err)
-                    })
+                        console.log(err);
+                    });
             }
         })
         .catch(err => {
@@ -59,18 +65,17 @@ router.get("/:username/invitations", (req, res) => {
 
 // @route PATCH api/users/user/:username/update
 // @desc Update user information
-// @access Public
 router.patch("/:username/update", (req, res) => {
 
-    //Form validation
+    // Form validation to ensure no fields are empty
     const { errors, isValid } = validateEditUserInput(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
     }
 
-    const filter = { username: req.params.username };
+    const userFilter = { username: req.params.username };
     const updatedInfo = req.body;
-    User.findOneAndUpdate(filter, updatedInfo, { new: true }).then(user => {
+    User.findOneAndUpdate(userFilter, updatedInfo, { new: true }).then(user => {
         if (!user) {
             res.status(404).send('User info not found for this username');
         } else {
@@ -86,12 +91,13 @@ router.patch("/:username/update", (req, res) => {
                             .catch(err => res.status(400).send('User information/password not successfully updated'));
                     });
                 });
+
             } else {
                 user.save().then(user => {
-                    res.json('User information successfully updated')
+                    res.json('User information successfully updated');
                 }).catch(err => {
-                    console.log(err)
-                    res.status(400).send('User information not successfully updated')
+                    console.log(err);
+                    res.status(400).send('User information not successfully updated');
                 });
             }
         }
@@ -101,65 +107,74 @@ router.patch("/:username/update", (req, res) => {
 
 // @route POST api/users/register
 // @desc Register user
-// @access Public
 router.post("/register", (req, res) => {
 
-    //Form validation
+    // Form validation to ensure no fields are empty and that passwords match
     const { errors, isValid } = validateRegisterInput(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
     }
 
-    User.findOne({ email: req.body.email }).then(user => {
-        if (user) {
-            return res.status(400).json({ email: "Email already exists" });
-        } else {
-            User.findOne({ username: req.body.username }).then(user => {
-                if (user) {
-                    return res.status(400).json({ username: "Username already exists" })
-                } else {
-                    const newUser = new User({
-                        name: req.body.name,
-                        username: req.body.username,
-                        password: req.body.password,
-                        email: req.body.email
-                    });
+    // Define filters to query database
+    const userEmailFilter = { email: req.body.email };
+    const usernameFilter = { username: req.body.username };
+    
+    User.findOne(userEmailFilter)
+        .then(user => {
+            if (user) {
+                return res.status(400).json({ email: "Email already exists" });
+            } else {
+                User.findOne(usernameFilter)
+                    .then(user => {
+                        if (user) {
+                            return res.status(400).json({ username: "Username already exists, it must be unique" });
+                        } else {
+                            const newUser = new User({
+                                name: req.body.name,
+                                username: req.body.username,
+                                password: req.body.password,
+                                email: req.body.email
+                            });
 
-                    // Hash password before storing in database
-                    const rounds = 10;
-                    bcrypt.genSalt(rounds, (err, salt) => {
-                        bcrypt.hash(newUser.password, salt, (err, hash) => {
-                            if (err) throw err;
-                            newUser.password = hash;
-                            newUser
-                                .save()
-                                .then(user => res.json(user))
-                                .catch(err => console.log(err));
-                        });
+                            // Hash password before storing in database
+                            const rounds = 10;
+                            bcrypt.genSalt(rounds, (err, salt) => {
+                                bcrypt.hash(newUser.password, salt, (err, hash) => {
+                                    if (err) throw err;
+                                    newUser.password = hash;
+                                    newUser.save()
+                                        .then(user => res.json(user))
+                                        .catch(err => console.log(err));
+                                });
+                            });
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
                     });
-                }
-            })
-        }
-    });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 
 // @route POST api/users/login
 // @desc Login user and return JWT token
-// @access Public
 router.post("/login", (req, res) => {
 
-    //Form Valdiation
+    // Form validation to ensure email and password are entered
     const { errors, isValid } = validateLoginInput(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
     }
 
-    const email = req.body.email;
+    // Define filter for querying database
+    const userFilter = { email: req.body.email};
     const password = req.body.password;
 
-    //Find user by Email
-    User.findOne({ email }).then(user => {
+    User.findOne(userFilter).then(user => {
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email not found" });
         }
