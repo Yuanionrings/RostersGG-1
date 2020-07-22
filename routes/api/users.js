@@ -9,8 +9,9 @@ const validateRegisterInput = require("../../validation/user/register");
 const validateLoginInput = require("../../validation/user/login");
 const validateEditUserInput = require("../../validation/user/edituser")
 
-// Load mongoose User model
+// Load mongoose User and Roster models
 const User = require("../../models/UserSchema");
+const Roster = require("../../models/RosterSchema");
 
 
 // @route GET api/users/user/:username
@@ -23,6 +24,31 @@ router.get("/:username", (req, res) => {
                 res.status(404).send('No user found with this username');
             } else {
                 res.json(user);
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+
+
+// @route GET api/users/:username/invitations
+// @desc Retrieves roster info of each invitation on user's invitation list
+// @access Public
+router.get("/:username/invitations", (req, res) => {
+    User.findOne({ username: req.params.username })
+        .then(user => {
+            if (!user) {
+                res.status(404).send('No user found with this username');
+            } else {
+                const team_ids = user.invitations;
+                Roster.find({ "_id": {$in: team_ids}})
+                    .then(rosters => {
+                        res.json(rosters)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
             }
         })
         .catch(err => {

@@ -88,7 +88,9 @@ router.get("/:username/rosters", (req, res) => {
 router.post("/roster/:id/invite", (req, res) => {
 
     const rosterFilter = { _id: req.params.id };
-    const newUsernameToInvite = req.body.inv_user;
+    const newUsernameToInvite = req.body.invited_player;
+
+    console.log(newUsernameToInvite)
 
     Roster.findOne(rosterFilter)
         .then(roster => {
@@ -119,7 +121,7 @@ router.post("/roster/:id/invite", (req, res) => {
 // @route PATCH api/rosters/roster/:id/decline_invite
 // @desc Removes invitation from player's inbox
 // @access Public
-router.patch("/roster/:id/accept_invite", (req, res) => {
+router.patch("/roster/:id/decline-invite", (req, res) => {
     const roster_id = req.params.id;
     const player_username = req.body.username;
 
@@ -144,7 +146,7 @@ router.patch("/roster/:id/accept_invite", (req, res) => {
 // @route PATCH api/rosters/roster/:id/accept_invite
 // @desc Add player to "players" field of already established roster IF accepted
 // @access Public
-router.patch("/roster/:id/accept_invite", (req, res) => {
+router.patch("/roster/:id/accept-invite", (req, res) => {
 
     const rosterFilter = { _id: req.params.id };
     const newPlayer = req.body;
