@@ -82,10 +82,69 @@ router.get("/:username/rosters", (req, res) => {
 });
 
 
-// @route POST api/rosters/roster/:id/add
-// @desc Add player to "players" field of already established roster
+// @route POST api/rosters/roster/:id/invite
+// @desc Sends invitation to user on platform to join team
 // @access Public
-router.post("/roster/:id/add", (req, res) => {
+router.post("/roster/:id/invite", (req, res) => {
+
+    const rosterFilter = { _id: req.params.id };
+    const newUsernameToInvite = req.body.inv_user;
+
+    Roster.findOne(rosterFilter)
+        .then(roster => {
+            if (!roster) {
+                res.status(404).send('Roster info not found for this id');
+            } else {
+                User.findOne({ username: newUsernameToInvite })
+                    .then(user => {
+                        user.invitations.push(req.params.id);
+                        user.save()
+                            .then(user => {
+                                res.json('Player successfully invited')
+                            })
+                            .catch(err => {
+                                console.log(err)
+                                res.status(400).send('Error when inviting player')
+                            });
+                    })
+                    .catch(err =>{
+                        console.log(err)
+                        res.status(404).send('User not found, cannot be invited')
+                    })
+            }
+    });
+});
+
+
+// @route PATCH api/rosters/roster/:id/decline_invite
+// @desc Removes invitation from player's inbox
+// @access Public
+router.patch("/roster/:id/accept_invite", (req, res) => {
+    const roster_id = req.params.id;
+    const player_username = req.body.username;
+
+    User.findOne({ username: player_username })
+        .then(user => {
+            user.invitations.pull(roster_id)
+            user.save()
+                .then(user => {
+                    res.json("Invitation successfully declined and removed from inbox")
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.status(400).send("Invitation not successfully declined")
+                })
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(404).send("Error finding user")
+        })
+});
+
+// @route PATCH api/rosters/roster/:id/accept_invite
+// @desc Add player to "players" field of already established roster IF accepted
+// @access Public
+router.patch("/roster/:id/accept_invite", (req, res) => {
 
     const rosterFilter = { _id: req.params.id };
     const newPlayer = req.body;
@@ -101,12 +160,18 @@ router.post("/roster/:id/add", (req, res) => {
                         roster.players.push(user.username)
                         roster.save()
                             .then(roster => {
-                                res.json('Roster player successfully added')
+                                // Remove invitation from User, save user to db
+                                user.invitations.pull(req.params.id)
+                                user.save()
+                                    .then(user => {
+                                        res.json('User successfully added to roster')
+                                    })
                             })
                             .catch(err => {
                                 console.log(err)
                                 res.status(400).send('Roster player not successfully added')
                             });
+                        
                     })
                     .catch(err =>{
                         console.log(err)

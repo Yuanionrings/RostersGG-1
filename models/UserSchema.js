@@ -23,6 +23,10 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  invitations: {
+    type: [Schema.Types.ObjectId],
+    default: []
+  },
   date: {
     type: Date,
     default: Date.now
