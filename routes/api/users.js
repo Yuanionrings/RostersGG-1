@@ -16,56 +16,54 @@ const Roster = require("../../models/RosterSchema");
 
 // @route GET api/users/user/:username
 // @desc Retrieves info of single user
-router.get("/:username", (req, res) => {
+router.get("/:username", async (req, res) => {
 
     // Define filter for querying database
     const userFilter = { username: req.params.username };
 
-    User.findOne(userFilter)
-        .then(user => {
-            if (!user) {
-                res.status(404).send('No user found with this username');
-            } else {
-                res.json(user);
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    try {
+        const user = await User.findOne(userFilter);
+        if (!user) {
+            res.status(404).send('No user found with this username');
+        }
+
+        res.json(user);
+
+    } catch(error) {
+        console.log(error);
+        res.status(400).send('Bad request, error finding user info');
+    }
 });
 
 
 // @route GET api/users/:username/invitations
 // @desc Retrieves roster info of each invitation on user's invitation list
-router.get("/:username/invitations", (req, res) => {
+router.get("/:username/invitations", async (req, res) => {
 
-    // Define filter for querying database
+    // Define filter for querying users collection
     const userFilter = { username: req.params.username };
 
-    User.findOne(userFilter)
-        .then(user => {
-            if (!user) {
-                res.status(404).send('No user found with this username');
-            } else {
-                const rosterFilter = { "_id" : {$in: user.invitations}};
-                Roster.find(rosterFilter)
-                    .then(rosters => {
-                        res.json(rosters);
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    try {
+        const user = await User.findOne(userFilter);
+        if (!user) {
+            res.status(404).send('No user found with this username');
+        }
+
+        const rosterFilter = { "_id" : {$in: user.invitations}};
+
+        const rosters = await Roster.find(rosterFilter);
+        res.json(rosters);
+
+    } catch(error) {
+        console.log(error);
+        res.status(400).send('Bad request, error finding user invitation info');
+    }
 });
 
 
 // @route PATCH api/users/user/:username/update
 // @desc Update user information
-router.patch("/:username/update", (req, res) => {
+router.patch("/:username/update", async (req, res) => {
 
     // Form validation to ensure no fields are empty
     const { errors, isValid } = validateEditUserInput(req.body);
@@ -75,39 +73,41 @@ router.patch("/:username/update", (req, res) => {
 
     const userFilter = { username: req.params.username };
     const updatedInfo = req.body;
-    User.findOneAndUpdate(userFilter, updatedInfo, { new: true }).then(user => {
+
+    try {
+        const user = await User.findOneAndUpdate(userFilter, updatedInfo, { new: true });
         if (!user) {
             res.status(404).send('User info not found for this username');
-        } else {
-            if (updatedInfo.password) {
-                // Hash password before storing in database
-                const rounds = 10;
-                bcrypt.genSalt(rounds, (err, salt) => {
-                    bcrypt.hash(user.password, salt, (err, hash) => {
-                        if (err) throw err;
-                        user.password = hash;
-                        user.save()
-                            .then(user => res.json('User information/password successfully updated'))
-                            .catch(err => res.status(400).send('User information/password not successfully updated'));
-                    });
-                });
+        } 
 
-            } else {
-                user.save().then(user => {
-                    res.json('User information successfully updated');
-                }).catch(err => {
-                    console.log(err);
-                    res.status(400).send('User information not successfully updated');
+        if (updatedInfo.password) {
+            // Hash password before storing in database
+            const rounds = 10;
+            bcrypt.genSalt(rounds, (err, salt) => {
+                bcrypt.hash(user.password, salt, (err, hash) => {
+                    if (err) throw err;
+                    user.password = hash;
+                    user.save()
+                        .then(user => res.json('User information/password successfully updated'))
+                        .catch(err => res.status(400).send('User information/password not successfully updated'));
                 });
-            }
+            });
         }
-    });
+
+        const updated_user = await user.save();
+        console.log(updated_user);
+        res.json('User information successfully updated');
+
+    } catch(error) {
+        console.log(err);
+        res.status(400).send('User information not successfully updated');
+    }
 });
 
 
 // @route POST api/users/register
 // @desc Register user
-router.post("/register", (req, res) => {
+router.post("/register", async (req, res) => {
 
     // Form validation to ensure no fields are empty and that passwords match
     const { errors, isValid } = validateRegisterInput(req.body);
@@ -119,6 +119,42 @@ router.post("/register", (req, res) => {
     const userEmailFilter = { email: req.body.email };
     const usernameFilter = { username: req.body.username };
     
+    try {
+        const user = await User.findOne(userEmailFilter);
+        if (user) {
+            return res.status(400).json({ email: "Email already exists" });
+        }
+
+        const user2 = await User.findOne(usernameFilter);
+        if (user2) {
+            return res.status(400).json({ username: "Username already exists, it must be unique" });
+        }
+
+        const newUser = new User({
+            name: req.body.name,
+            username: req.body.username,
+            password: req.body.password,
+            email: req.body.email
+        });
+
+        // Hash password before storing in database
+        const rounds = 10;
+        bcrypt.genSalt(rounds, (err, salt) => {
+            bcrypt.hash(newUser.password, salt, (err, hash) => {
+                if (err) throw err;
+                newUser.password = hash;
+                newUser.save()
+                    .then(user => res.json(user))
+                    .catch(err => console.log(err));
+            });
+        });
+
+    } catch(error) {
+        console.log(error);
+        res.status(400).json({ other_error: "Error creating new user" });
+    }
+
+    /*
     User.findOne(userEmailFilter)
         .then(user => {
             if (user) {
@@ -156,7 +192,7 @@ router.post("/register", (req, res) => {
         })
         .catch(err => {
             console.log(err);
-        });
+        }); */
 });
 
 
