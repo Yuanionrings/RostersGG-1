@@ -109,7 +109,7 @@ class UserInfo extends Component {
             <div className="general-display-box">
                 <div>
                     <h2 className="">
-                        Welcome, <i>{this.state.user_name}</i>!
+                        Welcome, <i><span className="highlight-text">{this.state.user_name}</span></i>!
                         <Button
                             onClick={this.onEdit}
                             className="float-right"

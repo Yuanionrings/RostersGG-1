@@ -26,6 +26,10 @@ body {
     min-height: 100px;
 }
 
+.highlight-text {
+    color: #ffda79;
+}
+
 
 /* navbar related styling */
 .navbar-spec {
