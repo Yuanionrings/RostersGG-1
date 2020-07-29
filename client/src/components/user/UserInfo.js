@@ -109,7 +109,7 @@ class UserInfo extends Component {
             <div className="general-display-box">
                 <div>
                     <h2 className="">
-                        Welcome, <i><span className="highlight-text">{this.state.user_name}</span></i>!
+                        Welcome, <span className="highlight-text">{this.state.user_name}</span>!
                         <Button
                             onClick={this.onEdit}
                             className="float-right"
@@ -117,15 +117,7 @@ class UserInfo extends Component {
                     </h2>
                     <hr />
 
-                    <h5><b>User Information: </b></h5>
-                    <p className="">
-                        <b>Display Name: </b>{this.state.user_name}<br />
-                        <b>Username: </b> {this.state.user_username}<br />
-                        <b>Email: </b> {this.state.user_email}
-                    </p>
-
-                    <hr />
-                    <h5><b>Invitations: </b></h5>
+                    <h5>Invitations: </h5>
                     {(this.state.user_invitations.length > 0) ?
                         <table className="table table-striped" style={{ marginTop: 15 }}>
                             <thead>
@@ -142,7 +134,7 @@ class UserInfo extends Component {
                             </tbody>
                         </table>
                     :
-                        <p>There are no invitations.</p>
+                        <p><span className="secondary-text">There are no invitations.</span></p>
                     }
                 </div>
             </div>

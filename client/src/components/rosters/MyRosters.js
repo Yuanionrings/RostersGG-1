@@ -68,10 +68,11 @@ export default class MyRosters extends Component {
                         <Button
                           className="float-right"
                           onClick={this.onCreate}
-                        >Create Roster</Button>
+                        >Create</Button>
                     </h2>
-                    <h6>These are the rosters that I lead:</h6>
-                    
+                    <hr />
+
+                    {(this.state.rosters.length > 0) ?
                     <table className="table table-striped" style={{ marginTop: 15 }}>
                         <thead>
                             <tr>
@@ -86,6 +87,10 @@ export default class MyRosters extends Component {
                             { this.rosterList() }
                         </tbody>
                     </table>
+                    :
+                    <p><span className="secondary-text">I am not on any rosters.</span></p>
+                    }
+
                 </div>
             </div>
         );

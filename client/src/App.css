@@ -1,12 +1,12 @@
 body {
     color: #fffffc;
-    background: #2c2c54;
+    background: #111111;
     font-family: 'Roboto', sans-serif;
 }
 
 /* app-bg used to set background in App.js main div element */
 .app-bg {
-    background: #2c2c54;
+    background: #111111;
     height: 100%;
 }
 /* fluid-container used instead of container-fluid for no padding */
@@ -29,6 +29,9 @@ body {
 .highlight-text {
     color: #ffda79;
 }
+.secondary-text {
+    color: #7b797c;
+}
 
 
 /* navbar related styling */
@@ -37,10 +40,10 @@ body {
 }
 .navbar-brand {
     font-weight: bold;
-    color: #2c2c54 !important;
+    color: #111111 !important;
 }
 .navbar-spec a {
-    color: #2c2c54 !important;
+    color: #111111 !important;
 }
 .navbar-spec a:hover, .navbar-spec a:focus {
     color: black !important;
@@ -57,7 +60,7 @@ body {
     align-items: center;
     justify-content: center;
     color: #fffffc;
-    background: #111111;
+    background: gray;
     margin-top: 1rem;
     padding: 1rem;
     position: fixed;
@@ -176,7 +179,7 @@ body {
 }
 .landing-page-display .purple-bg-1 {
     background-image: linear-gradient(to right, #4c4c96, #2c2c54 );
-}ß
+}
 .landing-page-display .purple-bg-2 {
     background-image: linear-gradient(to bottom left, #4c4c96, #2c2c54 );
 }
@@ -207,14 +210,15 @@ body {
     color: #fffffc;
     border-radius: 5px;
     margin-bottom: 15px;
-    background-image: linear-gradient(to bottom, #4c4c96, #40407a);
-    box-shadow: 0px 0px 3px 1px rgba(51, 217, 178, 1);
+    background: #373638;
+    /*background-image: linear-gradient(to bottom, #4c4c96, #40407a);*/
+    /*box-shadow: 0px 0px 3px 1px rgba(51, 217, 178, 1);*/
     padding: 30px;
 }
 .general-display-box .btn {        
     font-size: 16px;
     font-weight: bold;
-    background: #40407a;
+    background: #373638;
     box-shadow: 0px 0px 1px 1px rgba(51, 217, 178, 1);
     border: none;
     min-width: 120px;
@@ -224,7 +228,7 @@ body {
     outline: none !important;
 }
 .general-display-box h2 {
-    color: #fffffc;
+    color: #33d9b2;
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 0;
@@ -247,15 +251,16 @@ body {
 }
 .general-display-box table {
     color: #fffffc;
-    background: #2c2c54;
+    background: #373638;
 }
 .general-display-box thead th {
     border-bottom: 3px solid #33d9b2;
-    border-left: 2px solid #40407a;
-    border-right: 2px solid #40407a;
+    /*border-left: 2px solid #40407a;
+    border-right: 2px solid #40407a;*/
 }
 .general-display-box thead tr {
-    background-image: linear-gradient(to bottom, #4c4c96, #40407a);
+    background: #373638;
+    /*background-image: linear-gradient(to bottom, #4c4c96, #40407a);*/
 }
 .general-display-box th {
     border-top: 1px solid #33d9b2;
@@ -277,10 +282,8 @@ body {
     align-items: center;
     color: #fffffc;
     border-radius: 5px;
-    background-image: linear-gradient(to bottom, #4c4c96, #40407a);
-    animation-name: display-box-animation;
-    animation-duration: 3s;
-    box-shadow: 0px 0px 3px 1px rgba(51, 217, 178, 1);
+    background: #373638;
+    /*box-shadow: 0px 0px 3px 1px rgba(51, 217, 178, 1);*/
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 15px;
@@ -292,7 +295,7 @@ body {
 .general-thin-display-box .btn {        
     font-size: 16px;
     font-weight: bold;
-    background: #40407a;
+    background: #373638;
     box-shadow: 0px 0px 1px 1px rgba(51, 217, 178, 1);
     border: none;
     min-width: 120px;
