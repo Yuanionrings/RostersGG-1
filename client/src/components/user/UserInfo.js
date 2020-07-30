@@ -10,11 +10,11 @@ const InvitationInfo = props => (
         <td className="">{props.roster.players.length}</td>
         <td>
             <Button
-                className="button-good" 
+                className="btn-accept" 
                 onClick={() => onAccept(props.roster._id, props.username)}
                 >Accept</Button>
             <Button
-                className="button-bad"
+                className="btn-decline"
                 onClick={() => onDecline(props.roster._id, props.username)}
                 >Decline</Button>
         </td>
@@ -74,7 +74,6 @@ class UserInfo extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         axios.get("http://localhost:5000/api/users/" + this.props.given_username)
             .then(res => {
                 this.setState({
@@ -100,16 +99,14 @@ class UserInfo extends Component {
             .catch(function (err) {
                 console.log(err);
             });
-
-        console.log(this.state)
     }
 
     render() {
         return (
-            <div className="general-display-box">
+            <div className="display-box">
                 <div>
-                    <h2 className="">
-                        Welcome, <span className="highlight-text">{this.state.user_name}</span>!
+                    <h2>
+                        Welcome, <span className="primary-text-green">{this.state.user_name}</span>!
                         <Button
                             onClick={this.onEdit}
                             className="float-right"
@@ -119,7 +116,7 @@ class UserInfo extends Component {
 
                     <h5>Invitations: </h5>
                     {(this.state.user_invitations.length > 0) ?
-                        <table className="table table-striped" style={{ marginTop: 15 }}>
+                        <table className="table table-striped" style={{ marginTop: 10 }}>
                             <thead>
                                 <tr>
                                     <th>Team Name</th>
@@ -134,7 +131,7 @@ class UserInfo extends Component {
                             </tbody>
                         </table>
                     :
-                        <p><span className="secondary-text">There are no invitations.</span></p>
+                        <p><span className="filler-text">You do not have any invitations right now.</span></p>
                     }
                 </div>
             </div>

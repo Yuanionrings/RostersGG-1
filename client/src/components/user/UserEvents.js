@@ -14,14 +14,14 @@ class UserEvents extends Component {
     }
     render() {
         return (
-            <div className="general-display-box">
+            <div className="display-box">
                 <div>
                     <h2 className="">
                         My Events
                     </h2>
                     <hr />
-                    <p className="">
-                        <b>COMING SOON</b>
+                    <p className="filler-text">
+                        <bold>COMING SOON</bold>
                     </p>
                 </div>
             </div>

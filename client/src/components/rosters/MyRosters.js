@@ -61,7 +61,7 @@ export default class MyRosters extends Component {
 
     render() {
         return (
-            <div className="general-display-box">
+            <div className="display-box">
                 <div>
                     <h2 className="">
                         My Rosters
@@ -88,7 +88,7 @@ export default class MyRosters extends Component {
                         </tbody>
                     </table>
                     :
-                    <p><span className="secondary-text">I am not on any rosters.</span></p>
+                    <p><span className="secondary-text-dark">I am not on any rosters.</span></p>
                     }
 
                 </div>

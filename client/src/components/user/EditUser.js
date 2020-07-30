@@ -82,7 +82,7 @@ class EditUser extends Component {
                     <h2>Edit User</h2>
                     <hr />
                     <div className="form-group">
-                        <label>Display Name: </label>
+                        <label>Change Display Name: </label>
                         <input type="text"
                             id="name"
                             placeholder="Name"
