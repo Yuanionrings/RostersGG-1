@@ -21,8 +21,6 @@ class ViewRoster extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props)
-
         axios.get('http://localhost:5000/api/rosters/roster/' + this.props.match.params.id)
             .then(res => {
                 this.setState({

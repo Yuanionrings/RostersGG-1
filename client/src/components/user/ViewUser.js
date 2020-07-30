@@ -14,33 +14,31 @@ const RosterInfo = props => (
     </tr>
 );
 
-export default class MyRosters extends Component {
+export default class ViewUser extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            username: this.props.username,
+            name: "",
+            username: "",
+            date: "",
             rosters: []
         }
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/rosters')
+        axios.get('http://localhost:5000/api/rosters/' + this.props.match.params.username + '/rosters')
             .then(res => {
-                this.setState({
-                    username: this.state.username,
-                    rosters: res.data});
+                this.setState({ rosters: res.data });
             }).catch(function(err) {
                 console.log(err);
             });
-    }
 
-    componentDidUpdate() {
-        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/rosters')
+        axios.get('http://localhost:5000/api/users/' + this.props.match.params.username)
             .then(res => {
-                this.setState({
-                    username: this.state.username,
-                    rosters: res.data});
+                this.setState({ name: res.data.name,
+                                username: res.data.username,
+                                date: res.data.date});
             }).catch(function(err) {
                 console.log(err);
             });
@@ -54,13 +52,21 @@ export default class MyRosters extends Component {
 
     render() {
         return (
-            <div className="display-box">
+            <div className="general-display-box">
                 <div>
-                    <h2 className="">
-                        Rosters
-                    </h2>
+                    <Link to="/dashboard">
+                        <i className="fa fa-arrow-circle-left  "></i>
+                        {" "}Back to Dashboard
+                    </Link>
+
+                    <h2 className="">{this.state.name}</h2>
+                    <h6>{this.state.username}</h6>
                     <hr />
 
+                    <h6>Member since: {this.state.date}</h6>
+                    <hr />
+
+                    <h6>Plays on the following rosters: </h6>
                     {(this.state.rosters.length > 0) ?
                     <table className="table table-striped" style={{ marginTop: 15 }}>
                         <thead>
@@ -77,7 +83,7 @@ export default class MyRosters extends Component {
                         </tbody>
                     </table>
                     :
-                    <p><span className="filler-text">You are not a part of any rosters.</span></p>
+                    <p><span className="filler-text">This user is not a part of any rosters.</span></p>
                     }
 
                 </div>

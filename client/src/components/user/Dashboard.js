@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/userAuthActions";
 import MyRosters from "../rosters/MyRosters";
+import LedRosters from "../rosters/LedRosters";
 import UserInfo from "./UserInfo";
 import UserEvents from "./UserEvents";
 import Button from "react-bootstrap/Button";
@@ -70,16 +71,17 @@ class Dashboard extends Component {
                             <UserInfo
                                 given_username={this.props.auth.user.username} 
                                 history={this.props.history} />
-                            
                             <UserEvents 
+                                username={this.props.auth.user.username} 
+                                history={this.props.history} />
+                            <LedRosters 
                                 username={this.props.auth.user.username} 
                                 history={this.props.history} />
                             <MyRosters 
                                 username={this.props.auth.user.username} 
                                 history={this.props.history} />
-
+                            
                         </div>
-                        <div className="filler-lg"></div>
 
                     </Col>
                 </Row>

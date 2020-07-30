@@ -94,6 +94,40 @@ router.get("/:username/rosters", (req, res) => {
 });
 
 
+// @route GET api/rosters/:username/led-rosters
+// @desc Retrieves public info of every roster with user's username in leader field
+router.get("/:username/led-rosters", (req, res) => {
+
+    // Define filter for querying users collection
+    const userFilter = { username: req.params.username };
+
+    User.findOne(userFilter)
+        .then(user => {
+            if (!user) {
+                res.status(404).send('No user found with this username');
+            } else {
+
+                // Define filter for querying rosters collection
+                const rosterFilter = { leader: user.username };
+                Roster.find(rosterFilter)
+                    .then(rosters => {
+                        if (!rosters) {
+                            res.status(404).send('No roster found with this username as leader');
+                        } else {
+                            res.json(rosters);
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+
+
 // @route POST api/rosters/roster/:id/invite
 // @desc Sends invitation to user on platform to join team
 router.post("/roster/:id/invite", async (req, res) => {

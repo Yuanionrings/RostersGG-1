@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const RosterInfo = props => (
     <tr>
@@ -10,11 +11,12 @@ const RosterInfo = props => (
         <td className="">{props.roster.players.length}</td>
         <td>
             <Link to={"/roster/" + props.roster._id}>View</Link>
+            <Link to={"/roster/" + props.roster._id + "/edit"}>Edit</Link>
         </td>
     </tr>
 );
 
-export default class MyRosters extends Component {
+export default class LedRosters extends Component {
 
     constructor(props){
         super(props);
@@ -25,7 +27,7 @@ export default class MyRosters extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/rosters')
+        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/led-rosters')
             .then(res => {
                 this.setState({
                     username: this.state.username,
@@ -36,7 +38,7 @@ export default class MyRosters extends Component {
     }
 
     componentDidUpdate() {
-        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/rosters')
+        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/led-rosters')
             .then(res => {
                 this.setState({
                     username: this.state.username,
@@ -52,12 +54,21 @@ export default class MyRosters extends Component {
         });
     }
 
+    onCreate = e => {
+        e.preventDefault();
+        this.props.history.push('/roster/create')
+    }
+
     render() {
         return (
             <div className="display-box">
                 <div>
                     <h2 className="">
-                        Rosters
+                        My Rosters
+                        <Button
+                          className="float-right"
+                          onClick={this.onCreate}
+                        >Create</Button>
                     </h2>
                     <hr />
 
@@ -77,7 +88,7 @@ export default class MyRosters extends Component {
                         </tbody>
                     </table>
                     :
-                    <p><span className="filler-text">You are not a part of any rosters.</span></p>
+                    <p><span className="filler-text">You do not lead any rosters.</span></p>
                     }
 
                 </div>

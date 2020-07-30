@@ -17,11 +17,11 @@ class UserEvents extends Component {
             <div className="display-box">
                 <div>
                     <h2 className="">
-                        My Events
+                        Upcoming Events
                     </h2>
                     <hr />
                     <p className="filler-text">
-                        <bold>COMING SOON</bold>
+                        <b>COMING SOON...</b>
                     </p>
                 </div>
             </div>
