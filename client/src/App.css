@@ -434,39 +434,6 @@ body {
 
 
 
-/* general-thin-display-box used for small user display boxes */
-.general-thin-display-box{
-    width: 85%;
-    margin: 0 auto;
-    margin-top: 30px;
-}
-.general-thin-display-box div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fffffc;
-    border-radius: 5px;
-    background: #373638;
-    /*box-shadow: 0px 0px 3px 1px rgba(51, 217, 178, 1);*/
-    padding: 1rem 1.5rem;
-}
-.general-thin-display-box p {
-    margin-bottom: 0px;
-}
-.general-thin-display-box .btn {        
-    font-size: 16px;
-    font-weight: bold;
-    background: #373638;
-    box-shadow: 0px 0px 1px 1px rgba(51, 217, 178, 1);
-    border: none;
-    min-width: 120px;
-}
-.general-thin-display-box .btn:hover, .general-display-box .btn:focus {
-    background: #33d9b2;
-    outline: none !important;
-}
-
-
 /* form-control used for each form */
 .form-control {
     min-height: 41px;
