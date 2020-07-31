@@ -170,7 +170,7 @@ router.post("/register", async (req, res) => {
                 newUser.password = hash;
                 newUser.save()
                     .then(user => res.json(user))
-                    .catch(err => console.log(err));
+                    .catch(err => res.status(400).json({ username: "Username is invalid" }));
             });
         });
 
@@ -178,46 +178,6 @@ router.post("/register", async (req, res) => {
         console.log(error);
         res.status(400).json({ other_error: "Error creating new user" });
     }
-
-    /*
-    User.findOne(userEmailFilter)
-        .then(user => {
-            if (user) {
-                return res.status(400).json({ email: "Email already exists" });
-            } else {
-                User.findOne(usernameFilter)
-                    .then(user => {
-                        if (user) {
-                            return res.status(400).json({ username: "Username already exists, it must be unique" });
-                        } else {
-                            const newUser = new User({
-                                name: req.body.name,
-                                username: req.body.username,
-                                password: req.body.password,
-                                email: req.body.email
-                            });
-
-                            // Hash password before storing in database
-                            const rounds = 10;
-                            bcrypt.genSalt(rounds, (err, salt) => {
-                                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                                    if (err) throw err;
-                                    newUser.password = hash;
-                                    newUser.save()
-                                        .then(user => res.json(user))
-                                        .catch(err => console.log(err));
-                                });
-                            });
-                        }
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        }); */
 });
 
 

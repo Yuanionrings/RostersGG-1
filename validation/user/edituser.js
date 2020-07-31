@@ -24,6 +24,11 @@ module.exports = function validateEditUserInput(data) {
         errors.name = "Name field is required";
     }
 
+    //Biography checks
+    if (Validator.isEmpty(data.biography)) {
+        errors.biography = "Biography cannot be blank";
+    }
+
     //Email checks
     if (Validator.isEmpty(data.email)) {
         errors.email = "Email field is required";

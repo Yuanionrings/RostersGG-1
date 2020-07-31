@@ -12,6 +12,7 @@ class EditUser extends Component {
         this.state = {
             name: "",
             username: "",
+            biography: "",
             email: "",
             password: "",
             errors: {}
@@ -27,6 +28,7 @@ class EditUser extends Component {
                 this.setState({
                     name: res.data.name,
                     username: res.data.username,
+                    biography: res.data.biography,
                     email: res.data.email
                 })
             }).catch(err => {
@@ -57,6 +59,7 @@ class EditUser extends Component {
             updatedUser = {
                 name: this.state.name,
                 username: this.state.username,
+                biography: this.state.biography,
                 email: this.state.email,
                 password: this.state.password
             }
@@ -64,6 +67,7 @@ class EditUser extends Component {
             updatedUser = {
                 name: this.state.name,
                 username: this.state.username,
+                biography: this.state.biography,
                 email: this.state.email
             }
         }
@@ -71,7 +75,7 @@ class EditUser extends Component {
     }
 
     render() {
-        const { name, username, email, password, errors } = this.state;
+        const { name, username, biography, email, password, errors } = this.state;
 
         return (
             <div className="form-box ">
@@ -93,6 +97,20 @@ class EditUser extends Component {
                                 invalid: errors.name
                             })} />
                         <span className="red-text">{errors.name}</span>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Change Biography: </label>
+                        <input type="text"
+                            id="biography"
+                            placeholder="Biography"
+                            value={biography}
+                            error={errors.biography}
+                            onChange={this.onChange}
+                            className={classnames("form-control", {
+                                invalid: errors.biography
+                            })} />
+                        <span className="red-text">{errors.biography}</span>
                     </div>
 
                     <div className="form-group">

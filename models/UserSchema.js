@@ -5,19 +5,24 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        text: true
     },
     username: {
         type: String,
         lowercase: true,
+        match: /^[a-zA-Z0-9]+$/,
         required: true,
-        index: true
+        text: true
+    },
+    biography: {
+        type: String,
+        default: "I have not yet changed my biography, this is the default!"
     },
     email: {
         type: String,
         lowercase: true,
-        required: true,
-        index: true
+        required: true
     },
     password: {
         type: String,

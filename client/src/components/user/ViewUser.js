@@ -21,6 +21,7 @@ export default class ViewUser extends Component {
         this.state = {
             name: "",
             username: "",
+            biography: "",
             date: "",
             rosters: []
         }
@@ -38,6 +39,7 @@ export default class ViewUser extends Component {
             .then(res => {
                 this.setState({ name: res.data.name,
                                 username: res.data.username,
+                                biography: res.data.biography,
                                 date: res.data.date});
             }).catch(function(err) {
                 console.log(err);
@@ -60,13 +62,16 @@ export default class ViewUser extends Component {
                     </Link>
 
                     <h2 className="">{this.state.name}</h2>
-                    <h6>{this.state.username}</h6>
+                    <h6>USER PROFILE</h6>
                     <hr />
 
+                    <h6><b>User Information:</b></h6>
+                    <h6>Username: {this.state.username}</h6>
+                    <h6>Bio: {this.state.biography}</h6>
                     <h6>Member since: {this.state.date}</h6>
                     <hr />
 
-                    <h6>Plays on the following rosters: </h6>
+                    <h6><b>This user plays for:</b></h6>
                     {(this.state.rosters.length > 0) ?
                     <table className="table table-striped" style={{ marginTop: 15 }}>
                         <thead>
