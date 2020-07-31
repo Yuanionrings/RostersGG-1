@@ -13,8 +13,8 @@ module.exports = function validateCreateEditRosterInput(data) {
     if (Validator.isEmpty(data.teamname)) {
         errors.teamname = "Team Name field is required";
     }
-    if (!Validator.isLength(data.teamname, { min: 4, max: 20 })) {
-        errors.teamname = "Team Name must be between 4 and 20 characters";
+    if (!Validator.isLength(data.teamname, { min: 4, max: 32 })) {
+        errors.teamname = "Team Name must be between 4 and 32 characters";
     }
 
     //Team Description checks

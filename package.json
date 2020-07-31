@@ -1,7 +1,7 @@
 {
-  "name": "mern-auth",
-  "version": "1.0.0",
-  "description": "Login/Registration authentication App",
+  "name": "rosters-gg",
+  "version": "0.0.1",
+  "description": "eSports Team Management Application",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -12,7 +12,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
-  "author": "",
+  "author": "Owen Moreau",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.0",
@@ -20,6 +20,7 @@
     "body-parser": "^1.19.0",
     "classnames": "^2.2.6",
     "concurrently": "^5.0.2",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",

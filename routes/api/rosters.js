@@ -127,6 +127,26 @@ router.get("/:username/led-rosters", (req, res) => {
         });
 });
 
+// @route GET api/rosters/roster-search
+// @desc Searches for teams based on text search query
+router.get("/roster-search", async (req, res) => {
+    
+    // Define search query before finding Rosters 
+    const search_query = { $text : { $search : req.body.search }};
+    console.log(req.body);
+    try {
+        const rosters = await Roster.find(search_query);
+        if (!rosters) {
+            res.status(404).send({errors: {search: "There are no rosters found with this search"}});
+        }
+
+        console.log(rosters)
+        res.json(rosters);
+    } catch(error) {
+        console.log(error);
+        res.status(400).send({errors: {other_error: "Error finding rosters"}});
+    }
+});
 
 // @route POST api/rosters/roster/:id/invite
 // @desc Sends invitation to user on platform to join team
@@ -150,7 +170,7 @@ router.post("/roster/:id/invite", async (req, res) => {
 
         const user = await User.findOne(userFilter);
         if (!user) {
-            res.status(404).json({ player_username: "No player found with this username" });
+            res.status(404).json({ errors: { player_username: "No player found with this username" }});
         }
 
         user.invitations.push(req.params.id);

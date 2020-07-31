@@ -7,6 +7,7 @@ const path = require("path");
 const users = require("./routes/api/users");
 const rosters = require("./routes/api/rosters");
 const app = express();
+const cors = require("cors");
 
 // Bodyparser middleware
 app.use(
@@ -15,8 +16,9 @@ app.use(
     })
 );
 app.use(bodyParser.json());
+app.use(cors());
 
-const dbURL = "mongodb://localhost:27017/users";
+const dbURL = "mongodb://localhost:27017/rosters-gg";
 
 //connect to MongoDB
 mongoose

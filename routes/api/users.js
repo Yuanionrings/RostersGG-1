@@ -25,6 +25,7 @@ router.get("/:username", async (req, res) => {
         const user = await User.findOne(userFilter);
         if (!user) {
             res.status(404).send('No user found with this username');
+            return;
         }
 
         res.json(user);
@@ -32,6 +33,30 @@ router.get("/:username", async (req, res) => {
     } catch(error) {
         console.log(error);
         res.status(400).send('Bad request, error finding user info');
+    }
+});
+
+
+router.get("/user-search", async (req, res) => {
+
+    // Define query for user search
+    const search_query = { $text : { $search : req.body.search }};
+
+    console.log(req.body);
+
+    try {
+        const users = await User.find(search_query);
+        if (!users) {
+            res.status(400).send("Error finding Users");
+        } else if (users.length > 1) {
+            res.status(404).send("Could not find any users with this search");
+        }
+
+        console.log(users);
+        res.json(users);
+    } catch(error) {
+        console.log(error);
+        res.status(400).send("Error when finding users");
     }
 });
 
