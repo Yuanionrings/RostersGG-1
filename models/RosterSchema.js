@@ -6,16 +6,16 @@ const RosterSchema = new Schema({
     teamname: {
         type: String,
         required: true,
-        index: true
+        text: true
     },
     team_desc: {
         type: String,
-        required: true
+        required: true,
+        text: true
     },
     leader: {
         type: String,
-        required: true,
-        index: true
+        required: true
     },
         players: {
         type: [String]

@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 
 const PlayerInfo = props => (
     <tr>
-        <td className="">{props.user.name}</td>
+        <td className="">
+            <Link to={"/" + props.user.username}>{props.user.name}</Link>
+        </td>
         <td className="">{props.user.username}</td>
         <td className="">{props.user.email}</td>
     </tr>

@@ -31,9 +31,13 @@ class Dashboard extends Component {
         e.preventDefault();
         this.props.logoutUser();
     }
+    onGoToViewUser = e => {
+        e.preventDefault();
+        this.props.history.push('/' + this.props.auth.user.username);
+    }
     onGoToEditProfile = e => {
         e.preventDefault();
-        this.props.history.push('/editprofile')
+        this.props.history.push('/editprofile');
     }
     render() {
         return (
@@ -41,24 +45,30 @@ class Dashboard extends Component {
                 <Row>
                     <Col className="secondary-bg-light" sm={3} md={2}>
                         <div className="sidebar">
-                            <Button onClick={this.onLogout}>
+                            <Button onClick={() => this.props.history.push('/dashboard')}>
                                 <img src={DashboardIcon} alt="Dashboard Icon" />
                                 {"   "}Dashboard</Button>
+
                             <Button onClick={this.onLogout}>
                                 <img src={EventsIcon} alt="Events Icon" />
                                 {"   "}Event Manager</Button>
+
                             <Button onClick={this.onLogout}>
                                 <img src={TeamDirIcon} alt="Team Directory Icon" />
                                 {"   "}Team Directory</Button>
+
                             <Button onClick={this.onLogout}>
                                 <img src={PlayerDirIcon} alt="Players Directory Icon" />
                                 {"   "}Player Directory</Button>
-                            <Button onClick={this.onLogout}>
+
+                            <Button onClick={this.onGoToViewUser}>
                                 <img src={UserIcon} alt="User Icon" />
                                 {"   "}View My Profile</Button>
+
                             <Button onClick={this.onGoToEditProfile}>
                                 <img src={SettingsIcon} alt="Gear Icon" />
                                 {"   "}Edit Profile</Button>
+
                             <Button onClick={this.onLogout}>
                                 <img src={LogoutIcon} alt="Logout Icon" />
                                 {"   "}Logout</Button>
