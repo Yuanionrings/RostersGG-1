@@ -9,7 +9,7 @@ class UserEvents extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props)
+        // console.log(this.props)
         // This is where route to get user events is implemented to fetch events
     }
     render() {
