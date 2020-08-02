@@ -1,7 +1,7 @@
 import axios from "axios";
 import { GET_ERRORS } from "./types";
 
-//Register Roster
+// Register Roster
 export const createRoster = (rosterData, history) => dispatch => {
   console.log(rosterData)
   axios.post("http://localhost:5000/api/rosters/create", rosterData)
@@ -12,7 +12,7 @@ export const createRoster = (rosterData, history) => dispatch => {
     }))
 }
 
-//Edit Roster
+// Edit Roster
 export const editRoster = (updatedRosterData, history) => dispatch => {
   axios.patch('http://localhost:5000/api/rosters/roster/' + updatedRosterData.id + '/edit',
     updatedRosterData.data)
@@ -23,11 +23,11 @@ export const editRoster = (updatedRosterData, history) => dispatch => {
     }))
 }
 
-//Invite Player to Roster
+// Invite Player to Roster
 export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
   axios.post('http://localhost:5000/api/rosters/roster/' + rosterInviteData.team_id + '/invite',
     rosterInviteData.data)
-    .then(res => history.push("/roster/" + rosterInviteData.team_id + "/edit"))
+    .then(res => history.push("/dashboard"))
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data

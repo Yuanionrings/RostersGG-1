@@ -61,9 +61,9 @@ class InvitePlayer extends Component {
                         className={classnames("form-control", {
                             invalid: errors.player_username
                         })} />
+                    <span className="red-text">{errors.player_username}</span>
                 </div>
-                <span className="red-text">{errors.player_username}</span>
-
+                
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary btn-block btn-lg">
                         Invite Player

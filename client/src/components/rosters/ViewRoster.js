@@ -19,6 +19,8 @@ class ViewRoster extends Component {
             teamname: "",
             team_desc: "",
             leader: "",
+            game: "",
+            region: "",
             players: []
         }
     }
@@ -28,7 +30,9 @@ class ViewRoster extends Component {
                 this.setState({
                     teamname: res.data.teamname,
                     team_desc: res.data.team_desc,
-                    leader: res.data.leader
+                    leader: res.data.leader,
+                    game: res.data.game,
+                    region: res.data.region
                 })
             }).catch(err => {
                 console.log(err);
@@ -60,7 +64,7 @@ class ViewRoster extends Component {
                     </Link>
 
                     <h2 className="">{this.state.teamname}</h2>
-                    <h6>MORDHAU - US EAST</h6>
+                    <h6>{this.state.game} - {this.state.region}</h6>
                     <hr />
 
                     <h6><b>Description:</b><br/>{this.state.team_desc}</h6>

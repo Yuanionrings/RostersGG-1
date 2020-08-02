@@ -14,20 +14,22 @@ class EditRoster extends Component {
         this.state = {
             teamname: "",
             team_desc: "",
+            game: "",
+            region: "",
             leader: "",
             players: [],
             errors: {}
         }
     }
     componentDidMount() {
-        console.log(this.props.match)
-        console.log(this.props)
         axios.get("http://localhost:5000/api/rosters/roster/" + this.props.match.params.id)
             .then(res => {
                 if(this.props.auth.user.username === res.data.leader){
                     this.setState({
                         teamname: res.data.teamname,
                         team_desc: res.data.team_desc,
+                        game: res.data.game,
+                        region: res.data.region,
                         leader: res.data.leader,
                         players: res.data.players
                     })
@@ -58,7 +60,9 @@ class EditRoster extends Component {
             id: this.props.match.params.id,
             data: {
                 teamname: this.state.teamname,
-                team_desc: this.state.team_desc
+                team_desc: this.state.team_desc,
+                game: this.state.game,
+                region: this.state.region
             }
         };
         this.props.editRoster(updatedRoster, this.props.history);
@@ -79,6 +83,7 @@ class EditRoster extends Component {
 
                     <h2>Edit Roster</h2>
                     <hr />
+
                     <div className="form-group">
                         <label>Team Name: </label>
                         <input type="text"
@@ -115,6 +120,50 @@ class EditRoster extends Component {
                             value={leader}
                             readOnly={true}
                             className={classnames("form-control")} />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Change Game Played: </label>
+                        <select 
+                        value={this.state.game} 
+                        id="game" 
+                        error={errors.game}
+                        onChange={this.onChange} 
+                        className={classnames("form-control", {
+                            invalid: errors.game
+                        })}>
+                        <option selected value="no-game">Select a game:</option>
+                        <option value="mordhau">MORDHAU</option>
+                        <option value="cs-go">CS:GO</option>
+                        <option value="league-of-legends">League of Legends</option>
+                        <option value="dota-2">Dota 2</option>
+                        <option value="valorant">Valorant</option>
+                        <option value="overwatch">Overwatch</option>
+                        <option value="chivalry">Chivalry</option>
+                        </select>
+                        <span className="red-text">{errors.game}</span>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Change Primary Region: </label>
+                        <select 
+                        value={this.state.region} 
+                        id="region" 
+                        error={errors.region}
+                        onChange={this.onChange} 
+                        className={classnames("form-control", {
+                            invalid: errors.region
+                        })}>
+                        <option selected value="no-region">Select a region:</option>
+                        <option value="US-EAST">US-EAST</option>
+                        <option value="US-CENTRAL">US-CENTRAL</option>
+                        <option value="US-MOUNTAIN">US-MOUNTAIN</option>
+                        <option value="US-PACIFIC">US-PACIFIC</option>
+                        <option value="EUR-WEST">EUR-WEST</option>
+                        <option value="EUR-EAST">EUR-EST</option>
+                        <option value="ASIA">ASIA</option>
+                        </select>
+                        <span className="red-text">{errors.region}</span>
                     </div>
 
                     <div className="form-group">

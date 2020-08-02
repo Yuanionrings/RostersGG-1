@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const InvitationInfo = props => (
     <tr>
         <td className="">{props.roster.teamname}</td>
-        <td className="">{props.roster.team_desc}</td>
-        <td className="">{props.roster.leader}</td>
-        <td className="">{props.roster.players.length}</td>
+        <td className="">{props.roster.game}</td>
+        <td className="">{props.roster.region}</td>
         <td>
+            <Link to={"/roster/" + props.roster._id}>View</Link>
             <Button
                 className="btn-accept" 
                 onClick={() => onAccept(props.roster._id, props.username)}
@@ -120,9 +121,8 @@ class UserInfo extends Component {
                             <thead>
                                 <tr>
                                     <th>Team Name</th>
-                                    <th>Description</th>
-                                    <th>Leader</th>
-                                    <th># Players</th>
+                                    <th>Game</th>
+                                    <th>Region</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>

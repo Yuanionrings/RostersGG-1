@@ -170,7 +170,10 @@ router.post("/roster/:id/invite", async (req, res) => {
 
         const user = await User.findOne(userFilter);
         if (!user) {
-            res.status(404).json({ errors: { player_username: "No player found with this username" }});
+            const errors = {
+                player_username: 'No user found with this username'
+            }
+            res.status(404).send(errors);
         }
 
         user.invitations.push(req.params.id);
@@ -300,13 +303,18 @@ router.post("/create", async (req, res) => {
     try {
         const user = await User.findOne(userFilter);
         if (!user) {
-            res.status(404).send('No user found with this username');
+            const errors = {
+                player_username: 'No user found with this username'
+            }
+            res.status(404).send(errors);
         } 
 
         const newRoster = new Roster({
             teamname: req.body.teamname,
             team_desc: req.body.team_desc,
             leader: user.username,
+            game: req.body.game,
+            region: req.body.region,
             players: [user.username]
         });
 
@@ -316,7 +324,7 @@ router.post("/create", async (req, res) => {
 
     } catch(error) {
         console.log(error);
-        res.status(400).send('Bad request, error creating roster');
+        res.status(400).send({error: 'Bad request, error creating roster'});
     }
 });
 

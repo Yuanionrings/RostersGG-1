@@ -13,6 +13,8 @@ class CreateRoster extends Component {
       username: this.props.auth.user.username,
       teamname: "",
       team_desc: "",
+      game: "",
+      region: "",
       errors: {}
     }
   }
@@ -31,11 +33,13 @@ class CreateRoster extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-
+    console.log(this.state)
     const newRoster = {
       teamname: this.state.teamname,
       team_desc: this.state.team_desc,
-      username: this.state.username
+      username: this.state.username,
+      game: this.state.game,
+      region: this.state.region
     }
     
     this.props.createRoster(newRoster, this.props.history);
@@ -57,6 +61,7 @@ class CreateRoster extends Component {
 
           <h2>Create New Roster</h2>
           <hr />
+
           <div className="form-group">
             <label>Team Name: </label>
             <input type="text"
@@ -68,8 +73,9 @@ class CreateRoster extends Component {
               className={classnames("form-control", {
                 invalid: errors.teamname
               })} />
+            <span className="red-text">{errors.teamname}</span>
           </div>
-          <span className="red-text">{errors.teamname}</span>
+          
 
           <div className="form-group">
           <label>Team Description: </label>
@@ -82,8 +88,54 @@ class CreateRoster extends Component {
               className={classnames("form-control", {
                 invalid: errors.team_desc
               })} />
+            <span className="red-text">{errors.team_desc}</span>
           </div>
-          <span className="red-text">{errors.team_desc}</span>
+          
+
+          <div className="form-group">
+            <label>Game Played: </label>
+            <select 
+              value={this.state.game} 
+              id="game" 
+              error={errors.game}
+              onChange={this.onChange} 
+              className={classnames("form-control", {
+                invalid: errors.game
+              })}>
+              <option selected value="no-game">Select a game:</option>
+              <option value="mordhau">MORDHAU</option>
+              <option value="cs-go">CS:GO</option>
+              <option value="league-of-legends">League of Legends</option>
+              <option value="dota-2">Dota 2</option>
+              <option value="valorant">Valorant</option>
+              <option value="overwatch">Overwatch</option>
+              <option value="chivalry">Chivalry</option>
+            </select>
+            <span className="red-text">{errors.game}</span>
+          </div>
+          
+
+          <div className="form-group">
+            <label>Primary Region: </label>
+            <select 
+              value={this.state.region} 
+              id="region" 
+              error={errors.region}
+              onChange={this.onChange} 
+              className={classnames("form-control", {
+                invalid: errors.region
+              })}>
+              <option selected value="no-region">Select a region:</option>
+              <option value="US-EAST">US-EAST</option>
+              <option value="US-CENTRAL">US-CENTRAL</option>
+              <option value="US-MOUNTAIN">US-MOUNTAIN</option>
+              <option value="US-PACIFIC">US-PACIFIC</option>
+              <option value="EUR-WEST">EUR-WEST</option>
+              <option value="EUR-EAST">EUR-EST</option>
+              <option value="ASIA">ASIA</option>
+            </select>
+            <span className="red-text">{errors.region}</span>
+          </div>
 
           <div className="form-group">
             <button type="submit" className="btn btn-primary btn-block btn-lg">Create</button>

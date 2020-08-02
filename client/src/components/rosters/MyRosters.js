@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 const RosterInfo = props => (
     <tr>
         <td className="">{props.roster.teamname}</td>
-        <td className="">{props.roster.team_desc}</td>
-        <td className="">{props.roster.leader}</td>
+        <td className="">{props.roster.game}</td>
+        <td className="">{props.roster.region}</td>
         <td className="">{props.roster.players.length}</td>
         <td>
             <Link to={"/roster/" + props.roster._id}>View</Link>
@@ -66,8 +66,8 @@ export default class MyRosters extends Component {
                         <thead>
                             <tr>
                                 <th>Team Name</th>
-                                <th>Description</th>
-                                <th>Leader</th>
+                                <th>Game</th>
+                                <th>Region</th>
                                 <th># Players</th>
                                 <th>Actions</th>
                             </tr>

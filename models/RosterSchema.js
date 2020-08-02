@@ -8,6 +8,14 @@ const RosterSchema = new Schema({
         required: true,
         text: true
     },
+    game: {
+        type: String,
+        required: true
+    },
+    region: {
+        type: String,
+        required: true
+    },
     team_desc: {
         type: String,
         required: true,
@@ -17,7 +25,7 @@ const RosterSchema = new Schema({
         type: String,
         required: true
     },
-        players: {
+    players: {
         type: [String]
     }
 });
