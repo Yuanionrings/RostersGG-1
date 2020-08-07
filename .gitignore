@@ -4,3 +4,4 @@ package-lock.json
 /client/build
 data
 data/db
+config

@@ -174,6 +174,11 @@ router.post("/roster/:id/invite", async (req, res) => {
                 player_username: 'No user found with this username'
             }
             res.status(404).send(errors);
+        } else if (roster.players.includes(user.username)) {
+            const errors = {
+                player_username: 'This player is already on this roster'
+            }
+            res.status(400).send(errors);
         }
 
         user.invitations.push(req.params.id);

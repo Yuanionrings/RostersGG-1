@@ -21,7 +21,7 @@ class UserEvents extends Component {
                     </h2>
                     <hr />
                     <p className="filler-text">
-                        <b>COMING SOON...</b>
+                        Events are currently not supported - please try again later.
                     </p>
                 </div>
             </div>

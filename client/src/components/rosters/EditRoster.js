@@ -133,16 +133,17 @@ class EditRoster extends Component {
                             invalid: errors.game
                         })}>
                         <option selected value="no-game">Select a game:</option>
-                        <option value="mordhau">MORDHAU</option>
-                        <option value="cs-go">CS:GO</option>
-                        <option value="league-of-legends">League of Legends</option>
-                        <option value="dota-2">Dota 2</option>
-                        <option value="valorant">Valorant</option>
-                        <option value="overwatch">Overwatch</option>
-                        <option value="chivalry">Chivalry</option>
+                        <option value="Mordhau">Mordhau</option>
+                        <option value="CS:GO">CS:GO</option>
+                        <option value="League of Legends">League of Legends</option>
+                        <option value="DOTA 2">DOTA 2</option>
+                        <option value="Valorant">Valorant</option>
+                        <option value="Overwatch">Overwatch</option>
+                        <option value="Chivalry">Chivalry</option>
                         </select>
                         <span className="red-text">{errors.game}</span>
                     </div>
+                    
 
                     <div className="form-group">
                         <label>Change Primary Region: </label>
@@ -155,12 +156,12 @@ class EditRoster extends Component {
                             invalid: errors.region
                         })}>
                         <option selected value="no-region">Select a region:</option>
-                        <option value="US-EAST">US-EAST</option>
-                        <option value="US-CENTRAL">US-CENTRAL</option>
-                        <option value="US-MOUNTAIN">US-MOUNTAIN</option>
-                        <option value="US-PACIFIC">US-PACIFIC</option>
-                        <option value="EUR-WEST">EUR-WEST</option>
-                        <option value="EUR-EAST">EUR-EST</option>
+                        <option value="US EAST">US EAST</option>
+                        <option value="US CENTRAL">US CENTRAL</option>
+                        <option value="US MOUNTAIN">US MOUNTAIN</option>
+                        <option value="US PACIFIC">US PACIFIC</option>
+                        <option value="EUR WEST">EUR WEST</option>
+                        <option value="EUR EAST">EUR EST</option>
                         <option value="ASIA">ASIA</option>
                         </select>
                         <span className="red-text">{errors.region}</span>

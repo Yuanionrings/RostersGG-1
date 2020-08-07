@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 const RosterInfo = props => (
     <tr>
         <td className="">{props.roster.teamname}</td>
-        <td className="">{props.roster.team_desc}</td>
-        <td className="">{props.roster.leader}</td>
+        <td className="">{props.roster.game}</td>
+        <td className="">{props.roster.region}</td>
         <td className="">{props.roster.players.length}</td>
         <td>
             <Link to={"/roster/" + props.roster._id}>View</Link>
@@ -65,21 +65,24 @@ export default class ViewUser extends Component {
                     <h6>USER PROFILE</h6>
                     <hr />
 
-                    <h6><b>User Information:</b></h6>
+                    <h4>User Info: </h4>
                     <h6>Username: {this.state.username}</h6>
-                    <h6>Bio: {this.state.biography}</h6>
                     <h6>Member since: {this.state.date}</h6>
                     <hr />
 
-                    <h6><b>This user plays for:</b></h6>
+                    <h4>About Me: </h4>
+                    <h6>{this.state.biography}</h6>
+                    <hr />
+
+                    <h4>Rosters</h4>
                     {(this.state.rosters.length > 0) ?
                     <table className="table table-striped" style={{ marginTop: 15 }}>
                         <thead>
                             <tr>
                                 <th>Team Name</th>
-                                <th>Description</th>
-                                <th>Leader</th>
-                                <th># Players</th>
+                                <th>Game</th>
+                                <th>Region</th>
+                                <th>Size</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
