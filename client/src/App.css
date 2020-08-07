@@ -458,6 +458,12 @@ body {
     margin: 0 auto;
     padding-top: 30px;
 }
+.form-box .display-info {
+    color: #ffffff;
+    border-radius: 16px;
+    background: #373638;
+    padding: 1.5rem;
+}
 .form-box form {
     color: #ffffff;
     border-radius: 16px;

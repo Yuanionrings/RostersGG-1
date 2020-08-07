@@ -4,6 +4,11 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 
+const sendEmail = require('../../email/email.send');
+const msgs = require('../../email/email.msgs');
+const templates = require('../../email/email.templates');
+
+
 // Load input validation
 const validateRegisterInput = require("../../validation/user/register");
 const validateLoginInput = require("../../validation/user/login");
@@ -146,8 +151,10 @@ router.post("/register", async (req, res) => {
     
     try {
         const user = await User.findOne(userEmailFilter);
-        if (user) {
-            return res.status(400).json({ email: "Email already exists" });
+        if (user && !user.confirmed) {
+            return res.status(400).json({ email: msgs.resend });
+        } else if (user && user.confirmed) {
+            return res.status(400).json({ email: msgs.alreadyConfirmed });
         }
 
         const user2 = await User.findOne(usernameFilter);
@@ -169,7 +176,11 @@ router.post("/register", async (req, res) => {
                 if (err) throw err;
                 newUser.password = hash;
                 newUser.save()
-                    .then(user => res.json(user))
+                    .then(newUser => {
+                        // User created, send verification email
+                        sendEmail(newUser.email, templates.confirm(newUser._id));
+                        res.json(newUser);
+                    })
                     .catch(err => res.status(400).json({ username: "Username is invalid" }));
             });
         });
@@ -177,6 +188,34 @@ router.post("/register", async (req, res) => {
     } catch(error) {
         console.log(error);
         res.status(400).json({ other_error: "Error creating new user" });
+    }
+});
+
+
+// @route POST api/users/confirm-email
+// @desc Confirms email and activates user account
+router.post("/confirm-email/:id", async (req, res) => {
+
+    // Define filters to query database
+    const userIdFilter = req.params.id;
+    
+    try {
+        const user = await User.findById(userIdFilter);
+        if (!user) {
+            return res.status(400).json({ msg: msgs.couldNotFind });
+
+        } else if (user && !user.confirmed) {
+            User.findByIdAndUpdate(userIdFilter, {confirmed: true})
+                .then(() => res.json({ msg: msgs.confirmed }))
+                .catch(err => console.log(err));
+
+        } else {
+            res.json({ msg: msgs.alreadyConfirmed });
+        }
+
+
+    } catch(error) {
+        console.log(error);
     }
 });
 
@@ -197,7 +236,10 @@ router.post("/login", (req, res) => {
 
     User.findOne(userFilter).then(user => {
         if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found" });
+            return res.status(404).json({ email: "Email not found" });
+
+        } else if (user && !user.confirmed) {
+            return res.status(403).json({ email: "Cannot login until email is confirmed" });
         }
 
         // Check password

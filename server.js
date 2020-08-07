@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -9,7 +10,8 @@ const rosters = require("./routes/api/rosters");
 const app = express();
 const cors = require("cors");
 
-// Bodyparser middleware
+
+// Bodyparser middleware for routes to accept JSON
 app.use(
     bodyParser.urlencoded({
         extended: false
@@ -18,24 +20,24 @@ app.use(
 app.use(bodyParser.json());
 app.use(cors());
 
-const dbURL = "mongodb://localhost:27017/rosters-gg";
 
-//connect to MongoDB
+// Connect to MongoDB
 mongoose
     .connect(process.env.MONGODB_URI || dbURL,
         { useUnifiedTopology: true, useNewUrlParser: true }
     )
-    .then(() => console.log("MongoDB successfully connected"))
+    .then(() => console.log("[SERVER] MongoDB successfully connected"))
     .catch(err => console.log(err));
 
+// To get rid of annoying Mongoose deprecation warnings
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);
 
+
 // Passport middleware
 app.use(passport.initialize());
-
-// Passport config
 require("./config/passport")(passport);
+
 
 // Routes
 app.use("/api/users", users);
@@ -48,6 +50,10 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-const port = process.env.PORT || 5000;
+console.log(process.env);
 
-app.listen(port, () => console.log(`Server up and running on port ${port}`));
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+    console.log('----- [SERVER] -----');
+    console.log(`[SERVER] Server up and running on port ${port}`);
+});

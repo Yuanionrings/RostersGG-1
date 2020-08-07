@@ -13,6 +13,7 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/layout/Register";
 import Login from "./components/layout/Login";
+import ConfirmEmail from "./components/layout/ConfirmEmail";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/user/Dashboard";
 import ViewUser from "./components/user/ViewUser";
@@ -52,6 +53,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/confirm/:id" component={ConfirmEmail} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/editprofile" component={EditUser} />
