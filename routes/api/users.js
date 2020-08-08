@@ -163,7 +163,9 @@ router.post("/register", async (req, res) => {
         }
 
         var newUser;
-        if(process.env.MAIL_DEACTIVATE){
+        // TODO - Fix following conditional
+        if(process.env.NODE_ENV === 'development'){
+            console.log("[SERVER] In development environment, not sending confirmation email")
             newUser = new User({
                 name: req.body.name,
                 username: req.body.username,

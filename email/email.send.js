@@ -20,9 +20,10 @@ const transporter = nodemailer.createTransport(credentials)
 // as the return value of this function.
 module.exports = async (to, content) => {
   
-  // The from and to addresses for the email that is about to be sent.
+  // The from and to addresses for the email that is about to be sent. 
+  const from_addr = `"RostersGG Team" <${process.env.MAIL_USER}>`;
   const contacts = {
-    from: process.env.MAIL_USER,
+    from: from_addr,
     to
   }
   

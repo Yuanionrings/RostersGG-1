@@ -17,7 +17,7 @@ module.exports = {
           member of the RostersGG community. There is no better tool to track player rosters, communicate with 
           players, and schedule matches with other teams. GLHF! <br /></h3>
 
-        <h3>You must confirm your email before you may login to RostersGG.</h3>
+        <h3>[Important] You must confirm your email before you may login to RostersGG.</h3>
 
         <p>Please click the link below to confirm your email and activate your account:
           <a href='${process.env.CLIENT_ORIGIN}/confirm/${id}'>Confirm Email</a>
