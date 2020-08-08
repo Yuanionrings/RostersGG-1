@@ -65,18 +65,18 @@ export default class ViewUser extends Component {
                     <h6>USER PROFILE</h6>
                     <hr />
 
-                    <h4>User Info: </h4>
+                    <h4>User Info </h4>
                     <h6>Username: {this.state.username}</h6>
                     <h6>Member since: {this.state.date}</h6>
                     <hr />
 
-                    <h4>About Me: </h4>
+                    <h4>About Me </h4>
                     <h6>{this.state.biography}</h6>
                     <hr />
 
                     <h4>Rosters</h4>
                     {(this.state.rosters.length > 0) ?
-                    <table className="table table-striped" style={{ marginTop: 15 }}>
+                    <table className="table table-striped" style={{ marginTop: 0 }}>
                         <thead>
                             <tr>
                                 <th>Team Name</th>
