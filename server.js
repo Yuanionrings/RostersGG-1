@@ -49,8 +49,6 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-console.log(process.env);
-
 const port = process.env.SERVER_PROD_PORT || process.env.SERVER_DEV_PORT;
 app.listen(port, () => {
     console.log('----- [SERVER] -----');

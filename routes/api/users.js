@@ -32,7 +32,6 @@ router.get("/:username", async (req, res) => {
             res.status(404).send('No user found with this username');
             return;
         }
-
         res.json(user);
 
     } catch(error) {
@@ -124,8 +123,7 @@ router.patch("/:username/update", async (req, res) => {
             });
         }
 
-        const updated_user = await user.save();
-        console.log(updated_user);
+        await user.save();
         res.json('User information successfully updated');
 
     } catch(error) {
@@ -163,7 +161,8 @@ router.post("/register", async (req, res) => {
         }
 
         var newUser;
-        // TODO - Fix following conditional
+
+        // This makes the User document already confirmed if in development (doesn't send email)
         if(process.env.NODE_ENV === 'development'){
             console.log("[SERVER] In development environment, not sending confirmation email")
             newUser = new User({
@@ -190,8 +189,10 @@ router.post("/register", async (req, res) => {
                 newUser.password = hash;
                 newUser.save()
                     .then(newUser => {
-                        // User created, send verification email
-                        if(!newUser.confirmed) {sendEmail(newUser.email, templates.confirm(newUser._id));}
+                        // User created, send verification email if not already confirmed
+                        if(!newUser.confirmed) { 
+                            sendEmail(newUser.email, templates.confirm(newUser._id));
+                        }
                         res.json(newUser);
                     })
                     .catch(err => res.status(400).json({ username: "Username is invalid" }));

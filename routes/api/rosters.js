@@ -19,12 +19,11 @@ router.get("/roster/:id", async (req, res) => {
 
     try{
         const roster = await Roster.findOne(rosterFilter);
-
         if (!roster) {
             res.status(404).send('No roster found with this id');
-        } else {
-            res.json(roster);
         }
+        res.json(roster);
+        
     } catch(error) {
         console.log(error);
         res.status(400).send('Bad request, make sure id is correct')
@@ -71,8 +70,8 @@ router.get("/:username/rosters", (req, res) => {
         .then(user => {
             if (!user) {
                 res.status(404).send('No user found with this username');
-            } else {
 
+            } else {
                 // Define filter for querying rosters collection
                 const rosterFilter = { players: user.username };
                 Roster.find(rosterFilter)
@@ -105,8 +104,8 @@ router.get("/:username/led-rosters", (req, res) => {
         .then(user => {
             if (!user) {
                 res.status(404).send('No user found with this username');
-            } else {
 
+            } else {
                 // Define filter for querying rosters collection
                 const rosterFilter = { leader: user.username };
                 Roster.find(rosterFilter)
@@ -139,9 +138,8 @@ router.get("/roster-search", async (req, res) => {
         if (!rosters) {
             res.status(404).send({errors: {search: "There are no rosters found with this search"}});
         }
-
-        console.log(rosters)
         res.json(rosters);
+
     } catch(error) {
         console.log(error);
         res.status(400).send({errors: {other_error: "Error finding rosters"}});
@@ -174,6 +172,7 @@ router.post("/roster/:id/invite", async (req, res) => {
                 player_username: 'No user found with this username'
             }
             res.status(404).send(errors);
+
         } else if (roster.players.includes(user.username)) {
             const errors = {
                 player_username: 'This player is already on this roster'
@@ -182,8 +181,7 @@ router.post("/roster/:id/invite", async (req, res) => {
         }
 
         user.invitations.push(req.params.id);
-        const saved_user = await user.save();
-        console.log(saved_user);
+        await user.save();
         res.json('Player successfully invited');
 
     } catch(error) {
@@ -208,8 +206,7 @@ router.patch("/roster/:id/decline-invite", async (req, res) => {
         }
 
         user.invitations.pull(roster_id);
-        const saved_user = await user.save();
-        console.log(saved_user);
+        await user.save();
         res.json("Invitation successfully declined and removed from inbox");
 
     } catch(error) {
@@ -237,20 +234,12 @@ router.patch("/roster/:id/accept-invite", async (req, res) => {
         if (!user) {
             res.status(404).send('User info not found cannot add to roster');
         }
-        /*else if (roster.players.indexOf(user.username) > -1) {
-            user.invitations.pull(req.params.id);
-            const updated_user = await user.save();
-            console.log(updated_user);
-            res.status(400).send('Bad request, user already on this roster');
-        }*/
 
         roster.players.push(user.username);
-        const updated_roster = await roster.save();
-        console.log(updated_roster);
+        await roster.save();
 
         user.invitations.pull(req.params.id);
-        const updated_user = await user.save();
-        console.log(updated_user);
+        await user.save();
 
         res.json('User successfully added to roster');
 
@@ -280,8 +269,7 @@ router.patch("/roster/:id/edit", async (req, res) => {
         roster.teamname = req.body.teamname;
         roster.team_desc = req.body.team_desc;
 
-        const updated_roster = await roster.save();
-        console.log(updated_roster);
+        await roster.save();
         res.json('Roster information updated successfully');
 
     } catch(error) {
@@ -324,7 +312,6 @@ router.post("/create", async (req, res) => {
         });
 
         const new_roster = await newRoster.save();
-        console.log(new_roster);
         res.json(new_roster);
 
     } catch(error) {
