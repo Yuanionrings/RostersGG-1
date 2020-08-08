@@ -1,11 +1,11 @@
 {
   "name": "rosters-gg",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "eSports Team Management Application",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "npx nodemon --exec npx babel-node server.js",
+    "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "server": "npx nodemon --exec npx babel-node server.js",
     "client": "npm start --prefix client",
@@ -44,6 +44,6 @@
     "nodemon": "^2.0.2"
   },
   "engines": {
-    "node": "12.13.1"
+    "node": "13.12.0"
   }
 }
