@@ -22,7 +22,7 @@ app.use(cors());
 
 
 // Connect to MongoDB
-const mongodb_conn = process.env.MONGODB_PROD_URI || process.env.MONGODB_DEV_URI;
+const mongodb_conn = process.env.MONGODB_URI || 'mongodb://localhost:27017/rosters-gg';
 mongoose
     .connect(mongodb_conn, { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log(`[SERVER] MongoDB successfully connected [${mongodb_conn}]`))
@@ -38,10 +38,11 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 
-// Routes
+// Routes Configuration
 app.use("/api/users", users);
 app.use("/api/rosters", rosters);
 
+// Check if application is in production (Heroku)
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, "client", "build")))
     app.get('*', (req, res) => {
@@ -49,7 +50,7 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-const port = process.env.SERVER_PROD_PORT || process.env.SERVER_DEV_PORT;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log('----- [SERVER] -----');
     console.log(`[SERVER] Server up and running on port ${port}`);
