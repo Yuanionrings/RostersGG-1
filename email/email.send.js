@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport(credentials)
 module.exports = async (to, content) => {
   
   // The from and to addresses for the email that is about to be sent. 
-  const from_addr = `"RostersGG Team" <${process.env.MAIL_USER}>`;
+  const from_addr = `"Owen from RostersGG" <${process.env.MAIL_USER}>`;
   const contacts = {
     from: from_addr,
     to
