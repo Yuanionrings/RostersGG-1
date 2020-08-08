@@ -8,6 +8,7 @@ const validateInvitePlayerToRosterInput = require("../../validation/roster/invit
 // Load mongoose Roster and User models
 const Roster = require("../../models/RosterSchema");
 const User = require("../../models/UserSchema");
+const { update } = require("../../models/RosterSchema");
 
 
 // @route GET api/rosters/roster/:id
@@ -17,16 +18,20 @@ router.get("/roster/:id", async (req, res) => {
     // Define filters for querying database
     const rosterFilter = { _id: req.params.id };
 
+    let res_errors = {};
+
     try{
         const roster = await Roster.findOne(rosterFilter);
         if (!roster) {
-            res.status(404).send('No roster found with this id');
+            res_errors.id = 'No roster found with this id';
+            res.status(404).json(res_errors);
         }
         res.json(roster);
         
     } catch(error) {
         console.log(error);
-        res.status(400).send('Bad request, make sure id is correct')
+        res_errors.badrequest = 'Bad request, this may require more debugging';
+        res.status(400).json(res_error);
     }
 });
 
@@ -38,23 +43,30 @@ router.get("/roster/:id/players", async (req, res) => {
     // Define filter for querying rosters collection
     const rosterFilter = { _id: req.params.id };
 
+    let res_errors = {};
+
     try{
         const roster = await Roster.findOne(rosterFilter);
         if (!roster) {
-            res.status(404).send('No roster found with this id');
+            res_errors.id = 'No roster found with this id';
+            res.status(404).json(res_errors);
+            return;
         }
 
         // Define filter for querying users collection
-        const userFilter = {"username": {$in: roster.players}}
+        const userFilter = { "username": { $in: roster.players }};
         const users = await User.find(userFilter);
         if (!users) {
-            res.status(404).send('No players found in this roster')
+            res_errors.players = 'No players found on this roster';
+            res.status(404).json(res_errors);
+            return;
         }
         res.json(users);
 
     } catch(error) {
         console.log(error)
-        res.status(400).send('Bad request, please check filters')
+        res_errors.badrequest = 'Bad request, needs more debugging';
+        res.status(400).json(res_errors);
     }
 });
 
@@ -66,29 +78,39 @@ router.get("/:username/rosters", (req, res) => {
     // Define filter for querying users collection
     const userFilter = { username: req.params.username };
 
+    let res_errors = {};
+
     User.findOne(userFilter)
         .then(user => {
             if (!user) {
-                res.status(404).send('No user found with this username');
+                res_errors.username = `No user found with username ${userFilter.username}`;
+                res.status(404).json(res_errors);
 
             } else {
                 // Define filter for querying rosters collection
                 const rosterFilter = { players: user.username };
+
                 Roster.find(rosterFilter)
                     .then(rosters => {
                         if (!rosters) {
-                            res.status(404).send('No roster found with this teamname');
-                        } else {
-                            res.json(rosters);
+                            res_errors.username = `No rosters found with player ${userFilter.username}`
+                            res.status(404).json(res_errors);
                         }
+
+                        res.json(rosters);
+                        
                     })
                     .catch(err => {
                         console.log(err);
+                        res_errors.badrequest = `Error finding rosters`;
+                        res.status(400).json(res_errors);
                     });
             }
         })
         .catch(err => {
             console.log(err);
+            res_errors.badrequest = `Error finding rosters`;
+            res.status(400).json(res_errors);
         });
 });
 
@@ -100,10 +122,13 @@ router.get("/:username/led-rosters", (req, res) => {
     // Define filter for querying users collection
     const userFilter = { username: req.params.username };
 
+    let res_errors = {};
+
     User.findOne(userFilter)
         .then(user => {
             if (!user) {
-                res.status(404).send('No user found with this username');
+                res_errors.username = `No user found with username ${userFilter.username}`;
+                res.status(404).json(res_errors);
 
             } else {
                 // Define filter for querying rosters collection
@@ -111,21 +136,28 @@ router.get("/:username/led-rosters", (req, res) => {
                 Roster.find(rosterFilter)
                     .then(rosters => {
                         if (!rosters) {
-                            res.status(404).send('No roster found with this username as leader');
+                            res_errors.username = `No rosters found with leader ${userFilter.username}`;
+                            res.status(400).json(res_errors);
+
                         } else {
                             res.json(rosters);
                         }
                     })
                     .catch(err => {
                         console.log(err);
+                        res_errors.badrequest = `Error finding rosters`;
+                        res.status(400).json(res_errors);
                     });
             }
         })
         .catch(err => {
             console.log(err);
+            res_errors.badrequest = `Error finding rosters`;
+            res.status(400).json(res_errors);
         });
 });
 
+// TODO - Finish this!!!!!
 // @route GET api/rosters/roster-search
 // @desc Searches for teams based on text search query
 router.get("/roster-search", async (req, res) => {
@@ -160,33 +192,38 @@ router.post("/roster/:id/invite", async (req, res) => {
     const rosterFilter = { _id: req.params.id };
     const userFilter = { username: req.body.invited_player };
 
+    let res_errors = {};
+    let res_success = {};
+
     try{
         const roster = await Roster.findOne(rosterFilter);
         if (!roster) {
-            res.status(404).json({ other_error: "No roster found with this id" });
+            res_errors.id = 'No roster found with this id';
+            res.status(404).json(res_errors);
+            return;
         }
 
         const user = await User.findOne(userFilter);
         if (!user) {
-            const errors = {
-                player_username: 'No user found with this username'
-            }
-            res.status(404).send(errors);
+            res_errors.player_username = 'No user found with this username';
+            res.status(404).json(res_errors);
+            return;
 
         } else if (roster.players.includes(user.username)) {
-            const errors = {
-                player_username: 'This player is already on this roster'
-            }
-            res.status(400).send(errors);
+            res_errors.player_username = 'This player is already on this roster';
+            res.status(400).json(res_errors);
+            return;
         }
 
         user.invitations.push(req.params.id);
-        await user.save();
-        res.json('Player successfully invited');
+        const invitedUser = await user.save();
+        res_success.success = `User ${invitedUser.username} successfully invited`;
+        res.json(res_success);
 
     } catch(error) {
-        console.log(error);
-        res.status(400).send('Bad request, could not invite player')
+        console.log(err);
+        res_errors.badrequest = `Error inviting user to this roster`;
+        res.status(400).json(res_errors);
     }
 });
 
@@ -260,23 +297,29 @@ router.patch("/roster/:id/edit", async (req, res) => {
         return res.status(400).json(errors);
     }
 
+    let res_errors = {};
+    let res_success = {};
+
     try {
         const roster = await Roster.findById(req.params.id);
         if(!roster){
-            res.status(404).send('Roster with this id not found')
+            res_errors.id = 'Roster with this id not found, cannot proceed';
+            res.status(404).json(res_errors);
         }
 
         roster.teamname = req.body.teamname;
         roster.team_desc = req.body.team_desc;
 
-        await roster.save();
-        res.json('Roster information updated successfully');
+        const updatedRoster = await roster.save();
+        res_success.success = `Roster ${updatedRoster.teamname} successfully updated`;
+        res.json(res_success);
 
-    } catch(error) {
-        console.log(error);
-        res.status(400).send('Bad request, error updating roster information');
+    } catch(err) {
+        console.log(err);
+        res_errors.badrequest = `Error inviting user to this roster`;
+        res.status(400).json(res_errors);
     }
-})
+});
 
 
 // @route POST api/rosters/create
@@ -293,13 +336,14 @@ router.post("/create", async (req, res) => {
     // Define filter for querying collections
     const userFilter = { username: req.body.username };
 
+    let res_errors = {};
+    let res_success = {};
+
     try {
         const user = await User.findOne(userFilter);
         if (!user) {
-            const errors = {
-                player_username: 'No user found with this username'
-            }
-            res.status(404).send(errors);
+            res_errors.player_username = `No user found with the username ${userFilter.username}`;
+            res.status(404).json(res_errors);
         } 
 
         const newRoster = new Roster({
@@ -312,11 +356,13 @@ router.post("/create", async (req, res) => {
         });
 
         const new_roster = await newRoster.save();
-        res.json(new_roster);
+        res_success.success = `Roster ${new_roster.teamname} successfully created`;
+        res.json(res_success);
 
     } catch(error) {
         console.log(error);
-        res.status(400).send({error: 'Bad request, error creating roster'});
+        res_errors.badrequest = `Error creating roster`;
+        res.status(400).json(res_errors);
     }
 });
 

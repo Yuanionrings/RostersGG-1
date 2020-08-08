@@ -26,21 +26,26 @@ router.get("/:username", async (req, res) => {
     // Define filter for querying database
     const userFilter = { username: req.params.username };
 
+    let errors = {};
+
     try {
         const user = await User.findOne(userFilter);
         if (!user) {
-            res.status(404).send('No user found with this username');
+            errors.username = `No user found with the username: ${userFilter.username}`;
+            res.status(404).json(errors);
             return;
         }
         res.json(user);
 
     } catch(error) {
         console.log(error);
-        res.status(400).send('Bad request, error finding user info');
+        errors.badrequest = `Bad request, error finding user info for ${userFilter.username}`;
+        res.status(400).json(errors);
     }
 });
 
 
+// TODO - COMPLETE THIS
 router.get("/user-search", async (req, res) => {
 
     // Define query for user search
@@ -72,12 +77,16 @@ router.get("/:username/invitations", async (req, res) => {
     // Define filter for querying users collection
     const userFilter = { username: req.params.username };
 
+    let errors = {};
+
     try {
         const user = await User.findOne(userFilter);
         if (!user) {
-            res.status(404).send('No user found with this username');
+            errors.username = `No user found with the username: ${userFilter.username}`;
+            res.status(404).json(errors);
         }
 
+        // Define filter for querying rosters collection
         const rosterFilter = { "_id" : {$in: user.invitations}};
 
         const rosters = await Roster.find(rosterFilter);
@@ -85,7 +94,8 @@ router.get("/:username/invitations", async (req, res) => {
 
     } catch(error) {
         console.log(error);
-        res.status(400).send('Bad request, error finding user invitation info');
+        errors.badrequest = `Bad request, could not find invitation info for ${userFilter.username}`;
+        res.status(400).json(errors);
     }
 });
 
@@ -100,13 +110,18 @@ router.patch("/:username/update", async (req, res) => {
         return res.status(400).json(errors);
     }
 
+    // Define filter for querying users collection
     const userFilter = { username: req.params.username };
     const updatedInfo = req.body;
+
+    let res_errors = {};
+    let res_success = {};
 
     try {
         const user = await User.findOneAndUpdate(userFilter, updatedInfo, { new: true });
         if (!user) {
-            res.status(404).send('User info not found for this username');
+            res_errors.username = `No user found with the username: ${userFilter.username}`;
+            res.status(404).json(res_errors);
         } 
 
         if (updatedInfo.password) {
@@ -117,18 +132,27 @@ router.patch("/:username/update", async (req, res) => {
                     if (err) throw err;
                     user.password = hash;
                     user.save()
-                        .then(user => res.json('User information/password successfully updated'))
-                        .catch(err => res.status(400).send('User information/password not successfully updated'));
+                        .then(user => {
+                            res_success.success = `User (${user.username}) info/password updated successfully`;
+                            res.json(res_success);
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            res_errors.badrequest = `User information not successfully updated`;
+                            res.status(400).json(res_errors);
+                        });
                 });
             });
         }
 
-        await user.save();
-        res.json('User information successfully updated');
+        const updatedUser = await user.save();
+        res_success.success = `User (${updatedUser.username}) info updated successfully`;
+        res.json(res_success);
 
     } catch(error) {
         console.log(err);
-        res.status(400).send('User information not successfully updated');
+        res_errors.badrequest = `User information not successfully updated`;
+        res.status(400).json(res_errors);
     }
 });
 
@@ -146,18 +170,28 @@ router.post("/register", async (req, res) => {
     // Define filters to query database
     const userEmailFilter = { email: req.body.email };
     const usernameFilter = { username: req.body.username };
+
+    let res_errors = {};
+    let res_success = {};
     
     try {
         const user = await User.findOne(userEmailFilter);
         if (user && !user.confirmed) {
-            return res.status(400).json({ email: msgs.resend });
+            res_errors.email = msgs.confirm;
+            res.status(400).json(res_errors);
+            return;
+
         } else if (user && user.confirmed) {
-            return res.status(400).json({ email: msgs.alreadyConfirmed });
+            res_errors.email = msgs.alreadyConfirmed;
+            res.status(400).json(res_errors);
+            return;
         }
 
         const user2 = await User.findOne(usernameFilter);
         if (user2) {
-            return res.status(400).json({ username: "Username already exists, it must be unique" });
+            res_errors.username = `Username ${user2.username} already exists - must be unique`;
+            res.status(400).json(res_errors);
+            return;
         }
 
         var newUser;
@@ -195,13 +229,19 @@ router.post("/register", async (req, res) => {
                         }
                         res.json(newUser);
                     })
-                    .catch(err => res.status(400).json({ username: "Username is invalid" }));
+                    .catch(err => {
+                        console.log(err);
+                        res_errors.badrequest = `Error when registering user, email contact@rosters.gg`;
+                        res.status(400).json(res_errors);
+                        return;
+                    });
             });
         });
 
     } catch(error) {
         console.log(error);
-        res.status(400).json({ other_error: "Error creating new user" });
+        res_errors.badrequest = `Error when registering user, email contact@rosters.gg`;
+        res.status(400).json(res_errors);
     }
 });
 
@@ -248,12 +288,18 @@ router.post("/login", (req, res) => {
     const userFilter = { email: req.body.email};
     const password = req.body.password;
 
+    let res_errors = {};
+
     User.findOne(userFilter).then(user => {
         if (!user) {
-            return res.status(404).json({ email: "Email not found" });
+            res_errors.email = `Email ${userFilter.email} not found`;
+            res.status(404).json(res_errors);
+            return;
 
         } else if (user && !user.confirmed) {
-            return res.status(403).json({ email: "Cannot login until email is confirmed" });
+            res_errors.email = `User with ${userFilter.email} must be confirmed, check email`;
+            res.status(403).json(res_errors);
+            return;
         }
 
         // Check password
@@ -267,12 +313,9 @@ router.post("/login", (req, res) => {
                 };
 
                 // Sign token
-                jwt.sign(
-                    payload,
+                jwt.sign(payload,
                     keys.secretOrKey,
-                    {
-                        expiresIn: 31556926
-                    },
+                    { expiresIn: 31556926 },
                     (err, token) => {
                         res.json({
                             success: true,
@@ -280,10 +323,11 @@ router.post("/login", (req, res) => {
                         });
                     }
                 );
+                
             } else {
-                return res
-                    .status(400)
-                    .json({ passwordincorrect: "Password incorrect" });
+                res_errors.passwordincorrect = `Password incorrect`;
+                res.status(400).json(res_errors);
+                return;
             }
         });
     });
