@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
+const cors = require("cors");
 
 const users = require("./routes/api/users");
 const rosters = require("./routes/api/rosters");
 const app = express();
-const cors = require("cors");
 
 
 // Bodyparser middleware for routes to accept JSON
@@ -22,11 +22,10 @@ app.use(cors());
 
 
 // Connect to MongoDB
+const mongodb_conn = process.env.MONGODB_PROD_URI || process.env.MONGODB_DEV_URI;
 mongoose
-    .connect(process.env.MONGODB_URI || dbURL,
-        { useUnifiedTopology: true, useNewUrlParser: true }
-    )
-    .then(() => console.log("[SERVER] MongoDB successfully connected"))
+    .connect(mongodb_conn, { useUnifiedTopology: true, useNewUrlParser: true })
+    .then(() => console.log(`[SERVER] MongoDB successfully connected [${mongodb_conn}]`))
     .catch(err => console.log(err));
 
 // To get rid of annoying Mongoose deprecation warnings
@@ -50,9 +49,9 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-console.log(process.env);
+//console.log(process.env);
 
-const port = process.env.PORT || 5000;
+const port = process.env.SERVER_PROD_PORT || process.env.SERVER_DEV_PORT;
 app.listen(port, () => {
     console.log('----- [SERVER] -----');
     console.log(`[SERVER] Server up and running on port ${port}`);

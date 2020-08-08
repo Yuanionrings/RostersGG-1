@@ -48,7 +48,7 @@ body {
 /*
     "app-bg" used to set background to full window size in App.js main div element
 */
-.app-bg { height: 100%; }
+.app-bg { height: 100%; margin-bottom: -3rem; }
 
 
 

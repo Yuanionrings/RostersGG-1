@@ -162,12 +162,23 @@ router.post("/register", async (req, res) => {
             return res.status(400).json({ username: "Username already exists, it must be unique" });
         }
 
-        const newUser = new User({
-            name: req.body.name,
-            username: req.body.username,
-            password: req.body.password,
-            email: req.body.email
-        });
+        var newUser;
+        if(process.env.MAIL_DEACTIVATE){
+            newUser = new User({
+                name: req.body.name,
+                username: req.body.username,
+                password: req.body.password,
+                email: req.body.email,
+                confirmed: true
+            });
+        } else {
+            newUser = new User({
+                name: req.body.name,
+                username: req.body.username,
+                password: req.body.password,
+                email: req.body.email
+            });
+        }
 
         // Hash password before storing in database
         const rounds = 10;
@@ -178,7 +189,7 @@ router.post("/register", async (req, res) => {
                 newUser.save()
                     .then(newUser => {
                         // User created, send verification email
-                        sendEmail(newUser.email, templates.confirm(newUser._id));
+                        if(!newUser.confirmed) {sendEmail(newUser.email, templates.confirm(newUser._id));}
                         res.json(newUser);
                     })
                     .catch(err => res.status(400).json({ username: "Username is invalid" }));
