@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+const sendEmail = require('../../email/email.send');
+const msgs = require('../../email/email.msgs');
+const templates = require('../../email/email.templates');
+
 // Load input validation
 const validateCreateEditRosterInput = require("../../validation/roster/create_edit_roster");
 const validateInvitePlayerToRosterInput = require("../../validation/roster/invite_player");
@@ -217,6 +221,12 @@ router.post("/roster/:id/invite", async (req, res) => {
 
         user.invitations.push(req.params.id);
         const invitedUser = await user.save();
+
+        try {
+            sendEmail(user.email, templates.new_invitation())
+        } catch(err) {
+            console.log(err);
+        }
         res_success.success = `User ${invitedUser.username} successfully invited`;
         res.json(res_success);
 

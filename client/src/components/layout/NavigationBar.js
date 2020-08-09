@@ -12,8 +12,7 @@ let NavigationBar = (props) => {
         </Nav>
         :
         <Nav className="ml-auto">
-            <Nav.Link className="secondary-text-light" href="/login">Login</Nav.Link>
-            <Nav.Link className="secondary-text-light" href="/register">Register</Nav.Link>
+            <Nav.Link className="secondary-text-light" href="/login">Login or Register</Nav.Link>
         </Nav>
     }
 

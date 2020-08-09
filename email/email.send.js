@@ -10,26 +10,26 @@ const credentials = {
     user: process.env.MAIL_USER, 
     pass: process.env.MAIL_PASS  
   }
-}
+};
 
 // Getting Nodemailer all setup with the credentials for when the 'sendEmail()'
 // function is called.
-const transporter = nodemailer.createTransport(credentials)
+const transporter = nodemailer.createTransport(credentials);
 
 // exporting an 'async' function here allows 'await' to be used
 // as the return value of this function.
 module.exports = async (to, content) => {
   
   // The from and to addresses for the email that is about to be sent. 
-  const from_addr = `"Owen from RostersGG" <${process.env.MAIL_USER}>`;
+  const from_addr = `"RostersGG Team" <${process.env.MAIL_USER}>`;
   const contacts = {
     from: from_addr,
     to
-  }
+  };
   
   // Combining the content and contacts into a single object that can
   // be passed to Nodemailer.
-  const email = Object.assign({}, content, contacts)
+  const email = Object.assign({}, content, contacts);
   
   // This file is imported into the controller as 'sendEmail'. Because 
   // 'transporter.sendMail()' below returns a promise we can write code like this
@@ -41,6 +41,10 @@ module.exports = async (to, content) => {
   // If you are running into errors getting Nodemailer working, wrap the following 
   // line in a try/catch. Most likely is not loading the credentials properly in 
   // the .env file or failing to allow unsafe apps in your gmail settings.
-  await transporter.sendMail(email)
+  try {
+    await transporter.sendMail(email);
+  } catch(err) {
+    console.warn(err);
+  }
 
 }

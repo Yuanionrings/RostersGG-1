@@ -11,6 +11,9 @@ const rosters = require("./routes/api/rosters");
 const app = express();
 
 console.log('----- [SERVER] -----');
+if(process.env.NODE_ENV === 'development'){
+    console.log('[SERVER] This server is in DEVELOPMENT mode, will not send confirmation emails on user reg!!');
+}
 
 // Bodyparser middleware for routes to accept JSON
 app.use(
@@ -45,7 +48,7 @@ app.use("/api/rosters", rosters);
 
 // Check if application is in production (Heroku)
 if (process.env.NODE_ENV === 'production') {
-    console.log("[SERVER] Now using express.static(client/build)");
+    //console.log("[SERVER] Now using express.static(client/build)");
     app.use(express.static("client/build"));
 
     // If no backend routes are hit, send React client app
