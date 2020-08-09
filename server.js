@@ -10,6 +10,7 @@ const users = require("./routes/api/users");
 const rosters = require("./routes/api/rosters");
 const app = express();
 
+console.log('----- [SERVER] -----');
 
 // Bodyparser middleware for routes to accept JSON
 app.use(
@@ -46,16 +47,15 @@ app.use("/api/rosters", rosters);
 if (process.env.NODE_ENV === 'production') {
     console.log("[SERVER] Now using express.static(client/build)");
     app.use(express.static("client/build"));
-}
 
-// If no backend routes are hit, send React client app
-app.get('*', (req, res) => {
-    console.log(`[SERVER] Sending file: ${path.join(__dirname, 'client/build/index.html')}`);
-    res.sendFile(path.join(__dirname, 'client/build/index.html'));
-});
+    // If no backend routes are hit, send React client app
+    app.get('*', (req, res) => {
+        console.log(`[SERVER] Sending file: ${path.join(__dirname, 'client/build/index.html')}`);
+        res.sendFile(path.join(__dirname, 'client/build/index.html'));
+    });
+}
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-    console.log('----- [SERVER] -----');
     console.log(`[SERVER] Server up and running on port ${port}`);
 });
