@@ -1,2 +1,2 @@
 web: npm run production_front
-web: npm run production_back
+worker: npm run production_back
