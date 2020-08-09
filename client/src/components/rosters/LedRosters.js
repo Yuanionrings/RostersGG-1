@@ -37,17 +37,6 @@ export default class LedRosters extends Component {
             });
     }
 
-    componentDidUpdate() {
-        axios.get('/api/rosters/' + this.state.username + '/led-rosters')
-            .then(res => {
-                this.setState({
-                    username: this.state.username,
-                    rosters: res.data});
-            }).catch(function(err) {
-                console.log(err);
-            });
-    }
-
     rosterList(){
         return this.state.rosters.map(function(currentRoster, i){
             return <RosterInfo roster={currentRoster} key={i} />
