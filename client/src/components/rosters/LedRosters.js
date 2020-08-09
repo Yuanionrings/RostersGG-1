@@ -27,7 +27,7 @@ export default class LedRosters extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/led-rosters')
+        axios.get('/api/rosters/' + this.state.username + '/led-rosters')
             .then(res => {
                 this.setState({
                     username: this.state.username,
@@ -38,7 +38,7 @@ export default class LedRosters extends Component {
     }
 
     componentDidUpdate() {
-        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/led-rosters')
+        axios.get('/api/rosters/' + this.state.username + '/led-rosters')
             .then(res => {
                 this.setState({
                     username: this.state.username,

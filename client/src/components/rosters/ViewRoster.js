@@ -25,7 +25,7 @@ class ViewRoster extends Component {
         }
     }
     componentDidMount() {
-        axios.get('http://localhost:5000/api/rosters/roster/' + this.props.match.params.id)
+        axios.get('/api/rosters/roster/' + this.props.match.params.id)
             .then(res => {
                 this.setState({
                     teamname: res.data.teamname,
@@ -38,7 +38,7 @@ class ViewRoster extends Component {
                 console.log(err);
             })
 
-        axios.get('http://localhost:5000/api/rosters/roster/' + this.props.match.params.id + '/players')
+        axios.get('/api/rosters/roster/' + this.props.match.params.id + '/players')
             .then(res => {
                 this.setState({
                     players: res.data

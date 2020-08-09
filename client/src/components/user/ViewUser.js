@@ -28,14 +28,14 @@ export default class ViewUser extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/rosters/' + this.props.match.params.username + '/rosters')
+        axios.get('/api/rosters/' + this.props.match.params.username + '/rosters')
             .then(res => {
                 this.setState({ rosters: res.data });
             }).catch(function(err) {
                 console.log(err);
             });
 
-        axios.get('http://localhost:5000/api/users/' + this.props.match.params.username)
+        axios.get('/api/users/' + this.props.match.params.username)
             .then(res => {
                 this.setState({ name: res.data.name,
                                 username: res.data.username,

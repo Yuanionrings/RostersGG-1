@@ -25,7 +25,7 @@ export default class MyRosters extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/rosters')
+        axios.get('/api/rosters/' + this.state.username + '/rosters')
             .then(res => {
                 this.setState({
                     username: this.state.username,
@@ -36,7 +36,7 @@ export default class MyRosters extends Component {
     }
 
     componentDidUpdate() {
-        axios.get('http://localhost:5000/api/rosters/' + this.state.username + '/rosters')
+        axios.get('/api/rosters/' + this.state.username + '/rosters')
             .then(res => {
                 this.setState({
                     username: this.state.username,

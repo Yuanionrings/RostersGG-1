@@ -22,7 +22,7 @@ class EditRoster extends Component {
         }
     }
     componentDidMount() {
-        axios.get("http://localhost:5000/api/rosters/roster/" + this.props.match.params.id)
+        axios.get("/api/rosters/roster/" + this.props.match.params.id)
             .then(res => {
                 if(this.props.auth.user.username === res.data.leader){
                     this.setState({

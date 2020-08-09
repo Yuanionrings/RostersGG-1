@@ -12,7 +12,7 @@ export default class ConfirmEmail extends Component {
   }
 
   componentDidMount() {
-    axios.post("http://localhost:5000/api/users/confirm-email/" + this.props.match.params.id)
+    axios.post("/api/users/confirm-email/" + this.props.match.params.id)
         .then(res => {
             console.log(res);
             this.setState({

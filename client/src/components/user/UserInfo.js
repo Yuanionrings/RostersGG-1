@@ -23,7 +23,7 @@ const InvitationInfo = props => (
 );
 
 function onAccept(team_id, given_username){
-    axios.patch("http://localhost:5000/api/rosters/roster/" + team_id + "/accept-invite",
+    axios.patch("/api/rosters/roster/" + team_id + "/accept-invite",
         {username: given_username})
         .then(res => {
             console.log(res)
@@ -36,7 +36,7 @@ function onAccept(team_id, given_username){
 }
 
 function onDecline(team_id, given_username){
-    axios.patch("http://localhost:5000/api/rosters/roster/" + team_id + "/decline-invite",
+    axios.patch("/api/rosters/roster/" + team_id + "/decline-invite",
         {username: given_username})
         .then(res => {
             console.log(res)
@@ -75,7 +75,7 @@ class UserInfo extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:5000/api/users/" + this.props.given_username)
+        axios.get("/api/users/" + this.props.given_username)
             .then(res => {
                 this.setState({
                     user_name: res.data.name,
@@ -91,7 +91,7 @@ class UserInfo extends Component {
                 window.location.reload(false);
             });
 
-        axios.get("http://localhost:5000/api/users/" + this.props.given_username + "/invitations")
+        axios.get("/api/users/" + this.props.given_username + "/invitations")
             .then(res => {
                 this.setState({
                     user_invitations: res.data

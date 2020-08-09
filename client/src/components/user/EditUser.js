@@ -23,7 +23,7 @@ class EditUser extends Component {
         if (!this.props.auth.isAuthenticated) {
             this.props.history.push("/login");
         }
-        axios.get("http://localhost:5000/api/users/" + this.props.auth.user.username)
+        axios.get("/api/users/" + this.props.auth.user.username)
             .then(res => {
                 this.setState({
                     name: res.data.name,
