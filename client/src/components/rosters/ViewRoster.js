@@ -8,7 +8,7 @@ const PlayerInfo = props => (
             <Link to={"/" + props.user.username}>{props.user.name}</Link>
         </td>
         <td className="">{props.user.username}</td>
-        <td className="">{props.user.email}</td>
+        <td className="">{props.user.date}</td>
     </tr>
 );
 
@@ -74,7 +74,7 @@ class ViewRoster extends Component {
                             <tr>
                                 <th>Name</th>
                                 <th>Username</th>
-                                <th>Email</th>
+                                <th>Date Joined RostersGG</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -55,7 +55,6 @@ class UserInfo extends Component {
         this.state = {
             user_name: '',
             user_username: '',
-            user_email: '',
             user_invitations: []
         }
     }
@@ -79,8 +78,7 @@ class UserInfo extends Component {
             .then(res => {
                 this.setState({
                     user_name: res.data.name,
-                    user_username: res.data.username,
-                    user_email: res.data.email
+                    user_username: res.data.username
                 });
             })
             .catch(function (err) {
