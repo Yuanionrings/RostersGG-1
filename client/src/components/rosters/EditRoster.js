@@ -90,8 +90,7 @@ class EditRoster extends Component {
 
     playerList(id, myUsername){
         return this.state.players.map(function(currentPlayer, i){
-            console.log(i)
-            return <PlayerInfo team_id={id} user={currentPlayer} key={i} />
+            if(i > 0) { return <PlayerInfo team_id={id} user={currentPlayer} key={i} /> }
         });
     }
 
@@ -230,6 +229,7 @@ class EditRoster extends Component {
                     <div className="player-list">
                         <h2>Kick Player</h2>
                         <hr />
+                        {(this.state.players.length > 1) ? 
                         <table className="table table-striped" style={{ marginTop: 15 }}>
                             <thead>
                                 <tr>
@@ -243,6 +243,9 @@ class EditRoster extends Component {
                                 { this.playerList(this.props.match.params.id, this.props.auth.user.username) }
                             </tbody>
                         </table>
+                        :
+                        <p className="filler-text">You are the only player on this roster.</p>
+                        }
                     </div>
                 </div>
                 <div className="filler-lg"></div>
