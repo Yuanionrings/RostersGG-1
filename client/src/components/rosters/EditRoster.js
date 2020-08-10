@@ -88,9 +88,9 @@ class EditRoster extends Component {
         }
     }
 
-    playerList(){
+    playerList(id){
         return this.state.players.map(function(currentPlayer, i){
-            return <PlayerInfo team_id={this.props.match.params.id} user={currentPlayer} key={i} />
+            return <PlayerInfo team_id={id} user={currentPlayer} key={i} />
         });
     }
 
@@ -237,7 +237,7 @@ class EditRoster extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                { this.playerList() }
+                                { this.playerList(this.props.match.params.id) }
                             </tbody>
                         </table>
                     </div>
