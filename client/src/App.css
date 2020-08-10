@@ -471,14 +471,6 @@ body {
     background: #373638;
     padding: 1.5rem;
 }
-.form-box .player-list .btn {        
-    font-size: 16px;
-    font-weight: bold;
-    color: #33D9B2;
-    background: #373638;
-    border-radius: 16px;
-    border: 1px solid #33D9B2;
-}
 .form-box .player-list table {
     color: #ffffff;
     background: #373638;
@@ -519,6 +511,14 @@ body {
     font-weight: bold;
     background: #33d9b2;
     border: none;
+}
+.form-box .btn-secondary {        
+    font-size: 16px;
+    font-weight: bold;
+    color: #33D9B2;
+    background: #373638;
+    border-radius: 16px;
+    border: 1px solid #33D9B2;
 }
 .form-box .btn:hover, .form-box .btn:focus {
     background: #218c74;

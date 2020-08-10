@@ -18,7 +18,7 @@ const PlayerInfo = props => (
         <td className="">{props.user.date}</td>
         <td className="">
             <Button
-                className="kick-player-btn"
+                className="btn-secondary"
                 onClick={() => onRemovePlayer(props.team_id, props.user.username)}
                 >Kick</Button>
         </td>
@@ -229,7 +229,7 @@ class EditRoster extends Component {
 
                     <h2>Kick Player</h2>
                     <hr />
-                    
+
                     <div className="player-list">
                         <table className="table table-striped" style={{ marginTop: 15 }}>
                             <thead>
