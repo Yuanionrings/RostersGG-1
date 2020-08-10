@@ -74,7 +74,7 @@ class DeleteRoster extends Component {
                         <button type="submit" className="btn btn-primary btn-block btn-lg">
                             Delete Roster Forever
                         </button>
-                        <span className="red-text">{this.errors.delete}</span>
+                        {/*<span className="red-text">{this.errors.delete}</span>*/}
                     </div>
 
                 </form>
