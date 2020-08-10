@@ -13,7 +13,7 @@ export const createRoster = (rosterData, history) => dispatch => {
 
 // Delete Roster
 export const deleteRoster = (deleteRosterData, history) => dispatch => {
-  axios.delete(`/api/rosters/${deleteRosterData.id}/delete`, deleteRosterData.data)
+  axios.delete(`/api/rosters/${deleteRosterData.id}/delete`, deleteRosterData)
     .then(res => history.push("/dashboard"))
     .catch(err => dispatch({
       type: GET_ERRORS,

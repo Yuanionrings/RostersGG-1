@@ -14,7 +14,7 @@ class InvitePlayer extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props)
+        //console.log(this.props)
     }
 
     componentWillReceiveProps(nextProps) {

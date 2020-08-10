@@ -25,7 +25,7 @@ class Dashboard extends Component {
         this.state = {}
     }
     componentDidMount(){
-        console.log(this.props)
+        //console.log(this.props)
     }
     onLogout = e => {
         e.preventDefault();
