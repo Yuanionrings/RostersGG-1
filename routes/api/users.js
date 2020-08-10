@@ -231,7 +231,7 @@ router.post("/register", async (req, res) => {
                     })
                     .catch(err => {
                         console.log(err);
-                        res_errors.badrequest = `Error when registering user, email contact@rosters.gg`;
+                        res_errors.username = `Username cannot contain spaces, underscores, or other special characters`;
                         res.status(400).json(res_errors);
                         return;
                     });
