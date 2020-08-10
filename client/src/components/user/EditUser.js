@@ -130,13 +130,13 @@ class EditUser extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label>Change Email: </label>
+                        <label>Email (contact support to change): </label>
                         <input type="email"
                             id="email"
                             placeholder="Email Address"
                             value={email}
                             error={errors.email}
-                            onChange={this.onChange}
+                            readOnly={true}
                             className={classnames("form-control", {
                                 invalid: errors.email
                             })} />
