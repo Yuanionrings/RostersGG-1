@@ -349,7 +349,7 @@ router.patch("/roster/:id/accept-invite", async (req, res) => {
 
 // @route PATCH api/rosters/roster/:id/edit
 // @desc Edit roster information and save to database
-router.patch("/roster/:id/edit", async (req, res) => {
+router.patch("/roster/:id/edit-roster", async (req, res) => {
 
     // Form validation to ensure teamname nor team_desc were removed
     const { errors, isValid } = validateCreateEditRosterInput(req.body);
@@ -382,9 +382,9 @@ router.patch("/roster/:id/edit", async (req, res) => {
 });
 
 
-// @route DELETE api/rosters/roster/:id/delete
+// @route PATCH api/rosters/roster/:id/delete
 // @desc Completely deletes the listed roster
-router.delete("/roster/:id/delete", async (req, res) => {
+router.patch("/roster/:id/delete-roster", async (req, res) => {
 
     // Define filters for querying collections
     const rosterFilter = { _id: req.params.id };

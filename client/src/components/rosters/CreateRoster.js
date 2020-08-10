@@ -33,7 +33,7 @@ class CreateRoster extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log(this.state)
+    //console.log(this.state)
     const newRoster = {
       teamname: this.state.teamname,
       team_desc: this.state.team_desc,

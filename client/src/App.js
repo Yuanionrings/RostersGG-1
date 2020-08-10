@@ -56,7 +56,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/confirm/:id" component={ConfirmEmail} />
           <Switch>
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/:username" component={ViewUser} />
             <PrivateRoute exact path="/editprofile" component={EditUser} />
             <PrivateRoute exact path="/roster/create" component={CreateRoster} />

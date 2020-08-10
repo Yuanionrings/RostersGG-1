@@ -13,7 +13,7 @@ export const createRoster = (rosterData, history) => dispatch => {
 
 // Delete Roster
 export const deleteRoster = (deleteRosterData, history) => dispatch => {
-  axios.delete('/api/rosters/' + deleteRosterData.id + '/delete', deleteRosterData)
+  axios.patch('/api/rosters/roster/' + deleteRosterData.id + '/delete-roster', deleteRosterData)
     .then(res => history.push("/dashboard"))
     .catch(err => dispatch({
       type: GET_ERRORS,
@@ -23,7 +23,7 @@ export const deleteRoster = (deleteRosterData, history) => dispatch => {
 
 // Edit Roster
 export const editRoster = (updatedRosterData, history) => dispatch => {
-  axios.patch('/api/rosters/roster/' + updatedRosterData.id + '/edit',
+  axios.patch('/api/rosters/roster/' + updatedRosterData.id + '/edit-roster',
     updatedRosterData.data)
     .then(res => history.push("/dashboard"))
     .catch(err => dispatch({
