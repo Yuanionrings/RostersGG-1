@@ -20,6 +20,8 @@ class EditUser extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
+
         if (!this.props.auth.isAuthenticated) {
             this.props.history.push("/login");
         }
