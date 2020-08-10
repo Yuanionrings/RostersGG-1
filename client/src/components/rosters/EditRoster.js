@@ -51,6 +51,8 @@ class EditRoster extends Component {
         }
     }
     componentDidMount() {
+        console.log(this.props)
+
         axios.get("/api/rosters/roster/" + this.props.match.params.id)
             .then(res => {
                 if(this.props.auth.user.username === res.data.leader){
