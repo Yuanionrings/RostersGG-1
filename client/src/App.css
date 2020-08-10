@@ -518,7 +518,9 @@ body {
     color: #33D9B2;
     background: #373638;
     border-radius: 16px;
+    min-width: 60px;
     border: 1px solid #33D9B2;
+    margin: -0.75px 0.5rem -0.75px 0px;
 }
 .form-box .btn:hover, .form-box .btn:focus {
     background: #218c74;
