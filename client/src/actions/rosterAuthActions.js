@@ -1,9 +1,8 @@
 import axios from "axios";
 import { GET_ERRORS } from "./types";
 
-// Register Roster
+// Create Roster
 export const createRoster = (rosterData, history) => dispatch => {
-  console.log(rosterData)
   axios.post("/api/rosters/create", rosterData)
     .then(res => history.push("/dashboard"))
     .catch(err => dispatch({
@@ -14,7 +13,6 @@ export const createRoster = (rosterData, history) => dispatch => {
 
 // Delete Roster
 export const deleteRoster = (deleteRosterData, history) => dispatch => {
-  console.log(rosterData)
   axios.delete(`/api/rosters/${deleteRosterData.id}/delete`, deleteRosterData.data)
     .then(res => history.push("/dashboard"))
     .catch(err => dispatch({
