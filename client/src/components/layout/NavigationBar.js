@@ -12,14 +12,14 @@ let NavigationBar = (props) => {
         </Nav>
         :
         <Nav className="ml-auto">
-            <Nav.Link className="secondary-text-light" href="/login">Login or Register</Nav.Link>
+            <Nav.Link className="secondary-text-light" href="/login">Login / Register</Nav.Link>
         </Nav>
     }
 
     return (
         <div>
             <Navbar className="navbar-spec primary-bg-dark">
-                <NavbarBrand className="mr-auto secondary-text-light bold-text" href="/">RostersGG</NavbarBrand>
+                <NavbarBrand className="mr-auto secondary-text-light bold-text" href="/">RostersGG (BETA)</NavbarBrand>
                 {conditionalNavItems(props.auth)}
             </Navbar>
             <div className="navbar-divider"></div>

@@ -29,6 +29,7 @@ router.get("/roster/:id", async (req, res) => {
         if (!roster) {
             res_errors.id = 'No roster found with this id';
             res.status(404).json(res_errors);
+            return;
         }
         res.json(roster);
         
