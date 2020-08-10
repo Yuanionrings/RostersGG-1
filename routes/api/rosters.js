@@ -12,7 +12,6 @@ const validateInvitePlayerToRosterInput = require("../../validation/roster/invit
 // Load mongoose Roster and User models
 const Roster = require("../../models/RosterSchema");
 const User = require("../../models/UserSchema");
-const { update } = require("../../models/RosterSchema");
 
 
 // @route GET api/rosters/roster/:id
@@ -253,24 +252,24 @@ router.patch("/roster/:id/:username/remove", async (req, res) => {
     try{
         const roster = await Roster.findOne(rosterFilter);
         if (!roster) {
-            res_errors.id = 'No roster found with this id';
+            res_errors.remove = 'No roster found with this id';
             res.status(404).json(res_errors);
             return;
         }
 
         const user = await User.findOne(userFilter);
         if (!user) {
-            res_errors.player_username = 'No user found with this username';
+            res_errors.remove = 'No user found with this username';
             res.status(404).json(res_errors);
             return;
 
         } else if (!roster.players.includes(user.username)) {
-            res_errors.player_username = 'This player is not on this roster, cannot remove';
+            res_errors.remove = 'This player is not on this roster, cannot remove from roster';
             res.status(400).json(res_errors);
             return;
 
         } else if (roster.leader === user.username) {
-            res_errors.player_username = 'This player is the team leader, cannot remove';
+            res_errors.remove = 'This player is the team leader, cannot remove from roster';
             res.status(403).json(res_errors);
             return;
         }
@@ -283,7 +282,7 @@ router.patch("/roster/:id/:username/remove", async (req, res) => {
 
     } catch(error) {
         console.log(err);
-        res_errors.badrequest = `Error inviting user to this roster`;
+        res_errors.remove = `Error removing user from this roster. If error persists, email contact@rosters.gg`;
         res.status(400).json(res_errors);
     }
 });
