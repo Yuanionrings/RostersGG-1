@@ -61,7 +61,7 @@ class UserInfo extends Component {
 
     onEdit = e => {
         e.preventDefault();
-        this.props.history.push('/edituser')
+        this.props.history.push('/' + this.props.given_username + '/edit');
     }
 
     invitationList(user_username){

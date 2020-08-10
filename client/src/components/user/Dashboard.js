@@ -37,7 +37,7 @@ class Dashboard extends Component {
     }
     onGoToEditProfile = e => {
         e.preventDefault();
-        this.props.history.push('/edituser');
+        this.props.history.push('/' + this.props.auth.user.username + '/edit');
     }
     render() {
         return (
