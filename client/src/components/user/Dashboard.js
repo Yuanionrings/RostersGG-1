@@ -49,15 +49,15 @@ class Dashboard extends Component {
                                 <img src={DashboardIcon} alt="Dashboard Icon" />
                                 {"   "}Dashboard</Button>
 
-                            <Button onClick={this.onLogout}>
+                            <Button onClick={() => console.warn("This is not implemented")}>
                                 <img src={EventsIcon} alt="Events Icon" />
                                 {"   "}Event Manager</Button>
 
-                            <Button onClick={this.onLogout}>
+                            <Button onClick={() => console.warn("This is not implemented")}>
                                 <img src={TeamDirIcon} alt="Team Directory Icon" />
                                 {"   "}Team Directory</Button>
 
-                            <Button onClick={this.onLogout}>
+                            <Button onClick={() => console.warn("This is not implemented")}>
                                 <img src={PlayerDirIcon} alt="Players Directory Icon" />
                                 {"   "}Player Directory</Button>
 

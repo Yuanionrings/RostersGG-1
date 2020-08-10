@@ -21,7 +21,8 @@ class UserEvents extends Component {
                     </h2>
                     <hr />
                     <p className="filler-text">
-                        Events are currently not supported - please try again later.
+                        NOT YET SUPPORTED - Each team will have "EVENTS" with a time and date. A user 
+                        will see all of their upcoming events in chronological order here.
                     </p>
                 </div>
             </div>

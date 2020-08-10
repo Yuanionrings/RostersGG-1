@@ -62,7 +62,7 @@ export default class ViewUser extends Component {
                     </Link>
 
                     <h2 className="">{this.state.name}</h2>
-                    <h6>USER PROFILE</h6>
+                    <h6 className="filler-text">USER PROFILE</h6>
                     <hr />
 
                     <h4>User Info </h4>
@@ -71,7 +71,7 @@ export default class ViewUser extends Component {
                     <hr />
 
                     <h4>About Me </h4>
-                    <h6>{this.state.biography}</h6>
+                    <h6 className="filler-text">{this.state.biography}</h6>
                     <hr />
 
                     <h4>Rosters</h4>
