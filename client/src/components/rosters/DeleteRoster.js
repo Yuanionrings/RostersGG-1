@@ -11,7 +11,8 @@ class DeleteRoster extends Component {
         super()
         this.state = {
             teamname: "",
-            free_to_delete: false
+            free_to_delete: false,
+            errors: {}
         }
     }
 
@@ -30,6 +31,14 @@ class DeleteRoster extends Component {
             .catch(err => {
                 console.log(err);
             })
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
     }
 
     onSubmit = e => {
@@ -61,6 +70,7 @@ class DeleteRoster extends Component {
                         <button type="submit" className="btn btn-primary btn-block btn-lg">
                             Delete Roster Forever
                         </button>
+                        <span className="red-text">{errors.delete}</span>
                     </div>
 
                 </form>

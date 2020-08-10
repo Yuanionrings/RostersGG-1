@@ -396,24 +396,24 @@ router.delete("/roster/:id/delete", async (req, res) => {
     try{
         const roster = await Roster.findOne(rosterFilter);
         if (!roster) {
-            res_errors.id = 'No roster found with this id';
+            res_errors.delete = 'No roster found with this id';
             res.status(404).json(res_errors);
             return;
         }
 
         const user = await User.findOne(userFilter);
         if (!user) {
-            res_errors.player_username = 'No user found with this username';
+            res_errors.delete = 'No user found with this username';
             res.status(404).json(res_errors);
             return;
 
         } else if (!roster.players.includes(user.username)) {
-            res_errors.player_username = 'This player is not on this roster, cannot delete';
+            res_errors.delete = 'This player is not on this roster, cannot delete';
             res.status(400).json(res_errors);
             return;
 
         } else if (roster.leader != user.username) {
-            res_errors.player_username = 'This player is not the team leader, cannot delete roster';
+            res_errors.delete = 'This player is not the team leader, cannot delete roster';
             res.status(403).json(res_errors);
             return;
         }
@@ -424,7 +424,7 @@ router.delete("/roster/:id/delete", async (req, res) => {
 
     } catch(error) {
         console.log(err);
-        res_errors.badrequest = `Error deleting this roster`;
+        res_errors.delete = `Error deleting this roster`;
         res.status(400).json(res_errors);
     }
 });
