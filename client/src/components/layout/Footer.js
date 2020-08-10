@@ -2,14 +2,19 @@ import React from 'react';
 
 function Footer(){
     return (
-        <footer className="">
-            <div className="footer-spec primary-bg-dark">
+        <div className="">
+            <div className="footer-main primary-bg-light">
+                <h2>Test</h2>
+            </div>
+            <div className="footer-bottom primary-bg-dark">
                 <p className="secondary-text-light">
-                    Copyright © <a className="primary-text-light"
-                                href="http://github.com/moreauowen">Owen Moreau</a> 2020
+                    <a href='https://www.rosters.gg/' target="_blank">Terms of Service</a>
+                    <a href='https://www.rosters.gg/' target="_blank">Privacy</a>
+                    <a href='https://www.rosters.gg/' target="_blank">Cookies</a>
+                     © 2020 Rosters.gg
                 </p>
             </div>
-        </footer>
+        </div>
     );
 }
 

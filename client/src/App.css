@@ -8,7 +8,7 @@ body {
     BACKGROUND COLORS
 */
 .primary-bg-light { background: #ffffff !important; }
-.secondary-bg-light { background: #F1F2F6 !important; }
+.secondary-bg-light { background: #f1f1f1 !important; }
 .tertiary-bg-light { background: #e3e4ea !important; }
 .primary-bg-dark { background: #373638 !important; }
 .secondary-bg-dark { background: #111111 !important; }
@@ -23,7 +23,7 @@ body {
     TEXT COLORS
 */
 .primary-text-light { color: #ffffff !important; }
-.secondary-text-light { color: #F1F2F6 !important; }
+.secondary-text-light { color: #f1f1f1 !important; }
 .primary-text-dark { color: #373638 !important; }
 .secondary-text-dark { color: #111111 !important; }
 .primary-text-green { color: #33D9B2 !important; }
@@ -227,7 +227,18 @@ body {
 /*
     Footer-related styling 
 */
-.footer-spec {
+.footer-main {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.footer-bottom {
     font-size: 14px;
     display: flex;
     align-items: center;
