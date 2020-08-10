@@ -8,10 +8,10 @@ const RosterInfo = props => (
         <td className="">{props.roster.teamname}</td>
         <td className="">{props.roster.game}</td>
         <td className="">{props.roster.region}</td>
-        <td className="">{props.roster.players.length}</td>
         <td>
             <Link to={"/roster/" + props.roster._id}>View</Link>
             <Link to={"/roster/" + props.roster._id + "/edit"}>Edit</Link>
+            <Link to={"/roster/" + props.roster._id + "/delete"}>Delete</Link>
         </td>
     </tr>
 );
@@ -68,7 +68,6 @@ export default class LedRosters extends Component {
                                 <th>Team Name</th>
                                 <th>Game</th>
                                 <th>Region</th>
-                                <th># Players</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>

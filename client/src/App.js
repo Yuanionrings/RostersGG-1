@@ -21,6 +21,7 @@ import EditUser from "./components/user/EditUser";
 import ViewRoster from "./components/rosters/ViewRoster";
 import EditRoster from "./components/rosters/EditRoster";
 import CreateRoster from "./components/rosters/CreateRoster";
+import DeleteRoster from "./components/rosters/DeleteRoster";
 
 
 if (localStorage.jwtToken) {
@@ -56,11 +57,12 @@ function App() {
           <Route exact path="/confirm/:id" component={ConfirmEmail} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/:username" component={ViewUser} />
             <PrivateRoute exact path="/editprofile" component={EditUser} />
             <PrivateRoute exact path="/roster/create" component={CreateRoster} />
             <PrivateRoute exact path="/roster/:id" component={ViewRoster} />
             <PrivateRoute exact path="/roster/:id/edit" component={EditRoster} />
-            <PrivateRoute exact path="/:username" component={ViewUser} />
+            <PrivateRoute exact path="/roster/:id/delete" component={DeleteRoster} />
           </Switch>
           <Footer />
         </div>

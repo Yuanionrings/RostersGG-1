@@ -12,6 +12,17 @@ export const createRoster = (rosterData, history) => dispatch => {
     }))
 }
 
+// Delete Roster
+export const deleteRoster = (deleteRosterData, history) => dispatch => {
+  console.log(rosterData)
+  axios.delete(`/api/rosters/${deleteRosterData.id}/delete`, deleteRosterData.data)
+    .then(res => history.push("/dashboard"))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
+}
+
 // Edit Roster
 export const editRoster = (updatedRosterData, history) => dispatch => {
   axios.patch('/api/rosters/roster/' + updatedRosterData.id + '/edit',

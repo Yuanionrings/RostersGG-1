@@ -238,6 +238,56 @@ router.post("/roster/:id/invite", async (req, res) => {
 });
 
 
+// @route PATCH api/rosters/roster/:id/:username/remove
+// @desc Removes player from roster if found - cannot remove leaders
+router.patch("/roster/:id/:username/remove", async (req, res) => {
+
+    // Define filters for querying collections
+    const rosterFilter = { _id: req.params.id };
+    const userFilter = { username: req.params.username };
+
+    let res_errors = {};
+    let res_success = {};
+
+    try{
+        const roster = await Roster.findOne(rosterFilter);
+        if (!roster) {
+            res_errors.id = 'No roster found with this id';
+            res.status(404).json(res_errors);
+            return;
+        }
+
+        const user = await User.findOne(userFilter);
+        if (!user) {
+            res_errors.player_username = 'No user found with this username';
+            res.status(404).json(res_errors);
+            return;
+
+        } else if (!roster.players.includes(user.username)) {
+            res_errors.player_username = 'This player is not on this roster, cannot remove';
+            res.status(400).json(res_errors);
+            return;
+
+        } else if (roster.leader === user.username) {
+            res_errors.player_username = 'This player is the team leader, cannot remove';
+            res.status(403).json(res_errors);
+            return;
+        }
+
+        roster.players.pull(user.username);
+        const updatedRoster = await roster.save();
+
+        res_success.success = `User ${user.username} successfully removed from roster ${updatedRoster._id}`;
+        res.json(res_success);
+
+    } catch(error) {
+        console.log(err);
+        res_errors.badrequest = `Error inviting user to this roster`;
+        res.status(400).json(res_errors);
+    }
+});
+
+
 // @route PATCH api/rosters/roster/:id/decline_invite
 // @desc Removes invitation from player's inbox and does not add to roster
 router.patch("/roster/:id/decline-invite", async (req, res) => {
@@ -327,6 +377,54 @@ router.patch("/roster/:id/edit", async (req, res) => {
     } catch(err) {
         console.log(err);
         res_errors.badrequest = `Error inviting user to this roster`;
+        res.status(400).json(res_errors);
+    }
+});
+
+
+// @route DELETE api/rosters/roster/:id/delete
+// @desc Completely deletes the listed roster
+router.delete("/roster/:id/delete", async (req, res) => {
+
+    // Define filters for querying collections
+    const rosterFilter = { _id: req.params.id };
+    const userFilter = { username: req.body.username };
+
+    let res_errors = {};
+    let res_success = {};
+
+    try{
+        const roster = await Roster.findOne(rosterFilter);
+        if (!roster) {
+            res_errors.id = 'No roster found with this id';
+            res.status(404).json(res_errors);
+            return;
+        }
+
+        const user = await User.findOne(userFilter);
+        if (!user) {
+            res_errors.player_username = 'No user found with this username';
+            res.status(404).json(res_errors);
+            return;
+
+        } else if (!roster.players.includes(user.username)) {
+            res_errors.player_username = 'This player is not on this roster, cannot delete';
+            res.status(400).json(res_errors);
+            return;
+
+        } else if (roster.leader != user.username) {
+            res_errors.player_username = 'This player is not the team leader, cannot delete roster';
+            res.status(403).json(res_errors);
+            return;
+        }
+
+        await Roster.findByIdAndDelete(rosterFilter);
+        res_success.success = `Roster ${rosterFilter._id} successfully deleted`;
+        res.json(res_success);
+
+    } catch(error) {
+        console.log(err);
+        res_errors.badrequest = `Error deleting this roster`;
         res.status(400).json(res_errors);
     }
 });
