@@ -369,6 +369,8 @@ router.patch("/roster/:id/edit-roster", async (req, res) => {
 
         roster.teamname = req.body.teamname;
         roster.team_desc = req.body.team_desc;
+        roster.game = req.body.game;
+        roster.region = req.body.region;
 
         const updatedRoster = await roster.save();
         res_success.success = `Roster ${updatedRoster.teamname} successfully updated`;

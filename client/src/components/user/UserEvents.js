@@ -21,7 +21,7 @@ class UserEvents extends Component {
                     </h2>
                     <hr />
                     <p className="filler-text">
-                        NOT YET SUPPORTED - Each team will have "EVENTS" with a time and date. A user 
+                        NOT YET SUPPORTED<br />Each team will have "EVENTS" with a time and date. A user 
                         will see all of their upcoming events in chronological order here.
                     </p>
                 </div>

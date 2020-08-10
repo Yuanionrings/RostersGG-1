@@ -86,7 +86,7 @@ class EditRoster extends Component {
         }
     }
 
-    playerList(id, myUsername){
+    playerList(id){
         return this.state.players.map(function(currentPlayer, i){
             if(i > 0) { return <PlayerInfo team_id={id} user={currentPlayer} key={i} /> }
         });
