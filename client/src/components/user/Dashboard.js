@@ -37,7 +37,7 @@ class Dashboard extends Component {
     }
     onGoToEditProfile = e => {
         e.preventDefault();
-        this.props.history.push('/editprofile');
+        this.props.history.push('/edituser');
     }
     render() {
         return (

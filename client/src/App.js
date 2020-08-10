@@ -58,7 +58,7 @@ function App() {
           <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/:username" component={ViewUser} />
-            <PrivateRoute exact path="/editprofile" component={EditUser} />
+            <PrivateRoute exact path="/edituser" component={EditUser} />
             <PrivateRoute exact path="/roster/create" component={CreateRoster} />
             <PrivateRoute exact path="/roster/:id" component={ViewRoster} />
             <PrivateRoute exact path="/roster/:id/edit" component={EditRoster} />
