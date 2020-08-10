@@ -228,14 +228,11 @@ body {
     Footer-related styling 
 */
 .footer-main {
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
 }
 .footer-bottom {
@@ -244,12 +241,13 @@ body {
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
     width: 100%;
 }
-.footer-spec p {
+.footer-bottom a {
+    color: #f1f1f1;
+    margin-right: 1rem;
+}
+.footer-bottom p {
     margin: 0px;
 }
 
