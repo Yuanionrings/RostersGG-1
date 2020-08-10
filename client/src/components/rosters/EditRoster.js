@@ -226,6 +226,10 @@ class EditRoster extends Component {
                     team_id={this.props.match.params.id} />
 
                 <div className="form-box">
+
+                    <h2>Kick Player</h2>
+                    <hr />
+                    
                     <div className="player-list">
                         <table className="table table-striped" style={{ marginTop: 15 }}>
                             <thead>

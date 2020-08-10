@@ -471,13 +471,30 @@ body {
     background: #373638;
     padding: 1.5rem;
 }
-.form-box .player-list .kick-player {        
+.form-box .player-list .btn {        
     font-size: 16px;
     font-weight: bold;
     color: #33D9B2;
     background: #373638;
     border-radius: 16px;
     border: 1px solid #33D9B2;
+}
+.form-box .player-list table {
+    color: #ffffff;
+    background: #373638;
+}
+.form-box .player-list thead th {
+    border-bottom: 3px solid #dedfe2;
+    border-left: 1px solid #dedfe2;
+    border-right: 1px solid #dedfe2;
+}
+.form-box .player-list a {
+    color: #33d9b2;
+    text-decoration: none;
+    margin-right: 15px;
+}	
+.form-box .player-list a:hover {
+    color: #218C74;
 }
 .form-box h2 {
     color: #ffffff;
