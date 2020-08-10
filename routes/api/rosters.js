@@ -217,6 +217,11 @@ router.post("/roster/:id/invite", async (req, res) => {
             res_errors.player_username = 'This player is already on this roster';
             res.status(400).json(res_errors);
             return;
+
+        } else if (user.invitations.includes(roster._id)) {
+            res_errors.player_username = 'This player already has an invite from this roster';
+            res.status(400).json(res_errors);
+            return;
         }
 
         user.invitations.push(req.params.id);
