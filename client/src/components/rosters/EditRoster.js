@@ -18,15 +18,15 @@ const PlayerInfo = props => (
         <td className="">{props.user.date}</td>
         <td className="">
             <Button
-                className="btn-decline"
-                onClick={() => onRemovePlayer(props.user.username)}
-                >Decline</Button>
+                className="kick-player-btn"
+                onClick={() => onRemovePlayer(props.team_id, props.user.username)}
+                >Kick</Button>
         </td>
     </tr>
 );
 
-function onRemovePlayer(given_username){
-    axios.patch("/api/rosters/roster/" + this.props.match.params.id + "/" + given_username + "/remove")
+function onRemovePlayer(team_id, given_username){
+    axios.patch("/api/rosters/roster/" + team_id + "/" + given_username + "/remove")
         .then(res => {
             console.log(res)
         })
@@ -88,7 +88,7 @@ class EditRoster extends Component {
 
     playerList(){
         return this.state.players.map(function(currentPlayer, i){
-            return <PlayerInfo user={currentPlayer} key={i} />
+            return <PlayerInfo team_id={this.props.match.params.id} user={currentPlayer} key={i} />
         });
     }
 
@@ -222,10 +222,9 @@ class EditRoster extends Component {
                     auth={this.props.auth} 
                     history={this.props.history} 
                     team_id={this.props.match.params.id} />
-                <div className="filler-lg"></div>
 
-                <div className="form-box ">
-                    <div>
+                <div className="form-box">
+                    <div className="player-list">
                         <table className="table table-striped" style={{ marginTop: 15 }}>
                             <thead>
                                 <tr>
@@ -241,6 +240,8 @@ class EditRoster extends Component {
                         </table>
                     </div>
                 </div>
+                <div className="filler-lg"></div>
+
             </div>
         );
     }

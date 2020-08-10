@@ -454,7 +454,8 @@ body {
     border-radius: 16px;
 }    
 .form-box {
-    width: 65%;
+    width: 90%;
+    max-width: 800px;
     margin: 0 auto;
     padding-top: 30px;
 }
@@ -464,11 +465,19 @@ body {
     background: #373638;
     padding: 1.5rem;
 }
-.form-box form {
+.form-box form, .form-box .player-list {
     color: #ffffff;
     border-radius: 16px;
     background: #373638;
     padding: 1.5rem;
+}
+.form-box .player-list .kick-player {        
+    font-size: 16px;
+    font-weight: bold;
+    color: #33D9B2;
+    background: #373638;
+    border-radius: 16px;
+    border: 1px solid #33D9B2;
 }
 .form-box h2 {
     color: #ffffff;
