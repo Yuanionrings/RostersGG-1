@@ -126,7 +126,6 @@ router.get("/:username/upcoming-events", async (req, res) => {
         const rosterFilter = { players: user.username };
         const rosterProjection = {_id:1};
         const rosters = await Roster.find(rosterFilter, rosterProjection);
-        console.log(rosters);
 
         if (!rosters || rosters.length < 1){
             res_errors.upcoming_events = `User is not on any rosters, so no events`;
@@ -140,11 +139,8 @@ router.get("/:username/upcoming-events", async (req, res) => {
         for(roster_doc of rosters){
             rosters_id_list.push(roster_doc._id);
         }
-        console.log(rosters_id_list);
 
         const eventFilter = {teams: { $elemMatch: {$in: rosters_id_list }}};
-        console.log(eventFilter)
-
         const events = await Event.find(eventFilter);
         console.log(events)
 
