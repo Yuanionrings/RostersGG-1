@@ -136,8 +136,9 @@ router.get("/:username/upcoming-events", async (req, res) => {
 
         // List of roster documents found -> extract _ids into list
         var rosters_id_list = [];
-        for(document of rosters){
-            rosters_id_list.push(document._id);
+        var roster_doc;
+        for(roster_doc of rosters){
+            rosters_id_list.push(roster_doc._id);
         }
         console.log(rosters_id_list);
 
