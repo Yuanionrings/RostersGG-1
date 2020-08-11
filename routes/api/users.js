@@ -17,6 +17,7 @@ const validateEditUserInput = require("../../validation/user/edituser")
 // Load mongoose User and Roster models
 const User = require("../../models/UserSchema");
 const Roster = require("../../models/RosterSchema");
+const Event = require("../../models/EventSchema");
 
 
 // @route GET api/users/user/:username
@@ -117,18 +118,33 @@ router.get("/:username/upcoming-events", async (req, res) => {
     try {
         const user = await User.findOne(userFilter);
         if (!user) {
-            res_errors.username = `No user found with username ${userFilter.username}`;
+            res_errors.upcoming_events = `No user found with username ${userFilter.username}`;
             res.status(404).json(res_errors);
             return;
         }
 
         const rosterFilter = { players: user.username };
         const rosterProjection = {_id:1};
-        const roster_list = await Roster.find(rosterFilter, rosterProjection);
-        console.log(roster_list);
+        const rosters = await Roster.find(rosterFilter, rosterProjection);
+        console.log(rosters);
+
+        if (!rosters || rosters.length < 1){
+            res_errors.upcoming_events = `User is not on any rosters, so no events`;
+            res.status(404).json(res_errors);
+            return;
+        }
+
+        // List of roster documents found -> extract _ids into list
+        var rosters_id_list = [];
+        for(document of rosters){
+            rosters_id_list.push(document._id);
+        }
+        console.log(rosters_id_list);
 
         const eventFilter = {teams: { $elemMatch: {$in: roster_list }}};
+        console.log(eventFilter)
         const events = await Event.find(eventFilter);
+        console.log(events)
 
         res.json(events);
 
