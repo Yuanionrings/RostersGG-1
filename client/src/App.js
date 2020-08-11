@@ -8,6 +8,9 @@ import { setCurrentUser, logoutUser } from "./actions/userAuthActions";
 
 import './App.css';
 
+import PrivacyPolicy from "./components/compliance/PrivacyPolicy";
+import TermsAndConditions from "./components/compliance/TermsAndConditions";
+
 import NavigationBar from "./components/layout/NavigationBar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
@@ -53,24 +56,30 @@ function App() {
           <div className="content-wrap">
             <NavigationBar authenticated={authenticated()}/>
             <Route exact path="/" component={Landing} />
+
+            <Route exact path="/legal/privacy-policy" component={PrivacyPolicy} />
+            <Route exact path="/legal/terms-and-conditions" component={TermsAndConditions} />
+
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/confirm/:id" component={ConfirmEmail} />
+
             <Switch>
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/:username" component={ViewUser} />
               <PrivateRoute exact path="/:username/edit" component={EditUser} />
+
               <PrivateRoute exact path="/roster/create" component={CreateRoster} />
               <PrivateRoute exact path="/roster/:id" component={ViewRoster} />
               <PrivateRoute exact path="/roster/:id/edit" component={EditRoster} />
               <PrivateRoute exact path="/roster/:id/delete" component={DeleteRoster} />
             </Switch>
+            
             <Footer />
           </div>
         </div>
       </Router>
     </Provider>
-
   );
 }
 
