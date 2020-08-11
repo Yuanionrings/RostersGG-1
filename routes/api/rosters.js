@@ -527,13 +527,13 @@ router.post("/roster/:id/create-event", async (req, res) => {
                 name: req.body.name,
                 description: req.body.description,
                 when: req.body.when,
-                teams: req.body.teams
+                teams: [req.body.team_id]
             })
             :
             new Event({
                 name: req.body.name,
                 when: req.body.when,
-                teams: req.body.teams
+                teams: [req.body.team_id]
             });
 
         const new_event = await newEvent.save();

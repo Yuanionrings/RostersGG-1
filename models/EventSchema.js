@@ -19,6 +19,10 @@ const EventSchema = new Schema({
     teams: {
         type: [Schema.Types.ObjectId],
         default: []
+    },
+    date_created: {
+        type: Date,
+        default: Date.now
     }
 });
 

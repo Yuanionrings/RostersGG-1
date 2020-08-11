@@ -38,7 +38,7 @@ class CreateEvent extends Component {
                 name: this.state.event_name,
                 when: this.state.event_when,
                 username: this.props.auth.user.username,
-                teams: [this.state.team_id]
+                team_id: this.state.team_id
             }
         };
         this.props.createRosterEvent(newEventData, this.props.history);
