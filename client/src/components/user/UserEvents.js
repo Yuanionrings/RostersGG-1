@@ -27,6 +27,15 @@ class UserEvents extends Component {
             });
     }
 
+    eventCards(){
+        return this.state.events.map(function(event, i){
+            return <EventCard name={event.name}
+                    description={event.description}
+                    when={event.when} 
+                    key={i} />
+        });
+    }
+
     render() {
         return (
             <div className="display-box">
@@ -35,11 +44,7 @@ class UserEvents extends Component {
                         Upcoming Events
                     </h2>
                     <hr />
-                    {this.state.events.map((event, i) => {
-                        <EventCard name={event.name}
-                            description={event.description}
-                            when={event.when} />
-                    })}
+                    {this.eventCards()}
                     <p className="filler-text">
                         NOT YET SUPPORTED<br />Each team will have "EVENTS" with a time and date. A user 
                         will see all of their upcoming events in chronological order here.
