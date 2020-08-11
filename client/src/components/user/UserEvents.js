@@ -44,11 +44,13 @@ class UserEvents extends Component {
                         Upcoming Events
                     </h2>
                     <hr />
-                    {this.eventCards()}
-                    <p className="filler-text">
-                        NOT YET SUPPORTED<br />Each team will have "EVENTS" with a time and date. A user 
-                        will see all of their upcoming events in chronological order here.
-                    </p>
+                    {this.state.events.length > 0 ?
+                        this.eventCards()
+                    :
+                        <p className="filler-text">
+                            You do not have any upcoming events.
+                        </p>
+                    }
                 </div>
             </div>
         )
