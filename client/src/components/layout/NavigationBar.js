@@ -19,7 +19,9 @@ let NavigationBar = (props) => {
     return (
         <div>
             <Navbar className="navbar-spec primary-bg-dark">
-                <NavbarBrand className="mr-auto secondary-text-light bold-text" href="/">RostersGG (BETA)</NavbarBrand>
+                <NavbarBrand className="mr-auto secondary-text-light bold-text" href="/">
+                    RostersGG <span className="beta-text">BETA</span>
+                </NavbarBrand>
                 {conditionalNavItems(props.auth)}
             </Navbar>
             <div className="navbar-divider"></div>
