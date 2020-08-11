@@ -8,10 +8,12 @@ const templates = require('../../email/email.templates');
 // Load input validation
 const validateCreateEditRosterInput = require("../../validation/roster/create_edit_roster");
 const validateInvitePlayerToRosterInput = require("../../validation/roster/invite_player");
+const validateCreateEventInput = require("../../validation/event/create_event");
 
 // Load mongoose Roster and User models
 const Roster = require("../../models/RosterSchema");
 const User = require("../../models/UserSchema");
+const Event = require("../../models/EventSchema");
 
 
 // @route GET api/rosters/roster/:id
@@ -477,6 +479,68 @@ router.post("/create", async (req, res) => {
     } catch(error) {
         console.log(error);
         res_errors.badrequest = `Error creating roster`;
+        res.status(400).json(res_errors);
+    }
+});
+
+
+// @route POST api/rosters/roster/:id/create-event
+// @desc Create's a new private event for the roster with :id
+router.post("/roster/:id/create-event", async (req, res) => {
+
+    // Form validation to ensure event name and date are properly entered
+    const { errors, isValid } = validateCreateEventInput(req.body);
+    if (!isValid) {
+        return res.status(400).json(errors);
+    }
+
+    // Define filters for querying collections
+    const rosterFilter = { _id: req.params.id };
+    const userFilter = { username: req.body.username };
+
+    let res_errors = {};
+    let res_success = {};
+
+    try {
+        // Ensure roster with this id exists
+        const roster = await Roster.findOne(rosterFilter);
+        if (!roster) {
+            res_errors.create_event = 'No roster found with this id';
+            res.status(404).json(res_errors);
+            return;
+        }
+        // Ensure user who initiated exists and is leader
+        const user = await User.findOne(userFilter);
+        if (!user) {
+            res_errors.create_event = 'User not found, cannot create event';
+            res.status(404).json(res_errors);
+            return;
+
+        } else if (roster.leader !== user.username) {
+            res_errors.create_event = 'User is not team leader, cannot create event';
+            res.status(403).json(res_errors);
+            return;
+        }
+
+        const newEvent = (req.body.description) ? 
+            new Event({
+                name: req.body.name,
+                description: req.body.description,
+                when: req.body.when
+            })
+            :
+            new Event({
+                name: req.body.name,
+                when: req.body.when
+            });
+
+        const new_event = await newEvent.save();
+        res_success.success = `Event ${new_event._id} successfully created`;
+        res.json(res_success);
+
+    } catch(error) {
+        console.log(err);
+        res_errors.create_event = `Error creating new event for this roster`;
         res.status(400).json(res_errors);
     }
 });

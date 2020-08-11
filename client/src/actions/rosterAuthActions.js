@@ -42,3 +42,14 @@ export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
       payload: err.response.data
     }))
 }
+
+// Create Event for this Roster
+export const createRosterEvent = (createEventData, history) => dispatch => {
+  axios.post('/api/rosters/roster/' + createEventData.team_id + '/create-event',
+    createEventData.data)
+    .then(res => history.push("/dashboard"))
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
+}

@@ -7,6 +7,7 @@ import { logoutUser } from "../../actions/userAuthActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import InvitePlayer from "./InvitePlayer";
+import CreateEvent from "./CreateEvent";
 import Button from "react-bootstrap/Button";
 
 const PlayerInfo = props => (
@@ -223,6 +224,11 @@ class EditRoster extends Component {
                     history={this.props.history} 
                     team_id={this.props.match.params.id} />
 
+                <CreateEvent
+                    auth={this.props.auth} 
+                    history={this.props.history} 
+                    team_id={this.props.match.params.id} />
+
                 <div className="form-box">
                     <div className="player-list">
                         <h2>Kick Player</h2>
@@ -247,6 +253,8 @@ class EditRoster extends Component {
                     </div>
                 </div>
                 <div className="filler-lg"></div>
+
+                
 
             </div>
         );
