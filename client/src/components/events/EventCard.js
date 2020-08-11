@@ -6,10 +6,9 @@ function EventCard(props){
         <div className="event-card">
             <h4>{props.name}</h4>
             <p>{props.description}</p>
-            <p>{props.when}</p>
+            <p>{props.when} - this will be formatted better.</p>
             <hr />
-            <p>Event starts in: </p>
-            <p>Calculated time here</p>
+            <p>Event starts in: (Not yet implemented)</p>
         </div>
     );
 }
