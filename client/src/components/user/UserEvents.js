@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import axios from 'axios';
+import axios from 'axios';
 
 class UserEvents extends Component {
     constructor(props) {
@@ -9,9 +9,17 @@ class UserEvents extends Component {
         }
     }
     componentDidMount() {
-        // console.log(this.props)
+        console.log(this.props)
         // This is where route to get user events is implemented to fetch events
+        axios.get("/api/users/" + this.props.username + "/upcoming-events")
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
+
     render() {
         return (
             <div className="display-box">
