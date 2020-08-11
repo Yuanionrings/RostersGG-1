@@ -21,7 +21,7 @@ module.exports = function validateCreateEventInput(data) {
     if (Validator.isEmpty(data.when)) {
         errors.when = "Event Time and Date are required";
     }
-    if (Validator.isAfter(data.when)) {
+    if (!Validator.isAfter(data.when)) {
         errors.when = "Event must take place in the future";
     }
     
