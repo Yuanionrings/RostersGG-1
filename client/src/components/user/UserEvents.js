@@ -35,7 +35,7 @@ class UserEvents extends Component {
                         Upcoming Events
                     </h2>
                     <hr />
-                    {events.map((event, i) => {
+                    {this.state.events.map((event, i) => {
                         <EventCard name={event.name}
                             description={event.description}
                             when={event.when} />
