@@ -69,7 +69,7 @@ class CreateEvent extends Component {
                 <div className="form-group">
                     <label>Date and Time: </label>
                     <input type="text"
-                        id="event_name"
+                        id="event_when"
                         placeholder="YYYY/MM/DD HH:MM:SS"
                         value={event_when}
                         error={errors.when}
