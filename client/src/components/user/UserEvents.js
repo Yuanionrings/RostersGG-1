@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import EventCard from "../events/EventCard";
+import Slider from 'infinite-react-carousel';
 
 class UserEvents extends Component {
     constructor(props) {
@@ -10,10 +11,8 @@ class UserEvents extends Component {
         }
     }
 
-
-
     componentDidMount() {
-        console.log(this.props)
+        //console.log(this.props)
         // This is where route to get user events is implemented to fetch events
         axios.get("/api/users/" + this.props.username + "/upcoming-events")
             .then(res => {
@@ -37,6 +36,12 @@ class UserEvents extends Component {
     }
 
     render() {
+        const sliderSettings = {
+            centerPadding: 10,
+            dots: true,
+            initialSlide: true,
+            slidesToShow: 4
+        }
         return (
             <div className="display-box">
                 <div>
@@ -45,7 +50,9 @@ class UserEvents extends Component {
                     </h2>
                     <hr />
                     {this.state.events.length > 0 ?
-                        this.eventCards()
+                        <Slider {...sliderSettings}>
+                            {this.eventCards()}
+                        </Slider>
                     :
                         <p className="filler-text">
                             You do not have any upcoming events.
