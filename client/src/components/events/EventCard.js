@@ -1,7 +1,7 @@
 import React from 'react';
 
 function EventCard(props){
-    console.log(props);
+    //console.log(props);
     return (
         <div className="event-card">
             <h4>{props.name}</h4>

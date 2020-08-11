@@ -37,10 +37,8 @@ class UserEvents extends Component {
 
     render() {
         const sliderSettings = {
-            centerPadding: 10,
             dots: true,
-            initialSlide: true,
-            slidesToShow: 4
+            initialSlide: 1
         }
         return (
             <div className="display-box">
