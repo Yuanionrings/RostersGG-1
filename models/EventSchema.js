@@ -15,6 +15,10 @@ const EventSchema = new Schema({
     when: {
         type: Date,
         required: true
+    },
+    teams: {
+        type: [Schema.Types.ObjectId],
+        default: []
     }
 });
 

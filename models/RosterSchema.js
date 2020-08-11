@@ -25,10 +25,6 @@ const RosterSchema = new Schema({
         type: String,
         required: true
     },
-    events: {
-        type: [Schema.Types.ObjectId],
-        default: []
-    },
     players: {
         type: [String]
     }

@@ -37,7 +37,8 @@ class CreateEvent extends Component {
             data: {
                 name: this.state.event_name,
                 when: this.state.event_when,
-                username: this.props.auth.user.username
+                username: this.props.auth.user.username,
+                teams: [this.state.team_id]
             }
         };
         this.props.createRosterEvent(newEventData, this.props.history);
@@ -50,8 +51,8 @@ class CreateEvent extends Component {
             <form className="signup-form" onSubmit={this.onSubmit}>
 
                 <h2>Create Event</h2>
-                <p>Date and time must be YYYY/MM/DD HH:MM:SS in order to process correctly.</p>
-                <p className="filler-text">All times must be entered as EST time (only during BETA).</p>
+                <p className="mb-0">Date and time must be YYYY/MM/DD HH:MM:SS in order to process correctly.</p>
+                <p className="filler-text mt-0">All times must be entered as EST time (only during BETA).</p>
                 <hr />
                 
                 <div className="form-group">

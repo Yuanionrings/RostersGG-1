@@ -100,6 +100,69 @@ router.get("/:username/invitations", async (req, res) => {
 });
 
 
+// @route GET api/users/:username/upcoming-events
+// @desc Retrieves event info for all of a user's upcoming events
+/*
+    Check to see if user exists
+    Get ALL events of ALL rosters where user is a player
+
+router.get("/:username/upcoming-events", (req, res) => {
+
+    // Define filter for querying users collection
+    const userFilter = { username: req.params.username };
+    const eventFilter = { "_id": {$in: roster.events}}
+
+    let res_errors = {};
+
+    try {
+        const user = await User.findOne(userFilter);
+        if (!user) {
+            res_errors.username = `No user found with username ${userFilter.username}`;
+            res.status(404).json(res_errors);
+            return;
+        }
+
+
+    } catch(error) {
+
+    }
+    
+    User.findOne(userFilter)
+        .then(user => {
+            if (!user) {
+                res_errors.username = `No user found with username ${userFilter.username}`;
+                res.status(404).json(res_errors);
+
+            } else {
+                // Define filter for querying rosters collection
+                const rosterFilter = { players: user.username };
+
+                Roster.find(rosterFilter)
+                    .then(rosters => {
+                        if (!rosters) {
+                            res_errors.username = `No rosters found with player ${userFilter.username}`
+                            res.status(404).json(res_errors);
+                        }
+
+                        res.json(rosters);
+                        
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        res_errors.badrequest = `Error finding rosters`;
+                        res.status(400).json(res_errors);
+                    });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res_errors.badrequest = `Error finding rosters`;
+            res.status(400).json(res_errors);
+        });
+
+}); */
+
+
 // @route PATCH api/users/user/:username/update
 // @desc Update user information
 router.patch("/:username/update", async (req, res) => {

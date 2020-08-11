@@ -526,15 +526,18 @@ router.post("/roster/:id/create-event", async (req, res) => {
             new Event({
                 name: req.body.name,
                 description: req.body.description,
-                when: req.body.when
+                when: req.body.when,
+                teams: req.body.teams
             })
             :
             new Event({
                 name: req.body.name,
-                when: req.body.when
+                when: req.body.when,
+                teams: req.body.teams
             });
 
         const new_event = await newEvent.save();
+        
         res_success.success = `Event ${new_event._id} successfully created`;
         res.json(res_success);
 
