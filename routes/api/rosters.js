@@ -539,8 +539,8 @@ router.post("/roster/:id/create-event", async (req, res) => {
         res.json(res_success);
 
     } catch(error) {
-        console.log(err);
-        res_errors.create_event = `Error creating new event for this roster`;
+        console.log(error);
+        res_errors.when = `DATE and TIME not entered correctly`;
         res.status(400).json(res_errors);
     }
 });
