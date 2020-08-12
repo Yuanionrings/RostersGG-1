@@ -10,6 +10,7 @@ import InvitePlayer from './InvitePlayer';
 import CreateEvent from './CreateEvent';
 import ManageRosterEvents from './ManageRosterEvents';
 import Button from 'react-bootstrap/Button';
+import { supportedGamesList, supportedGames } from '../../util/selectSupportedGames';
 
 
 const PlayerInfo = props => (
@@ -180,13 +181,7 @@ class EditRoster extends Component {
                                 invalid: errors.game
                             })}>
                             <option selected value='no-game'>Select a game:</option>
-                            <option value='Mordhau'>Mordhau</option>
-                            <option value='CS:GO'>CS:GO</option>
-                            <option value='League of Legends'>League of Legends</option>
-                            <option value='DOTA 2'>DOTA 2</option>
-                            <option value='Valorant'>Valorant</option>
-                            <option value='Overwatch'>Overwatch</option>
-                            <option value='Chivalry'>Chivalry</option>
+                            {supportedGamesList(supportedGames)}
                             </select>
                             <span className='red-text'>{errors.game}</span>
                         </div>
