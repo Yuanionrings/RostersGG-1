@@ -3,7 +3,7 @@ import axios from 'axios';
 import EventCard from '../events/EventCard';
 import Slider from 'infinite-react-carousel';
 
-class UserEvents extends Component {
+class UpcomingEvents extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -70,4 +70,4 @@ class UserEvents extends Component {
     }
 }
 
-export default UserEvents;
+export default UpcomingEvents;

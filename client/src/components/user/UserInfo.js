@@ -115,6 +115,7 @@ class UserInfo extends Component {
 
                     <h5>Invitations: </h5>
                     {(this.state.user_invitations.length > 0) ?
+                    <div className='table-container'>
                         <table className='table table-striped' style={{ marginTop: 10 }}>
                             <thead>
                                 <tr>
@@ -128,6 +129,7 @@ class UserInfo extends Component {
                                 { this.invitationList(this.state.user_username) }
                             </tbody>
                         </table>
+                    </div>
                     :
                         <p><span className='filler-text'>You do not have any invitations right now.</span></p>
                     }

@@ -5,7 +5,7 @@ import { logoutUser } from '../../actions/userAuthActions';
 import MyRosters from '../rosters/MyRosters';
 import LedRosters from '../rosters/LedRosters';
 import UserInfo from './UserInfo';
-import UserEvents from './UserEvents';
+import UpcomingEvents from './UpcomingEvents';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -80,7 +80,7 @@ class Dashboard extends Component {
                             <UserInfo
                                 given_username={this.props.auth.user.username} 
                                 history={this.props.history} />
-                            <UserEvents 
+                            <UpcomingEvents 
                                 username={this.props.auth.user.username} 
                                 history={this.props.history} />
                             <LedRosters 

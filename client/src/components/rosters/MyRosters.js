@@ -49,20 +49,22 @@ export default class MyRosters extends Component {
                     <hr />
 
                     {(this.state.rosters.length > 0) ?
-                    <table className='table table-striped' style={{ marginTop: 15 }}>
-                        <thead>
-                            <tr>
-                                <th>Team Name</th>
-                                <th>Game</th>
-                                <th>Region</th>
-                                <th># Players</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { this.rosterList() }
-                        </tbody>
-                    </table>
+                    <div className='table-container'>
+                        <table className='table table-striped' style={{ marginTop: 15 }}>
+                            <thead>
+                                <tr>
+                                    <th>Team Name</th>
+                                    <th>Game</th>
+                                    <th>Region</th>
+                                    <th># Players</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                { this.rosterList() }
+                            </tbody>
+                        </table>
+                    </div>
                     :
                     <p><span className='filler-text'>You are not a part of any rosters.</span></p>
                     }

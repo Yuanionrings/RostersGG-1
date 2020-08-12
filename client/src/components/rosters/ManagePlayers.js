@@ -69,19 +69,21 @@ class ManagePlayers extends Component {
                     <h2>Manage Players</h2>
                     <hr />
                     {(this.state.players.length > 1) ? 
-                    <table className='table table-striped' style={{ marginTop: 15 }}>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th>Date Joined RostersGG</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { this.playerList(this.props.match.params.id, this.props.auth.user.username) }
-                        </tbody>
-                    </table>
+                    <div className='table-container'>
+                        <table className='table table-striped' style={{ marginTop: 15 }}>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Date Joined RostersGG</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                { this.playerList(this.props.match.params.id, this.props.auth.user.username) }
+                            </tbody>
+                        </table>
+                    </div>
                     :
                     <p className='filler-text'>You are the only player on this roster.</p>
                     }

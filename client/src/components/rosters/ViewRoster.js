@@ -70,18 +70,20 @@ class ViewRoster extends Component {
 
                     <h6><b>Description:</b><br/>{this.state.team_desc}</h6>
                     
-                    <table className='table table-striped' style={{ marginTop: 15 }}>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th>Date Joined RostersGG</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { this.playerList() }
-                        </tbody>
-                    </table>
+                    <div className='table-container'>
+                        <table className='table table-striped' style={{ marginTop: 15 }}>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Date Joined RostersGG</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                { this.playerList() }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         )

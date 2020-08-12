@@ -76,20 +76,22 @@ export default class ViewUser extends Component {
 
                     <h4>Rosters</h4>
                     {(this.state.rosters.length > 0) ?
-                    <table className='table table-striped' style={{ marginTop: 0 }}>
-                        <thead>
-                            <tr>
-                                <th>Team Name</th>
-                                <th>Game</th>
-                                <th>Region</th>
-                                <th>Size</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { this.rosterList() }
-                        </tbody>
-                    </table>
+                    <div className='table-container'>
+                        <table className='table table-striped' style={{ marginTop: 0 }}>
+                            <thead>
+                                <tr>
+                                    <th>Team Name</th>
+                                    <th>Game</th>
+                                    <th>Region</th>
+                                    <th>Size</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                { this.rosterList() }
+                            </tbody>
+                        </table>
+                    </div>
                     :
                     <p><span className='filler-text'>This user is not a part of any rosters.</span></p>
                     }

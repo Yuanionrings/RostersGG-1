@@ -57,19 +57,21 @@ class ManageRosterEvents extends Component {
                     <h2>Manage Team Events</h2>
                     <hr />
                     {(this.state.events.length > 0) ? 
-                    <table className='table table-striped' style={{ marginTop: 15 }}>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>When</th>
-                                <th>Time Until</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            { this.rosterEventList() }
-                        </tbody>
-                    </table>
+                    <div className='table-container'>
+                        <table className='table table-striped' style={{ marginTop: 15 }}>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>When</th>
+                                    <th>Time Until</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                { this.rosterEventList() }
+                            </tbody>
+                        </table>
+                    </div>
                     :
                     <p className='filler-text'>There are no events for this roster.</p>
                     }
