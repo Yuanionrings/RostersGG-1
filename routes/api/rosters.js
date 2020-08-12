@@ -568,8 +568,9 @@ router.get("/roster/:id/events", async (req, res) => {
             return;
         }
 
-        const roster_id = [roster._id];
-        const eventFilter = {team_ids: { $elemMatch: {$in: roster_id }}};
+        var roster_id_list = [roster._id];
+
+        const eventFilter = {team_ids: { $elemMatch: {$in: roster_id_list }}};
         const events = await Event.find(eventFilter);
 
         if(!events) {

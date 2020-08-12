@@ -294,7 +294,7 @@ class EditRoster extends Component {
                     <div className="player-list">
                         <h2>Manage Team Events</h2>
                         <hr />
-                        {(this.state.events.length > 1) ? 
+                        {(this.state.events.length > 0) ? 
                         <table className="table table-striped" style={{ marginTop: 15 }}>
                             <thead>
                                 <tr>
