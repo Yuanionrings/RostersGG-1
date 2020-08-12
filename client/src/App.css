@@ -1,3 +1,42 @@
+/*
+    ===============================================================
+    App.css
+    Styling for RostersGG Application
+    ___________________________________________
+
+    Styling Notes:
+        - Notes will go here
+
+    ___________________________________________
+    Table of Contents
+    ______________________________
+      1) Global Styling Rules
+        1.1) Universal Background Colors
+        1.2) Universal Text Colors
+        1.3) Universal Text Styles
+      2) Dashboard Styling
+        2.1) Dashboard SideBar Styling
+        2.2) Dashboard Content Styling
+      3) Text Page (Terms, Privacy Policy) Styling
+      4) Navbar Styling
+      5) Footer Styling
+      6) Landing Page Styling
+      7) General Display Styling
+      8) Form Styling
+    ___________________________________________
+    ===============================================================
+*/
+
+
+
+
+/*_____________________________________
+
+    GLOBAL STYLING RULES
+
+_______________________________________
+*/
+.app-bg { height: 100%; margin-bottom: -3rem; }
 .page-container {
     position: relative;
     min-height: 100vh;
@@ -17,7 +56,6 @@
 .extra-margin-bottom { 
     margin-bottom: 50px;
 }
-
 body {
     color: #fffffc;
     background: #f1f1f1;
@@ -27,6 +65,10 @@ body {
 .full-height {
     height: 100%;
 }
+.filler-sm { min-height: 30px; }
+.filler-md { min-height: 65px; }
+.filler-lg { min-height: 100px; }
+
 
 /* 
     BACKGROUND COLORS
@@ -43,6 +85,7 @@ body {
 .primary-bg-purple { background: #706FD3 !important; }
 .secondary-bg-purple { background: #474787 !important; }
 
+
 /* 
     TEXT COLORS
 */
@@ -56,9 +99,8 @@ body {
 .secondary-text-yellow { color: #CCAE62 !important; }
 .primary-text-purple { color: #706FD3 !important; }
 .secondary-text-purple { color: #474787 !important; }
-
 .filler-text { color: #909193; }
-
+.red-text { color: #ff5252; }
 
 
 /* 
@@ -69,15 +111,12 @@ body {
 
 
 
-/*
-    "app-bg" used to set background to full window size in App.js main div element
-*/
-.app-bg { height: 100%; margin-bottom: -3rem; }
 
+/*_____________________________________
 
+    DASHBOARD RELATED STYLING
 
-/*
-    Dashboard-related styling
+_______________________________________
 */
 .dashboard-container {
     width: 100%;
@@ -122,6 +161,7 @@ body {
             background: #d4d5d8;
             box-shadow: none !important;
         }
+
     /*
         Dashboard Content-related styling
     */
@@ -244,14 +284,12 @@ body {
 
 
 
-/*
-    "filler" used to present white space without extra margins or padding
+/*_____________________________________
+
+    TEXT PAGE RELATED STYLING
+
+_______________________________________
 */
-.filler-sm { min-height: 30px; }
-.filler-md { min-height: 65px; }
-.filler-lg { min-height: 100px; }
-
-
 .text-page-container {
     margin: 0 auto;
     padding-top: 4rem;
@@ -270,8 +308,12 @@ body {
     }
 
 
-/*
-    NavBar-related styling
+
+/*_____________________________________
+
+    NAV BAR RELATED STYLING
+
+_______________________________________
 */
 .navbar-spec {
     background: #373638;
@@ -281,12 +323,16 @@ body {
     }
 .navbar-divider {
     background-image: linear-gradient(to right, #ffda79, #33d9b2);
-    min-height: 4px;
+    min-height: 2px;
 }
 
 
-/*
-    Footer-related styling 
+
+/*_____________________________________
+
+    FOOTER RELATED STYLING
+
+_______________________________________
 */
 .footer-main {
     font-size: 16px;
@@ -316,103 +362,136 @@ body {
     }
 
 
-/*
-    Landing-related styling
+
+/*_____________________________________
+
+    LANDING PAGE RELATED STYLING
+
+_______________________________________
 */
+
 .landing-page-display {
-    display: flex;
     width: 100%;
-    margin: 0 auto;
 }
-.landing-page-display .styled-divider-yellow {
-    background-image: linear-gradient(to right, #ffda79, #2c2c54);
-    width: 95%;
-    min-height: 20px;
-}
-.landing-page-display .styled-divider-blue {
-    background-image: linear-gradient(to right, #34ace0, #2c2c54);
-    width: 95%;
-    min-height: 20px;
-}
-.landing-page-display .styled-divider-green {
-    background-image: linear-gradient(to right, #33d9b2, #2c2c54);
-    width: 95%;
-    min-height: 20px;
-}
-.landing-page-display .full-width-ctnr {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-}
-.landing-page-display .row-padding-lg {
-    padding: 100px 0;
-}
-.landing-page-display .text-field {
-    padding: 30px;
-}
-.landing-page-display .text-field h1 {
-    font-size: 4rem;
-    font-weight: bold;
-}
-.landing-page-display .text-field h3 {
-    font-size: 2rem;
-    color: #e7e7e7;
-    font-style: italic;
-}
-
-.landing-page-display .text-field-content {
-    padding: 30px;
-}
-.landing-page-display .text-field-content h3 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #706fd3;
-}
-.landing-page-display .text-field-content h4 {
-    font-size: 1.75rem;
-    color: #2c2c54;
-}
-
-.landing-page-display .text-field-sm {
-    padding: 10px;
-}
-.landing-page-display .text-field-sm h3 {
-    font-size: 2rem;
-    font-weight: bold;
-}
-.landing-page-display .text-field-sm p {
-    font-size: 1.25rem;
-}
-
-.landing-page-display .white-bg-1 {
-    background: #f7f7f7;
-}
-.landing-page-display .purple-bg-1 {
-    background-image: linear-gradient(to right, #4c4c96, #2c2c54 );
-}
-.landing-page-display .purple-bg-2 {
-    background-image: linear-gradient(to bottom left, #4c4c96, #2c2c54 );
-}
-.landing-page-display .present-box-green {
-    display: flex;
-    background-image: linear-gradient(to bottom, #33d9b2, #218c74);
-    min-height: 300px;
-    padding: 30px;
-}
-.landing-page-display .present-box-blue {
-    background-image: linear-gradient(to bottom, #34ace0, #227093);
-    min-height: 300px;
-    padding: 30px;
-}
-.landing-page-display .present-box-yellow {
-    background-image: linear-gradient(to bottom, #ffda79, #ccae62);
-    min-height: 300px;
-    padding: 30px;
-}
+    .landing-page-display .header {
+        justify-content: center;
+        background: #171817;
+        padding: 200px 0;
+    }  
+        .landing-page-display .header .display {
+            width: 80%;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        .landing-page-display .header .content {
+            color: #f1f1f1;
+            padding: 2rem;
+        }
+            .landing-page-display .header .content h5 {
+                text-align: center;
+                font-size: 14px;
+                color: #33D9B2;
+                margin: 0 auto;
+            }
+            .landing-page-display .header .content h2 {
+                text-align: center;
+                font-size: 48px;
+                font-weight: bold;
+                margin: 1.5rem auto;
+            }
+            .landing-page-display .header .content h4 {
+                text-align: center;
+                font-size: 18px;
+                margin: 0 auto;
+                color: #8f9492;
+            }
+            .landing-page-display .header .content .button-div {
+                display: flex;
+                justify-content: center;
+            }
+            .landing-page-display .header .content .register-button {
+                font-size: 16px;
+                font-weight: bold;
+                margin-top: 2rem;
+                color: #ffffff;
+                background: #33d9b2;
+                border: 0;
+                border-radius: 8px;
+                padding: 0.5rem 1.25rem;
+            }
+            .landing-page-display .header .content .register-button:hover, .landing-page-display .header .content .register-button:focus {
+                background: #218C74;
+                outline: none !important;
+            }
+            .landing-page-display .header .content .register-button:active {
+                background: #1d7562;
+                box-shadow: none !important;
+            }
 
 
+    .landing-page-display .section-1 {
+        display: flex;
+        justify-content: center;
+        background: #ffffff;
+        padding-bottom: 100px;
+    }  
+        .landing-page-display .section-1 .display {
+            width: 80%;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0;
+        }
+        .landing-page-display .section-1 .content {
+            color: #373638;
+        }
+            .landing-page-display .section-1 .content .text-area {
+                padding-top: 100px;
+            }
+            .landing-page-display .section-1 .content .right-align {
+                text-align: right;
+            }
+            .landing-page-display .section-1 .content h3 {
+                text-decoration: underline;
+                font-weight: bold;
+                margin: 0 auto;
+            }
+            .landing-page-display .section-1 .content h4 {
+                margin: 1rem auto;
+                color: #666666;
+            }
 
-/*
-    general-display-box used for every display box (not specialized)
+    .landing-page-display .section-2 {
+        display: flex;
+        justify-content: center;
+        background: #33d9b2;
+    }  
+        .landing-page-display .section-2 .display {
+            width: 60%;
+            max-width: 920px;
+            padding: 4rem 0;
+        }
+        .landing-page-display .section-2 .content {
+            color: #373638
+        }
+            .landing-page-display .section-2 .content h3 {
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            .landing-page-display .section-2 .content h4 {
+                font-size: 16px;
+                text-align: center;
+            }
+            
+
+
+
+/*_____________________________________
+
+    GENERAL DISPLAY RELATED STYLING
+
+_______________________________________
 */
 .general-display-box {
     margin: 1.5rem;
@@ -513,7 +592,12 @@ body {
 
 
 
-/* form-control used for each form */
+/*_____________________________________
+
+    FORM RELATED STYLING
+
+_______________________________________
+*/
 .form-control {
     min-height: 41px;
     box-shadow: none;   
@@ -619,7 +703,4 @@ body {
 .form-box form a:hover {
     color: #218c74;
     text-decoration: none;
-}
-.red-text {
-    color: #ff5252;
 }

@@ -1,99 +1,68 @@
 import React, { Component } from 'react';
-
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 class Landing extends Component {
-    componentDidMount(){
+  componentDidMount(){
+    console.log(this.props)
+  }
 
-    }
-    render() {
-        return (
-            <div className='landing-page-display'>
-                <Container fluid className='full-width-ctnr'>
+  goToRegister = e => {
+    console.log(e);
+  }
 
-                  <Row className='row-padding-lg purple-bg-1'>
-                    <Col sm={8} xs={12}>
-                      <div className='text-field'>
-                        <h1>Welcome to RostersGG (BETA)!</h1>
-                        <h3>
-                          The *future* most powerful, useful tool for eSports team management. Loved 
-                          by team owners, captains, and players alike!
-                        </h3>
-                      </div>
-                    </Col>
-                    <Col sm={4} xs={6}>
-                      <p>This is where the picture will go! Consider yourself lucky if you see this text!</p>
-                    </Col>
-                  </Row>
-
-                  <Row className='row-padding-lg white-bg-1'>
-                    <Col sm={4} xs={6}> 
-                      <div className='text-field-content'>
-                        <h3>
-                          WHY USE THIS TOOL?
-                        </h3>
-                      </div>
-                    </Col>
-                    <Col sm={8} xs={12}>
-                      <div className='text-field-content'>
-                        <h4>
-                          Let's be real - managing an eSports team is not as easy as it looks. Communicating with your players, coordinating matches against other teams, and tracking team rosters are no longer a headache with RostersGG!
-                        </h4>
-                      </div>
-                    </Col>
-                  </Row>
-
-                  <Row>
-                    <Col className='present-box-yellow flexbox justify-content-center'>
-                      <div className='text-field-sm'>
-                        <h3>Roster Management</h3>
-                        <p>
-                          Seamlessly invite, retain, and remove players from your team. Keep track 
-                          of the team's calendar and upcoming events!
-                        </p>
-                      </div>
-                    </Col>
-                    <Col className='present-box-blue flexbox justify-content-center'>
-                      <div className='text-field-sm'>
-                        <h3>Event Scheduling</h3>
-                        <p>
-                          Schedule practice sessions with your teams and scrimmages with other teams in 
-                          a pinch. View upcoming events on your dashboard in chronological order so you 
-                          don't miss another damn scrim!
-                        </p>
-                      </div>
-                    </Col>
-                    <Col className='present-box-green flexbox justify-content-center'>
-                      <div className='text-field-sm'>
-                        <h3>Team Communication</h3>
-                        <p>
-                          Easily send mass messages to team members so they never miss a practice or an event, or even 
-                          configure automated messages with the RostersGG Discord Bot!
-                        </p>
-                      </div>
-                    </Col>
-                  </Row>
-
-                  <Row className='row-padding-lg purple-bg-2'>
-                    <Col sm={4} xs={6}>
-                      <p>This is where ANOTHER picture will go! [Lk] is my favorite Mordhau team.</p>
-                    </Col>
-                    <Col sm={8} xs={12}>
-                      <div className='text-field'>
-                        <h1>Another header!</h1>
-                        <h3>
-                          This is some fill-in for another sub section or part of feature!
-                        </h3>
-                      </div>
-                    </Col>
-                  </Row>
-
-                </Container>
+  render() {
+    return (
+      <div className='landing-page-display'>
+        <div className='header'>
+          <div className='display'>
+            <div className='content'>
+              <h5>INTRODUCING ROSTERS.GG</h5>
+              <h2>The only all-in-one tool your eSports team will ever need</h2>
+              <h4>RostersGG helps gaming team leaders and players with scheduling, communication, and other team management tasks.</h4>
+              <div className="button-div">
+                <Button className="register-button" 
+                onClick={this.goToRegister}>
+                  Register for Free <i className='fa fa-arrow-circle-right'></i>
+                </Button>
+              </div>
             </div>
-        );
-    }
+          </div>
+        </div>
+
+        <div className='section-1'>
+          <div className='display'>
+            <div className='content'>
+              <div className='text-area'>
+                <h3>FOR LEADERS</h3>
+                <h4>
+                  Until you operate an eSports team, you never know overwhelming it can be. RostersGG was built for team leaders, by team leaders. No longer worry about 
+                  scheduling, communication with your players, or keeping track of player rosters.
+                </h4>
+              </div>
+              <div className='text-area'>
+                <h3 className='right-align'>FOR PLAYERS</h3>
+                <h4 className='right-align'>
+                  Never again worry about when your next practice or scrimmage is, RostersGG displays all of your upcoming events right on your user dashboard. Getting sick 
+                  of your current team? Browse through all rosters on the platform - filter by name, game played, and primary region to find the best teams!
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className='section-2'>
+          <div className='display'>
+            <div className='content'>
+              <h3>This service is not yet released.</h3>
+              <h4>There is still so much functionality in development. You won't want to miss out. Did somebody say integrated Discord bot? Email contact@rosters.gg if you are 
+                interested in contributing or earning premium functionality as an early adopter.
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Landing;
