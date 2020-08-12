@@ -37,7 +37,6 @@ class UserEvents extends Component {
         const sliderSettings = {
             adaptiveHeight: true,
             dots: true,
-            swipe: false,
             initialSlide: 1,
             duration: 50
         }
