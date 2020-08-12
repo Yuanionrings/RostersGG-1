@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 
 class Landing extends Component {
-  componentDidMount(){
-    console.log(this.props)
-  }
-
+  
   goToRegister = e => {
-    console.log(e);
+    this.props.history.push('/register');
   }
 
   render() {
