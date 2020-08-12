@@ -138,6 +138,8 @@ body {
                 border: 1px solid #dedfe2;
                 border-radius: 16px;
                 width: 100%;
+                margin-left: 2rem;
+                margin-right: 2rem;
             }
                 .dashboard-container .content .display-box .event-card h4{
                     font-weight: bold;

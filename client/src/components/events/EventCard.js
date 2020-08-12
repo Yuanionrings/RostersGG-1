@@ -1,4 +1,5 @@
 import React from 'react';
+import calcTimeUntil from '../../util/calcTimeUntil';
 
 function EventCard(props){
     //console.log(props);
@@ -8,7 +9,7 @@ function EventCard(props){
             <p>{props.description}</p>
             <p>{props.when}</p>
             <hr />
-            <p>Event starts in: <span className="filler-text">Not yet implemented</span></p>
+            <p>Event starts in: <span className="filler-text">{calcTimeUntil(props.when, Date.now())}</span></p>
         </div>
     );
 }
