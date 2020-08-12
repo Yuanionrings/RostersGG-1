@@ -39,8 +39,9 @@ class UserEvents extends Component {
         const sliderSettings = {
             adaptiveHeight: true,
             dots: true,
+            swipe: false,
             initialSlide: 1,
-            duration: 100
+            duration: 50
         }
         return (
             <div className="display-box">

@@ -9,7 +9,7 @@ function EventCard(props){
             <p>{props.description}</p>
             <p>{props.when}</p>
             <hr />
-            <p>Event starts in: <span className="filler-text">{calcTimeUntil(new Date(props.when), Date.now())}</span></p>
+            <p className="filler-text"><strong>Time until event:</strong>: {calcTimeUntil(new Date(props.when), Date.now())}</p>
         </div>
     );
 }

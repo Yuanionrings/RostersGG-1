@@ -145,8 +145,8 @@ body {
                     font-weight: bold;
                 }
                 .dashboard-container .content .display-box .event-card hr{
-                    margin-left: -1rem;
-                    margin-right: -1rem;
+                    margin-left: -3rem;
+                    margin-right: -3rem;
                 }
                 .dashboard-container .content .display-box .event-card p{
                     margin:0;
