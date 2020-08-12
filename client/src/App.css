@@ -68,6 +68,9 @@ body {
 .filler-sm { min-height: 30px; }
 .filler-md { min-height: 65px; }
 .filler-lg { min-height: 100px; }
+.table-container {
+    overflow-x: auto;
+}
 
 
 /* 
