@@ -33,13 +33,29 @@ class UserEvents extends Component {
         });
     }
 
-    render() {
-        const sliderSettings = {
-            adaptiveHeight: true,
-            dots: true,
-            initialSlide: 1,
-            duration: 50
+    conditionalRenderCards(){
+        if(this.state.events.length > 1){
+            const sliderSettings = {
+                adaptiveHeight: true,
+                dots: true,
+                initialSlide: 1,
+                duration: 50
+            }
+            return  <Slider {...sliderSettings}>
+                        {this.eventCards()}
+                    </Slider>
+
+        } else if (this.state.events.length > 0) {
+            return this.eventCards();
+
+        } else {
+            return  <p className="filler-text">
+                        You do not have any upcoming events.
+                    </p>
         }
+    }
+
+    render() {
         return (
             <div className="display-box">
                 <div className="box">
@@ -47,15 +63,7 @@ class UserEvents extends Component {
                         Upcoming Events
                     </h2>
                     <hr />
-                    {this.state.events.length > 0 ?
-                        <Slider {...sliderSettings}>
-                            {this.eventCards()}
-                        </Slider>
-                    :
-                        <p className="filler-text">
-                            You do not have any upcoming events.
-                        </p>
-                    }
+                    {this.conditionalRenderCards()}
                 </div>
             </div>
         )
