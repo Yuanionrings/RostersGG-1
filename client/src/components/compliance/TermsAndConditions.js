@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class TermsAndConditions extends Component {
     render(){
         return(
-            <div className="text-page-container">
+            <div className='text-page-container'>
                 <h2>Terms and Conditions</h2>
                 <p>Welcome to Rosters.gg!</p>
 

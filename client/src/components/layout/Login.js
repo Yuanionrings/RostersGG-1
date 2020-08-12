@@ -1,28 +1,28 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { loginUser } from "../../actions/userAuthActions";
-import classnames from "classnames";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/userAuthActions';
+import classnames from 'classnames';
 
 class Login extends Component {
   constructor() {
     super()
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       errors: {}
     }
   }
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push('/dashboard');
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push('/dashboard');
     }
 
     if (nextProps.errors) {
@@ -48,49 +48,51 @@ class Login extends Component {
   render() {
     const { email, password, errors } = this.state;
     return (
-      <div className="form-box">
-        <form className="login-form" onSubmit={this.onSubmit}>
+      <div className='form-box'>
+        <form className='login-form' onSubmit={this.onSubmit}>
           <h2>Login</h2>
           <hr />
-          <div className="form-group">
+
+          <div className='form-group'>
             <label>Email: </label>
-            <input type="email"
-              id="email"
-              placeholder="Email Address"
+            <input type='email'
+              id='email'
+              placeholder='Email Address'
               value={email}
               error={errors}
               onChange={this.onChange}
-              className={classnames("form-control", {
+              className={classnames('form-control', {
                 invalid: errors.email || errors.emailnotfound
               })} />
-            <span className="red-text">
+            <span className='red-text'>
               {errors.email}
               {errors.emailnotfound}
             </span>
           </div>
-          <div className="form-group">
+
+          <div className='form-group'>
             <label>Password: </label>
-            <input type="password"
-              id="password"
-              placeholder="Password"
+            <input type='password'
+              id='password'
+              placeholder='Password'
               value={password}
               error={errors}
               onChange={this.onChange}
-              className={classnames("form-control", {
+              className={classnames('form-control', {
                 invalid: errors.password || errors.passwordincorrect
               })}
             />
-            <span className="red-text">
+            <span className='red-text'>
               {errors.password}
               {errors.passwordincorrect}
             </span>
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary btn-block btn-lg">Login</button>
+
+          <div className='form-group'>
+            <button type='submit' className='btn btn-primary btn-block btn-lg'>Login</button>
           </div>
-          <div className="text-center">Don't have an account? <Link to="/register">Register</Link></div>
-
-
+          <div className='text-center'>Don't have an account? <Link to='/register'>Register</Link></div>
+          
         </form>
       </div>
     )

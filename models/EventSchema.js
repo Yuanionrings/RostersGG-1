@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Defines mongoose schema for event documents
@@ -10,7 +10,7 @@ const EventSchema = new Schema({
     },
     description: {
         type: String,
-        default: "Team Event"
+        default: 'Team Event'
     },
     when: {
         type: Date,
@@ -31,4 +31,4 @@ const EventSchema = new Schema({
 });
 
 // Uses EventSchema for documents in collection: events
-module.exports = mongoose.model("events", EventSchema);
+module.exports = mongoose.model('events', EventSchema);

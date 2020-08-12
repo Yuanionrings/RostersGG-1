@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../../actions/userAuthActions";
-import MyRosters from "../rosters/MyRosters";
-import LedRosters from "../rosters/LedRosters";
-import UserInfo from "./UserInfo";
-import UserEvents from "./UserEvents";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import LogoutIcon from "../../assets/logout.svg";
-import SettingsIcon from "../../assets/settings.svg";
-import UserIcon from "../../assets/user.svg";
-import PlayerDirIcon from "../../assets/players-dir.svg";
-import TeamDirIcon from "../../assets/box-list.svg";
-import EventsIcon from "../../assets/calendar.svg";
-import DashboardIcon from "../../assets/star.svg";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/userAuthActions';
+import MyRosters from '../rosters/MyRosters';
+import LedRosters from '../rosters/LedRosters';
+import UserInfo from './UserInfo';
+import UserEvents from './UserEvents';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import LogoutIcon from '../../assets/logout.svg';
+import SettingsIcon from '../../assets/settings.svg';
+import UserIcon from '../../assets/user.svg';
+import PlayerDirIcon from '../../assets/players-dir.svg';
+import TeamDirIcon from '../../assets/box-list.svg';
+import EventsIcon from '../../assets/calendar.svg';
+import DashboardIcon from '../../assets/star.svg';
 
 
 
@@ -25,7 +25,6 @@ class Dashboard extends Component {
         this.state = {}
     }
     componentDidMount(){
-        //console.log(this.props)
     }
     onLogout = e => {
         e.preventDefault();
@@ -41,42 +40,42 @@ class Dashboard extends Component {
     }
     render() {
         return (
-            <div className="dashboard-container">
+            <div className='dashboard-container'>
                 <Row>
-                    <Col className="secondary-bg-light" sm={3} md={2}>
-                        <div className="sidebar">
+                    <Col className='secondary-bg-light' sm={3} md={2}>
+                        <div className='sidebar'>
                             <Button onClick={() => this.props.history.push('/dashboard')}>
-                                <img src={DashboardIcon} alt="Dashboard Icon" />
+                                <img src={DashboardIcon} alt='Dashboard Icon' />
                                 {"   "}Dashboard</Button>
 
-                            <Button onClick={() => console.warn("This is not implemented")}>
-                                <img src={EventsIcon} alt="Events Icon" />
+                            <Button onClick={() => console.warn('This is not implemented')}>
+                                <img src={EventsIcon} alt='Events Icon' />
                                 {"   "}Event Manager</Button>
 
-                            <Button onClick={() => console.warn("This is not implemented")}>
-                                <img src={TeamDirIcon} alt="Team Directory Icon" />
+                            <Button onClick={() => console.warn('This is not implemented')}>
+                                <img src={TeamDirIcon} alt='Team Directory Icon' />
                                 {"   "}Team Directory</Button>
 
-                            <Button onClick={() => console.warn("This is not implemented")}>
-                                <img src={PlayerDirIcon} alt="Players Directory Icon" />
+                            <Button onClick={() => console.warn('This is not implemented')}>
+                                <img src={PlayerDirIcon} alt='Players Directory Icon' />
                                 {"   "}Player Directory</Button>
 
                             <Button onClick={this.onGoToViewUser}>
-                                <img src={UserIcon} alt="User Icon" />
+                                <img src={UserIcon} alt='User Icon' />
                                 {"   "}View My Profile</Button>
 
                             <Button onClick={this.onGoToEditProfile}>
-                                <img src={SettingsIcon} alt="Gear Icon" />
+                                <img src={SettingsIcon} alt='Gear Icon' />
                                 {"   "}Edit Profile</Button>
 
                             <Button onClick={this.onLogout}>
-                                <img src={LogoutIcon} alt="Logout Icon" />
+                                <img src={LogoutIcon} alt='Logout Icon' />
                                 {"   "}Logout</Button>
                         </div>
                     </Col>
 
-                    <Col className="primary-bg-light" sm={9} md={10}>
-                        <div className="content">
+                    <Col className='primary-bg-light' sm={9} md={10}>
+                        <div className='content'>
 
                             <UserInfo
                                 given_username={this.props.auth.user.username} 

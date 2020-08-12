@@ -1,14 +1,14 @@
 require('dotenv').config();
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const path = require("path");
-const cors = require("cors");
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const path = require('path');
+const cors = require('cors');
 
-const users = require("./routes/api/users");
-const rosters = require("./routes/api/rosters");
-const events = require("./routes/api/events");
+const users = require('./routes/api/users');
+const rosters = require('./routes/api/rosters');
+const events = require('./routes/api/events');
 const app = express();
 
 console.log('----- [SERVER] -----');
@@ -40,22 +40,21 @@ mongoose.set('useFindAndModify', false);
 
 // Passport middleware
 app.use(passport.initialize());
-require("./config/passport")(passport);
+require('./config/passport')(passport);
 
 
 // Routes Configuration
-app.use("/api/users", users);
-app.use("/api/rosters", rosters);
-app.use("/api/events", events);
+app.use('/api/users', users);
+app.use('/api/rosters', rosters);
+app.use('/api/events', events);
 
 // Check if application is in production (Heroku)
 if (process.env.NODE_ENV === 'production') {
     //console.log("[SERVER] Now using express.static(client/build)");
-    app.use(express.static("client/build"));
+    app.use(express.static('client/build'));
 
     // If no backend routes are hit, send React client app
     app.get('*', (req, res) => {
-        console.log(`[SERVER] Sending file: ${path.join(__dirname, 'client/build/index.html')}`);
         res.sendFile(path.join(__dirname, 'client/build/index.html'));
     });
 }

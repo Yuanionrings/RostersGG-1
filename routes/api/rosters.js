@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 const sendEmail = require('../../email/email.send');
@@ -6,19 +6,19 @@ const msgs = require('../../email/email.msgs');
 const templates = require('../../email/email.templates');
 
 // Load input validation
-const validateCreateEditRosterInput = require("../../validation/roster/create_edit_roster");
-const validateInvitePlayerToRosterInput = require("../../validation/roster/invite_player");
-const validateCreateEventInput = require("../../validation/event/create_event");
+const validateCreateEditRosterInput = require('../../validation/roster/create_edit_roster');
+const validateInvitePlayerToRosterInput = require('../../validation/roster/invite_player');
+const validateCreateEventInput = require('../../validation/event/create_event');
 
 // Load mongoose Roster and User models
-const Roster = require("../../models/RosterSchema");
-const User = require("../../models/UserSchema");
-const Event = require("../../models/EventSchema");
+const Roster = require('../../models/RosterSchema');
+const User = require('../../models/UserSchema');
+const Event = require('../../models/EventSchema');
 
 
 // @route GET api/rosters/roster/:id
 // @desc Retrieves public info of single roster if found
-router.get("/roster/:id", async (req, res) => {
+router.get('/roster/:id', async (req, res) => {
 
     // Define filters for querying database
     const rosterFilter = { _id: req.params.id };
@@ -44,7 +44,7 @@ router.get("/roster/:id", async (req, res) => {
 
 // @route GET api/rosters/roster/:id/players
 // @desc Retrieves user info of each player on roster's playerlist
-router.get("/roster/:id/players", async (req, res) => {
+router.get('/roster/:id/players', async (req, res) => {
 
     // Define filter for querying rosters collection
     const rosterFilter = { _id: req.params.id };
@@ -60,7 +60,7 @@ router.get("/roster/:id/players", async (req, res) => {
         }
 
         // Define filter for querying users collection
-        const userFilter = { "username": { $in: roster.players }};
+        const userFilter = { 'username': { $in: roster.players }};
         const users = await User.find(userFilter);
         if (!users) {
             res_errors.players = 'No players found on this roster';
@@ -79,7 +79,7 @@ router.get("/roster/:id/players", async (req, res) => {
 
 // @route GET api/rosters/:username/rosters
 // @desc Retrieves public info of every roster with user's username in players field
-router.get("/:username/rosters", (req, res) => {
+router.get('/:username/rosters', (req, res) => {
 
     // Define filter for querying users collection
     const userFilter = { username: req.params.username };
@@ -123,7 +123,7 @@ router.get("/:username/rosters", (req, res) => {
 
 // @route GET api/rosters/:username/led-rosters
 // @desc Retrieves public info of every roster with user's username in leader field
-router.get("/:username/led-rosters", (req, res) => {
+router.get('/:username/led-rosters', (req, res) => {
 
     // Define filter for querying users collection
     const userFilter = { username: req.params.username };
@@ -166,7 +166,7 @@ router.get("/:username/led-rosters", (req, res) => {
 // TODO - Finish this!!!!!
 // @route GET api/rosters/roster-search
 // @desc Searches for teams based on text search query
-router.get("/roster-search", async (req, res) => {
+router.get('/roster-search', async (req, res) => {
     
     // Define search query before finding Rosters 
     const search_query = { $text : { $search : req.body.search }};
@@ -174,19 +174,19 @@ router.get("/roster-search", async (req, res) => {
     try {
         const rosters = await Roster.find(search_query);
         if (!rosters) {
-            res.status(404).send({errors: {search: "There are no rosters found with this search"}});
+            res.status(404).send({errors: {search: 'There are no rosters found with this search'}});
         }
         res.json(rosters);
 
     } catch(error) {
         console.log(error);
-        res.status(400).send({errors: {other_error: "Error finding rosters"}});
+        res.status(400).send({errors: {other_error: 'Error finding rosters'}});
     }
 });
 
 // @route POST api/rosters/roster/:id/invite
 // @desc Sends invitation to user on platform to join team
-router.post("/roster/:id/invite", async (req, res) => {
+router.post('/roster/:id/invite', async (req, res) => {
 
     // Form validation to ensure user enters a username to invite to roster
     const { errors, isValid } = validateInvitePlayerToRosterInput(req.body);
@@ -247,7 +247,7 @@ router.post("/roster/:id/invite", async (req, res) => {
 
 // @route PATCH api/rosters/roster/:id/:username/remove
 // @desc Removes player from roster if found - cannot remove leaders
-router.patch("/roster/:id/:username/remove", async (req, res) => {
+router.patch('/roster/:id/:username/remove', async (req, res) => {
 
     // Define filters for querying collections
     const rosterFilter = { _id: req.params.id };
@@ -297,7 +297,7 @@ router.patch("/roster/:id/:username/remove", async (req, res) => {
 
 // @route PATCH api/rosters/roster/:id/decline_invite
 // @desc Removes invitation from player's inbox and does not add to roster
-router.patch("/roster/:id/decline-invite", async (req, res) => {
+router.patch('/roster/:id/decline-invite', async (req, res) => {
 
     // Define filters for querying database
     const userFilter = { username: req.body.username };
@@ -306,23 +306,23 @@ router.patch("/roster/:id/decline-invite", async (req, res) => {
     try {
         const user = await User.findOne(userFilter);
         if (!user) {
-            res.status(404).json({ player_username: "No player found with this username" });
+            res.status(404).json({ player_username: 'No player found with this username' });
         }
 
         user.invitations.pull(roster_id);
         await user.save();
-        res.json("Invitation successfully declined and removed from inbox");
+        res.json('Invitation successfully declined and removed from inbox');
 
     } catch(error) {
         console.log(error);
-        res.status(400).json({ other_error: "Bad request, error declining invitation" });
+        res.status(400).json({ other_error: 'Bad request, error declining invitation' });
     }
 });
 
 
 // @route PATCH api/rosters/roster/:id/accept_invite
 // @desc Add player to players field of already established roster
-router.patch("/roster/:id/accept-invite", async (req, res) => {
+router.patch('/roster/:id/accept-invite', async (req, res) => {
 
     // Define filters for querying database
     const rosterFilter = { _id: req.params.id };
@@ -356,7 +356,7 @@ router.patch("/roster/:id/accept-invite", async (req, res) => {
 
 // @route PATCH api/rosters/roster/:id/edit
 // @desc Edit roster information and save to database
-router.patch("/roster/:id/edit-roster", async (req, res) => {
+router.patch('/roster/:id/edit-roster', async (req, res) => {
 
     // Form validation to ensure teamname nor team_desc were removed
     const { errors, isValid } = validateCreateEditRosterInput(req.body);
@@ -393,7 +393,7 @@ router.patch("/roster/:id/edit-roster", async (req, res) => {
 
 // @route PATCH api/rosters/roster/:id/delete
 // @desc Completely deletes the listed roster
-router.patch("/roster/:id/delete-roster", async (req, res) => {
+router.patch('/roster/:id/delete-roster', async (req, res) => {
 
     // Define filters for querying collections
     const rosterFilter = { _id: req.params.id };
@@ -442,7 +442,7 @@ router.patch("/roster/:id/delete-roster", async (req, res) => {
 // @route POST api/rosters/create
 // @desc Create's a roster with name and description from request and adds
 //       the current user to leader field and players list
-router.post("/create", async (req, res) => {
+router.post('/create', async (req, res) => {
 
     // Form validation to ensure teamname and team_desc are properly entered
     const { errors, isValid } = validateCreateEditRosterInput(req.body);
@@ -486,7 +486,7 @@ router.post("/create", async (req, res) => {
 
 // @route POST api/rosters/roster/:id/create-event
 // @desc Create's a new private event for the roster with :id
-router.post("/roster/:id/create-event", async (req, res) => {
+router.post('/roster/:id/create-event', async (req, res) => {
 
     // Form validation to ensure event name and date are properly entered
     const { errors, isValid } = validateCreateEventInput(req.body);
@@ -553,7 +553,7 @@ router.post("/roster/:id/create-event", async (req, res) => {
 
 // @route GET api/rosters/:id/events
 // @desc Retrieves all events for a given roster
-router.get("/roster/:id/events", async (req, res) => {
+router.get('/roster/:id/events', async (req, res) => {
 
     // Define filter for querying rosters collection
     const rosterFilter = { _id: req.params.id };

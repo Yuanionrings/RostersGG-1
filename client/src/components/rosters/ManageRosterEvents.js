@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import calcTimeUntil from '../../util/calcTimeUntil';
 import dateFormat from 'dateformat';
 import axios from 'axios';
 
 function formatDateString(dateISO) {
     const date = new Date(dateISO);
-    return dateFormat(date, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+    return dateFormat(date, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
 };
 
 const EventInfo = props => (
     <tr>
-        <td className="">
-            <Link to={"/" + props.event.name}>{props.event.name}</Link>
+        <td className=''>
+            <Link to={'/' + props.event.name}>{props.event.name}</Link>
         </td>
-        <td className="">{formatDateString(props.event.when)}</td>
-        <td className="">{calcTimeUntil(new Date(props.event.when), Date.now())}</td>
-        <td className="filler-text">N/A</td>
+        <td className=''>{formatDateString(props.event.when)}</td>
+        <td className=''>{calcTimeUntil(new Date(props.event.when), Date.now())}</td>
+        <td className='filler-text'>N/A</td>
     </tr>
 );
 
@@ -30,7 +30,7 @@ class ManageRosterEvents extends Component {
         }
     }
     componentDidMount() {
-        axios.get('/api/rosters/roster/' + this.props.team_id + '/events')
+        axios.get(`/api/rosters/roster/${this.props.team_id}/events`)
             .then(res => {
                 this.setState({
                     events: res.data
@@ -52,12 +52,12 @@ class ManageRosterEvents extends Component {
   
     render() {
         return (
-            <div className="form-box">
-                <div className="player-list">
+            <div className='form-box'>
+                <div className='player-list'>
                     <h2>Manage Team Events</h2>
                     <hr />
                     {(this.state.events.length > 0) ? 
-                    <table className="table table-striped" style={{ marginTop: 15 }}>
+                    <table className='table table-striped' style={{ marginTop: 15 }}>
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -71,7 +71,7 @@ class ManageRosterEvents extends Component {
                         </tbody>
                     </table>
                     :
-                    <p className="filler-text">There are no events for this roster.</p>
+                    <p className='filler-text'>There are no events for this roster.</p>
                     }
                 </div>
             </div>

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // Defines mongoose schema for roster documents
@@ -31,4 +31,4 @@ const RosterSchema = new Schema({
 });
 
 // Uses RosterSchema for documents in collection: rosters
-module.exports = mongoose.model("rosters", RosterSchema);
+module.exports = mongoose.model('rosters', RosterSchema);

@@ -20,11 +20,8 @@ const calcTimeUntil = (dateFuture, dateNow) => {
     if (days > 0) {
       difference += (days === 1) ? `${days} day, ` : `${days} days, `;
     }
-
     difference += (hours === 0 || hours === 1) ? `${hours} hour, ` : `${hours} hours, `;
-
     difference += (minutes === 0 || hours === 1) ? `${minutes} minutes` : `${minutes} minutes`; 
-
     return difference;
 };
 

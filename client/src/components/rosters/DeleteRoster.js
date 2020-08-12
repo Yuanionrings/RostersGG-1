@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { deleteRoster } from "../../actions/rosterAuthActions";
-import { logoutUser } from "../../actions/userAuthActions";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { deleteRoster } from '../../actions/rosterAuthActions';
+import { logoutUser } from '../../actions/userAuthActions';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class DeleteRoster extends Component {
     constructor() {
         super()
         this.state = {
-            teamname: "",
+            teamname: '',
             free_to_delete: false,
             errors: {}
         }
     }
 
     componentDidMount() {
-        axios.get("/api/rosters/roster/" + this.props.match.params.id)
+        axios.get(`/api/rosters/roster/${this.props.match.params.id}`)
             .then(res => {
                 if(this.props.auth.user.username === res.data.leader){
                     this.setState({
@@ -57,11 +57,11 @@ class DeleteRoster extends Component {
   render() {
     return (
         <div>
-            <div className="form-box ">
-                <form className="signup-form" onSubmit={this.onSubmit}>
+            <div className='form-box'>
+                <form className='signup-form' onSubmit={this.onSubmit}>
                     <div>
-                        <Link to="/dashboard">
-                            <i className="fa fa-arrow-circle-left  "></i>
+                        <Link to='/dashboard'>
+                            <i className='fa fa-arrow-circle-left'></i>
                             {" "}Back to Dashboard
                         </Link>
                     </div>
@@ -69,9 +69,9 @@ class DeleteRoster extends Component {
                     <h2>Delete Roster - {this.state.teamname}</h2>
                     <hr />
 
-                    <div className="form-group">
+                    <div className='form-group'>
                         <label>Warning, you cannot save this roster once it is deleted.</label>
-                        <button type="submit" className="btn btn-primary btn-block btn-lg">
+                        <button type='submit' className='btn btn-primary btn-block btn-lg'>
                             Delete Roster Forever
                         </button>
                         {/*<span className="red-text">{this.errors.delete}</span>*/}

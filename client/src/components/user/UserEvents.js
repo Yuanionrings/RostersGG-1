@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import axios from 'axios';
-import EventCard from "../events/EventCard";
+import EventCard from '../events/EventCard';
 import Slider from 'infinite-react-carousel';
 
 class UserEvents extends Component {
@@ -12,7 +12,7 @@ class UserEvents extends Component {
     }
 
     componentDidMount() {
-        axios.get("/api/users/" + this.props.username + "/upcoming-events")
+        axios.get(`/api/users/${this.props.username}/upcoming-events`)
             .then(res => {
                 this.setState({
                     events: res.data
@@ -49,7 +49,7 @@ class UserEvents extends Component {
             return this.eventCards();
 
         } else {
-            return  <p className="filler-text">
+            return  <p className='filler-text'>
                         You do not have any upcoming events.
                     </p>
         }
@@ -57,9 +57,9 @@ class UserEvents extends Component {
 
     render() {
         return (
-            <div className="display-box">
-                <div className="box">
-                    <h2 className="">
+            <div className='display-box'>
+                <div className='box'>
+                    <h2 className=''>
                         Upcoming Events
                     </h2>
                     <hr />

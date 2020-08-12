@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { registerUser } from "../../actions/userAuthActions";
-import classnames from "classnames";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/userAuthActions';
+import classnames from 'classnames';
 
 class Register extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
-      username: "",
-      email: "",
-      password: "",
-      password2: "",
+      name: '',
+      username: '',
+      email: '',
+      password: '',
+      password2: '',
       errors: {}
     }
   }
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      this.props.history.push('/dashboard');
     }
   }
 
@@ -53,88 +53,89 @@ class Register extends Component {
     const { name, username, email, password, password2, errors } = this.state;
 
     return (
-      <div className="form-box ">
-        <form className="signup-form" onSubmit={this.onSubmit}>
+      <div className='form-box'>
+        <form className='signup-form' onSubmit={this.onSubmit}>
 
-          <div><Link to="/"><i className="fa fa-arrow-circle-left  "></i> Back to Home</Link></div>
+          <div><Link to='/'><i className='fa fa-arrow-circle-left'></i> Back to Home</Link></div>
 
           <h2>Register</h2>
           <hr />
-          <div className="form-group">
+          <div className='form-group'>
             <label>Display Name: </label>
-            <input type="text"
-              id="name"
-              placeholder="Name"
+            <input type='text'
+              id='name'
+              placeholder='Name'
               value={name}
               error={errors.name}
               onChange={this.onChange}
-              className={classnames("form-control", {
+              className={classnames('form-control', {
                 invalid: errors.name
               })} />
-            <span className="red-text">{errors.name}</span>
+            <span className='red-text'>{errors.name}</span>
 
           </div>
 
-          <div className="form-group">
+          <div className='form-group'>
           <label>Username (cannot be changed): </label>
-            <input type="text"
-              id="username"
-              placeholder="Username"
+            <input type='text'
+              id='username'
+              placeholder='Username'
               value={username}
               error={errors.username}
               onChange={this.onChange}
-              className={classnames("form-control", {
+              className={classnames('form-control', {
                 invalid: errors.username
               })} />
-            <span className="red-text">{errors.username}</span>
+            <span className='red-text'>{errors.username}</span>
 
           </div>
 
-          <div className="form-group">
+          <div className='form-group'>
           <label>Email: </label>
-            <input type="email"
-              id="email"
-              placeholder="Email Address"
+            <input type='email'
+              id='email'
+              placeholder='Email Address'
               value={email}
               error={errors.email}
               onChange={this.onChange}
-              className={classnames("form-control", {
+              className={classnames('form-control', {
                 invalid: errors.email
               })} />
-            <span className="red-text">{errors.email}</span>
+            <span className='red-text'>{errors.email}</span>
           </div>
 
-          <div className="form-group">
+          <div className='form-group'>
           <label>Password: </label>
-            <input type="password"
-              id="password"
-              placeholder="Password"
+            <input type='password'
+              id='password'
+              placeholder='Password'
               value={password}
               error={errors.password}
               onChange={this.onChange}
-              className={classnames("form-control", {
+              className={classnames('form-control', {
                 invalid: errors.password
               })} />
-            <span className="red-text">{errors.password}</span>
+            <span className='red-text'>{errors.password}</span>
           </div>
 
-          <div className="form-group">
-            <input type="password"
-              id="password2"
-              placeholder="Confirm Password"
+          <div className='form-group'>
+            <input type='password'
+              id='password2'
+              placeholder='Confirm Password'
               value={password2}
               error={errors.password}
               onChange={this.onChange}
-              className={classnames("form-control", {
+              className={classnames('form-control', {
                 invalid: errors.password2
               })} />
-            <span className="red-text">{errors.password2}</span>
+            <span className='red-text'>{errors.password2}</span>
           </div>
-          <div className="form-group">
-            <button type="submit" className="btn btn-primary btn-block btn-lg">Sign Up</button>
+          <div className='form-group'>
+            <button type='submit' className='btn btn-primary btn-block btn-lg'>Sign Up</button>
           </div>
-          <div className="text-center">Already have an account? <Link to="/login">Login here</Link></div>
 
+          <div className='text-center'>Already have an account? <Link to='/login'>Login here</Link></div>
+          
         </form>
       </div>
     )

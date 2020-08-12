@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 const RosterInfo = props => (
     <tr>
-        <td className="">{props.roster.teamname}</td>
-        <td className="">{props.roster.game}</td>
-        <td className="">{props.roster.region}</td>
-        <td className="">{props.roster.players.length}</td>
+        <td className=''>{props.roster.teamname}</td>
+        <td className=''>{props.roster.game}</td>
+        <td className=''>{props.roster.region}</td>
+        <td className=''>{props.roster.players.length}</td>
         <td>
-            <Link to={"/roster/" + props.roster._id}>View</Link>
+            <Link to={`/roster/${props.roster._id}`}>View</Link>
         </td>
     </tr>
 );
@@ -19,23 +19,23 @@ export default class ViewUser extends Component {
     constructor(props){
         super(props);
         this.state = {
-            name: "",
-            username: "",
-            biography: "",
-            date: "",
+            name: '',
+            username: '',
+            biography: '',
+            date: '',
             rosters: []
         }
     }
 
     componentDidMount() {
-        axios.get('/api/rosters/' + this.props.match.params.username + '/rosters')
+        axios.get(`/api/rosters/${this.props.match.params.username}/rosters`)
             .then(res => {
                 this.setState({ rosters: res.data });
             }).catch(function(err) {
                 console.log(err);
             });
 
-        axios.get('/api/users/' + this.props.match.params.username)
+        axios.get(`/api/users/${this.props.match.params.username}`)
             .then(res => {
                 this.setState({ name: res.data.name,
                                 username: res.data.username,
@@ -54,15 +54,15 @@ export default class ViewUser extends Component {
 
     render() {
         return (
-            <div className="general-display-box">
+            <div className='general-display-box'>
                 <div>
-                    <Link to="/dashboard">
-                        <i className="fa fa-arrow-circle-left  "></i>
+                    <Link to='/dashboard'>
+                        <i className='fa fa-arrow-circle-left'></i>
                         {" "}Back to Dashboard
                     </Link>
 
-                    <h2 className="">{this.state.name}</h2>
-                    <h6 className="filler-text">USER PROFILE</h6>
+                    <h2 className=''>{this.state.name}</h2>
+                    <h6 className='filler-text'>USER PROFILE</h6>
                     <hr />
 
                     <h4>User Info </h4>
@@ -71,12 +71,12 @@ export default class ViewUser extends Component {
                     <hr />
 
                     <h4>About Me </h4>
-                    <h6 className="filler-text">{this.state.biography}</h6>
+                    <h6 className='filler-text'>{this.state.biography}</h6>
                     <hr />
 
                     <h4>Rosters</h4>
                     {(this.state.rosters.length > 0) ?
-                    <table className="table table-striped" style={{ marginTop: 0 }}>
+                    <table className='table table-striped' style={{ marginTop: 0 }}>
                         <thead>
                             <tr>
                                 <th>Team Name</th>
@@ -91,7 +91,7 @@ export default class ViewUser extends Component {
                         </tbody>
                     </table>
                     :
-                    <p><span className="filler-text">This user is not a part of any rosters.</span></p>
+                    <p><span className='filler-text'>This user is not a part of any rosters.</span></p>
                     }
 
                 </div>

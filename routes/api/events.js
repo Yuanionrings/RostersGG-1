@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 // Load input validation
@@ -6,12 +6,12 @@ const router = express.Router();
 
 // Load mongoose Roster and Event models
 //const Roster = require("../../models/RosterSchema");
-const Event = require("../../models/EventSchema");
+const Event = require('../../models/EventSchema');
 
 
 // @route GET api/events/event/:id
 // @desc Retrieves public info of single event if found
-router.get("/event/:id", async (req, res) => {
+router.get('/event/:id', async (req, res) => {
 
     // Define filters for querying database
     const eventFilter = { _id: req.params.id };
@@ -37,7 +37,7 @@ router.get("/event/:id", async (req, res) => {
 
 // @route GET api/events/event/:id/teams
 // @desc Retrieves list of teamnames that are associated with event
-router.get("/event/:id/teams", async (req, res) => {
+router.get('/event/:id/teams', async (req, res) => {
 
     // Define filters for querying database
     const eventFilter = { _id: req.params.id };

@@ -5,13 +5,13 @@ import Button from 'react-bootstrap/Button';
 
 const RosterInfo = props => (
     <tr>
-        <td className="">{props.roster.teamname}</td>
-        <td className="">{props.roster.game}</td>
-        <td className="">{props.roster.region}</td>
+        <td className=''>{props.roster.teamname}</td>
+        <td className=''>{props.roster.game}</td>
+        <td className=''>{props.roster.region}</td>
         <td>
-            <Link to={"/roster/" + props.roster._id}>View</Link>
-            <Link to={"/roster/" + props.roster._id + "/edit"}>Manage</Link>
-            <Link to={"/roster/" + props.roster._id + "/delete"}>Delete</Link>
+            <Link to={`/roster/${props.roster._id}`}>View</Link>
+            <Link to={`/roster/${props.roster._id}/edit`}>Manage</Link>
+            <Link to={`/roster/${props.roster._id}/delete`}>Delete</Link>
         </td>
     </tr>
 );
@@ -27,7 +27,7 @@ export default class LedRosters extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/rosters/' + this.state.username + '/led-rosters')
+        axios.get(`/api/rosters/${this.state.username}/led-rosters`)
             .then(res => {
                 this.setState({
                     username: this.state.username,
@@ -50,19 +50,19 @@ export default class LedRosters extends Component {
 
     render() {
         return (
-            <div className="display-box">
-                <div className="box">
-                    <h2 className="">
+            <div className='display-box'>
+                <div className='box'>
+                    <h2 className=''>
                         My Rosters
                         <Button
-                          className="float-right"
+                          className='float-right'
                           onClick={this.onCreate}
                         >Create</Button>
                     </h2>
                     <hr />
 
                     {(this.state.rosters.length > 0) ?
-                    <table className="table table-striped" style={{ marginTop: 15 }}>
+                    <table className='table table-striped' style={{ marginTop: 15 }}>
                         <thead>
                             <tr>
                                 <th>Team Name</th>
@@ -76,7 +76,7 @@ export default class LedRosters extends Component {
                         </tbody>
                     </table>
                     :
-                    <p><span className="filler-text">You do not lead any rosters.</span></p>
+                    <p><span className='filler-text'>You do not lead any rosters.</span></p>
                     }
 
                 </div>

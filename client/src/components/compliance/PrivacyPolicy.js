@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class PrivacyPolicy extends Component {
     render() {
         return(
-            <div className="text-page-container">
+            <div className='text-page-container'>
                 <h2>Privacy Policy for Rosters.gg</h2>
                 <p>At Rosters.gg, accessible from https://www.rosters.gg, one of our main priorities is the privacy 
                     of our visitors. This Privacy Policy document contains types of information that is collected 
@@ -63,7 +63,7 @@ export default class PrivacyPolicy extends Component {
                     visited. The information is used to optimize the users' experience by customizing our web page 
                     content based on visitors' browser type and/or other information.</p>
                 <p>For more general information on cookies, please read  
-                    <a href="https://www.cookieconsent.com/what-are-cookies/">"What Are Cookies"</a> .</p>
+                    <a href='https://www.cookieconsent.com/what-are-cookies/'>"What Are Cookies"</a> .</p>
 
 
                 <h3>Advertising Partners Privacy Policies</h3>

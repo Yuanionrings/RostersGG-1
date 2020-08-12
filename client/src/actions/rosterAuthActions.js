@@ -1,10 +1,10 @@
-import axios from "axios";
-import { GET_ERRORS } from "./types";
+import axios from 'axios';
+import { GET_ERRORS } from './types';
 
 // Create Roster
 export const createRoster = (rosterData, history) => dispatch => {
-  axios.post("/api/rosters/create", rosterData)
-    .then(res => history.push("/dashboard"))
+  axios.post('/api/rosters/create', rosterData)
+    .then(res => history.push('/dashboard'))
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data
@@ -14,7 +14,7 @@ export const createRoster = (rosterData, history) => dispatch => {
 // Delete Roster
 export const deleteRoster = (deleteRosterData, history) => dispatch => {
   axios.patch('/api/rosters/roster/' + deleteRosterData.id + '/delete-roster', deleteRosterData)
-    .then(res => history.push("/dashboard"))
+    .then(res => history.push('/dashboard'))
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data
@@ -25,7 +25,7 @@ export const deleteRoster = (deleteRosterData, history) => dispatch => {
 export const editRoster = (updatedRosterData, history) => dispatch => {
   axios.patch('/api/rosters/roster/' + updatedRosterData.id + '/edit-roster',
     updatedRosterData.data)
-    .then(res => history.push("/dashboard"))
+    .then(res => history.push('/dashboard'))
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data
@@ -36,7 +36,7 @@ export const editRoster = (updatedRosterData, history) => dispatch => {
 export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
   axios.post('/api/rosters/roster/' + rosterInviteData.team_id + '/invite',
     rosterInviteData.data)
-    .then(res => history.push("/dashboard"))
+    .then(res => history.push('/dashboard'))
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data
@@ -47,7 +47,7 @@ export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
 export const createRosterEvent = (createEventData, history) => dispatch => {
   axios.post('/api/rosters/roster/' + createEventData.team_id + '/create-event',
     createEventData.data)
-    .then(res => history.push("/dashboard"))
+    .then(res => history.push('/dashboard'))
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data

@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 const RosterInfo = props => (
     <tr>
-        <td className="">{props.roster.teamname}</td>
-        <td className="">{props.roster.game}</td>
-        <td className="">{props.roster.region}</td>
-        <td className="">{props.roster.players.length}</td>
+        <td className=''>{props.roster.teamname}</td>
+        <td className=''>{props.roster.game}</td>
+        <td className=''>{props.roster.region}</td>
+        <td className=''>{props.roster.players.length}</td>
         <td>
-            <Link to={"/roster/" + props.roster._id}>View</Link>
+            <Link to={`/roster/${props.roster._id}`}>View</Link>
         </td>
     </tr>
 );
@@ -25,7 +25,7 @@ export default class MyRosters extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/rosters/' + this.state.username + '/rosters')
+        axios.get(`/api/rosters/${this.state.username}/rosters`)
             .then(res => {
                 this.setState({
                     username: this.state.username,
@@ -43,13 +43,13 @@ export default class MyRosters extends Component {
 
     render() {
         return (
-            <div className="display-box">
-                <div className="box">
+            <div className='display-box'>
+                <div className='box'>
                     <h2>Rosters</h2>
                     <hr />
 
                     {(this.state.rosters.length > 0) ?
-                    <table className="table table-striped" style={{ marginTop: 15 }}>
+                    <table className='table table-striped' style={{ marginTop: 15 }}>
                         <thead>
                             <tr>
                                 <th>Team Name</th>
@@ -64,7 +64,7 @@ export default class MyRosters extends Component {
                         </tbody>
                     </table>
                     :
-                    <p><span className="filler-text">You are not a part of any rosters.</span></p>
+                    <p><span className='filler-text'>You are not a part of any rosters.</span></p>
                     }
 
                 </div>

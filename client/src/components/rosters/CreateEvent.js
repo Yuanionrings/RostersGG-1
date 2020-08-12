@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import classnames from "classnames"
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { createRosterEvent } from "../../actions/rosterAuthActions";
+import React, { Component } from 'react';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createRosterEvent } from '../../actions/rosterAuthActions';
 
 class CreateEvent extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            event_name: "",
-            event_when: "",
+            event_name: '',
+            event_when: '',
             team_id: this.props.team_id,
             errors: {}
         }
     }
+
     componentDidMount() {
-        //console.log(this.props)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -47,44 +47,44 @@ class CreateEvent extends Component {
   render() {
     const { event_name, event_when, errors } = this.state;
     return (
-        <div className="form-box ">
-            <form className="signup-form" onSubmit={this.onSubmit}>
+        <div className='form-box'>
+            <form className='signup-form' onSubmit={this.onSubmit}>
 
                 <h2>Create Event</h2>
-                <p className="mb-0">Date and time must be YYYY/MM/DD HH:MM:SS in order to process correctly.</p>
-                <p className="filler-text mt-0">All times must be entered as EST time (only during BETA).</p>
+                <p className='mb-0'>Date and time must be YYYY/MM/DD HH:MM:SS in order to process correctly.</p>
+                <p className='filler-text mt-0'>All times must be entered as EST time (only during BETA).</p>
                 <hr />
                 
-                <div className="form-group">
+                <div className='form-group'>
                     <label>Event Name: </label>
-                    <input type="text"
-                        id="event_name"
-                        placeholder="Event Name (Scrim, Practice, etc.)"
+                    <input type='text'
+                        id='event_name'
+                        placeholder='Event Name (Scrim, Practice, etc.)'
                         value={event_name}
                         error={errors.name}
                         onChange={this.onChange}
-                        className={classnames("form-control", {
+                        className={classnames('form-control', {
                             invalid: errors.name
                         })} />
-                    <span className="red-text">{errors.name}</span>
+                    <span className='red-text'>{errors.name}</span>
                 </div>
 
-                <div className="form-group">
+                <div className='form-group'>
                     <label>Date and Time: </label>
-                    <input type="text"
-                        id="event_when"
-                        placeholder="YYYY/MM/DD HH:MM:SS"
+                    <input type='text'
+                        id='event_when'
+                        placeholder='YYYY/MM/DD HH:MM:SS'
                         value={event_when}
                         error={errors.when}
                         onChange={this.onChange}
-                        className={classnames("form-control", {
+                        className={classnames('form-control', {
                             invalid: errors.when
                         })} />
-                    <span className="red-text">{errors.when}</span>
+                    <span className='red-text'>{errors.when}</span>
                 </div>
                 
-                <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-block btn-lg">
+                <div className='form-group'>
+                    <button type='submit' className='btn btn-primary btn-block btn-lg'>
                         Create Event
                     </button>
                 </div>

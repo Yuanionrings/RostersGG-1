@@ -1,20 +1,19 @@
-import React, { Component } from "react";
-import classnames from "classnames"
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { invitePlayerToRoster } from "../../actions/rosterAuthActions";
+import React, { Component } from 'react';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { invitePlayerToRoster } from '../../actions/rosterAuthActions';
 
 class InvitePlayer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            player_username: "",
+            player_username: '',
             team_id: this.props.team_id,
             errors: {}
         }
     }
     componentDidMount() {
-        //console.log(this.props)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -43,8 +42,8 @@ class InvitePlayer extends Component {
   render() {
     const { player_username, errors } = this.state;
     return (
-        <div className="form-box ">
-            <form className="signup-form" onSubmit={this.onSubmit}>
+        <div className='form-box'>
+            <form className='signup-form' onSubmit={this.onSubmit}>
 
                 <h2>Invite Player</h2>
                 <p>Please enter the username of the player you'd like to invite.</p>
@@ -52,20 +51,20 @@ class InvitePlayer extends Component {
                 
                 <div className="form-group">
                     <label>Player's Username: </label>
-                    <input type="text"
-                        id="player_username"
-                        placeholder="Player's Username"
+                    <input type='text'
+                        id='player_username'
+                        placeholder='Player Username'
                         value={player_username}
                         error={errors.player_username}
                         onChange={this.onChange}
-                        className={classnames("form-control", {
+                        className={classnames('form-control', {
                             invalid: errors.player_username
                         })} />
-                    <span className="red-text">{errors.player_username}</span>
+                    <span className='red-text'>{errors.player_username}</span>
                 </div>
                 
-                <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-block btn-lg">
+                <div className='form-group'>
+                    <button type='submit' className='btn btn-primary btn-block btn-lg'>
                         Invite Player
                     </button>
                 </div>

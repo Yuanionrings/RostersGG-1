@@ -1,21 +1,21 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import axios from 'axios';
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 const InvitationInfo = props => (
     <tr>
-        <td className="">{props.roster.teamname}</td>
-        <td className="">{props.roster.game}</td>
-        <td className="">{props.roster.region}</td>
+        <td className=''>{props.roster.teamname}</td>
+        <td className=''>{props.roster.game}</td>
+        <td className=''>{props.roster.region}</td>
         <td>
-            <Link to={"/roster/" + props.roster._id}>View</Link>
+            <Link to={`/roster/${props.roster._id}`}>View</Link>
             <Button
-                className="btn-accept" 
+                className='btn-accept' 
                 onClick={() => onAccept(props.roster._id, props.username)}
                 >Accept</Button>
             <Button
-                className="btn-decline"
+                className='btn-decline'
                 onClick={() => onDecline(props.roster._id, props.username)}
                 >Decline</Button>
         </td>
@@ -23,7 +23,7 @@ const InvitationInfo = props => (
 );
 
 function onAccept(team_id, given_username){
-    axios.patch("/api/rosters/roster/" + team_id + "/accept-invite",
+    axios.patch(`/api/rosters/roster/${team_id}/accept-invite`,
         {username: given_username})
         .then(res => {
             console.log(res)
@@ -36,7 +36,7 @@ function onAccept(team_id, given_username){
 }
 
 function onDecline(team_id, given_username){
-    axios.patch("/api/rosters/roster/" + team_id + "/decline-invite",
+    axios.patch(`/api/rosters/roster/${team_id}/decline-invite`,
         {username: given_username})
         .then(res => {
             console.log(res)
@@ -61,7 +61,7 @@ class UserInfo extends Component {
 
     onEdit = e => {
         e.preventDefault();
-        this.props.history.push('/' + this.props.given_username + '/edit');
+        this.props.history.push(`/${this.props.given_username}/edit`);
     }
 
     invitationList(user_username){
@@ -74,7 +74,7 @@ class UserInfo extends Component {
     }
 
     componentDidMount() {
-        axios.get("/api/users/" + this.props.given_username)
+        axios.get(`/api/users/${this.props.given_username}`)
             .then(res => {
                 this.setState({
                     user_name: res.data.name,
@@ -85,11 +85,11 @@ class UserInfo extends Component {
                 console.log(err);
 
                 // This seems like it's the only way to "log out" of session if user isn't found.
-                localStorage.removeItem("jwtToken");
+                localStorage.removeItem('jwtToken');
                 window.location.reload(false);
             });
 
-        axios.get("/api/users/" + this.props.given_username + "/invitations")
+        axios.get(`/api/users/${this.props.given_username}/invitations`)
             .then(res => {
                 this.setState({
                     user_invitations: res.data
@@ -102,20 +102,20 @@ class UserInfo extends Component {
 
     render() {
         return (
-            <div className="display-box">
-                <div className="box">
+            <div className='display-box'>
+                <div className='box'>
                     <h2>
-                        Welcome, <span className="primary-text-green">{this.state.user_name}</span>!
+                        Welcome, <span className='primary-text-green'>{this.state.user_name}</span>!
                         <Button
                             onClick={this.onEdit}
-                            className="float-right"
+                            className='float-right'
                             >Edit Profile</Button>
                     </h2>
                     <hr />
 
                     <h5>Invitations: </h5>
                     {(this.state.user_invitations.length > 0) ?
-                        <table className="table table-striped" style={{ marginTop: 10 }}>
+                        <table className='table table-striped' style={{ marginTop: 10 }}>
                             <thead>
                                 <tr>
                                     <th>Team Name</th>
@@ -129,7 +129,7 @@ class UserInfo extends Component {
                             </tbody>
                         </table>
                     :
-                        <p><span className="filler-text">You do not have any invitations right now.</span></p>
+                        <p><span className='filler-text'>You do not have any invitations right now.</span></p>
                     }
                 </div>
             </div>
