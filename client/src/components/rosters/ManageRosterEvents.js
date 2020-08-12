@@ -16,9 +16,9 @@ const EventInfo = props => (
         <td className="">
             <Link to={"/" + props.event.name}>{props.event.name}</Link>
         </td>
-        <td className="">{props.when}</td>
+        <td className="">{formatDateString(props.event.when)}</td>
         <td className="">{calcTimeUntil(new Date(props.event.when), Date.now())}</td>
-        <td className="filler-text">[Not implemented]</td>
+        <td className="filler-text">N/A</td>
     </tr>
 );
 
