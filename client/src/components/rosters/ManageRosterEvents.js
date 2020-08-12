@@ -16,7 +16,7 @@ const EventInfo = props => (
         <td className="">
             <Link to={"/" + props.event.name}>{props.event.name}</Link>
         </td>
-        <td className="">{formatDateString(props.when)}</td>
+        <td className="">{props.when}</td>
         <td className="">{calcTimeUntil(new Date(props.event.when), Date.now())}</td>
         <td className="filler-text">[Not implemented]</td>
     </tr>
@@ -30,8 +30,6 @@ class ManageRosterEvents extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props)
-
         axios.get('/api/rosters/roster/' + this.props.team_id + '/events')
             .then(res => {
                 this.setState({
@@ -47,7 +45,6 @@ class ManageRosterEvents extends Component {
     }
 
     rosterEventList(){
-        console.log(this.state.events)
         return this.state.events.map(function(currentEvent, i){
             return <EventInfo event={currentEvent} key={i} />
         });
