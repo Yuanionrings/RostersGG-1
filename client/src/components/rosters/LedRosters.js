@@ -51,7 +51,7 @@ export default class LedRosters extends Component {
     render() {
         return (
             <div className="display-box">
-                <div>
+                <div className="box">
                     <h2 className="">
                         My Rosters
                         <Button

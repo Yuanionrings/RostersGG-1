@@ -149,7 +149,7 @@ body {
                 .dashboard-container .content .display-box .event-card p{
                     margin:0;
                 }
-            .dashboard-container .content .display-box div {
+            .dashboard-container .content .display-box .box {
                 color: #373638;
                 background: #ffffff;
                 padding: 1.5rem;

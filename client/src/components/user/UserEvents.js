@@ -42,7 +42,7 @@ class UserEvents extends Component {
         }
         return (
             <div className="display-box">
-                <div>
+                <div className="box">
                     <h2 className="">
                         Upcoming Events
                     </h2>

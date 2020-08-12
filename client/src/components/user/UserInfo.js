@@ -103,7 +103,7 @@ class UserInfo extends Component {
     render() {
         return (
             <div className="display-box">
-                <div>
+                <div className="box">
                     <h2>
                         Welcome, <span className="primary-text-green">{this.state.user_name}</span>!
                         <Button

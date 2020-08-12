@@ -6,9 +6,9 @@ function EventCard(props){
         <div className="event-card">
             <h4>{props.name}</h4>
             <p>{props.description}</p>
-            <p>{props.when} - this will be formatted better.</p>
+            <p>{props.when}</p>
             <hr />
-            <p>Event starts in: (Not yet implemented)</p>
+            <p>Event starts in: <span className="filler-text">Not yet implemented</span></p>
         </div>
     );
 }
