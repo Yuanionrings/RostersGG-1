@@ -47,6 +47,7 @@ class ManageRosterEvents extends Component {
     }
 
     rosterEventList(){
+        console.log(this.state.events)
         return this.state.events.map(function(currentEvent, i){
             return <EventInfo event={currentEvent} key={i} />
         });
