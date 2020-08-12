@@ -11,7 +11,7 @@ function EventCard(props){
         <div className="event-card">
             <h4>{props.name}</h4>
             <p className="mb-0">{props.description}</p>
-            <p className="mt-0 filler-text">{formatDateString()}</p>
+            <p className="mt-0 filler-text">{this.formatDateString()}</p>
             <hr />
             <p className="filler-text">
                 <strong>Time until event: </strong>{calcTimeUntil(new Date(props.when), Date.now())}
