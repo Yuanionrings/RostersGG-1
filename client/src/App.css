@@ -133,11 +133,11 @@ body {
         }
             .dashboard-container .content .display-box .event-card {
                 color: #373638;
-                background: #f1f1f1;
+                background: #ffffff;
                 padding: 1rem;
                 border: 1px solid #dedfe2;
                 border-radius: 16px;
-                max-width: 400px;
+                width: 100%;
             }
                 .dashboard-container .content .display-box .event-card h4{
                     font-weight: bold;

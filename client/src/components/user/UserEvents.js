@@ -37,8 +37,10 @@ class UserEvents extends Component {
 
     render() {
         const sliderSettings = {
+            adaptiveHeight: true,
             dots: true,
-            initialSlide: 1
+            initialSlide: 1,
+            duration: 100
         }
         return (
             <div className="display-box">
