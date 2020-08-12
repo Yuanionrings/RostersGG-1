@@ -9,13 +9,13 @@ import UserEvents from './UserEvents';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import LogoutIcon from '../../assets/logout.svg';
-import SettingsIcon from '../../assets/settings.svg';
-import UserIcon from '../../assets/user.svg';
-import PlayerDirIcon from '../../assets/players-dir.svg';
-import TeamDirIcon from '../../assets/box-list.svg';
-import EventsIcon from '../../assets/calendar.svg';
-import DashboardIcon from '../../assets/star.svg';
+import LogoutIcon from '../../assets/icons/logout.svg';
+import SettingsIcon from '../../assets/icons/settings.svg';
+import UserIcon from '../../assets/icons/user.svg';
+import PlayerDirIcon from '../../assets/icons/players-dir.svg';
+import TeamDirIcon from '../../assets/icons/box-list.svg';
+import EventsIcon from '../../assets/icons/calendar.svg';
+import DashboardIcon from '../../assets/icons/star.svg';
 
 
 
