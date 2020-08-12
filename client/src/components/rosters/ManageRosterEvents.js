@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import calcTimeUntil from '../../util/calcTimeUntil';
 import dateFormat from 'dateformat';
+import axios from 'axios';
 
 function formatDateString(dateISO) {
     const date = new Date(dateISO);
