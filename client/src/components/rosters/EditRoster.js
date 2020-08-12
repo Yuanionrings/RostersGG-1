@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import InvitePlayer from "./InvitePlayer";
 import CreateEvent from "./CreateEvent";
+import ManageRosterEvents from "./ManageRosterEvents";
 import Button from "react-bootstrap/Button";
 
 
