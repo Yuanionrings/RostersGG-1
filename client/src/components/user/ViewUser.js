@@ -54,8 +54,8 @@ export default class ViewUser extends Component {
 
     render() {
         return (
-            <div className='general-display-box'>
-                <div>
+            <div className='viewing-display-box'>
+                <div className='display-content'>
                     <Link to='/dashboard'>
                         <i className='fa fa-arrow-circle-left'></i>
                         {" "}Back to Dashboard

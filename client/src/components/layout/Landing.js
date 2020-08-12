@@ -50,8 +50,11 @@ class Landing extends Component {
         <div className='section-2'>
           <div className='display'>
             <div className='content'>
-              <h3>This service is not yet released.</h3>
-              <h4>There is still so much functionality in development. You won't want to miss out. Did somebody say integrated Discord bot? Email contact@rosters.gg if you are 
+              <h3>This application is not yet released.</h3>
+              <h4>
+                You are currently using the early-access BETA version. 
+                There is still so much functionality in development - stay tuned so you do not miss out. 
+                Did somebody say integrated Discord bot? Email contact@rosters.gg if you are 
                 interested in contributing or earning premium functionality as an early adopter.
               </h4>
             </div>

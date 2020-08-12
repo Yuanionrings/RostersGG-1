@@ -382,7 +382,7 @@ _______________________________________
         padding: 200px 0;
     }  
         .landing-page-display .header .display {
-            width: 80%;
+            width: 90%;
             max-width: 920px;
             margin: 0 auto;
             padding: 2rem 0;
@@ -440,7 +440,7 @@ _______________________________________
         padding-bottom: 100px;
     }  
         .landing-page-display .section-1 .display {
-            width: 80%;
+            width: 90%;
             max-width: 920px;
             margin: 0 auto;
             padding: 0;
@@ -455,7 +455,6 @@ _______________________________________
                 text-align: right;
             }
             .landing-page-display .section-1 .content h3 {
-                text-decoration: underline;
                 font-weight: bold;
                 margin: 0 auto;
             }
@@ -492,28 +491,28 @@ _______________________________________
 
 /*_____________________________________
 
-    GENERAL DISPLAY RELATED STYLING
+    VIEWING DISPLAY RELATED STYLING
 
 _______________________________________
 */
-.general-display-box {
+.viewing-display-box {
     margin: 1.5rem;
 }
-    .general-display-box div {
+    .viewing-display-box .display-content {
         color: #373638;
         background: #ffffff;
         padding: 1.5rem;
         border: 1px solid #dedfe2;
         border-radius: 16px;
     }
-    .general-display-box .btn {        
+    .viewing-display-box .btn {        
         font-size: 16px;
         font-weight: bold;
         background: #33D9B2;
         min-width: 120px;
         border: none;
     }
-    .general-display-box .btn-accept {        
+    .viewing-display-box .btn-primary {        
         font-size: 0.75rem;
         font-weight: bold;
         background: #33D9B2;
@@ -522,7 +521,7 @@ _______________________________________
         border: none;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
-    .general-display-box .btn-decline {        
+    .viewing-display-box .btn-secondary {        
         font-size: 0.75rem;
         font-weight: bold;
         color: #33D9B2;
@@ -532,64 +531,64 @@ _______________________________________
         border: 1px solid #33D9B2;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
-    .general-display-box .btn:hover, .general-display-box .btn:focus {
+    .viewing-display-box .btn:hover, .viewing-display-box .btn:focus {
         background: #218C74;
         outline: none !important;
     }
-    .general-display-box .btn:active {
+    .viewing-display-box .btn:active {
         background: #1d7562;
         box-shadow: none !important;
     }
-    .general-display-box h2 {
+    .viewing-display-box h2 {
         color: #373638;
         font-weight: bold;
         margin-top: 0;
         margin-bottom: 0;
     }
-    .general-display-box h4 {
+    .viewing-display-box h4 {
         color: #373638;
         font-weight: bold;
         margin-top: 0;
         margin-bottom: 0.5rem;
     }
-    .general-display-box h5 {
+    .viewing-display-box h5 {
         color: #373638;
         font-weight: bold;
         margin-bottom: 0;
     }
-    .general-display-box p {
+    .viewing-display-box p {
         margin: 0;
     }
-    .general-display-box hr {
+    .viewing-display-box hr {
         border-top: 1px solid #dedfe2;
         margin-top: 1rem;
         margin-left: -1.5rem;
         margin-right: -1.5rem;
     }
-    .general-display-box a {
+    .viewing-display-box a {
         color: #33d9b2;
         text-decoration: none;
         margin-right: 15px;
     }	
-    .general-display-box a:hover {
+    .viewing-display-box a:hover {
         color: #218C74;
     }
-    .general-display-box table {
+    .viewing-display-box table {
         color: #373638;
         background: #ffffff;
     }
-    .general-display-box thead th {
+    .viewing-display-box thead th {
         border-bottom: 3px solid #dedfe2;
         border-left: 1px solid #dedfe2;
         border-right: 1px solid #dedfe2;
     }
-    .general-display-box thead tr {
+    .viewing-display-box thead tr {
         background: #ffffff;
     }
-    .general-display-box th {
+    .viewing-display-box th {
         border-top: 1px solid #dedfe2;
     }
-    .general-display-box td {
+    .viewing-display-box td {
         border-top: 1px solid #dedfe2;
     }
 
