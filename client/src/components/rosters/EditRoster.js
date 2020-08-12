@@ -11,6 +11,7 @@ import CreateEvent from './CreateEvent';
 import ManageRosterEvents from './ManageRosterEvents';
 import Button from 'react-bootstrap/Button';
 import { supportedGamesList, supportedGames } from '../../util/selectSupportedGames';
+import { supportedRegionsList, supportedRegions } from '../../util/selectSupportedRegions';
 
 
 const PlayerInfo = props => (
@@ -180,7 +181,7 @@ class EditRoster extends Component {
                             className={classnames('form-control', {
                                 invalid: errors.game
                             })}>
-                            <option selected value='no-game'>Select a game:</option>
+                            <option selected value='no-game'>Select a Game:</option>
                             {supportedGamesList(supportedGames)}
                             </select>
                             <span className='red-text'>{errors.game}</span>
@@ -197,14 +198,8 @@ class EditRoster extends Component {
                             className={classnames('form-control', {
                                 invalid: errors.region
                             })}>
-                            <option selected value='no-region'>Select a region:</option>
-                            <option value='US EAST'>US EAST</option>
-                            <option value='US CENTRAL'>US CENTRAL</option>
-                            <option value='US MOUNTAIN'>US MOUNTAIN</option>
-                            <option value='US PACIFIC'>US PACIFIC</option>
-                            <option value='EUR WEST'>EUR WEST</option>
-                            <option value='EUR EAST'>EUR EST</option>
-                            <option value='ASIA'>ASIA</option>
+                            <option selected value='no-region'>Select a Region:</option>
+                            {supportedRegionsList(supportedRegions)}
                             </select>
                             <span className='red-text'>{errors.region}</span>
                         </div>
