@@ -9,13 +9,7 @@ import { connect } from "react-redux";
 import InvitePlayer from "./InvitePlayer";
 import CreateEvent from "./CreateEvent";
 import Button from "react-bootstrap/Button";
-import calcTimeUntil from '../../util/calcTimeUntil';
-import dateFormat from 'dateformat';
 
-function formatDateString(dateISO) {
-    const date = new Date(dateISO);
-    return dateFormat(date, "dddd, mmmm dS, yyyy, h:MM:ss TT");
-};
 
 const PlayerInfo = props => (
     <tr>
@@ -30,17 +24,6 @@ const PlayerInfo = props => (
                 onClick={() => onRemovePlayer(props.team_id, props.user.username)}
                 >Kick</Button>
         </td>
-    </tr>
-);
-
-const EventInfo = props => (
-    <tr>
-        <td className="">
-            <Link to={"/" + props.event.name}>{props.event.name}</Link>
-        </td>
-        <td className="">{formatDateString(props.when)}</td>
-        <td className="">{calcTimeUntil(new Date(props.event.when), Date.now())}</td>
-        <td className="filler-text">[Not implemented]</td>
     </tr>
 );
 
@@ -67,7 +50,6 @@ class EditRoster extends Component {
             region: "",
             leader: "",
             players: [],
-            events: [],
             errors: {}
         }
     }
@@ -98,15 +80,6 @@ class EditRoster extends Component {
             }).catch(err => {
                 console.log(err);
             });
-
-        axios.get('/api/rosters/roster/' + this.props.match.params.id + '/events')
-            .then(res => {
-                this.setState({
-                    events: res.data
-                });
-            }).catch(err => {
-                console.log(err);
-            });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -120,12 +93,6 @@ class EditRoster extends Component {
     playerList(id, my_username){
         return this.state.players.map(function(currentPlayer, i){
             if(currentPlayer.username !== my_username) { return <PlayerInfo team_id={id} user={currentPlayer} key={i} /> }
-        });
-    }
-
-    rosterEventList(){
-        return this.state.players.map(function(currentEvent, i){
-            return <EventInfo event={currentEvent} key={i} />
         });
     }
 
@@ -290,29 +257,10 @@ class EditRoster extends Component {
                     history={this.props.history} 
                     team_id={this.props.match.params.id} />
 
-                <div className="form-box">
-                    <div className="player-list">
-                        <h2>Manage Team Events</h2>
-                        <hr />
-                        {(this.state.events.length > 0) ? 
-                        <table className="table table-striped" style={{ marginTop: 15 }}>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>When</th>
-                                    <th>Time Until</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                { this.rosterEventList() }
-                            </tbody>
-                        </table>
-                        :
-                        <p className="filler-text">There are no events for this roster.</p>
-                        }
-                    </div>
-                </div>
+                <ManageRosterEvents
+                    auth={this.props.auth} 
+                    history={this.props.history} 
+                    team_id={this.props.match.params.id} />
 
                 <div className="filler-lg"></div>
             </div>

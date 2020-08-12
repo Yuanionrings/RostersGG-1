@@ -14,7 +14,6 @@ class UserEvents extends Component {
     componentDidMount() {
         axios.get("/api/users/" + this.props.username + "/upcoming-events")
             .then(res => {
-                console.log(res);
                 this.setState({
                     events: res.data
                 });
