@@ -1,11 +1,6 @@
 import React from 'react';
 import calcTimeUntil from '../../util/calcTimeUntil';
-import dateFormat from 'dateformat';
-
-function formatDateString(dateISO) {
-    const date = new Date(dateISO);
-    return dateFormat(date, 'dddd, mmmm dS, yyyy, h:MM:ss TT');
-};
+import { formatDateString } from '../../util/formatDateString';
 
 function EventCard(props){
     return (

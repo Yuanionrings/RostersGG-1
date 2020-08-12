@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { formatDateString } from '../../util/formatDateString';
 
 const PlayerInfo = props => (
     <tr>
@@ -8,7 +9,7 @@ const PlayerInfo = props => (
             <Link to={`/${props.user.username}`}>{props.user.name}</Link>
         </td>
         <td className=''>{props.user.username}</td>
-        <td className=''>{props.user.date}</td>
+        <td className=''>{formatDateString(props.user.date)}</td>
     </tr>
 );
 

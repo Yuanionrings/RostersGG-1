@@ -9,38 +9,9 @@ import { connect } from 'react-redux';
 import InvitePlayer from './InvitePlayer';
 import CreateEvent from './CreateEvent';
 import ManageRosterEvents from './ManageRosterEvents';
-import Button from 'react-bootstrap/Button';
+import ManagePlayers from './ManagePlayers';
 import { supportedGamesList, supportedGames } from '../../util/selectSupportedGames';
 import { supportedRegionsList, supportedRegions } from '../../util/selectSupportedRegions';
-
-
-const PlayerInfo = props => (
-    <tr>
-        <td className=''>
-            <Link to={'/' + props.user.username}>{props.user.name}</Link>
-        </td>
-        <td className=''>{props.user.username}</td>
-        <td className=''>{props.user.date}</td>
-        <td className=''>
-            <Button
-                className='btn-secondary'
-                onClick={() => onRemovePlayer(props.team_id, props.user.username)}
-                >Kick</Button>
-        </td>
-    </tr>
-);
-
-function onRemovePlayer(team_id, given_username){
-    axios.patch(`/api/rosters/roster/${team_id}/${given_username}/remove`)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-
-    window.location.reload(false);
-}
 
 
 class EditRoster extends Component {
@@ -74,15 +45,6 @@ class EditRoster extends Component {
             .catch(err => {
                 console.log(err);
             });
-
-        axios.get(`/api/rosters/roster/${this.props.match.params.id}/players`)
-            .then(res => {
-                this.setState({
-                    players: res.data
-                });
-            }).catch(err => {
-                console.log(err);
-            });
     }
 
     componentWillReceiveProps(nextProps) {
@@ -91,12 +53,6 @@ class EditRoster extends Component {
                 errors: nextProps.errors
             });
         }
-    }
-
-    playerList(id, my_username){
-        return this.state.players.map(function(currentPlayer, i){
-            if(currentPlayer.username !== my_username) { return <PlayerInfo team_id={id} user={currentPlayer} key={i} /> }
-        });
     }
 
     onChange = e => {
@@ -218,30 +174,10 @@ class EditRoster extends Component {
                     history={this.props.history} 
                     team_id={this.props.match.params.id} />
 
-                <div className='form-box'>
-                    <div className='player-list'>
-                        <h2>Manage Players</h2>
-                        <hr />
-                        {(this.state.players.length > 1) ? 
-                        <table className='table table-striped' style={{ marginTop: 15 }}>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Username</th>
-                                    <th>Date Joined RostersGG</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                { this.playerList(this.props.match.params.id, this.props.auth.user.username) }
-                            </tbody>
-                        </table>
-                        :
-                        <p className='filler-text'>You are the only player on this roster.</p>
-                        }
-                    </div>
-                </div>
-
+                <ManagePlayers
+                    auth={this.props.auth} 
+                    history={this.props.history} 
+                    team_id={this.props.match.params.id} />
 
                 <CreateEvent
                     auth={this.props.auth} 
