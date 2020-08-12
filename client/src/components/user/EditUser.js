@@ -81,7 +81,7 @@ class EditUser extends Component {
 
         return (
             <div className="form-box ">
-                <form className="signup-form" onSubmit={this.onSubmit}>
+                <form className="signup-form extra-margin-bottom" onSubmit={this.onSubmit}>
 
                     <div><Link to="/dashboard"><i className="fa fa-arrow-circle-left  "></i> Back to Dashboard</Link></div>
 

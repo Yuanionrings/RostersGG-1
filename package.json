@@ -1,6 +1,6 @@
 {
   "name": "rosters-gg",
-  "version": "0.0.2",
+  "version": "0.1.3",
   "description": "eSports Team Management Application",
   "main": "server.js",
   "scripts": {

@@ -14,6 +14,9 @@
     font-size: 10px;
     font-weight: lighter;
 }
+.extra-margin-bottom { 
+    margin-bottom: 50px;
+}
 
 body {
     color: #fffffc;
