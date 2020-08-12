@@ -12,8 +12,6 @@ class UserEvents extends Component {
     }
 
     componentDidMount() {
-        //console.log(this.props)
-        // This is where route to get user events is implemented to fetch events
         axios.get("/api/users/" + this.props.username + "/upcoming-events")
             .then(res => {
                 console.log(res);
@@ -29,9 +27,9 @@ class UserEvents extends Component {
     eventCards(){
         return this.state.events.map(function(event, i){
             return <EventCard name={event.name}
-                    description={event.description}
-                    when={event.when} 
-                    key={i} />
+                        description={event.description}
+                        when={event.when} 
+                        key={i} />
         });
     }
 

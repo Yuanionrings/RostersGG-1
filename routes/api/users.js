@@ -142,7 +142,6 @@ router.get("/:username/upcoming-events", async (req, res) => {
 
         const eventFilter = {teams: { $elemMatch: {$in: rosters_id_list }}};
         const events = await Event.find(eventFilter);
-        console.log(events)
 
         res.json(events);
 
