@@ -527,13 +527,15 @@ router.post("/roster/:id/create-event", async (req, res) => {
                 name: req.body.name,
                 description: req.body.description,
                 when: req.body.when,
-                teams: [req.body.team_id]
+                team_ids: [req.body.team_id],
+                team_names: [roster.teamname]
             })
             :
             new Event({
                 name: req.body.name,
                 when: req.body.when,
-                teams: [req.body.team_id]
+                team_ids: [req.body.team_id],
+                team_names: [roster.teamname]
             });
 
         const new_event = await newEvent.save();
@@ -543,8 +545,53 @@ router.post("/roster/:id/create-event", async (req, res) => {
 
     } catch(error) {
         console.log(error);
-        res_errors.when = `DATE and TIME not entered correctly`;
+        res_errors.when = `Date and Time likely not entered correctly`;
         res.status(400).json(res_errors);
+    }
+});
+
+
+// @route GET api/rosters/:id/events
+// @desc Retrieves all events for a given roster
+router.get("/:id/events", async (req, res) => {
+
+    // Define filter for querying rosters collection
+    const rosterFilter = { _id: req.params.id };
+
+    let res_errors = {};
+
+    try {
+        const user = await User.findOne(userFilter);
+        if (!user) {
+            res_errors.upcoming_events = `No user found with username ${userFilter.username}`;
+            res.status(404).json(res_errors);
+            return;
+        }
+
+        const rosterFilter = { players: user.username };
+        const rosterProjection = {_id:1};
+        const rosters = await Roster.find(rosterFilter, rosterProjection);
+
+        if (!rosters || rosters.length < 1){
+            res_errors.upcoming_events = `User is not on any rosters, so no events`;
+            res.status(404).json(res_errors);
+            return;
+        }
+
+        // List of roster documents found -> extract _ids into list
+        var rosters_id_list = [];
+        var roster_doc;
+        for(roster_doc of rosters){
+            rosters_id_list.push(roster_doc._id);
+        }
+
+        const eventFilter = {team_ids: { $elemMatch: {$in: rosters_id_list }}};
+        const events = await Event.find(eventFilter);
+
+        res.json(events);
+
+    } catch(error) {
+        console.log(error)
     }
 });
 

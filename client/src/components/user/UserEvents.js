@@ -29,6 +29,7 @@ class UserEvents extends Component {
             return <EventCard name={event.name}
                         description={event.description}
                         when={event.when} 
+                        team_names={event.team_names}
                         key={i} />
         });
     }

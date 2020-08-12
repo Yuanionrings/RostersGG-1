@@ -10,15 +10,19 @@ const EventSchema = new Schema({
     },
     description: {
         type: String,
-        default: "Basic RostersGG Event (no description given)"
+        default: "Team Event"
     },
     when: {
         type: Date,
         required: true
     },
-    teams: {
+    team_names: {
+        type: [String],
+        required: true
+    },
+    team_ids: {
         type: [Schema.Types.ObjectId],
-        default: []
+        required: true
     },
     date_created: {
         type: Date,
