@@ -15,9 +15,6 @@ class CreateEvent extends Component {
         }
     }
 
-    componentDidMount() {
-    }
-
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({

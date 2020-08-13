@@ -6,7 +6,7 @@ import { formatDateString } from '../../../util/formatDateString';
 const PlayerInfo = props => (
     <tr>
         <td className=''>
-            <Link to={`/${props.user.username}`}>{props.user.name}</Link>
+            <Link to={`/user/${props.user.username}`}>{props.user.name}</Link>
         </td>
         <td className=''>{props.user.username}</td>
         <td className=''>{formatDateString(props.user.date)}</td>

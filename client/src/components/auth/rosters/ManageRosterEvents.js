@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import calcTimeUntil from '../../../util/calcTimeUntil';
@@ -13,9 +12,7 @@ function formatDateString(dateISO) {
 
 const EventInfo = props => (
     <tr>
-        <td className=''>
-            <Link to={'/' + props.event.name}>{props.event.name}</Link>
-        </td>
+        <td className=''>{props.event.name}</td>
         <td className=''>{formatDateString(props.event.when)}</td>
         <td className=''>{calcTimeUntil(new Date(props.event.when), Date.now())}</td>
         <td className='filler-text'>N/A</td>

@@ -9,7 +9,6 @@ import { supportedRegionsList, supportedRegions } from '../../../util/selectSupp
 
 class CreateRoster extends Component {
   constructor(props) {
-    console.log(props)
     super(props);
     this.state = {
       username: this.props.auth.user.username,
@@ -35,7 +34,6 @@ class CreateRoster extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    //console.log(this.state)
     const newRoster = {
       teamname: this.state.teamname,
       team_desc: this.state.team_desc,

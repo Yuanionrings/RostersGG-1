@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 
 const InvitationInfo = props => (
     <tr>
-        <td className=''>{props.roster.teamname}</td>
+        <td className=''>
+            <Link to={`/roster/${props.roster._id}`}>{props.roster.teamname}</Link>
+        </td>
         <td className=''>{props.roster.game}</td>
         <td className=''>{props.roster.region}</td>
         <td>
-            <Link to={`/roster/${props.roster._id}`}>View</Link>
+            
             <Button
                 className='btn-accept' 
                 onClick={() => onAccept(props.roster._id, props.username)}
@@ -61,7 +63,7 @@ class UserInfo extends Component {
 
     onEdit = e => {
         e.preventDefault();
-        this.props.history.push(`/${this.props.given_username}/edit`);
+        this.props.history.push(`/user/${this.props.given_username}/edit`);
     }
 
     invitationList(user_username){

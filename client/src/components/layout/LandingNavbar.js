@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavbarBrand from 'react-bootstrap/NavbarBrand';
 import Nav from 'react-bootstrap/Nav';
 
-const LandingNavbar = (props) => {
+const LandingNavbar = props => {
 
     var conditionalNavItems = () => {
         return props.authenticated ?
@@ -12,7 +12,8 @@ const LandingNavbar = (props) => {
         </Nav>
         :
         <Nav className='ml-auto'>
-            <Nav.Link className='secondary-text-light' href='/login'>Login / Register</Nav.Link>
+            <Nav.Link className='secondary-text-light' href='/login'>Login</Nav.Link>
+            <Nav.Link className='secondary-text-light' href='/register'>Register</Nav.Link>
         </Nav>
     }
 
