@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-//import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 import LogoutIcon from '../../../assets/icons/logout.svg';
 import SettingsIcon from '../../../assets/icons/settings.svg';

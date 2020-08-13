@@ -118,7 +118,6 @@ _______________________________________
     width: 100%;
     margin-right: 0px;
     margin-left: 0px;
-    padding-left: 64px;
 }
 
     /*
@@ -144,6 +143,7 @@ _______________________________________
         height: 100%;
         width: 100%;
         padding: 1.5rem;
+        padding-left: 64px !important;
     }
         .dashboard-container .content .display-box {
             margin-bottom: 1.5rem;
