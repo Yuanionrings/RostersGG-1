@@ -21,6 +21,11 @@ import TeamDirIcon from '../../assets/icons/box-list.svg';
 import EventsIcon from '../../assets/icons/calendar.svg';
 import DashboardIcon from '../../assets/icons/star.svg';
 
+import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+
+// Be sure to include styles at some point, probably during your bootstraping
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+
 
 
 class Dashboard extends Component {
@@ -63,35 +68,41 @@ class Dashboard extends Component {
             <div className='dashboard-container'>
                 <Row>
                     <Col className='secondary-bg-light' sm={3} md={2}>
-                        <div className='sidebar'>
-                            <Button onClick={() => this.props.history.push('/dashboard')}>
-                                <img src={DashboardIcon} alt='Dashboard Icon' />
-                                {"   "}Dashboard</Button>
-
-                            <Button onClick={() => console.warn('This is not implemented')}>
-                                <img src={EventsIcon} alt='Events Icon' />
-                                {"   "}Event Manager</Button>
-
-                            <Button onClick={() => console.warn('This is not implemented')}>
-                                <img src={TeamDirIcon} alt='Team Directory Icon' />
-                                {"   "}Team Directory</Button>
-
-                            <Button onClick={() => console.warn('This is not implemented')}>
-                                <img src={PlayerDirIcon} alt='Players Directory Icon' />
-                                {"   "}Player Directory</Button>
-
-                            <Button onClick={this.onGoToViewUser}>
-                                <img src={UserIcon} alt='User Icon' />
-                                {"   "}View My Profile</Button>
-
-                            <Button onClick={this.onGoToEditProfile}>
-                                <img src={SettingsIcon} alt='Gear Icon' />
-                                {"   "}Edit Profile</Button>
-
-                            <Button onClick={this.onLogout}>
-                                <img src={LogoutIcon} alt='Logout Icon' />
-                                {"   "}Logout</Button>
-                        </div>
+                    <SideNav
+                        onSelect={(selected) => {
+                            // Add your code here
+                        }}
+                    >
+                        <SideNav.Toggle />
+                        <SideNav.Nav defaultSelected="home">
+                            <NavItem eventKey="home">
+                                <NavIcon>
+                                    <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                                </NavIcon>
+                                <NavText>
+                                    Home
+                                </NavText>
+                            </NavItem>
+                            <NavItem eventKey="charts">
+                                <NavIcon>
+                                    <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                                </NavIcon>
+                                <NavText>
+                                    Charts
+                                </NavText>
+                                <NavItem eventKey="charts/linechart">
+                                    <NavText>
+                                        Line Chart
+                                    </NavText>
+                                </NavItem>
+                                <NavItem eventKey="charts/barchart">
+                                    <NavText>
+                                        Bar Chart
+                                    </NavText>
+                                </NavItem>
+                            </NavItem>
+                        </SideNav.Nav>
+                    </SideNav>
                     </Col>
 
                     <Col className='primary-bg-light' sm={9} md={10}>
