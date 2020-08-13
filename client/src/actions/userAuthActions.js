@@ -7,7 +7,12 @@ import { GET_ERRORS, SET_CURRENT_USER } from './types';
 //Register User
 export const registerUser = (userData, history) => dispatch => {
   axios.post('/api/users/register', userData)
-    .then(res => history.push('/login'))
+    .then(res => {
+      history.push({
+        pathname: '/login',
+        state: { toast_message: 'Please see confirmation email before logging in.' }
+      });
+    })
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data

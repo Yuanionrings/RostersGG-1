@@ -5,8 +5,10 @@ import store from './store';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './util/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/userAuthActions';
+import { ToastContainer } from 'react-toastify';
 
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import PrivacyPolicy from './components/compliance/PrivacyPolicy';
 import TermsAndConditions from './components/compliance/TermsAndConditions';
@@ -51,6 +53,17 @@ var authenticated = () => {
 function App() {
   return (
     <Provider store={store} >
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Router>
         <div className='app-bg page-container'>
           <div className='content-wrap'>

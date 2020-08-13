@@ -130,6 +130,7 @@ class Register extends Component {
               })} />
             <span className='red-text'>{errors.password2}</span>
           </div>
+
           <div className='form-group'>
             <button type='submit' className='btn btn-primary btn-block btn-lg'>Sign Up</button>
           </div>

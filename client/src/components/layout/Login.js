@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/userAuthActions';
 import classnames from 'classnames';
+import { toast } from 'react-toastify';
+import toastNotif from '../../util/toastNotif';
 
 class Login extends Component {
   constructor() {
@@ -14,6 +16,7 @@ class Login extends Component {
       errors: {}
     }
   }
+
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
@@ -36,6 +39,18 @@ class Login extends Component {
     this.setState({ [e.target.id]: e.target.value })
   }
 
+  displayToast(message) {
+    toast(toastNotif(message), {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
+
   onSubmit = e => {
     e.preventDefault();
 
@@ -45,10 +60,14 @@ class Login extends Component {
     }
     this.props.loginUser(userData);
   }
+
   render() {
     const { email, password, errors } = this.state;
     return (
       <div className='form-box'>
+        
+        {this.displayToast(this.props.location.state.toast_message)}
+
         <form className='login-form' onSubmit={this.onSubmit}>
           <h2>Login</h2>
           <hr />
