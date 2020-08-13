@@ -32,7 +32,7 @@ class Landing extends Component {
               <div className='text-area'>
                 <h3>FOR LEADERS</h3>
                 <h4>
-                  Until you operate an eSports team, you never know overwhelming it can be. RostersGG was built for team leaders, by team leaders. No longer worry about 
+                  Until you operate an eSports team, you never know how overwhelming it can be. RostersGG was built for team leaders, by team leaders. No longer worry about 
                   scheduling, communication with your players, or keeping track of player rosters.
                 </h4>
               </div>
