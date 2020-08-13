@@ -10,7 +10,7 @@ export const registerUser = (userData, history) => dispatch => {
     .then(res => {
       history.push({
         pathname: '/login',
-        state: { toast_message: 'Please see confirmation email before logging in.' }
+        state: { toast_message: 'Please confirm email before logging in, check inbox.' }
       });
     })
     .catch(err => dispatch({
@@ -22,7 +22,12 @@ export const registerUser = (userData, history) => dispatch => {
 //Edit User
 export const editUser = (userData, history) => dispatch => {
   axios.patch('/api/users/' + userData.username + '/update', userData)
-    .then(res => history.push('/dashboard'))
+  .then(res => {
+    history.push({
+      pathname: '/dashboard',
+      state: { toast_message: 'User account information was successfully updated' }
+    });
+  })
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data

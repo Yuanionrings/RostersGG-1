@@ -30,6 +30,23 @@ class Dashboard extends Component {
         e.preventDefault();
         this.props.logoutUser();
     }
+    displayToast() {
+        try {
+          if (this.props.location.state.toast_message) {
+            toast(toastNotif(this.props.location.state.toast_message), {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              });
+          }
+        } catch(err) {
+          console.log(err);
+        }
+      }
     onGoToViewUser = e => {
         e.preventDefault();
         this.props.history.push('/' + this.props.auth.user.username);
@@ -40,7 +57,9 @@ class Dashboard extends Component {
     }
     render() {
         return (
+
             <div className='dashboard-container'>
+                {this.displayToast()}
                 <Row>
                     <Col className='secondary-bg-light' sm={3} md={2}>
                         <div className='sidebar'>

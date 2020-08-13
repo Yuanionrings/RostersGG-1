@@ -18,7 +18,6 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
     }
@@ -40,16 +39,22 @@ class Login extends Component {
     this.setState({ [e.target.id]: e.target.value })
   }
 
-  displayToast(message) {
-    toast(toastNotif(message), {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
+  displayAccountCreatedToast() {
+    try {
+      if (this.props.location.state.toast_message) {
+        toast(toastNotif(this.props.location.state.toast_message), {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      }
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   onSubmit = e => {
@@ -67,7 +72,7 @@ class Login extends Component {
     return (
       <div className='form-box'>
 
-        {/*this.displayToast(this.props.location.state.toast_message)*/}
+        {this.displayAccountCreatedToast()}
 
         <form className='login-form' onSubmit={this.onSubmit}>
           <h2>Login</h2>
