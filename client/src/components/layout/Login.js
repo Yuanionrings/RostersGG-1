@@ -40,18 +40,18 @@ class Login extends Component {
   }
 
   displayAccountCreatedToast() {
-    console.log('attempting to display toast')
-    if (this.props.location.state.toast_message) {
-      console.log('toast should display')
-      toast(toastNotif(this.props.location.state.toast_message), {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
+    if(this.props.location.state){
+      if (this.props.location.state.toast_message) {
+        toast(toastNotif(this.props.location.state.toast_message), {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
+      }
     }
   }
 
