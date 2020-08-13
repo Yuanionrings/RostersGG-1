@@ -66,6 +66,18 @@ body {
     overflow-x: auto;
 }
 
+/* OVERRIDE Sidenav styling move later*/
+.sidenav---sidenav---_2tBP .sidenav---collapsed---LQDEv {
+    background: #ffffff !important;
+    color: black !important;
+}
+
+.sidenav---sidenav---_2tBP .sidenav---expanded---1KdUL {
+    background: #ffffff !important;
+    color: black !important;
+}
+
+
 /* 
     BACKGROUND COLORS
 */
@@ -145,18 +157,16 @@ _______________________________________
         background: #f1f1f1;
         height: 100%;
         width: 100%;
-        padding: 1.5rem;
         padding-left: 64px !important;
     }
         .dashboard-container .content .display-box {
-            margin: 1.5rem;
+            margin: 1rem;
         }
             .dashboard-container .content .display-box .event-card {
                 color: #373638;
                 background: #ffffff;
                 padding: 1rem;
                 border: 1px solid #dedfe2;
-                border-radius: 16px;
                 width: 100%;
                 padding-left: 3rem;
                 padding-right: 3rem;
@@ -174,9 +184,8 @@ _______________________________________
             .dashboard-container .content .display-box .box {
                 color: #373638;
                 background: #ffffff;
-                padding: 1.5rem;
+                padding: 1rem;
                 border: 1px solid #dedfe2;
-                border-radius: 16px;
             }
             .dashboard-container .content .display-box .btn {        
                 font-size: 16px;
@@ -190,7 +199,7 @@ _______________________________________
                 font-weight: bold;
                 background: #33D9B2;
                 min-width: 60px;
-                border-radius: 8px;
+                border-radius: 16px;
                 border: none;
                 margin: -0.75px 0.5rem -0.75px 0px;
             }
@@ -200,7 +209,7 @@ _______________________________________
                 color: #33D9B2;
                 background: #ffffff;
                 min-width: 60px;
-                border-radius: 8px;
+                border-radius: 16px;
                 border: 1px solid #33D9B2;
                 margin: -0.75px 0.5rem -0.75px 0px;
             }
@@ -292,20 +301,7 @@ _______________________________________
 
 _______________________________________
 */
-.beta-text {
-    font-size: 10px;
-    font-weight: lighter;
-}
-.navbar-spec {
-    background: #373638;
-}
-    .navbar-spec a:hover, .navbar-spec a:focus {
-        color: #ffffff !important;
-    }
-.navbar-divider {
-    background-image: linear-gradient(to right, #ffda79, #33d9b2);
-    min-height: 2px;
-}
+
 
 
 
@@ -403,7 +399,7 @@ _______________________________________
                 color: #ffffff;
                 background: #33d9b2;
                 border: 0;
-                border-radius: 8px;
+                border-radius: 16px;
                 padding: 0.5rem 1.25rem;
             }
             .landing-page-display .header .content .register-button:hover, .landing-page-display .header .content .register-button:focus {
@@ -486,7 +482,6 @@ _______________________________________
         background: #ffffff;
         padding: 1.5rem;
         border: 1px solid #dedfe2;
-        border-radius: 16px;
     }
     .viewing-display-box .btn {        
         font-size: 16px;
@@ -500,7 +495,7 @@ _______________________________________
         font-weight: bold;
         background: #33D9B2;
         min-width: 60px;
-        border-radius: 8px;
+        border-radius: 16px;
         border: none;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
@@ -510,7 +505,7 @@ _______________________________________
         color: #33D9B2;
         background: #ffffff;
         min-width: 60px;
-        border-radius: 8px;
+        border-radius: 16px;
         border: 1px solid #33D9B2;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
@@ -619,7 +614,7 @@ _______________________________________
         font-weight: bold;
         background: #33D9B2;
         min-width: 60px;
-        border-radius: 8px;
+        border-radius: 16px;
         border: none;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
@@ -629,7 +624,7 @@ _______________________________________
         color: #33D9B2;
         background: #ffffff;
         min-width: 60px;
-        border-radius: 8px;
+        border-radius: 16px;
         border: 1px solid #33D9B2;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
