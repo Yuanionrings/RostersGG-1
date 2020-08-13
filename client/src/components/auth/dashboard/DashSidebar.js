@@ -58,14 +58,14 @@ const DashSidebar = props => {
                     <NavText>Player Directory</NavText>
                 </NavItem>
 
-                <NavItem className='dashboard-navitem' eventKey='view-user'>
+                <NavItem className='dashboard-navitem' eventKey={`user/${props.auth.user.username}`}>
                     <NavIcon>
                         <img src={UserIcon} alt='RostersGG View User Icon' />
                     </NavIcon>
                     <NavText>View User Profile</NavText>
                 </NavItem>
 
-                <NavItem className='dashboard-navitem' eventKey='edit-user'>
+                <NavItem className='dashboard-navitem' eventKey={`user/${props.auth.user.username}/edit`}>
                     <NavIcon>
                         <img src={SettingsIcon} alt='RostersGG Edit User Icon' />
                     </NavIcon>
