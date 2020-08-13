@@ -66,8 +66,6 @@ class Dashboard extends Component {
     render() {
         return (
             <div className='dashboard-container'>
-                <Row>
-                    <Col className='secondary-bg-light'>
                         <SideNav
                             onSelect={(selected) => {
                                 const to = '/' + selected;
@@ -129,9 +127,7 @@ class Dashboard extends Component {
                                 </NavItem>
                             </Nav>
                         </SideNav>
-                    </Col>
 
-                    <Col className='primary-bg-light'>
                         <div className='content'>
 
                             <UserInfo
@@ -148,8 +144,6 @@ class Dashboard extends Component {
                                 history={this.props.history} />
                             
                         </div>
-                    </Col>
-                </Row>
             </div>
         );
     }
