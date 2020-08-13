@@ -108,10 +108,6 @@ class UserInfo extends Component {
                 <div className='box'>
                     <h2>
                         Welcome, <span className='primary-text-green'>{this.state.user_name}</span>!
-                        <Button
-                            onClick={this.onEdit}
-                            className='float-right'
-                            >Edit Profile</Button>
                     </h2>
                     <hr />
 
