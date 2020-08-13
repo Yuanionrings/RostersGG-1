@@ -29,6 +29,7 @@ class Dashboard extends Component {
         this.state = {}
     }
     componentDidMount(){
+        this.displayToast()
     }
     onLogout = e => {
         e.preventDefault();
@@ -59,11 +60,7 @@ class Dashboard extends Component {
     }
     render() {
         return (
-
             <div className='dashboard-container'>
-
-                {this.displayToast()}
-
                 <Row>
                     <Col className='secondary-bg-light' sm={3} md={2}>
                         <div className='sidebar'>

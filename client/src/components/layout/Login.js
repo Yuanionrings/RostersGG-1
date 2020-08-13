@@ -21,6 +21,8 @@ class Login extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
     }
+
+    this.displayAccountCreatedToast()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -69,8 +71,6 @@ class Login extends Component {
     const { email, password, errors } = this.state;
     return (
       <div className='form-box'>
-
-        {this.displayAccountCreatedToast()}
 
         <form className='login-form' onSubmit={this.onSubmit}>
           <h2>Login</h2>
