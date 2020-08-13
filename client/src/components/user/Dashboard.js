@@ -38,14 +38,14 @@ class Dashboard extends Component {
     displayToast() {
         if(this.props.location.state){
             if (this.props.location.state.toast_message) {
-              toast(toastNotif(this.props.location.state.toast_message), {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
+                toast.success(toastNotif(this.props.location.state.toast_message), {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
                 });
             }
         }

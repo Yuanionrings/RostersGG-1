@@ -44,15 +44,14 @@ class Login extends Component {
   displayAccountCreatedToast() {
     if(this.props.location.state){
       if (this.props.location.state.toast_message) {
-        toast(toastNotif(this.props.location.state.toast_message), {
+        toast.success(toastNotif(this.props.location.state.toast_message), {
           position: "top-center",
-          autoClose: 5000,
+          autoClose: 6000,
           hideProgressBar: false,
           closeOnClick: true,
-          pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          });
+        });
       }
     }
   }
