@@ -71,13 +71,13 @@ class Dashboard extends Component {
                     <SideNav
                         onSelect={(selected) => {
                             const to = '/' + selected;
-                            if (location.pathname !== to) {
+                            if (this.props.location.pathname !== to) {
                                 this.props.history.push(to);
                             }
                         }}
                     >
-                        <SideNav.Toggle />
-                        <SideNav.Nav defaultSelected="home">
+                        <Toggle />
+                        <Nav defaultSelected="home">
                             <NavItem eventKey="home">
                                 <NavIcon>
                                     <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
@@ -94,7 +94,7 @@ class Dashboard extends Component {
                                     Devices
                                 </NavText>
                             </NavItem>
-                        </SideNav.Nav>
+                        </Nav>
                     </SideNav>
                     </Col>
 
