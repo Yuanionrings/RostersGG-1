@@ -1,8 +1,8 @@
 import React from 'react';
-import calcTimeUntil from '../../util/calcTimeUntil';
-import { formatDateString } from '../../util/formatDateString';
+import calcTimeUntil from '../../../util/calcTimeUntil';
+import { formatDateString } from '../../../util/formatDateString';
 
-function EventCard(props){
+const EventCard = props => {
     return (
         <div className='event-card'>
             <h5 className='mb-0'>{props.name}</h5>

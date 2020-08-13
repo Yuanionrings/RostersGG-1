@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { invitePlayerToRoster } from '../../actions/rosterAuthActions';
+import { invitePlayerToRoster } from '../../../actions/rosterAuthActions';
 
 class InvitePlayer extends Component {
     constructor(props) {

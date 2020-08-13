@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import { formatDateString } from '../../util/formatDateString';
+import { formatDateString } from '../../../util/formatDateString';
 
 const PlayerInfo = props => (
     <tr>

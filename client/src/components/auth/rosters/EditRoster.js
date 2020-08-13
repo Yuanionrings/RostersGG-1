@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import classnames from 'classnames';
-import { editRoster } from '../../actions/rosterAuthActions';
-import { logoutUser } from '../../actions/userAuthActions';
+import { editRoster } from '../../../actions/rosterAuthActions';
+import { logoutUser } from '../../../actions/userAuthActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import InvitePlayer from './InvitePlayer';
 import CreateEvent from './CreateEvent';
 import ManageRosterEvents from './ManageRosterEvents';
 import ManagePlayers from './ManagePlayers';
-import { supportedGamesList, supportedGames } from '../../util/selectSupportedGames';
-import { supportedRegionsList, supportedRegions } from '../../util/selectSupportedRegions';
+import { supportedGamesList, supportedGames } from '../../../util/selectSupportedGames';
+import { supportedRegionsList, supportedRegions } from '../../../util/selectSupportedRegions';
 
 
 class EditRoster extends Component {

@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavbarBrand from 'react-bootstrap/NavbarBrand';
 import Nav from 'react-bootstrap/Nav';
 
-let NavigationBar = (props) => {
+const LandingNavbar = (props) => {
 
     var conditionalNavItems = () => {
         return props.authenticated ?
@@ -30,4 +30,4 @@ let NavigationBar = (props) => {
     
 }
 
-export default NavigationBar;
+export default LandingNavbar;

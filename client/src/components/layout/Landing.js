@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
+import LandingNavbar from './LandingNavbar';
+import Footer from './Footer';
 
 class Landing extends Component {
   
@@ -10,6 +12,7 @@ class Landing extends Component {
   render() {
     return (
       <div className='landing-page-display'>
+        <LandingNavbar />
         <div className='header'>
           <div className='display'>
             <div className='content'>
@@ -60,6 +63,7 @@ class Landing extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

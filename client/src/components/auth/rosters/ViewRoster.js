@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { formatDateString } from '../../util/formatDateString';
+import { formatDateString } from '../../../util/formatDateString';
 
 const PlayerInfo = props => (
     <tr>

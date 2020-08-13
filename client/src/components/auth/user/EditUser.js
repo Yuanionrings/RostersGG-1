@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { editUser } from '../../actions/userAuthActions';
+import { editUser } from '../../../actions/userAuthActions';
 import classnames from 'classnames';
 
 class EditUser extends Component {

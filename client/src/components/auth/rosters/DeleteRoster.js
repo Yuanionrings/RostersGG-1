@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { deleteRoster } from '../../actions/rosterAuthActions';
-import { logoutUser } from '../../actions/userAuthActions';
+import { deleteRoster } from '../../../actions/rosterAuthActions';
+import { logoutUser } from '../../../actions/userAuthActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 

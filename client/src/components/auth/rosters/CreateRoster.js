@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createRoster } from '../../actions/rosterAuthActions';
-import { supportedGamesList, supportedGames } from '../../util/selectSupportedGames';
-import { supportedRegionsList, supportedRegions } from '../../util/selectSupportedRegions';
+import { createRoster } from '../../../actions/rosterAuthActions';
+import { supportedGamesList, supportedGames } from '../../../util/selectSupportedGames';
+import { supportedRegionsList, supportedRegions } from '../../../util/selectSupportedRegions';
 
 class CreateRoster extends Component {
   constructor(props) {

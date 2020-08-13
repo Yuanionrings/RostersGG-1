@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import calcTimeUntil from '../../util/calcTimeUntil';
+import calcTimeUntil from '../../../util/calcTimeUntil';
 import dateFormat from 'dateformat';
 import axios from 'axios';
 

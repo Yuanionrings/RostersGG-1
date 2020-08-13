@@ -1,32 +1,38 @@
+// Depenencies
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './store';
 import jwt_decode from 'jwt-decode';
-import setAuthToken from './util/setAuthToken';
-import { setCurrentUser, logoutUser } from './actions/userAuthActions';
 import { ToastContainer } from 'react-toastify';
 
+// Action/Auth Imports
+import store from './store';
+import { setCurrentUser, logoutUser } from './actions/userAuthActions';
+import setAuthToken from './util/setAuthToken';
+
+// Styling Imports
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-import PrivacyPolicy from './components/compliance/PrivacyPolicy';
-import TermsAndConditions from './components/compliance/TermsAndConditions';
+// General Component Imports
+import Register from './components/general/Register';
+import Login from './components/general/Login';
+import ConfirmEmail from './components/general/ConfirmEmail';
+import PrivacyPolicy from './components/general/PrivacyPolicy';
+import TermsAndConditions from './components/general/TermsAndConditions';
 
-import NavigationBar from './components/layout/NavigationBar';
-import Footer from './components/layout/Footer';
+// Landing Page Imports
 import Landing from './components/layout/Landing';
-import Register from './components/layout/Register';
-import Login from './components/layout/Login';
-import ConfirmEmail from './components/layout/ConfirmEmail';
-import PrivateRoute from './components/private-route/PrivateRoute';
-import Dashboard from './components/user/Dashboard';
-import ViewUser from './components/user/ViewUser';
-import EditUser from './components/user/EditUser';
-import ViewRoster from './components/rosters/ViewRoster';
-import EditRoster from './components/rosters/EditRoster';
-import CreateRoster from './components/rosters/CreateRoster';
-import DeleteRoster from './components/rosters/DeleteRoster';
+
+// Private Page Imports
+import PrivateRoute from './components/auth/PrivateRoute';
+import Dashboard from './components/auth/dashboard/Dashboard';
+import ViewUser from './components/auth/user/ViewUser';
+import EditUser from './components/auth/user/EditUser';
+import ViewRoster from './components/auth/rosters/ViewRoster';
+import EditRoster from './components/auth/rosters/EditRoster';
+import CreateRoster from './components/auth/rosters/CreateRoster';
+import DeleteRoster from './components/auth/rosters/DeleteRoster';
 
 
 if (localStorage.jwtToken) {
@@ -42,19 +48,10 @@ if (localStorage.jwtToken) {
   }
 }
 
-var authenticated = () => {
-  if(localStorage.jwtToken){
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function App() {
+const App = () => {
   return (
     <Provider store={store} >
-      <ToastContainer
-        position="top-center"
+      <ToastContainer position="top-center"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -65,32 +62,31 @@ function App() {
         pauseOnHover
       />
       <Router>
+
         <div className='app-bg page-container'>
           <div className='content-wrap'>
-            <NavigationBar authenticated={authenticated()}/>
-            <Route exact path='/' component={Landing} />
 
+            <Route exact path='/' component={Landing} />
             <Route exact path='/legal/privacy-policy' component={PrivacyPolicy} />
             <Route exact path='/legal/terms-and-conditions' component={TermsAndConditions} />
-
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/confirm/:id' component={ConfirmEmail} />
 
             <Switch>
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
-              <PrivateRoute exact path='/:username' component={ViewUser} />
-              <PrivateRoute exact path='/:username/edit' component={EditUser} />
-
+              
+              <PrivateRoute exact path='/user/:username' component={ViewUser} />
+              <PrivateRoute exact path='/user/:username/edit' component={EditUser} />
               <PrivateRoute exact path='/roster/create' component={CreateRoster} />
               <PrivateRoute exact path='/roster/:id' component={ViewRoster} />
               <PrivateRoute exact path='/roster/:id/edit' component={EditRoster} />
               <PrivateRoute exact path='/roster/:id/delete' component={DeleteRoster} />
             </Switch>
-            
-            <Footer />
+
           </div>
         </div>
+
       </Router>
     </Provider>
   );
