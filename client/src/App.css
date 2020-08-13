@@ -131,6 +131,7 @@ _______________________________________
         max-height: 64px;
         height: 64px;
         min-height: 64px;
+        border-bottom: 1px solid #dedfe2;
     }
     .dashboard-container .header-logo-text {
         font-weight: bold;
@@ -151,12 +152,18 @@ _______________________________________
     .dashboard-container .dashboard-nav {
         background: #ffffff !important;
         color: #373638 !important;
-        border-right: 1px solid #dedfe2 !important;
     }
     .dashboard-container .dashboard-navitem {
         background: #ffffff !important;
         color: #373638 !important;
-        border-right: 1px solid #dedfe2 !important;
+    }
+    .dashboard-container .dashboard-navtext {
+        background: #ffffff !important;
+        color: #373638 !important;
+    }
+    .dashboard-container .dashboard-navitem:hover {
+        background: #ffffff !important;
+        color: #373638 !important;
     }
 
 
@@ -171,6 +178,7 @@ _______________________________________
     }
         .dashboard-container .content .display-box {
             margin: 1rem;
+            border-radius: 8px;
         }
             .dashboard-container .content .display-box .event-card {
                 color: #373638;
@@ -248,8 +256,8 @@ _______________________________________
             .dashboard-container .content .display-box hr {
                 border-top: 1px solid #dedfe2;
                 margin-top: 1rem;
-                margin-left: -1.5rem;
-                margin-right: -1.5rem;
+                margin-left: -1rem;
+                margin-right: -1rem;
             }
             .dashboard-container .content .display-box a {
                 color: #33d9b2;
