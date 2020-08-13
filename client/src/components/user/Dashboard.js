@@ -67,38 +67,71 @@ class Dashboard extends Component {
         return (
             <div className='dashboard-container'>
                 <Row>
-                    <Col className='secondary-bg-light' sm={3} md={2}>
-                    <SideNav
-                        onSelect={(selected) => {
-                            const to = '/' + selected;
-                            if (this.props.location.pathname !== to) {
-                                this.props.history.push(to);
-                            }
-                        }}
-                    >
-                        <Toggle />
-                        <Nav defaultSelected="home">
-                            <NavItem eventKey="home">
-                                <NavIcon>
-                                    <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
-                                </NavIcon>
-                                <NavText>
-                                    Home
-                                </NavText>
-                            </NavItem>
-                            <NavItem eventKey="devices">
-                                <NavIcon>
-                                    <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
-                                </NavIcon>
-                                <NavText>
-                                    Devices
-                                </NavText>
-                            </NavItem>
-                        </Nav>
-                    </SideNav>
+                    <Col className='secondary-bg-light'>
+                        <SideNav
+                            onSelect={(selected) => {
+                                const to = '/' + selected;
+                                if (this.props.location.pathname !== to) {
+                                    this.props.history.push(to);
+                                }
+                            }}
+                        >
+                            <Toggle />
+                            <Nav defaultSelected='dashboard'>
+
+                                <NavItem eventKey='dashboard'>
+                                    <NavIcon>
+                                        <img src={DashboardIcon} alt='RostersGG Dashboard Icon' />
+                                    </NavIcon>
+                                    <NavText>Dashboard</NavText>
+                                </NavItem>
+
+                                <NavItem eventKey='event-manager'>
+                                    <NavIcon>
+                                        <img src={EventsIcon} alt='RostersGG Event Manager Icon' />
+                                    </NavIcon>
+                                    <NavText>Event Manager</NavText>
+                                </NavItem>
+
+                                <NavItem eventKey='team-directory'>
+                                    <NavIcon>
+                                        <img src={TeamDirIcon} alt='RostersGG Team Directory Icon' />
+                                    </NavIcon>
+                                    <NavText>Team Directory</NavText>
+                                </NavItem>
+
+                                <NavItem eventKey='player-directory'>
+                                    <NavIcon>
+                                        <img src={PlayerDirIcon} alt='RostersGG Player Directory Icon' />
+                                    </NavIcon>
+                                    <NavText>Player Directory</NavText>
+                                </NavItem>
+
+                                <NavItem eventKey='view-user'>
+                                    <NavIcon>
+                                        <img src={UserIcon} alt='RostersGG View User Icon' />
+                                    </NavIcon>
+                                    <NavText>View User Profile</NavText>
+                                </NavItem>
+
+                                <NavItem eventKey='edit-user'>
+                                    <NavIcon>
+                                        <img src={SettingsIcon} alt='RostersGG Edit User Icon' />
+                                    </NavIcon>
+                                    <NavText>Edit User Profile</NavText>
+                                </NavItem>
+
+                                <NavItem eventKey='logout'>
+                                    <NavIcon>
+                                        <img src={LogoutIcon} alt='RostersGG Logout Icon' />
+                                    </NavIcon>
+                                    <NavText>Logout</NavText>
+                                </NavItem>
+                            </Nav>
+                        </SideNav>
                     </Col>
 
-                    <Col className='primary-bg-light' sm={9} md={10}>
+                    <Col className='primary-bg-light'>
                         <div className='content'>
 
                             <UserInfo
@@ -115,7 +148,6 @@ class Dashboard extends Component {
                                 history={this.props.history} />
                             
                         </div>
-
                     </Col>
                 </Row>
             </div>
