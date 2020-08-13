@@ -5,7 +5,7 @@
     left: 0;
     z-index: 1006;
     min-width: 64px;
-    background: #db3d44;
+    background: #ffffff;
     -webkit-transition: min-width 0.2s;
     -moz-transition: min-width 0.2s;
     -o-transition: min-width 0.2s;
@@ -90,14 +90,14 @@
     left: 10px;
     top: 4px;
     position: absolute;
-    border-left: 2px #fff solid;
+    border-left: 2px #000 solid;
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47:hover > .sidenav---navitem---9uL5T {
     background: transparent;
     color: #fff;
   }
   .sidenav---sidenav---_2tBP.sidenav---expanded---1KdUL .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47 > .sidenav---navitem---9uL5T {
-    color: #f9dcdd;
+    color: #373638;
     padding: 0 14px 0 20px;
     line-height: 28px;
   }
@@ -122,7 +122,7 @@
     width: 20px;
     height: 2px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #373638;
     border-radius: 1px;
     -webkit-transition: all 0.15s;
     -moz-transition: all 0.15s;
@@ -248,11 +248,11 @@
   }
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo,
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f {
-    color: #f9dcdd;
+    color: #373638;
   }
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo > *,
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f > * {
-    color: #f9dcdd;
+    color: #373638;
   }
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navicon---3gCRo {
     display: block;
@@ -260,7 +260,6 @@
     width: 64px;
     height: 50px;
     margin-right: -6px;
-    vertical-align: top;
     background-repeat: no-repeat;
     background-position: center center;
     background-color: transparent;
@@ -309,7 +308,7 @@
     margin-bottom: 8px;
   }
   .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47.sidenav---selected---1EK3y > .sidenav---navitem---9uL5T {
-    color: #db3d44;
+    color: #ffffff;
     font-weight: bold;
     background: none;
     cursor: default;
@@ -320,7 +319,7 @@
   .sidenav---sidenav-subnav---1EN61 > .sidenav---sidenav-subnavitem---1cD47 > .sidenav---navitem---9uL5T {
     display: block;
     text-decoration: none;
-    color: #222;
+    color: #373638;
     font-size: 13px;
     line-height: 30px;
     padding: 0 24px;

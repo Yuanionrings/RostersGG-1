@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import './DashSidebarStyles.css';
 
 import LogoutIcon from '../../../assets/icons/logout.svg';
 import SettingsIcon from '../../../assets/icons/settings.svg';
@@ -18,8 +18,8 @@ const DashSidebar = props => {
     function goToSelection(selectedKey) {
         // Redirects to new page if not on that page
         const toLink = '/' + selectedKey;
-        if (this.props.location.pathname !== toLink) {
-            this.props.history.push(toLink);
+        if (props.location.pathname !== toLink) {
+            props.history.push(toLink);
         } else {
             alert('You are already on this page.');
         }
