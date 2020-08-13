@@ -18,6 +18,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
     }
@@ -65,8 +66,8 @@ class Login extends Component {
     const { email, password, errors } = this.state;
     return (
       <div className='form-box'>
-        
-        {this.displayToast(this.props.location.state.toast_message)}
+
+        {/*this.displayToast(this.props.location.state.toast_message)*/}
 
         <form className='login-form' onSubmit={this.onSubmit}>
           <h2>Login</h2>
