@@ -70,7 +70,10 @@ class Dashboard extends Component {
                     <Col className='secondary-bg-light' sm={3} md={2}>
                     <SideNav
                         onSelect={(selected) => {
-                            // Add your code here
+                            const to = '/' + selected;
+                            if (location.pathname !== to) {
+                                this.props.history.push(to);
+                            }
                         }}
                     >
                         <SideNav.Toggle />
@@ -83,23 +86,13 @@ class Dashboard extends Component {
                                     Home
                                 </NavText>
                             </NavItem>
-                            <NavItem eventKey="charts">
+                            <NavItem eventKey="devices">
                                 <NavIcon>
-                                    <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                                    <i className="fa fa-fw fa-device" style={{ fontSize: '1.75em' }} />
                                 </NavIcon>
                                 <NavText>
-                                    Charts
+                                    Devices
                                 </NavText>
-                                <NavItem eventKey="charts/linechart">
-                                    <NavText>
-                                        Line Chart
-                                    </NavText>
-                                </NavItem>
-                                <NavItem eventKey="charts/barchart">
-                                    <NavText>
-                                        Bar Chart
-                                    </NavText>
-                                </NavItem>
                             </NavItem>
                         </SideNav.Nav>
                     </SideNav>
