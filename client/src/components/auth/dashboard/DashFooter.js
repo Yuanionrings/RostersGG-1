@@ -3,7 +3,7 @@ import React from 'react';
 const DashFooter = () => {
     return (
         <div className='footer'>
-            <div className='content'>
+            <div className='footer-bottom'>
                 <p className=''>
                     <a href='https://www.rosters.gg/legal/terms-and-conditions'>Terms</a>
                     <a href='https://www.rosters.gg/legal/privacy-policy'>Privacy Policy</a>

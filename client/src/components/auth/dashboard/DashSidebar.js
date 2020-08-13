@@ -26,53 +26,53 @@ const DashSidebar = props => {
     }
 
     return (
-        <SideNav onSelect={(selected) => goToSelection(selected)}>
+        <SideNav className='dashboard-sidenav' onSelect={(selected) => goToSelection(selected)}>
             <Toggle />
-            <Nav defaultSelected='dashboard'>
+            <Nav className='dashboard-nav' defaultSelected='dashboard'>
 
-                <NavItem eventKey='dashboard'>
+                <NavItem className='dashboard-navitem' eventKey='dashboard'>
                     <NavIcon>
                         <img src={DashboardIcon} alt='RostersGG Dashboard Icon' />
                     </NavIcon>
                     <NavText>Dashboard</NavText>
                 </NavItem>
 
-                <NavItem eventKey='event-manager'>
+                <NavItem className='dashboard-navitem' eventKey='event-manager'>
                     <NavIcon>
                         <img src={EventsIcon} alt='RostersGG Event Manager Icon' />
                     </NavIcon>
                     <NavText>Event Manager</NavText>
                 </NavItem>
 
-                <NavItem eventKey='team-directory'>
+                <NavItem className='dashboard-navitem' eventKey='team-directory'>
                     <NavIcon>
                         <img src={TeamDirIcon} alt='RostersGG Team Directory Icon' />
                     </NavIcon>
                     <NavText>Team Directory</NavText>
                 </NavItem>
 
-                <NavItem eventKey='player-directory'>
+                <NavItem className='dashboard-navitem' eventKey='player-directory'>
                     <NavIcon>
                         <img src={PlayerDirIcon} alt='RostersGG Player Directory Icon' />
                     </NavIcon>
                     <NavText>Player Directory</NavText>
                 </NavItem>
 
-                <NavItem eventKey='view-user'>
+                <NavItem className='dashboard-navitem' eventKey='view-user'>
                     <NavIcon>
                         <img src={UserIcon} alt='RostersGG View User Icon' />
                     </NavIcon>
                     <NavText>View User Profile</NavText>
                 </NavItem>
 
-                <NavItem eventKey='edit-user'>
+                <NavItem className='dashboard-navitem' eventKey='edit-user'>
                     <NavIcon>
                         <img src={SettingsIcon} alt='RostersGG Edit User Icon' />
                     </NavIcon>
                     <NavText>Edit User Profile</NavText>
                 </NavItem>
 
-                <NavItem eventKey='logout'>
+                <NavItem className='dashboard-navitem' eventKey='logout'>
                     <NavIcon>
                         <img src={LogoutIcon} alt='RostersGG Logout Icon' />
                     </NavIcon>

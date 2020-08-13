@@ -66,17 +66,6 @@ body {
     overflow-x: auto;
 }
 
-/* OVERRIDE Sidenav styling move later*/
-.sidenav---sidenav---_2tBP .sidenav---collapsed---LQDEv {
-    background: #ffffff !important;
-    color: black !important;
-}
-
-.sidenav---sidenav---_2tBP .sidenav---expanded---1KdUL {
-    background: #ffffff !important;
-    color: black !important;
-}
-
 
 /* 
     BACKGROUND COLORS
@@ -147,8 +136,29 @@ _______________________________________
         font-weight: bold;
     }
     .dashboard-container .beta-text {
+        font-size: 10px;
         font-weight: normal;
     }
+
+    /*
+        Dashboard Sidenav-related styling
+    */
+    .dashboard-container .dashboard-sidenav {
+        background: #ffffff !important;
+        color: #373638 !important;
+        border-right: 1px solid #dedfe2 !important;
+    }
+    .dashboard-container .dashboard-nav {
+        background: #ffffff !important;
+        color: #373638 !important;
+        border-right: 1px solid #dedfe2 !important;
+    }
+    .dashboard-container .dashboard-navitem {
+        background: #ffffff !important;
+        color: #373638 !important;
+        border-right: 1px solid #dedfe2 !important;
+    }
+
 
     /*
         Dashboard Content-related styling
