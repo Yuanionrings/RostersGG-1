@@ -118,45 +118,23 @@ _______________________________________
     width: 100%;
     margin-right: 0px;
     margin-left: 0px;
+    padding-left: 64px;
 }
-    .dashboard-container .row {
-        margin: 0 !important;
-    }
-    .dashboard-container .col-sm-3, .dashboard-container .col-sm-9 {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-    .dashboard-container .col-md-2, .dashboard-container .col-md-10 {
-        padding-left: 0px;
-        padding-right: 0px;
-    }
+
     /*
-        Dashboard Sidebar-related styling
+        Dashboard Header-related styling
     */
-    .dashboard-container .sidebar {
-        height: 100%;
+    .dashboard-container .dashboard-header {
+        text-align: center;
         background: #ffffff;
-        border-right: 1px solid #dedfe2;
+        max-height: 64px;
     }
-        .dashboard-container .sidebar .btn {
-            width: 100%;
-            color: #373638;
-            font-weight: bold;
-            text-align: left;
-            background: #ffffff;
-            font-size: 14px;
-            padding: 1rem !important;
-            border-radius: 0px !important;
-            border: 0px;
-        }
-        .dashboard-container .sidebar .btn:hover, .dashboard-container .sidebar .btn:focus {
-            background: #dedfe2;
-        }
-        .dashboard-container .sidebar .btn:active {
-            color: #000000;
-            background: #d4d5d8;
-            box-shadow: none !important;
-        }
+    .dashboard-container .header-logo-text {
+        font-weight: bold;
+    }
+    .dashboard-container .beta-text {
+        font-weight: normal;
+    }
 
     /*
         Dashboard Content-related styling
