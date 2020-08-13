@@ -21,7 +21,7 @@
       4) Navbar Styling
       5) Footer Styling
       6) Landing Page Styling
-      7) General Display Styling
+      7) Viewing Display Styling
       8) Form Styling
     ___________________________________________
     ===============================================================
@@ -36,7 +36,16 @@
 
 _______________________________________
 */
-.app-bg { height: 100%; margin-bottom: -3rem; }
+body {
+    color: #fffffc;
+    background: #f1f1f1;
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+}
+.app-bg {
+    height: 100%;
+    margin-bottom: -3rem;
+}
 .page-container {
     position: relative;
     min-height: 100vh;
@@ -44,23 +53,8 @@ _______________________________________
 .content-wrap {
     padding-bottom: 2.5rem;    /* Footer height */
 }
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-.beta-text {
-    font-size: 10px;
-    font-weight: lighter;
-}
 .extra-margin-bottom { 
     margin-bottom: 50px;
-}
-body {
-    color: #fffffc;
-    background: #f1f1f1;
-    font-family: 'Roboto', sans-serif;
-    height: 100%;
 }
 .full-height {
     height: 100%;
@@ -318,6 +312,10 @@ _______________________________________
 
 _______________________________________
 */
+.beta-text {
+    font-size: 10px;
+    font-weight: lighter;
+}
 .navbar-spec {
     background: #373638;
 }
@@ -337,6 +335,11 @@ _______________________________________
 
 _______________________________________
 */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
 .footer-main {
     font-size: 16px;
     display: flex;
@@ -612,97 +615,107 @@ _______________________________________
 .form-control, .btn {        
     border-radius: 16px;
 }    
+
 .form-box {
     width: 90%;
-    max-width: 800px;
+    max-width: 920px;
     margin: 0 auto;
     padding-top: 30px;
 }
-.form-box .display-info {
-    color: #ffffff;
-    border-radius: 16px;
-    background: #373638;
-    padding: 1.5rem;
-}
-.form-box form, .form-box .player-list {
-    color: #ffffff;
-    border-radius: 16px;
-    background: #373638;
-    padding: 1.5rem;
-}
-.form-box .player-list table {
-    color: #ffffff;
-    background: #373638;
-}
-.form-box .player-list thead th {
-    border-bottom: 3px solid #dedfe2;
-    border-left: 1px solid #dedfe2;
-    border-right: 1px solid #dedfe2;
-}
-.form-box .player-list a {
-    color: #33d9b2;
-    text-decoration: none;
-    margin-right: 15px;
-}	
-.form-box .player-list a:hover {
-    color: #218C74;
-}
-.form-box h2 {
-    color: #ffffff;
-    font-weight: bold;
-    margin-top: 0;
-}
-.form-box hr {
-    border-top: 1px solid #33d9b2;
-    margin-top: 1rem;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-}
-.form-box .form-group {
-    margin-bottom: 20px;
-}
-.form-box label {
-    font-weight: normal;
-    font-size: 13px;
-}
-.form-box .btn {        
-    font-size: 16px;
-    font-weight: bold;
-    background: #33d9b2;
-    border: none;
-}
-.form-box .btn-secondary {        
-    font-size: 16px;
-    font-weight: bold;
-    color: #33D9B2;
-    background: #373638;
-    border-radius: 16px;
-    min-width: 60px;
-    border: 1px solid #33D9B2;
-    margin: -0.75px 0.5rem -0.75px 0px;
-}
-.form-box .btn:hover, .form-box .btn:focus {
-    background: #218c74;
-    outline: none !important;
-}
-.form-box .btn:active {
-    background: #218c74;
-    outline: none !important;
-    box-shadow: none;
-}
-.form-box a {
-    color: #fffffc;
-    text-decoration: underline;
-}
-.form-box a:hover {
-    color: #218c74;
-    text-decoration: none;
-}
-.form-box form a {
-    color: #33d9b2;
-    text-decoration: none;
-}	
-.form-box form a:hover {
-    color: #218c74;
-    text-decoration: none;
-}
+    .form-box .display-info {
+        color: #ffffff;
+        border-radius: 16px;
+        background: #373638;
+        padding: 1.5rem;
+    }
+    .form-box form, .form-box .player-list {
+        color: #ffffff;
+        border-radius: 16px;
+        background: #373638;
+        padding: 1.5rem;
+    }
+    .form-box .btn-primary {        
+        font-size: 0.75rem;
+        font-weight: bold;
+        background: #33D9B2;
+        min-width: 60px;
+        border-radius: 8px;
+        border: none;
+        margin: -0.75px 0.5rem -0.75px 0px;
+    }
+    .form-box .btn-secondary {        
+        font-size: 0.75rem;
+        font-weight: bold;
+        color: #33D9B2;
+        background: #ffffff;
+        min-width: 60px;
+        border-radius: 8px;
+        border: 1px solid #33D9B2;
+        margin: -0.75px 0.5rem -0.75px 0px;
+    }
+    .form-box .player-list table {
+        color: #ffffff;
+        background: #373638;
+    }
+    .form-box .player-list thead th {
+        border-bottom: 3px solid #dedfe2;
+        border-left: 1px solid #dedfe2;
+        border-right: 1px solid #dedfe2;
+    }
+    .form-box .player-list a {
+        color: #33d9b2;
+        text-decoration: none;
+        margin-right: 15px;
+    }	
+    .form-box .player-list a:hover {
+        color: #218C74;
+    }
+    .form-box h2 {
+        color: #ffffff;
+        font-weight: bold;
+        margin-top: 0;
+    }
+    .form-box hr {
+        border-top: 1px solid #33d9b2;
+        margin-top: 1rem;
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
+    }
+    .form-box .form-group {
+        margin-bottom: 20px;
+    }
+    .form-box label {
+        font-weight: normal;
+        font-size: 13px;
+    }
+    .form-box .btn {        
+        font-size: 16px;
+        font-weight: bold;
+        background: #33d9b2;
+        border: none;
+    }
+    .form-box .btn:hover, .form-box .btn:focus {
+        background: #218c74;
+        outline: none !important;
+    }
+    .form-box .btn:active {
+        background: #218c74;
+        outline: none !important;
+        box-shadow: none;
+    }
+    .form-box a {
+        color: #fffffc;
+        text-decoration: underline;
+    }
+    .form-box a:hover {
+        color: #218c74;
+        text-decoration: none;
+    }
+    .form-box form a {
+        color: #33d9b2;
+        text-decoration: none;
+    }	
+    .form-box form a:hover {
+        color: #218c74;
+        text-decoration: none;
+    }
