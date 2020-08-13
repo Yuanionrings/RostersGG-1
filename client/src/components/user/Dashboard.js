@@ -9,6 +9,10 @@ import UpcomingEvents from './UpcomingEvents';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
+import { toast } from 'react-toastify';
+import toastNotif from '../../util/toastNotif';
+
 import LogoutIcon from '../../assets/icons/logout.svg';
 import SettingsIcon from '../../assets/icons/settings.svg';
 import UserIcon from '../../assets/icons/user.svg';
