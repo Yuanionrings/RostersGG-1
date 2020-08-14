@@ -8,12 +8,6 @@ class Logout extends Component {
     constructor() {
         super();
         this.state = {
-            name: '',
-            username: '',
-            biography: '',
-            email: '',
-            password: '',
-            errors: {}
         }
     }
 
@@ -21,11 +15,10 @@ class Logout extends Component {
         if (!this.props.auth.isAuthenticated) {
             this.props.history.push('/login');
         }
-        this.logoutUser();
+        this.props.logoutUser();
     }
 
     render() {
-
         return (
             <div className='form-box'>
                 <form className='signup-form extra-margin-bottom' onSubmit={this.onSubmit}>
