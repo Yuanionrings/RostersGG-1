@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class NotFound extends Component {
     render() {
         return(
-            <div className='text-page-container'>
+            <div className='text-page-container not-found'>
                 <h1>404 Not Found</h1>
                 <p>Sorry about that! We could not find what you were looking for.</p>
 

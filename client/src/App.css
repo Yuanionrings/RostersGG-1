@@ -285,6 +285,18 @@ _______________________________________
         margin-bottom: 0.5rem;
     }
 
+.not-found {
+    box-shadow: #171817;
+}
+    .text-page-container h1 {
+        font-weight: bold;
+    }
+    .text-page-container h3 {
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
 
 
 
@@ -340,10 +352,15 @@ _______________________________________
             color: #3a3b3b !important;
             font-weight: bold;
         }
+            .landing-page-display .landing-navbar-brand:hover {
+                color: #4e5050 !important;
+            }
         .landing-page-display .landing-navbar-nav {
             color: #3a3b3b !important;
-            font-weight: bold;
         }
+            .landing-page-display .landing-navbar-nav:hover {
+                color: #4e5050 !important;
+            }
         .landing-page-display .beta-text {
             color: #4d5252 !important;
             font-size: 10px;
