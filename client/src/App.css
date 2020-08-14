@@ -213,6 +213,12 @@ _______________________________________
                 background: #1d7562;
                 box-shadow: none !important;
             }
+            .dashboard-container .content .display-box h2 {
+                color: #373638;
+                font-weight: bold;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
             .dashboard-container .content .display-box h3 {
                 color: #373638;
                 font-weight: bold;

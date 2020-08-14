@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import DashHeader from '../DashHeader';
+import DashTitle from '../DashTitle';
 import DashSidebar from '../DashSidebar';
 import DashFooter from '../DashFooter';
 
@@ -48,6 +49,8 @@ class EventManager extends Component {
                     auth={this.props.auth}/>
 
                     <div className='content'>
+
+                        <DashTitle page-title='Event Manager' />
                         
                         <UpcomingEvents 
                             username={this.props.auth.user.username} 

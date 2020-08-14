@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import DashHeader from '../DashHeader';
+import DashTitle from '../DashTitle';
 import DashSidebar from '../DashSidebar';
 import DashFooter from '../DashFooter';
 
@@ -49,6 +50,8 @@ class UserDashboard extends Component {
                     auth={this.props.auth}/>
 
                     <div className='content'>
+
+                        <DashTitle page-title='User Dashboard' />
                         
                         <UserInfo
                             given_username={this.props.auth.user.username} 
