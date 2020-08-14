@@ -62,7 +62,7 @@ class UpcomingEvents extends Component {
                     <h3 className=''>
                         Upcoming Events
                     </h3>
-                    <hr />
+                    
                     {this.conditionalRenderCards()}
                 </div>
             </div>

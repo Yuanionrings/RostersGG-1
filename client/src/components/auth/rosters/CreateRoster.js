@@ -60,7 +60,6 @@ class CreateRoster extends Component {
           </div>
 
           <h3>Create New Roster</h3>
-          <hr />
 
           <div className='form-group'>
             <label>Team Name: </label>

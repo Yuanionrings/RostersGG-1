@@ -59,7 +59,7 @@ class Register extends Component {
           <div><Link to='/'><i className='fa fa-arrow-circle-left'></i> Back to Home</Link></div>
 
           <h3>Register</h3>
-          <hr />
+          
           <div className='form-group'>
             <label>Display Name: </label>
             <input type='text'

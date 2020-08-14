@@ -52,7 +52,7 @@ class ManageRosterEvents extends Component {
             <div className='form-box'>
                 <div className='player-list'>
                     <h3>Manage Team Events</h3>
-                    <hr />
+                    
                     {(this.state.events.length > 0) ? 
                     <div className='table-container'>
                         <table className='table table-striped' style={{ marginTop: 15 }}>

@@ -87,7 +87,6 @@ class EditRoster extends Component {
                         </div>
 
                         <h3>Edit Roster</h3>
-                        <hr />
 
                         <div className='form-group'>
                             <label>Team Name: </label>

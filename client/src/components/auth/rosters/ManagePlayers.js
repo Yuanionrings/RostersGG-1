@@ -67,7 +67,7 @@ class ManagePlayers extends Component {
             <div className='form-box'>
                 <div className='player-list'>
                     <h3>Manage Players</h3>
-                    <hr />
+                    
                     {(this.state.players.length > 1) ? 
                     <div className='table-container'>
                         <table className='table table-striped' style={{ marginTop: 15 }}>

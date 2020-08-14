@@ -67,7 +67,6 @@ class DeleteRoster extends Component {
                     </div>
 
                     <h3>Delete Roster - {this.state.teamname}</h3>
-                    <hr />
 
                     <div className='form-group'>
                         <label>Warning, you cannot save this roster once it is deleted.</label>

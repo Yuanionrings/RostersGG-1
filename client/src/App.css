@@ -175,8 +175,9 @@ _______________________________________
             .dashboard-container .content .display-box .title-box {
                 color: #ffffff;
                 background: #95A5A6;
-                padding: 1rem;
+                padding: 2rem;
                 border-radius: 8px;
+                box-shadow: 0px 5px 10px #D8D8D8;
             }
             .dashboard-container .content .display-box .btn {        
                 font-size: 16px;
@@ -222,7 +223,7 @@ _______________________________________
                 color: #2C3E50;
                 font-weight: bold;
                 margin-top: 0;
-                margin-bottom: 0;
+                margin-bottom: 2rem;
             }
             .dashboard-container .content .display-box h5 {
                 color: #2C3E50;
@@ -499,6 +500,7 @@ _______________________________________
         color: #2C3E50;
         background: #ffffff;
         padding: 1.5rem;
+        border-radius: 16px;
         box-shadow: 0px 5px 10px #D8D8D8;
     }
     .viewing-display-box .btn {        
@@ -538,7 +540,7 @@ _______________________________________
     .viewing-display-box h3 {
         color: #2C3E50;
         font-weight: bold;
-        margin-top: 0;
+        margin-top: 2rem;
         margin-bottom: 0;
     }
     .viewing-display-box h4 {
@@ -660,7 +662,7 @@ _______________________________________
     .form-box .player-list a {
         color: #33d9b2;
         text-decoration: none;
-        margin-right: 15px;
+        margin-right: 1rem;
     }	
     .form-box .player-list a:hover {
         color: #218C74;
@@ -668,13 +670,8 @@ _______________________________________
     .form-box h3 {
         color: #ffffff;
         font-weight: bold;
-        margin-top: 0;
-    }
-    .form-box hr {
-        border-top: 1px solid #33d9b2;
-        margin-top: 1rem;
-        margin-left: -1.5rem;
-        margin-right: -1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
     }
     .form-box .form-group {
         margin-bottom: 20px;

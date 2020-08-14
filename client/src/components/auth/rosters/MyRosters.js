@@ -46,7 +46,6 @@ export default class MyRosters extends Component {
             <div className='display-box'>
                 <div className='box'>
                     <h3>Rosters</h3>
-                    <hr />
 
                     {(this.state.rosters.length > 0) ?
                     <div className='table-container'>

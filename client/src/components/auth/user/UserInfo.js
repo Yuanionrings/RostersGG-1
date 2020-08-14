@@ -109,7 +109,6 @@ class UserInfo extends Component {
                     <h3>
                         Welcome, <span className='primary-text-green'>{this.state.user_name}</span>!
                     </h3>
-                    <hr />
 
                     <h5>Invitations: </h5>
                     {(this.state.user_invitations.length > 0) ?

@@ -47,7 +47,7 @@ class InvitePlayer extends Component {
 
                 <h3>Invite Player</h3>
                 <p>Please enter the username of the player you'd like to invite.</p>
-                <hr />
+                
                 
                 <div className="form-group">
                     <label>Player's Username: </label>

@@ -40,7 +40,6 @@ export default class ConfirmEmail extends Component {
                 :
                     <h3>Confirm Not Successful</h3>
                 }
-                <hr />
 
                 {this.state.confirm_successful ?
                     <div>

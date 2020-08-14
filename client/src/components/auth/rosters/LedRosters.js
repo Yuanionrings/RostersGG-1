@@ -59,7 +59,7 @@ export default class LedRosters extends Component {
                           onClick={this.onCreate}
                         >Create</Button>
                     </h3>
-                    <hr />
+                    
 
                     {(this.state.rosters.length > 0) ?
                     <div className='table-container'>
