@@ -37,8 +37,8 @@
 _______________________________________
 */
 body {
-    color: #ECF0F1;
-    background: #BDC3C7;
+    color: #ffffff;
+    background: #ECEEEF;
     font-family: 'Roboto', sans-serif;
     height: 100%;
 }
@@ -74,9 +74,9 @@ body {
 .secondary-bg-green { background: #218C74 !important; }
 .tertiary-bg-green { background: #1d7562 !important; }
 
-.primary-light-bg { background: #ECF0F1 !important; }
-.secondary-light-bg { background: #BDC3C7 !important; }
-.tertiary-light-bg { background: #95A5A6 !important; }
+.primary-light-bg { background: #ffffff !important; }
+.secondary-light-bg { background: #ECEEEF !important; }
+.tertiary-light-bg { background: #D8D8D8 !important; }
 
 .primary-darkblue-bg { background: #34495E !important; }
 .secondary-darkblue-bg { background: #2C3E50 !important; }
@@ -119,11 +119,11 @@ _______________________________________
     .dashboard-container .dashboard-header {
         display: flex;
         justify-content: center;
-        background: #ECF0F1;
+        background: #ffffff;
         max-height: 64px;
         height: 64px;
         min-height: 64px;
-        border-bottom: 1px solid #95A5A6;
+        box-shadow: 0px 5px 10px #D8D8D8;
     }
     .dashboard-container .header-logo-text {
         font-weight: bold;
@@ -137,7 +137,7 @@ _______________________________________
         Dashboard Content-related styling
     */
     .dashboard-container .content {
-        background: #BDC3C7;
+        background: #ECEEEF;
         height: 100%;
         width: 100%;
         padding-left: 64px !important;
@@ -147,9 +147,9 @@ _______________________________________
         }
             .dashboard-container .content .display-box .event-card {
                 color: #2C3E50;
-                background: #ECF0F1;
+                background: #ffffff;
                 padding: 1rem;
-                border: 1px solid #95A5A6;
+                border: 1px solid #D8D8D8;
                 width: 100%;
                 padding-left: 3rem;
                 padding-right: 3rem;
@@ -167,14 +167,14 @@ _______________________________________
                 }
             .dashboard-container .content .display-box .box {
                 color: #2C3E50;
-                background: #ECF0F1;
+                background: #ffffff;
                 padding: 1rem;
-                border: 1px solid #95A5A6;
+                box-shadow: 0px 5px 10px #D8D8D8;
                 border-radius: 8px;
             }
             .dashboard-container .content .display-box .title-box {
-                color: #ECF0F1;
-                background: #868a88;
+                color: #ffffff;
+                background: #95A5A6;
                 padding: 1rem;
                 border-radius: 8px;
             }
@@ -213,7 +213,7 @@ _______________________________________
                 box-shadow: none !important;
             }
             .dashboard-container .content .display-box h2 {
-                color: #ECF0F1;
+                color: #ffffff;
                 font-weight: bold;
                 margin-top: 0;
                 margin-bottom: 0;
@@ -256,7 +256,7 @@ _______________________________________
                 border-right: 1px solid #95A5A6;
             }
             .dashboard-container .content .display-box thead tr {
-                background: #ECF0F1;
+                background: #ffffff;
             }
             .dashboard-container .content .display-box th {
                 border-top: 1px solid #95A5A6;
@@ -319,7 +319,7 @@ _______________________________________
 }
 .footer-bottom {
     background: #2C3E50;
-    color: #BDC3C7;
+    color: #ECEEEF;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -331,7 +331,7 @@ _______________________________________
     z-index: 6500;
 }
     .footer-bottom a {
-        color: #BDC3C7;
+        color: #ECEEEF;
         margin-right: 2rem;
     }
     .footer-bottom p {
@@ -385,7 +385,7 @@ _______________________________________
             padding: 2rem 0;
         }
         .landing-page-display .header .content {
-            color: #BDC3C7;
+            color: #ECEEEF;
             padding: 2rem;
         }
             .landing-page-display .header .content h5 {
@@ -414,7 +414,7 @@ _______________________________________
                 font-size: 16px;
                 font-weight: bold;
                 margin-top: 2rem;
-                color: #ECF0F1;
+                color: #ffffff;
                 background: #33d9b2;
                 border: 0;
                 border-radius: 16px;
@@ -433,7 +433,7 @@ _______________________________________
     .landing-page-display .section-1 {
         display: flex;
         justify-content: center;
-        background: #ECF0F1;
+        background: #ffffff;
         padding-bottom: 100px;
     }  
         .landing-page-display .section-1 .display {
@@ -497,9 +497,9 @@ _______________________________________
 }
     .viewing-display-box .display-content {
         color: #2C3E50;
-        background: #ECF0F1;
+        background: #ffffff;
         padding: 1.5rem;
-        border: 1px solid #95A5A6;
+        box-shadow: 0px 5px 10px #D8D8D8;
     }
     .viewing-display-box .btn {        
         font-size: 16px;
@@ -521,7 +521,7 @@ _______________________________________
         font-size: 0.75rem;
         font-weight: bold;
         color: #33D9B2;
-        background: #ECF0F1;
+        background: #ffffff;
         min-width: 60px;
         border-radius: 16px;
         border: 1px solid #33D9B2;
@@ -571,7 +571,7 @@ _______________________________________
     }
     .viewing-display-box table {
         color: #2C3E50;
-        background: #ECF0F1;
+        background: #ffffff;
     }
     .viewing-display-box thead th {
         border-bottom: 3px solid #95A5A6;
@@ -579,7 +579,7 @@ _______________________________________
         border-right: 1px solid #95A5A6;
     }
     .viewing-display-box thead tr {
-        background: #ECF0F1;
+        background: #ffffff;
     }
     .viewing-display-box th {
         border-top: 1px solid #95A5A6;
@@ -600,7 +600,7 @@ _______________________________________
     min-height: 41px;
     box-shadow: none;   
     border-color: #95A5A6;
-    background: #ECF0F1;
+    background: #ffffff;
 }
 .form-control:focus {
     border-color: #218c74;
@@ -616,16 +616,18 @@ _______________________________________
     padding-top: 30px;
 }
     .form-box .display-info {
-        color: #ECF0F1;
+        color: #ffffff;
         border-radius: 16px;
         background: #2C3E50;
         padding: 1.5rem;
+        box-shadow: 0px 5px 10px #D8D8D8;
     }
     .form-box form, .form-box .player-list {
-        color: #ECF0F1;
+        color: #ffffff;
         border-radius: 16px;
         background: #2C3E50;
         padding: 1.5rem;
+        box-shadow: 0px 5px 10px #D8D8D8;
     }
     .form-box .btn-primary {        
         font-size: 0.75rem;
@@ -640,7 +642,7 @@ _______________________________________
         font-size: 0.75rem;
         font-weight: bold;
         color: #33D9B2;
-        background: #ECF0F1;
+        background: #ffffff;
         min-width: 60px;
         border-radius: 16px;
         border: 1px solid #33D9B2;
@@ -664,7 +666,7 @@ _______________________________________
         color: #218C74;
     }
     .form-box h3 {
-        color: #ECF0F1;
+        color: #ffffff;
         font-weight: bold;
         margin-top: 0;
     }
