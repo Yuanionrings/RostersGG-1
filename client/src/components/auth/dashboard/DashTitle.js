@@ -5,7 +5,7 @@ const DashTitle = props => {
         <div className='display-box'>
             <div className='box'>
                 <h2 className=''>
-                    {props.page-title}
+                    {props.page_title}
                 </h2>
             </div>
         </div>

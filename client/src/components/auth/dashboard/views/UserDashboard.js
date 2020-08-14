@@ -51,7 +51,7 @@ class UserDashboard extends Component {
 
                     <div className='content'>
 
-                        <DashTitle page-title='User Dashboard' />
+                        <DashTitle page_title='User Dashboard' />
                         
                         <UserInfo
                             given_username={this.props.auth.user.username} 

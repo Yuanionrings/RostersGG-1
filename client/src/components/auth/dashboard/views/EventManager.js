@@ -50,7 +50,7 @@ class EventManager extends Component {
 
                     <div className='content'>
 
-                        <DashTitle page-title='Event Manager' />
+                        <DashTitle page_title='Event Manager' />
                         
                         <UpcomingEvents 
                             username={this.props.auth.user.username} 
