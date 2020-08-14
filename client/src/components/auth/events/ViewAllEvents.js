@@ -64,7 +64,6 @@ class ViewAllEvents extends Component {
                     <h3 className=''>
                         View All Events
                     </h3>
-                    <hr />
                     
                     <p className='filler-text'>This component is not yet implemented. For now, check Upcoming Events on your Dashboard.</p>
                 </div>
