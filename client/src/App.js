@@ -27,7 +27,9 @@ import Landing from './components/layout/Landing';
 
 // Private Page Imports
 import PrivateRoute from './components/auth/PrivateRoute';
-import Dashboard from './components/auth/dashboard/Dashboard';
+import UserDashboard from './components/auth/dashboard/views/UserDashboard';
+import EventManager from './components/auth/dashboard/views/EventManager';
+
 import ViewUser from './components/auth/user/ViewUser';
 import EditUser from './components/auth/user/EditUser';
 import ViewRoster from './components/auth/rosters/ViewRoster';
@@ -74,7 +76,9 @@ const App = () => {
               <Route exact path='/login' component={Login} />
               <Route exact path='/confirm/:id' component={ConfirmEmail} />
               
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute exact path='/dashboard' component={UserDashboard} />
+              <PrivateRoute exact path='/event-manager' component={EventManager} />
+
               <PrivateRoute exact path='/user/:username' component={ViewUser} />
               <PrivateRoute exact path='/user/:username/edit' component={EditUser} />
               <PrivateRoute exact path='/roster/create' component={CreateRoster} />

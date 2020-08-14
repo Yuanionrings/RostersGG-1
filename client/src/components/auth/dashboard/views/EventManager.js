@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import DashHeader from './DashHeader';
-import DashSidebar from './DashSidebar';
-import DashFooter from './DashFooter';
+import DashHeader from '../DashHeader';
+import DashSidebar from '../DashSidebar';
+import DashFooter from '../DashFooter';
 
-import UserInfo from '../user/UserInfo';
-import UpcomingEvents from '../user/UpcomingEvents';
-import LedRosters from '../rosters/LedRosters';
-import MyRosters from '../rosters/MyRosters';
+import UpcomingEvents from '../../user/UpcomingEvents';
+import ViewAllEvents from '../../events/ViewAllEvents';
 
 import { toast } from 'react-toastify';
-import toastNotif from '../../../util/toastNotif';
+import toastNotif from '../../../../util/toastNotif';
 
-class Dashboard extends Component {
+
+class EventManager extends Component {
 
     constructor(props){
         super(props);
@@ -50,18 +49,11 @@ class Dashboard extends Component {
 
                     <div className='content'>
                         
-                        <UserInfo
-                            given_username={this.props.auth.user.username} 
-                            history={this.props.history} />
                         <UpcomingEvents 
                             username={this.props.auth.user.username} 
                             history={this.props.history} />
-                        <LedRosters 
-                            username={this.props.auth.user.username} 
-                            history={this.props.history} />
-                        <MyRosters 
-                            username={this.props.auth.user.username} 
-                            history={this.props.history} />
+                        
+                        <ViewAllEvents />
 
                     </div>
 
@@ -71,7 +63,7 @@ class Dashboard extends Component {
     }
 }
 
-Dashboard.propTypes = {
+EventManager.propTypes = {
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
@@ -82,4 +74,4 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps
-)(Dashboard);
+)(EventManager);
