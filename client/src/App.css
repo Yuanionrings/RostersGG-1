@@ -171,12 +171,19 @@ _______________________________________
                 }
                 .dashboard-container .content .display-box .event-card p{
                     margin:0;
+                    
                 }
             .dashboard-container .content .display-box .box {
                 color: #373638;
                 background: #ffffff;
                 padding: 1rem;
                 border: 1px solid #dedfe2;
+                border-radius: 8px;
+            }
+            .dashboard-container .content .display-box .title-box {
+                color: #ffffff;
+                background: #dedfe2;
+                padding: 1rem;
                 border-radius: 8px;
             }
             .dashboard-container .content .display-box .btn {        
@@ -316,6 +323,7 @@ _______________________________________
     position: absolute;
     bottom: 0;
     width: 100%;
+    z-index: 6499;
 }
 .footer-bottom {
     background: #373638;
@@ -328,6 +336,7 @@ _______________________________________
     height: 2.5rem;            /* Footer height */
     width: 100%;
     bottom: 0;
+    z-index: 6500;
 }
     .footer-bottom a {
         color: #f1f1f1;
