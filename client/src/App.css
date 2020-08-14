@@ -253,9 +253,10 @@ _______________________________________
                 background: #ffffff;
             }
             .dashboard-container .content .display-box thead th {
-                border-bottom: 3px solid #95A5A6;
-                border-left: 1px solid #95A5A6;
-                border-right: 1px solid #95A5A6;
+                border-bottom: 2px solid #B4BAB8;
+                border-left: none;
+                border-right: none;
+                border-top: none
             }
             .dashboard-container .content .display-box thead tr {
                 background: #ffffff;

@@ -49,7 +49,7 @@ export default class MyRosters extends Component {
 
                     {(this.state.rosters.length > 0) ?
                     <div className='table-container'>
-                        <table className='table table-striped' style={{ marginTop: 15 }}>
+                        <table className='table table-striped'>
                             <thead>
                                 <tr>
                                     <th>Team Name</th>
