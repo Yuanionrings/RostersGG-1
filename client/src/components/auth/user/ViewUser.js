@@ -61,7 +61,7 @@ export default class ViewUser extends Component {
                         {" "}Back to Dashboard
                     </Link>
 
-                    <h2 className=''>{this.state.name}</h2>
+                    <h3 className=''>{this.state.name}</h3>
                     <h6 className='filler-text'>USER PROFILE</h6>
                     <hr />
 

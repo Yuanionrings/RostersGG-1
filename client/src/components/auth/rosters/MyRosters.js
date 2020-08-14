@@ -45,7 +45,7 @@ export default class MyRosters extends Component {
         return (
             <div className='display-box'>
                 <div className='box'>
-                    <h2>Rosters</h2>
+                    <h3>Rosters</h3>
                     <hr />
 
                     {(this.state.rosters.length > 0) ?

@@ -51,7 +51,7 @@ class ManageRosterEvents extends Component {
         return (
             <div className='form-box'>
                 <div className='player-list'>
-                    <h2>Manage Team Events</h2>
+                    <h3>Manage Team Events</h3>
                     <hr />
                     {(this.state.events.length > 0) ? 
                     <div className='table-container'>

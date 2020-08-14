@@ -47,7 +47,7 @@ class CreateEvent extends Component {
         <div className='form-box'>
             <form className='signup-form' onSubmit={this.onSubmit}>
 
-                <h2>Create Event</h2>
+                <h3>Create Event</h3>
                 <p className='mb-0'>Date and time must be YYYY/MM/DD HH:MM:SS in order to process correctly.</p>
                 <p className='filler-text mt-0'>All times must be entered as EST time (only during BETA).</p>
                 <hr />

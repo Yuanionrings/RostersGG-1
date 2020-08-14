@@ -45,7 +45,7 @@ class InvitePlayer extends Component {
         <div className='form-box'>
             <form className='signup-form' onSubmit={this.onSubmit}>
 
-                <h2>Invite Player</h2>
+                <h3>Invite Player</h3>
                 <p>Please enter the username of the player you'd like to invite.</p>
                 <hr />
                 

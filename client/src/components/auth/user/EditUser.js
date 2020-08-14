@@ -83,7 +83,7 @@ class EditUser extends Component {
 
                     <div><Link to='/dashboard'><i className='fa fa-arrow-circle-left'></i> Back to Dashboard</Link></div>
 
-                    <h2>Edit User</h2>
+                    <h3>Edit User</h3>
                     <hr />
                     <div className='form-group'>
                         <label>Change Display Name: </label>

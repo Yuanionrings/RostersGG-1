@@ -64,7 +64,7 @@ class ViewRoster extends Component {
                         {" "}Back to Dashboard
                     </Link>
 
-                    <h2 className=''>{this.state.teamname}</h2>
+                    <h3 className=''>{this.state.teamname}</h3>
                     <h6>{this.state.game} - {this.state.region}</h6>
                     <hr />
 

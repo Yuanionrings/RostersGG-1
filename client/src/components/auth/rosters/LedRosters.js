@@ -52,13 +52,13 @@ export default class LedRosters extends Component {
         return (
             <div className='display-box'>
                 <div className='box'>
-                    <h2 className=''>
+                    <h3 className=''>
                         My Rosters
                         <Button
                           className='float-right'
                           onClick={this.onCreate}
                         >Create</Button>
-                    </h2>
+                    </h3>
                     <hr />
 
                     {(this.state.rosters.length > 0) ?

@@ -18,7 +18,6 @@ class Register extends Component {
     }
   }
   componentDidMount() {
-    console.log(this.props)
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
     }
@@ -59,7 +58,7 @@ class Register extends Component {
 
           <div><Link to='/'><i className='fa fa-arrow-circle-left'></i> Back to Home</Link></div>
 
-          <h2>Register</h2>
+          <h3>Register</h3>
           <hr />
           <div className='form-group'>
             <label>Display Name: </label>

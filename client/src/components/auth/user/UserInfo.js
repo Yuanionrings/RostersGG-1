@@ -106,9 +106,9 @@ class UserInfo extends Component {
         return (
             <div className='display-box'>
                 <div className='box'>
-                    <h2>
+                    <h3>
                         Welcome, <span className='primary-text-green'>{this.state.user_name}</span>!
-                    </h2>
+                    </h3>
                     <hr />
 
                     <h5>Invitations: </h5>

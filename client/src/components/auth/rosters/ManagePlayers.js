@@ -66,7 +66,7 @@ class ManagePlayers extends Component {
         return (
             <div className='form-box'>
                 <div className='player-list'>
-                    <h2>Manage Players</h2>
+                    <h3>Manage Players</h3>
                     <hr />
                     {(this.state.players.length > 1) ? 
                     <div className='table-container'>

@@ -36,9 +36,9 @@ export default class ConfirmEmail extends Component {
         <div className='form-box'>
             <div className='display-info'>
                 {this.state.confirm_successful ?
-                    <h2>Confirm Successful</h2>
+                    <h3>Confirm Successful</h3>
                 :
-                    <h2>Confirm Not Successful</h2>
+                    <h3>Confirm Not Successful</h3>
                 }
                 <hr />
 

@@ -59,9 +59,9 @@ class UpcomingEvents extends Component {
         return (
             <div className='display-box'>
                 <div className='box'>
-                    <h2 className=''>
+                    <h3 className=''>
                         Upcoming Events
-                    </h2>
+                    </h3>
                     <hr />
                     {this.conditionalRenderCards()}
                 </div>

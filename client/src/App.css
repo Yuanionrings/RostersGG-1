@@ -213,7 +213,7 @@ _______________________________________
                 background: #1d7562;
                 box-shadow: none !important;
             }
-            .dashboard-container .content .display-box h2 {
+            .dashboard-container .content .display-box h3 {
                 color: #373638;
                 font-weight: bold;
                 margin-top: 0;
@@ -528,7 +528,7 @@ _______________________________________
         background: #1d7562;
         box-shadow: none !important;
     }
-    .viewing-display-box h2 {
+    .viewing-display-box h3 {
         color: #373638;
         font-weight: bold;
         margin-top: 0;
@@ -656,7 +656,7 @@ _______________________________________
     .form-box .player-list a:hover {
         color: #218C74;
     }
-    .form-box h2 {
+    .form-box h3 {
         color: #ffffff;
         font-weight: bold;
         margin-top: 0;

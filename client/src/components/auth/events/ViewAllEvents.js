@@ -61,9 +61,9 @@ class ViewAllEvents extends Component {
         return (
             <div className='display-box'>
                 <div className='box'>
-                    <h2 className=''>
+                    <h3 className=''>
                         View All Events
-                    </h2>
+                    </h3>
                     <hr />
                     
                     <p className='filler-text'>This component is not yet implemented. For now, check Upcoming Events on your Dashboard.</p>

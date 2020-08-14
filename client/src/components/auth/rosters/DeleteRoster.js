@@ -66,7 +66,7 @@ class DeleteRoster extends Component {
                         </Link>
                     </div>
 
-                    <h2>Delete Roster - {this.state.teamname}</h2>
+                    <h3>Delete Roster - {this.state.teamname}</h3>
                     <hr />
 
                     <div className='form-group'>

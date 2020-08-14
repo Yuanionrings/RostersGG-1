@@ -59,7 +59,7 @@ class CreateRoster extends Component {
               </Link>
           </div>
 
-          <h2>Create New Roster</h2>
+          <h3>Create New Roster</h3>
           <hr />
 
           <div className='form-group'>
