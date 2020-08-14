@@ -1,9 +1,20 @@
 import React from 'react';
 
 export const supportedGames = [
-    'Mordhau', 'Call of Duty: Mordern Warfare', 'DOTA 2',
-    'League of Legends', 'Overwatch', 'Hearthstone', 'Heroes of the Storm',
-    'Chivalry I', 'Civalry II', 'CS:GO', 'Valorant', 'Fortnite' 
+    'League of Legends',
+    'Call of Duty: Mordern Warfare',
+    'Overwatch',
+    'Counter Strike: Global Offensive',
+    'Dota 2',
+    'Rainbow Six: Seige',
+    'Mordhau',
+    'Chivalry II',
+    'Valorant',
+    'Hearthstone',
+    'Heroes of the Storm',
+    'Apex Legends',
+    'Fortnite',
+    'Minecraft'
 ];
 
 export function supportedGamesList(supportedGames) {

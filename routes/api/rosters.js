@@ -392,7 +392,7 @@ router.patch('/roster/:id/edit-roster', async (req, res) => {
 
 
 // @route PATCH api/rosters/roster/:id/delete
-// @desc Completely deletes the listed roster
+// @desc Completely deletes the listed roster and all associated events
 router.patch('/roster/:id/delete-roster', async (req, res) => {
 
     // Define filters for querying collections
@@ -426,6 +426,12 @@ router.patch('/roster/:id/delete-roster', async (req, res) => {
             res.status(403).json(res_errors);
             return;
         }
+
+
+        var roster_id_list = [roster._id];
+        const eventFilter = {team_ids: { $elemMatch: {$in: roster_id_list }}};
+        const deleted = await Event.deleteMany(eventFilter);
+        console.log(`Found ${deleted.n} events associated with roster ${roster._id} and deleted ${deleted.deletedCount}`);
 
         await Roster.findByIdAndDelete(rosterFilter);
         res_success.success = `Roster ${rosterFilter._id} successfully deleted`;
