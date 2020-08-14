@@ -73,7 +73,6 @@ const App = () => {
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/confirm/:id' component={ConfirmEmail} />
-            <Route path='*' component={NotFound} />
 
             <Switch>
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
@@ -84,6 +83,8 @@ const App = () => {
               <PrivateRoute exact path='/roster/:id' component={ViewRoster} />
               <PrivateRoute exact path='/roster/:id/edit' component={EditRoster} />
               <PrivateRoute exact path='/roster/:id/delete' component={DeleteRoster} />
+
+              <Route component={NotFound} />
             </Switch>
 
           </div>

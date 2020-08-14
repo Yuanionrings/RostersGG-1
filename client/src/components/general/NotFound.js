@@ -4,7 +4,7 @@ export default class NotFound extends Component {
     render() {
         return(
             <div className='text-page-container'>
-                <h2>404 Not Found</h2>
+                <h1>404 Not Found</h1>
                 <p>Sorry about that! We could not find what you were looking for.</p>
 
                 <h3>Please go to <a href='https://www.rosters.gg'>Rosters.gg</a> to continue accessing the platform.</h3>

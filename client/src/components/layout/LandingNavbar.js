@@ -3,29 +3,32 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavbarBrand from 'react-bootstrap/NavbarBrand';
 import Nav from 'react-bootstrap/Nav';
 
-const LandingNavbar = props => {
+const LandingNavbar = () => {
 
     var conditionalNavItems = () => {
-        return props.authenticated ?
-        <Nav className='ml-auto'>
-            <Nav.Link className='secondary-text-light' href='/dashboard'>Dashboard</Nav.Link>
-        </Nav>
-        :
-        <Nav className='ml-auto'>
-            <Nav.Link className='secondary-text-light' href='/login'>Login</Nav.Link>
-            <Nav.Link className='secondary-text-light' href='/register'>Register</Nav.Link>
-        </Nav>
+        if (localStorage.jwtToken) {
+        return (
+            <Nav className='ml-auto'>
+                <Nav.Link className='' href='/dashboard'>Dashboard</Nav.Link>
+            </Nav>
+
+        )} else {
+        return (
+            <Nav className='ml-auto'>
+                <Nav.Link className='' href='/login'>Login</Nav.Link>
+                <Nav.Link className='' href='/register'>Register</Nav.Link>
+            </Nav>
+        )}
     }
 
     return (
         <div>
-            <Navbar className='navbar-spec primary-bg-dark'>
-                <NavbarBrand className='mr-auto secondary-text-light bold-text' href='/'>
-                    RostersGG <span className='beta-text'>BETA</span>
+            <Navbar className='landing-navbar'>
+                <NavbarBrand className='mr-auto' href='/'>
+                    RostersGG<span className='beta-text'>BETA</span>
                 </NavbarBrand>
-                {conditionalNavItems(props.auth)}
+                {conditionalNavItems()}
             </Navbar>
-            <div className='navbar-divider'></div>
         </div>
     )
     
