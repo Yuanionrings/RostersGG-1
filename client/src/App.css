@@ -234,12 +234,6 @@ _______________________________________
             .dashboard-container .content .display-box p {
                 margin: 0;
             }
-            .dashboard-container .content .display-box hr {
-                border-top: 1px solid #95A5A6;
-                margin-top: 1rem;
-                margin-left: -1rem;
-                margin-right: -1rem;
-            }
             .dashboard-container .content .display-box a {
                 color: #33d9b2;
                 text-decoration: none;
@@ -253,7 +247,7 @@ _______________________________________
                 background: #ffffff;
             }
             .dashboard-container .content .display-box thead th {
-                border-bottom: 2px solid #B4BAB8;
+                border-bottom: 1px solid #D8D8D8;
                 border-left: none;
                 border-right: none;
                 border-top: none
@@ -262,10 +256,11 @@ _______________________________________
                 background: #ffffff;
             }
             .dashboard-container .content .display-box th {
-                border-top: 1px solid #95A5A6;
+                border-top: none;
             }
             .dashboard-container .content .display-box td {
-                border-top: 1px solid #95A5A6;
+                padding: 0.25rem 0.75rem;
+                border-top: none;
             }
 
 
@@ -321,8 +316,8 @@ _______________________________________
     z-index: 6499;
 }
 .footer-bottom {
-    background: #2C3E50;
-    color: #ECEEEF;
+    background: #ffffff;
+    color: #2C3E50;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -332,6 +327,7 @@ _______________________________________
     width: 100%;
     bottom: 0;
     z-index: 6500;
+    border-top: 1px solid #D8D8D8;
 }
     .footer-bottom a {
         color: #ECEEEF;
