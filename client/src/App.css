@@ -37,8 +37,8 @@
 _______________________________________
 */
 body {
-    color: #fffffc;
-    background: #f1f1f1;
+    color: #ECF0F1;
+    background: #BDC3C7;
     font-family: 'Roboto', sans-serif;
     height: 100%;
 }
@@ -70,32 +70,24 @@ body {
 /* 
     BACKGROUND COLORS
 */
-.primary-bg-light { background: #ffffff !important; }
-.secondary-bg-light { background: #f1f1f1 !important; }
-.tertiary-bg-light { background: #e3e4ea !important; }
-.primary-bg-dark { background: #373638 !important; }
-.secondary-bg-dark { background: #111111 !important; }
 .primary-bg-green { background: #33D9B2 !important; }
 .secondary-bg-green { background: #218C74 !important; }
-.primary-bg-yellow { background: #FFDA79 !important; }
-.secondary-bg-yellow { background: #CCAE62 !important; }
-.primary-bg-purple { background: #706FD3 !important; }
-.secondary-bg-purple { background: #474787 !important; }
+.tertiary-bg-green { background: #1d7562 !important; }
+
+.primary-light-bg { background: #ECF0F1 !important; }
+.secondary-light-bg { background: #BDC3C7 !important; }
+.tertiary-light-bg { background: #95A5A6 !important; }
+
+.primary-darkblue-bg { background: #34495E !important; }
+.secondary-darkblue-bg { background: #2C3E50 !important; }
+
+.primary-dark-bg { background: #171817 !important; }
+.secondary-dark-bg { background: #3a3b3b !important; }
 
 
 /* 
     TEXT COLORS
 */
-.primary-text-light { color: #ffffff !important; }
-.secondary-text-light { color: #f1f1f1 !important; }
-.primary-text-dark { color: #373638 !important; }
-.secondary-text-dark { color: #111111 !important; }
-.primary-text-green { color: #33D9B2 !important; }
-.secondary-text-green { color: #218C74 !important; }
-.primary-text-yellow { color: #FFDA79 !important; }
-.secondary-text-yellow { color: #CCAE62 !important; }
-.primary-text-purple { color: #706FD3 !important; }
-.secondary-text-purple { color: #474787 !important; }
 .filler-text { color: #909193; }
 .red-text { color: #ff5252; }
 
@@ -127,11 +119,11 @@ _______________________________________
     .dashboard-container .dashboard-header {
         display: flex;
         justify-content: center;
-        background: #ffffff;
+        background: #ECF0F1;
         max-height: 64px;
         height: 64px;
         min-height: 64px;
-        border-bottom: 1px solid #dedfe2;
+        border-bottom: 1px solid #95A5A6;
     }
     .dashboard-container .header-logo-text {
         font-weight: bold;
@@ -145,7 +137,7 @@ _______________________________________
         Dashboard Content-related styling
     */
     .dashboard-container .content {
-        background: #f1f1f1;
+        background: #BDC3C7;
         height: 100%;
         width: 100%;
         padding-left: 64px !important;
@@ -154,10 +146,10 @@ _______________________________________
             margin: 1rem;
         }
             .dashboard-container .content .display-box .event-card {
-                color: #373638;
-                background: #ffffff;
+                color: #2C3E50;
+                background: #ECF0F1;
                 padding: 1rem;
-                border: 1px solid #dedfe2;
+                border: 1px solid #95A5A6;
                 width: 100%;
                 padding-left: 3rem;
                 padding-right: 3rem;
@@ -174,15 +166,15 @@ _______________________________________
                     
                 }
             .dashboard-container .content .display-box .box {
-                color: #373638;
-                background: #ffffff;
+                color: #2C3E50;
+                background: #ECF0F1;
                 padding: 1rem;
-                border: 1px solid #dedfe2;
+                border: 1px solid #95A5A6;
                 border-radius: 8px;
             }
             .dashboard-container .content .display-box .title-box {
-                color: #ffffff;
-                background: #797a7a;
+                color: #ECF0F1;
+                background: #868a88;
                 padding: 1rem;
                 border-radius: 8px;
             }
@@ -221,19 +213,19 @@ _______________________________________
                 box-shadow: none !important;
             }
             .dashboard-container .content .display-box h2 {
-                color: #ffffff;
+                color: #ECF0F1;
                 font-weight: bold;
                 margin-top: 0;
                 margin-bottom: 0;
             }
             .dashboard-container .content .display-box h3 {
-                color: #373638;
+                color: #2C3E50;
                 font-weight: bold;
                 margin-top: 0;
                 margin-bottom: 0;
             }
             .dashboard-container .content .display-box h5 {
-                color: #373638;
+                color: #2C3E50;
                 font-weight: bold;
                 margin-bottom: 0;
             }
@@ -241,7 +233,7 @@ _______________________________________
                 margin: 0;
             }
             .dashboard-container .content .display-box hr {
-                border-top: 1px solid #dedfe2;
+                border-top: 1px solid #95A5A6;
                 margin-top: 1rem;
                 margin-left: -1rem;
                 margin-right: -1rem;
@@ -255,22 +247,22 @@ _______________________________________
                 color: #218C74;
             }
             .dashboard-container .content .display-box table {
-                color: #373638;
+                color: #2C3E50;
                 background: #ffffff;
             }
             .dashboard-container .content .display-box thead th {
-                border-bottom: 3px solid #dedfe2;
-                border-left: 1px solid #dedfe2;
-                border-right: 1px solid #dedfe2;
+                border-bottom: 3px solid #95A5A6;
+                border-left: 1px solid #95A5A6;
+                border-right: 1px solid #95A5A6;
             }
             .dashboard-container .content .display-box thead tr {
-                background: #ffffff;
+                background: #ECF0F1;
             }
             .dashboard-container .content .display-box th {
-                border-top: 1px solid #dedfe2;
+                border-top: 1px solid #95A5A6;
             }
             .dashboard-container .content .display-box td {
-                border-top: 1px solid #dedfe2;
+                border-top: 1px solid #95A5A6;
             }
 
 
@@ -285,7 +277,7 @@ _______________________________________
     margin: 0 auto;
     padding-top: 4rem;
     padding-bottom: 4rem;
-    color: #373638;
+    color: #2C3E50;
     max-width: 800px;
     width: 90%;
 }
@@ -299,7 +291,7 @@ _______________________________________
     }
 
 .not-found {
-    box-shadow: #171817;
+    box-shadow: #2C3E50;
 }
     .text-page-container h1 {
         font-weight: bold;
@@ -326,8 +318,8 @@ _______________________________________
     z-index: 6499;
 }
 .footer-bottom {
-    background: #373638;
-    color: #f1f1f1;
+    background: #2C3E50;
+    color: #BDC3C7;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -339,7 +331,7 @@ _______________________________________
     z-index: 6500;
 }
     .footer-bottom a {
-        color: #f1f1f1;
+        color: #BDC3C7;
         margin-right: 2rem;
     }
     .footer-bottom p {
@@ -393,7 +385,7 @@ _______________________________________
             padding: 2rem 0;
         }
         .landing-page-display .header .content {
-            color: #f1f1f1;
+            color: #BDC3C7;
             padding: 2rem;
         }
             .landing-page-display .header .content h5 {
@@ -412,7 +404,7 @@ _______________________________________
                 text-align: center;
                 font-size: 18px;
                 margin: 0 auto;
-                color: #8f9492;
+                color: #95A5A6;
             }
             .landing-page-display .header .content .button-div {
                 display: flex;
@@ -422,7 +414,7 @@ _______________________________________
                 font-size: 16px;
                 font-weight: bold;
                 margin-top: 2rem;
-                color: #ffffff;
+                color: #ECF0F1;
                 background: #33d9b2;
                 border: 0;
                 border-radius: 16px;
@@ -441,7 +433,7 @@ _______________________________________
     .landing-page-display .section-1 {
         display: flex;
         justify-content: center;
-        background: #ffffff;
+        background: #ECF0F1;
         padding-bottom: 100px;
     }  
         .landing-page-display .section-1 .display {
@@ -451,7 +443,7 @@ _______________________________________
             padding: 0;
         }
         .landing-page-display .section-1 .content {
-            color: #373638;
+            color: #2C3E50;
         }
             .landing-page-display .section-1 .content .text-area {
                 padding-top: 100px;
@@ -465,7 +457,7 @@ _______________________________________
             }
             .landing-page-display .section-1 .content h4 {
                 margin: 1rem auto;
-                color: #666666;
+                color: #34495E;
             }
 
     .landing-page-display .section-2 {
@@ -479,7 +471,7 @@ _______________________________________
             padding: 4rem 0;
         }
         .landing-page-display .section-2 .content {
-            color: #373638
+            color: #2C3E50
         }
             .landing-page-display .section-2 .content h3 {
                 font-weight: bold;
@@ -504,10 +496,10 @@ _______________________________________
     margin: 1.5rem;
 }
     .viewing-display-box .display-content {
-        color: #373638;
-        background: #ffffff;
+        color: #2C3E50;
+        background: #ECF0F1;
         padding: 1.5rem;
-        border: 1px solid #dedfe2;
+        border: 1px solid #95A5A6;
     }
     .viewing-display-box .btn {        
         font-size: 16px;
@@ -529,7 +521,7 @@ _______________________________________
         font-size: 0.75rem;
         font-weight: bold;
         color: #33D9B2;
-        background: #ffffff;
+        background: #ECF0F1;
         min-width: 60px;
         border-radius: 16px;
         border: 1px solid #33D9B2;
@@ -544,19 +536,19 @@ _______________________________________
         box-shadow: none !important;
     }
     .viewing-display-box h3 {
-        color: #373638;
+        color: #2C3E50;
         font-weight: bold;
         margin-top: 0;
         margin-bottom: 0;
     }
     .viewing-display-box h4 {
-        color: #373638;
+        color: #2C3E50;
         font-weight: bold;
         margin-top: 0;
         margin-bottom: 0.5rem;
     }
     .viewing-display-box h5 {
-        color: #373638;
+        color: #2C3E50;
         font-weight: bold;
         margin-bottom: 0;
     }
@@ -564,7 +556,7 @@ _______________________________________
         margin: 0;
     }
     .viewing-display-box hr {
-        border-top: 1px solid #dedfe2;
+        border-top: 1px solid #95A5A6;
         margin-top: 1rem;
         margin-left: -1.5rem;
         margin-right: -1.5rem;
@@ -578,22 +570,22 @@ _______________________________________
         color: #218C74;
     }
     .viewing-display-box table {
-        color: #373638;
-        background: #ffffff;
+        color: #2C3E50;
+        background: #ECF0F1;
     }
     .viewing-display-box thead th {
-        border-bottom: 3px solid #dedfe2;
-        border-left: 1px solid #dedfe2;
-        border-right: 1px solid #dedfe2;
+        border-bottom: 3px solid #95A5A6;
+        border-left: 1px solid #95A5A6;
+        border-right: 1px solid #95A5A6;
     }
     .viewing-display-box thead tr {
-        background: #ffffff;
+        background: #ECF0F1;
     }
     .viewing-display-box th {
-        border-top: 1px solid #dedfe2;
+        border-top: 1px solid #95A5A6;
     }
     .viewing-display-box td {
-        border-top: 1px solid #dedfe2;
+        border-top: 1px solid #95A5A6;
     }
 
 
@@ -607,8 +599,8 @@ _______________________________________
 .form-control {
     min-height: 41px;
     box-shadow: none;   
-    border-color: #dedfe2;
-    background: #ffffff;
+    border-color: #95A5A6;
+    background: #ECF0F1;
 }
 .form-control:focus {
     border-color: #218c74;
@@ -624,15 +616,15 @@ _______________________________________
     padding-top: 30px;
 }
     .form-box .display-info {
-        color: #ffffff;
+        color: #ECF0F1;
         border-radius: 16px;
-        background: #373638;
+        background: #2C3E50;
         padding: 1.5rem;
     }
     .form-box form, .form-box .player-list {
-        color: #ffffff;
+        color: #ECF0F1;
         border-radius: 16px;
-        background: #373638;
+        background: #2C3E50;
         padding: 1.5rem;
     }
     .form-box .btn-primary {        
@@ -648,7 +640,7 @@ _______________________________________
         font-size: 0.75rem;
         font-weight: bold;
         color: #33D9B2;
-        background: #ffffff;
+        background: #ECF0F1;
         min-width: 60px;
         border-radius: 16px;
         border: 1px solid #33D9B2;
@@ -656,12 +648,12 @@ _______________________________________
     }
     .form-box .player-list table {
         color: #ffffff;
-        background: #373638;
+        background: #2C3E50;
     }
     .form-box .player-list thead th {
-        border-bottom: 3px solid #dedfe2;
-        border-left: 1px solid #dedfe2;
-        border-right: 1px solid #dedfe2;
+        border-bottom: 3px solid #95A5A6;
+        border-left: 1px solid #95A5A6;
+        border-right: 1px solid #95A5A6;
     }
     .form-box .player-list a {
         color: #33d9b2;
@@ -672,7 +664,7 @@ _______________________________________
         color: #218C74;
     }
     .form-box h3 {
-        color: #ffffff;
+        color: #ECF0F1;
         font-weight: bold;
         margin-top: 0;
     }
@@ -705,7 +697,7 @@ _______________________________________
         box-shadow: none;
     }
     .form-box a {
-        color: #fffffc;
+        color: #ECF0F1;
         text-decoration: underline;
     }
     .form-box a:hover {
