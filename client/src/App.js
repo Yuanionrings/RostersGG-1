@@ -20,6 +20,7 @@ import Login from './components/general/Login';
 import ConfirmEmail from './components/general/ConfirmEmail';
 import PrivacyPolicy from './components/general/PrivacyPolicy';
 import TermsAndConditions from './components/general/TermsAndConditions';
+import NotFound from './components/general/NotFound';
 
 // Landing Page Imports
 import Landing from './components/layout/Landing';
@@ -72,6 +73,7 @@ const App = () => {
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/confirm/:id' component={ConfirmEmail} />
+            <Route path='*' component={NotFound} />
 
             <Switch>
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
