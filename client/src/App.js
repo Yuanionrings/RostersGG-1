@@ -66,17 +66,15 @@ const App = () => {
 
         <div className='app-bg page-container'>
           <div className='content-wrap'>
-
-            <Route exact path='/' component={Landing} />
-            <Route exact path='/legal/privacy-policy' component={PrivacyPolicy} />
-            <Route exact path='/legal/terms-and-conditions' component={TermsAndConditions} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/confirm/:id' component={ConfirmEmail} />
-
             <Switch>
-              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/' component={Landing} />
+              <Route exact path='/legal/privacy-policy' component={PrivacyPolicy} />
+              <Route exact path='/legal/terms-and-conditions' component={TermsAndConditions} />
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/confirm/:id' component={ConfirmEmail} />
               
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute exact path='/user/:username' component={ViewUser} />
               <PrivateRoute exact path='/user/:username/edit' component={EditUser} />
               <PrivateRoute exact path='/roster/create' component={CreateRoster} />

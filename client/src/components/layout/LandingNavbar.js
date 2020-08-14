@@ -9,14 +9,14 @@ const LandingNavbar = () => {
         if (localStorage.jwtToken) {
         return (
             <Nav className='ml-auto'>
-                <Nav.Link className='' href='/dashboard'>Dashboard</Nav.Link>
+                <Nav.Link className='landing-navbar-nav' href='/dashboard'>Dashboard</Nav.Link>
             </Nav>
 
         )} else {
         return (
             <Nav className='ml-auto'>
-                <Nav.Link className='' href='/login'>Login</Nav.Link>
-                <Nav.Link className='' href='/register'>Register</Nav.Link>
+                <Nav.Link className='landing-navbar-nav' href='/login'>Login</Nav.Link>
+                <Nav.Link className='landing-navbar-nav' href='/register'>Register</Nav.Link>
             </Nav>
         )}
     }
@@ -24,7 +24,7 @@ const LandingNavbar = () => {
     return (
         <div>
             <Navbar className='landing-navbar'>
-                <NavbarBrand className='mr-auto' href='/'>
+                <NavbarBrand className='mr-auto landing-navbar-brand' href='/'>
                     RostersGG<span className='beta-text'>BETA</span>
                 </NavbarBrand>
                 {conditionalNavItems()}

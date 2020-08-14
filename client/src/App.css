@@ -327,31 +327,28 @@ _______________________________________
 
 _______________________________________
 */
-.dashboard-container .dashboard-header {
-    display: flex;
-    justify-content: center;
-    background: #ffffff;
-    max-height: 64px;
-    height: 64px;
-    min-height: 64px;
-    border-bottom: 1px solid #dedfe2;
-}
-.dashboard-container .header-logo-text {
-    font-weight: bold;
-}
-.dashboard-container .beta-text {
-    font-size: 10px;
-    font-weight: normal;
-}
 
 .landing-page-display {
     width: 100%;
 }
     .landing-page-display .landing-navbar {
         background: #171817;
-        color: #313131;
+        color: #3a3b3b !important;
         min-height: 72px;
     }
+        .landing-page-display .landing-navbar-brand {
+            color: #3a3b3b !important;
+            font-weight: bold;
+        }
+        .landing-page-display .landing-navbar-nav {
+            color: #3a3b3b !important;
+            font-weight: bold;
+        }
+        .landing-page-display .beta-text {
+            color: #4d5252 !important;
+            font-size: 10px;
+            font-weight: normal;
+        }
     .landing-page-display .header {
         justify-content: center;
         background: #171817;
