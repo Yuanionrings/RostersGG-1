@@ -13,7 +13,8 @@ class ViewRoster extends Component {
             team_desc: '',
             leader: '',
             game: '',
-            region: ''
+            region: '',
+            players: []
         }
     }
     componentDidMount() {
