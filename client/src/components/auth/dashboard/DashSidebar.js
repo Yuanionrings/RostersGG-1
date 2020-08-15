@@ -16,19 +16,34 @@ import DashboardIcon from '../../../assets/icons/star.svg';
 const DashSidebar = props => {
 
     function goToSelection(selectedKey) {
-        // Redirects to new page if not on that page
         const toLink = '/' + selectedKey;
         if (props.location.pathname !== toLink) {
             props.history.push(toLink);
+        }
+    }
+
+    function determineDefaultSelected() {
+        if (props.location.pathname === '/dashboard') {
+            return 'dashboard';
+        } else if (props.location.pathname === '/event-manager') {
+            return 'event-manager';
+        } else if (props.location.pathname === '/team-directory') {
+            return 'team-directory'
+        } else if (props.location.pathname === '/player-directory') {
+            return 'player-directory'
+        } else if (props.location.pathname === `/user/${props.auth.user.username}`) {
+            return `user/${props.auth.user.username}`;
+        } else if (props.location.pathname === `user/${props.auth.user.username}/edit`) {
+            return `user/${props.auth.user.username}/edit`;
         } else {
-            alert('You are already on this page.');
+            return 'none';
         }
     }
 
     return (
         <SideNav className='dashboard-sidenav' onSelect={(selected) => goToSelection(selected)}>
             <Toggle />
-            <Nav className='dashboard-nav' defaultSelected='dashboard'>
+            <Nav className='dashboard-nav' defaultSelected={determineDefaultSelected()}>
 
                 <NavItem className='dashboard-navitem' eventKey='dashboard'>
                     <NavIcon>

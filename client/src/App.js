@@ -29,14 +29,15 @@ import Landing from './components/layout/Landing';
 import PrivateRoute from './components/auth/PrivateRoute';
 import UserDashboard from './components/auth/dashboard/views/UserDashboard';
 import EventManager from './components/auth/dashboard/views/EventManager';
+
+import RosterCreate from './components/auth/dashboard/views/RosterCreate';
 import RosterView from './components/auth/dashboard/views/RosterView';
 import RosterManage from './components/auth/dashboard/views/RosterManage';
+import RosterDelete from './components/auth/dashboard/views/RosterDelete';
+
 import UserView from './components/auth/dashboard/views/UserView';
 import UserManage from './components/auth/dashboard/views/UserManage';
-
 import Logout from './components/auth/user/Logout';
-import CreateRoster from './components/auth/rosters/CreateRoster';
-import DeleteRoster from './components/auth/rosters/DeleteRoster';
 
 
 if (localStorage.jwtToken) {
@@ -83,10 +84,10 @@ const App = () => {
               <PrivateRoute exact path='/user/:username' component={UserView} />
               <PrivateRoute exact path='/user/:username/edit' component={UserManage} />
               <PrivateRoute exact path='/logout' component={Logout} />
-              <PrivateRoute exact path='/roster/create' component={CreateRoster} />
+              <PrivateRoute exact path='/roster/create' component={RosterCreate} />
               <PrivateRoute exact path='/roster/:id' component={RosterView} />
               <PrivateRoute exact path='/roster/:id/edit' component={RosterManage} />
-              <PrivateRoute exact path='/roster/:id/delete' component={DeleteRoster} />
+              <PrivateRoute exact path='/roster/:id/delete' component={RosterDelete} />
 
               <Route component={NotFound} />
             </Switch>

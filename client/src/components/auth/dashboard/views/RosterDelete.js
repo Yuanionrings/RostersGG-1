@@ -7,12 +7,12 @@ import DashTitle from '../DashTitle';
 import DashSidebar from '../DashSidebar';
 import DashFooter from '../DashFooter';
 
-import ViewRoster from '../../rosters/ViewRoster';
+import DeleteRoster from '../../rosters/DeleteRoster';
 
 import { toast } from 'react-toastify';
 import toastNotif from '../../../../util/toastNotif';
 
-class RosterView extends Component {
+class RosterDelete extends Component {
 
     constructor(props){
         super(props);
@@ -46,8 +46,10 @@ class RosterView extends Component {
                 <DashSidebar auth={this.props.auth}/>
 
                     <div className='content'>
-                        <DashTitle page_title='Viewing Roster' />
-                        <ViewRoster match={this.props.match}/>
+                        <DashTitle page_title='Creating New Roster' />
+                        <DeleteRoster 
+                            history={this.props.history}
+                            match={this.props.match}/>
                     </div>
 
                 <DashFooter />
@@ -56,7 +58,7 @@ class RosterView extends Component {
     }
 }
 
-RosterView.propTypes = {
+RosterDelete.propTypes = {
     auth: PropTypes.object.isRequired
 };
 
@@ -66,4 +68,4 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps
-)(RosterView);
+)(RosterDelete);
