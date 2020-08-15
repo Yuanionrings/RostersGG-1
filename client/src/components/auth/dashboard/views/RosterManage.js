@@ -48,7 +48,9 @@ class RosterManage extends Component {
 
                     <div className='content'>
                         <DashTitle page_title='Managing Roster' />
-                        <ManageRoster match={this.props.match}/>
+                        <ManageRoster 
+                            history={this.props.history}
+                            match={this.props.match}/>
                     </div>
 
                 <DashFooter />

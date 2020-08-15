@@ -31,7 +31,6 @@ class ManageRoster extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         axios.get(`/api/rosters/roster/${this.props.match.params.id}`)
             .then(res => {
                 if(this.props.auth.user.username === res.data.leader){
@@ -174,18 +173,22 @@ class ManageRoster extends Component {
                 
                 <InvitePlayer 
                     auth={this.props.auth}
+                    history={this.props.history}
                     team_id={this.props.match.params.id} />
 
                 <ManagePlayers
                     auth={this.props.auth}
+                    history={this.props.history}
                     team_id={this.props.match.params.id} />
 
                 <CreateEvent
                     auth={this.props.auth}
+                    history={this.props.history}
                     team_id={this.props.match.params.id} />
 
                 <ManageRosterEvents
                     auth={this.props.auth}
+                    history={this.props.history}
                     team_id={this.props.match.params.id} />
 
             </div>

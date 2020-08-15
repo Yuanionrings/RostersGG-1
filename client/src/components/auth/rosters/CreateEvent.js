@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
-import { withRouter } from 'react-router-dom';
 import { createRosterEvent } from '../../../actions/rosterAuthActions';
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -108,4 +107,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default withRouter(connect(mapStateToProps, { createRosterEvent })(CreateEvent));
+export default connect(mapStateToProps, { createRosterEvent })(CreateEvent);
