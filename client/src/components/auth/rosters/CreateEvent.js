@@ -83,7 +83,7 @@ class CreateEvent extends Component {
                         timeFormat="HH:mm"
                         timeIntervals={10}
                         timeCaption="Time"
-                        dateFormat="YYYY/MM/DD HH:mm"
+                        dateFormat="yyyy/MM/dd HH:mm"
                     />
                     <span className='red-text'>{errors.when}</span>
                 </div>
