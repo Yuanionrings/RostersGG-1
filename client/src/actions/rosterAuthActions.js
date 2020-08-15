@@ -16,6 +16,7 @@ export const createRoster = (rosterData, history) => dispatch => {
     }))
 }
 
+
 // Delete Roster
 export const deleteRoster = (deleteRosterData, history) => dispatch => {
   axios.patch('/api/rosters/roster/' + deleteRosterData.id + '/delete-roster', deleteRosterData)
@@ -31,21 +32,28 @@ export const deleteRoster = (deleteRosterData, history) => dispatch => {
     }))
 }
 
+
 // Edit Roster
 export const editRoster = (updatedRosterData, history) => dispatch => {
   axios.patch('/api/rosters/roster/' + updatedRosterData.id + '/edit-roster',
     updatedRosterData.data)
     .then(res => {
+      console.log(res);
+      const path = `/roster/${updatedRosterData.id}`;
       history.push({
-        pathname: '/dashboard',
+        pathname: path,
         state: { toast_message: 'Roster info was successfully updated' }
       });
     })
-    .catch(err => dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    }))
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
 }
+
 
 // Invite Player to Roster
 export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
@@ -62,6 +70,7 @@ export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
       payload: err.response.data
     }))
 }
+
 
 // Create Event for this Roster
 export const createRosterEvent = (createEventData, history) => dispatch => {

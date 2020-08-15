@@ -31,6 +31,7 @@ class ManageRoster extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         axios.get(`/api/rosters/roster/${this.props.match.params.id}`)
             .then(res => {
                 if(this.props.auth.user.username === res.data.leader){
@@ -82,9 +83,9 @@ class ManageRoster extends Component {
                 <div className='form-box'>
                     <form className='signup-form' onSubmit={this.onSubmit}>
                         <div>
-                            <Link to='/dashboard'>
+                            <Link to={`/roster/${this.props.match.params.id}`}>
                                 <i className='fa fa-arrow-circle-left'></i>
-                                {" "}Back to Dashboard
+                                {" "}Back to Roster
                             </Link>
                         </div>
 
