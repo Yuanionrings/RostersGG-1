@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { formatDateString } from '../../../util/formatDateString';
 
-const PlayerInfo = props => (
-    <tr>
-        <td className=''>
-            <Link to={`/user/${props.user.username}`}>{props.user.name}</Link>
-        </td>
-        <td className=''>{props.user.username}</td>
-        <td className=''>{formatDateString(props.user.date)}</td>
-    </tr>
-);
+import RosterPlayers from './RosterPlayers';
+import RosterEvents from './RosterEvents';
 
 class ViewRoster extends Component {
     constructor(props){
@@ -21,8 +13,7 @@ class ViewRoster extends Component {
             team_desc: '',
             leader: '',
             game: '',
-            region: '',
-            players: []
+            region: ''
         }
     }
     componentDidMount() {
@@ -40,61 +31,39 @@ class ViewRoster extends Component {
             }).catch(err => {
                 console.log(err);
             })
-
-        axios.get(`/api/rosters/roster/${this.props.match.params.id}/players`)
-            .then(res => {
-                this.setState({
-                    players: res.data
-                });
-            }).catch(err => {
-                console.log(err);
-            });
-    }
-
-    playerList(){
-        return this.state.players.map(function(currentPlayer, i){
-            return <PlayerInfo user={currentPlayer} key={i} />
-        });
     }
 
     render() {
         return (
-            <div className='display-box'>
-                <div className='box'>
-                    <Link to='/dashboard'>
-                        <i className='fa fa-arrow-circle-left'></i>
-                        {" "}Back to Dashboard
-                    </Link>
+            <div>
 
-                    <h3 className=''>{this.state.teamname}</h3>
+                <div className='display-box'>
+                    <div className='box'>
 
-                    <div className='roster-info'>
-                        <p><b>Game:</b> {this.state.game}</p>
-                        <p><b>Region:</b> {this.state.region}</p>
-                        <p><b>Number of Players:</b> {this.state.players.length}</p>
-                    </div>
+                        <Link to='/dashboard'>
+                            <i className='fa fa-arrow-circle-left'></i>
+                            {" "}Back to Dashboard
+                        </Link>
 
-                    <div className='roster-description'>
-                        <h5><b>Description:</b></h5>
-                        <p>{this.state.team_desc}</p>
-                    </div>
+                        <h3 className=''>{this.state.teamname}</h3>
 
-                    <h5><b>Players</b></h5>
-                    <div className='table-container'>
-                        <table className='table table-striped'>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Username</th>
-                                    <th>Date Joined RostersGG</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                { this.playerList() }
-                            </tbody>
-                        </table>
+                        <div className='roster-info'>
+                            <p><b>Game -</b> {this.state.game}</p>
+                            <p><b>Region -</b> {this.state.region}</p>
+                            <p><b>Number of Players -</b> {this.state.players.length}</p>
+                        </div>
+
+                        <div className='roster-description'>
+                            <h5><b>Description</b></h5>
+                            <p>{this.state.team_desc}</p>
+                        </div>
+
                     </div>
                 </div>
+
+                <RosterPlayers match={this.props.match} />
+                <RosterEvents match={this.props.match} />
+
             </div>
         )
     }
