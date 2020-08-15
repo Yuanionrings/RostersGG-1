@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import DatePicker from 'react-datepicker';
 import { createRosterEvent } from '../../../actions/rosterAuthActions';
 
 class CreateEvent extends Component {
@@ -9,7 +10,7 @@ class CreateEvent extends Component {
         super(props)
         this.state = {
             event_name: '',
-            event_when: '',
+            event_when: new Date(),
             team_id: this.props.team_id,
             errors: {}
         }
@@ -23,6 +24,12 @@ class CreateEvent extends Component {
         }
     }
 
+    onDateChange = (e, date) => {
+        e.preventDefault();
+        this.setState({
+            event_when: date
+        })
+    }
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value })
     }
@@ -67,15 +74,15 @@ class CreateEvent extends Component {
 
                 <div className='form-group'>
                     <label>Date and Time: </label>
-                    <input type='text'
-                        id='event_when'
-                        placeholder='YYYY/MM/DD HH:MM:SS'
-                        value={event_when}
-                        error={errors.when}
-                        onChange={this.onChange}
-                        className={classnames('form-control', {
-                            invalid: errors.when
-                        })} />
+                    <DatePicker
+                        selected={ event_when }
+                        onChange={ this.onDateChange }
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={10}
+                        timeCaption="Time"
+                        dateFormat="YYYY/MM/DD HH:mm"
+                    />
                     <span className='red-text'>{errors.when}</span>
                 </div>
                 

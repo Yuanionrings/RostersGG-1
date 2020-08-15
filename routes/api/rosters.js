@@ -420,7 +420,7 @@ router.patch('/roster/:id/delete-roster', async (req, res) => {
             res_errors.delete = 'This player is not on this roster, cannot delete';
             res.status(400).json(res_errors);
             return;
-
+         
         } else if (roster.leader != user.username) {
             res_errors.delete = 'This player is not the team leader, cannot delete roster';
             res.status(403).json(res_errors);
