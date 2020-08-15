@@ -63,17 +63,17 @@ export default class ViewUser extends Component {
                         </Link>
                     </div>
 
-                    <h3 className=''>{this.state.name}</h3>
-                    <h6 className='filler-text'>USER PROFILE</h6>
+                    <h3 className='mb-0'>{this.state.name}</h3>
+                    <h6 className='mt-0 filler-text'>USER PROFILE</h6>
 
-                    <h5>User Info </h5>
+                    <h5 className='mt-3'>User Info </h5>
                     <p>Username: {this.state.username}</p>
                     <p>Member since: {this.state.date}</p>
 
-                    <h5>About Me </h5>
+                    <h5 className='mt-3'>About Me </h5>
                     <p className='filler-text'>{this.state.biography}</p>
 
-                    <h5>Rosters</h5>
+                    <h5 className='mt-4'>Rosters</h5>
                     {(this.state.rosters.length > 0) ?
                     <div className='table-container'>
                         <table className='table table-striped'>
