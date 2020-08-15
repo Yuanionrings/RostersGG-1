@@ -59,20 +59,21 @@ class ViewRoster extends Component {
 
     render() {
         return (
-            <div className='viewing-display-box'>
-                <div className='display-content'>
+            <div className='display-box'>
+                <div className='box'>
                     <Link to='/dashboard'>
                         <i className='fa fa-arrow-circle-left'></i>
                         {" "}Back to Dashboard
                     </Link>
 
                     <h3 className=''>{this.state.teamname}</h3>
-                    <h6>{this.state.game} - {this.state.region}</h6>
+                    <p>{this.state.game} | {this.state.region}</p>
 
-                    <h6><b>Description:</b><br/>{this.state.team_desc}</h6>
+                    <h5><b>Description:</b></h5>
+                    <p>{this.state.team_desc}</p>
                     
                     <div className='table-container'>
-                        <table className='table table-striped' style={{ marginTop: 15 }}>
+                        <table className='table table-striped'>
                             <thead>
                                 <tr>
                                     <th>Name</th>

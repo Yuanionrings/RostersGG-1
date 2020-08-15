@@ -110,7 +110,7 @@ class UserInfo extends Component {
                         Welcome, <span className='primary-text-green'>{this.state.user_name}</span>!
                     </h3>
 
-                    <h5>Invitations: </h5>
+                    <h5><b>Invitations: </b></h5>
                     {(this.state.user_invitations.length > 0) ?
                     <div className='table-container'>
                         <table className='table table-striped' style={{ marginTop: 10 }}>
