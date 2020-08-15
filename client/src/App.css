@@ -157,7 +157,7 @@ _______________________________________
                 color: #2C3E50;
                 background: #ffffff;
                 padding: 1rem;
-                border: 1px solid #D8D8D8;
+                box-shadow: 0px 5px 10px #D8D8D8;
                 width: 100%;
                 padding-left: 3rem;
                 padding-right: 3rem;
@@ -182,11 +182,11 @@ _______________________________________
                 border-radius: 8px;
                 box-shadow: 0px 5px 10px #D8D8D8;
             }
-            .dashboard-container .content .display-box .title-box h5 {
-                color: #ffffff;
-                font-weight: 500;
-                margin-bottom: 0;
-            }
+                .dashboard-container .content .display-box .title-box h5 {
+                    color: #ffffff;
+                    font-weight: 500;
+                    margin-bottom: 0;
+                }
 
             /* Display Box .box (Content) */
             .dashboard-container .content .display-box .box {
@@ -217,7 +217,7 @@ _______________________________________
                 font-weight: 500;
                 background: #33D9B2;
                 min-width: 60px;
-                border-radius: 16px;
+                border-radius: 8px;
                 border: none;
                 margin: -0.75px 0.5rem -0.75px 0px;
             }
@@ -227,7 +227,7 @@ _______________________________________
                 color: #33D9B2;
                 background: #ffffff;
                 min-width: 60px;
-                border-radius: 16px;
+                border-radius: 8px;
                 border: 1px solid #33D9B2;
                 margin: -0.75px 0.5rem -0.75px 0px;
             }
@@ -525,11 +525,11 @@ _______________________________________
         color: #2C3E50;
         background: #ffffff;
         padding: 1.5rem;
-        border-radius: 16px;
+        border-radius: 8px;
         box-shadow: 0px 5px 10px #D8D8D8;
     }
     .viewing-display-box .btn {        
-        font-size: 16px;
+        font-size: 8px;
         font-weight: bold;
         background: #33D9B2;
         min-width: 120px;
@@ -540,7 +540,7 @@ _______________________________________
         font-weight: bold;
         background: #33D9B2;
         min-width: 60px;
-        border-radius: 16px;
+        border-radius: 8px;
         border: none;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
@@ -550,7 +550,7 @@ _______________________________________
         color: #33D9B2;
         background: #ffffff;
         min-width: 60px;
-        border-radius: 16px;
+        border-radius: 8px;
         border: 1px solid #33D9B2;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
@@ -636,7 +636,7 @@ _______________________________________
     border: 1px solid #218c74;
 }
 .form-control, .btn {        
-    border-radius: 16px;
+    border-radius: 8px;
 }
 
 .react-datepicker-ignore-onclickoutside {
@@ -645,7 +645,7 @@ _______________________________________
     border: none;
     background: #ffffff;
     width: 100%;
-    border-radius: 16px;
+    border-radius: 8px;
 }
 .react-datepicker-ignore-onclickoutside:focus {
     border-color: #218c74;
@@ -657,7 +657,7 @@ _______________________________________
     border: none;
     background: #ffffff;
     width: 100%;
-    border-radius: 16px;
+    border-radius: 8px;
 }
 .react-datepicker__input-container {
     border-color: #218c74;
@@ -671,11 +671,11 @@ _______________________________________
     border: none;
     background: #ffffff;
     width: 100%;
-    border-radius: 16px;
+    border-radius: 8px;
 }
 
 .form-box {
-    width: 100%;
+    min-width: 100px
 }
     .form-box .display-info {
         color: #ffffff;
@@ -696,7 +696,7 @@ _______________________________________
         font-weight: 500;
         background: #33D9B2;
         min-width: 60px;
-        border-radius: 16px;
+        border-radius: 8px;
         border: none;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
@@ -706,7 +706,7 @@ _______________________________________
         color: #33D9B2;
         background: #ffffff;
         min-width: 60px;
-        border-radius: 16px;
+        border-radius: 8px;
         border: 1px solid #33D9B2;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
@@ -734,11 +734,11 @@ _______________________________________
         margin-bottom: 1rem;
     }
     .form-box .form-group {
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
     .form-box label {
         font-weight: normal;
-        font-size: 13px;
+        font-size: 14px;
     }
     .form-box .btn {        
         font-size: 16px;
