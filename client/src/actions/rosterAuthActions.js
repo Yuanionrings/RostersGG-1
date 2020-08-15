@@ -58,8 +58,9 @@ export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
   axios.post('/api/rosters/roster/' + rosterInviteData.team_id + '/invite',
     rosterInviteData.data)
     .then(res => {
+      const path = `/roster/${rosterInviteData.team_id}`;
       history.push({
-        pathname: '/dashboard',
+        pathname: path,
         state: { toast_message: `User ${rosterInviteData.invited_player} was successfully invited` }
       });
     })
@@ -75,8 +76,9 @@ export const createRosterEvent = (createEventData, history) => dispatch => {
   axios.post('/api/rosters/roster/' + createEventData.team_id + '/create-event',
     createEventData.data)
     .then(res => {
+      const path = `/roster/${createEventData.team_id}`;
       history.push({
-        pathname: '/dashboard',
+        pathname: path,
         state: { toast_message: 'New roster event was successfully created' }
       });
     })

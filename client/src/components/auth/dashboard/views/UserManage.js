@@ -7,12 +7,12 @@ import DashTitle from '../DashTitle';
 import DashSidebar from '../DashSidebar';
 import DashFooter from '../DashFooter';
 
-import ViewRoster from '../../rosters/ViewRoster';
+import EditUser from '../../user/EditUser';
 
 import { toast } from 'react-toastify';
 import toastNotif from '../../../../util/toastNotif';
 
-class RosterView extends Component {
+class UserManage extends Component {
 
     constructor(props){
         super(props);
@@ -20,6 +20,7 @@ class RosterView extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props)
         this.displayToast()
     }
 
@@ -46,8 +47,10 @@ class RosterView extends Component {
                 <DashSidebar auth={this.props.auth}/>
 
                     <div className='content'>
-                        <DashTitle page_title='Viewing Team Profile' />
-                        <ViewRoster match={this.props.match}/>
+                        <DashTitle page_title='Editing User Profile' />
+                        <EditUser 
+                            history={this.props.history}
+                            match={this.props.match}/>
                     </div>
 
                 <DashFooter />
@@ -56,7 +59,7 @@ class RosterView extends Component {
     }
 }
 
-RosterView.propTypes = {
+UserManage.propTypes = {
     auth: PropTypes.object.isRequired
 };
 
@@ -66,4 +69,4 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps
-)(RosterView);
+)(UserManage);

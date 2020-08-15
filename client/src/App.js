@@ -31,9 +31,9 @@ import UserDashboard from './components/auth/dashboard/views/UserDashboard';
 import EventManager from './components/auth/dashboard/views/EventManager';
 import RosterView from './components/auth/dashboard/views/RosterView';
 import RosterManage from './components/auth/dashboard/views/RosterManage';
+import UserView from './components/auth/dashboard/views/UserView';
+import UserManage from './components/auth/dashboard/views/UserManage';
 
-import ViewUser from './components/auth/user/ViewUser';
-import EditUser from './components/auth/user/EditUser';
 import Logout from './components/auth/user/Logout';
 import CreateRoster from './components/auth/rosters/CreateRoster';
 import DeleteRoster from './components/auth/rosters/DeleteRoster';
@@ -80,8 +80,8 @@ const App = () => {
               <PrivateRoute exact path='/dashboard' component={UserDashboard} />
               <PrivateRoute exact path='/event-manager' component={EventManager} />
 
-              <PrivateRoute exact path='/user/:username' component={ViewUser} />
-              <PrivateRoute exact path='/user/:username/edit' component={EditUser} />
+              <PrivateRoute exact path='/user/:username' component={UserView} />
+              <PrivateRoute exact path='/user/:username/edit' component={UserManage} />
               <PrivateRoute exact path='/logout' component={Logout} />
               <PrivateRoute exact path='/roster/create' component={CreateRoster} />
               <PrivateRoute exact path='/roster/:id' component={RosterView} />
