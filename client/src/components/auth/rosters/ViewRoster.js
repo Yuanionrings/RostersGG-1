@@ -18,8 +18,6 @@ class ViewRoster extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props)
-
         axios.get(`/api/rosters/roster/${this.props.match.params.id}`)
             .then(res => {
                 this.setState({
@@ -44,15 +42,17 @@ class ViewRoster extends Component {
 
                         <Link to='/dashboard'>
                             <i className='fa fa-arrow-circle-left'></i>
-                            {" "}Back to Dashboard
+                            {" "}To Dashboard
                         </Link>
 
                         <h3 className=''>{this.state.teamname}</h3>
 
                         <div className='roster-info'>
-                            <p><b>Game -</b> {this.state.game}</p>
-                            <p><b>Region -</b> {this.state.region}</p>
-                            <p><b>Number of Players -</b> {this.state.players.length}</p>
+                            <h5><b>Game</b></h5>
+                            <p>{this.state.game}</p>
+                            
+                            <h5><b>Region</b></h5>
+                            <p>{this.state.region}</p>
                         </div>
 
                         <div className='roster-description'>

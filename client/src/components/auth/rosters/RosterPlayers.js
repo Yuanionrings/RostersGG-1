@@ -21,7 +21,6 @@ class RosterPlayers extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props)
         axios.get(`/api/rosters/roster/${this.props.match.params.id}/players`)
             .then(res => {
                 this.setState({
@@ -43,7 +42,7 @@ class RosterPlayers extends Component {
             <div className='display-box'>
                 <div className='box'>
     
-                    <h5><b>Players</b></h5>
+                    <h3><b>Players</b></h3>
                     <div className='table-container'>
                         <table className='table table-striped'>
                             <thead>

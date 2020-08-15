@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import calcTimeUntil from '../../../util/calcTimeUntil';
 import dateFormat from 'dateformat';
 
@@ -25,7 +24,6 @@ class RosterEvents extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props)
         axios.get(`/api/rosters/roster/${this.props.match.params.id}/players`)
             .then(res => {
                 this.setState({
@@ -47,7 +45,7 @@ class RosterEvents extends Component {
             <div className='display-box'>
                 <div className='box'>
     
-                    <h5><b>Team Events</b></h5>
+                    <h3><b>Team Events</b></h3>
                     {(this.state.events.length > 0) ? 
                     <div className='table-container'>
                         <table className='table table-striped'>
