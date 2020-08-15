@@ -24,14 +24,7 @@ class RosterEvents extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`/api/rosters/roster/${this.props.match.params.id}/players`)
-            .then(res => {
-                this.setState({
-                    players: res.data
-                });
-            }).catch(err => {
-                console.log(err);
-            });
+        // Implement route to get all events for single roster
     }
 
     rosterEventList(){

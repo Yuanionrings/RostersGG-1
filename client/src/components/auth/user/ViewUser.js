@@ -54,8 +54,8 @@ export default class ViewUser extends Component {
 
     render() {
         return (
-            <div className='viewing-display-box'>
-                <div className='display-content'>
+            <div className='display-box'>
+                <div className='box'>
                     <div>
                         <Link to='/dashboard'>
                             <i className='fa fa-arrow-circle-left'></i>
@@ -65,21 +65,18 @@ export default class ViewUser extends Component {
 
                     <h3 className=''>{this.state.name}</h3>
                     <h6 className='filler-text'>USER PROFILE</h6>
-                    <hr />
 
-                    <h4>User Info </h4>
-                    <h6>Username: {this.state.username}</h6>
-                    <h6>Member since: {this.state.date}</h6>
-                    <hr />
+                    <h5>User Info </h5>
+                    <p>Username: {this.state.username}</p>
+                    <p>Member since: {this.state.date}</p>
 
-                    <h4>About Me </h4>
-                    <h6 className='filler-text'>{this.state.biography}</h6>
-                    <hr />
+                    <h5>About Me </h5>
+                    <p className='filler-text'>{this.state.biography}</p>
 
-                    <h4>Rosters</h4>
+                    <h5>Rosters</h5>
                     {(this.state.rosters.length > 0) ?
                     <div className='table-container'>
-                        <table className='table table-striped' style={{ marginTop: 0 }}>
+                        <table className='table table-striped'>
                             <thead>
                                 <tr>
                                     <th>Team Name</th>
