@@ -618,13 +618,26 @@ _______________________________________
     box-shadow: none;   
     border: none;
     background: #ffffff;
+    width: 100%;
+    border-radius: 16px;
 }
 .react-datepicker-ignore-onclickoutside:focus {
     border-color: #218c74;
 }
-.react-datepicker-ignore-onclickoutside{        
+
+.react-datepicker__input-container {
+    min-height: 41px;
+    box-shadow: none;   
+    border: none;
+    background: #ffffff;
+    width: 100%;
     border-radius: 16px;
 }
+.react-datepicker__input-container {
+    border-color: #218c74;
+}
+
+
 .react-datepicker-wrapper {
     display: block;
     min-height: 41px;
