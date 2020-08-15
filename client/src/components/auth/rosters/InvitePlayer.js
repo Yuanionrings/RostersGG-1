@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { invitePlayerToRoster } from '../../../actions/rosterAuthActions';
 
 class InvitePlayer extends Component {
@@ -84,4 +85,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { invitePlayerToRoster })(InvitePlayer);
+export default withRouter(connect(mapStateToProps, { invitePlayerToRoster })(InvitePlayer));

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import calcTimeUntil from '../../../util/calcTimeUntil';
 import dateFormat from 'dateformat';
 import axios from 'axios';
@@ -86,4 +87,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps)(ManageRosterEvents);
+export default withRouter(connect(mapStateToProps)(ManageRosterEvents));

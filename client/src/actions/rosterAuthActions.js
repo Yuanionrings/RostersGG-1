@@ -38,7 +38,6 @@ export const editRoster = (updatedRosterData, history) => dispatch => {
   axios.patch('/api/rosters/roster/' + updatedRosterData.id + '/edit-roster',
     updatedRosterData.data)
     .then(res => {
-      console.log(res);
       const path = `/roster/${updatedRosterData.id}`;
       history.push({
         pathname: path,
@@ -46,7 +45,6 @@ export const editRoster = (updatedRosterData, history) => dispatch => {
       });
     })
     .catch(err => {
-      console.log(err);
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data

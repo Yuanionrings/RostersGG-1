@@ -73,6 +73,7 @@ class ManageRoster extends Component {
                 region: this.state.region
             }
         };
+
         this.props.editRoster(updatedRoster, this.props.history);
     }
   
@@ -172,23 +173,19 @@ class ManageRoster extends Component {
                 </div>
                 
                 <InvitePlayer 
-                    auth={this.props.auth} 
-                    history={this.props.history} 
+                    auth={this.props.auth}
                     team_id={this.props.match.params.id} />
 
                 <ManagePlayers
-                    auth={this.props.auth} 
-                    history={this.props.history} 
+                    auth={this.props.auth}
                     team_id={this.props.match.params.id} />
 
                 <CreateEvent
-                    auth={this.props.auth} 
-                    history={this.props.history} 
+                    auth={this.props.auth}
                     team_id={this.props.match.params.id} />
 
                 <ManageRosterEvents
-                    auth={this.props.auth} 
-                    history={this.props.history} 
+                    auth={this.props.auth}
                     team_id={this.props.match.params.id} />
 
             </div>
