@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import { createRosterEvent } from '../../../actions/rosterAuthActions';
 
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import "react-datepicker/dist/react-datepicker.css";
 
 class CreateEvent extends Component {
     constructor(props) {
@@ -26,8 +26,7 @@ class CreateEvent extends Component {
         }
     }
 
-    onDateChange = (e, date) => {
-        e.preventDefault();
+    onDateChange = (date) => {
         this.setState({
             event_when: date
         })
