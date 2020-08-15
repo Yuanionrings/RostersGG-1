@@ -147,6 +147,8 @@ _______________________________________
         .dashboard-container .content .display-box {
             margin: 1rem;
         }
+
+            /* Event Card */
             .dashboard-container .content .display-box .event-card {
                 color: #2C3E50;
                 background: #ffffff;
@@ -167,6 +169,17 @@ _______________________________________
                     margin:0;
                     
                 }
+
+            /* Title Box */
+            .dashboard-container .content .display-box .title-box {
+                color: #ffffff;
+                background: #B4BAB8;
+                padding: 1rem;
+                border-radius: 8px;
+                box-shadow: 0px 5px 10px #D8D8D8;
+            }
+
+            /* Display Box .box (Content) */
             .dashboard-container .content .display-box .box {
                 color: #2C3E50;
                 background: #ffffff;
@@ -174,13 +187,15 @@ _______________________________________
                 box-shadow: 0px 5px 10px #D8D8D8;
                 border-radius: 8px;
             }
-            .dashboard-container .content .display-box .title-box {
-                color: #ffffff;
-                background: #B4BAB8;
-                padding: 1.5rem 1rem;
-                border-radius: 8px;
-                box-shadow: 0px 5px 10px #D8D8D8;
+
+            /* Roster View Related */
+            .dashboard-container .content .display-box .roster-info {
+                margin: 1rem 0;
             }
+            .dashboard-container .content .display-box .roster-description {
+                margin: 1rem 0;
+            }
+            
             .dashboard-container .content .display-box .btn {        
                 font-size: 16px;
                 font-weight: bold;

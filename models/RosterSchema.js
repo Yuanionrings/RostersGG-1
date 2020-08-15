@@ -27,6 +27,10 @@ const RosterSchema = new Schema({
     },
     players: {
         type: [String]
+    },
+    date_created: {
+        type: Date,
+        default: Date.now
     }
 });
 

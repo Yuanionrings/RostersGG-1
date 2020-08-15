@@ -67,11 +67,19 @@ class ViewRoster extends Component {
                     </Link>
 
                     <h3 className=''>{this.state.teamname}</h3>
-                    <p>{this.state.game} | {this.state.region}</p>
 
-                    <h5><b>Description:</b></h5>
-                    <p>{this.state.team_desc}</p>
-                    
+                    <div className='roster-info'>
+                        <p><b>Game:</b> {this.state.game}</p>
+                        <p><b>Region:</b> {this.state.region}</p>
+                        <p><b>Number of Players:</b> {this.state.players.length}</p>
+                    </div>
+
+                    <div className='roster-description'>
+                        <h5><b>Description:</b></h5>
+                        <p>{this.state.team_desc}</p>
+                    </div>
+
+                    <h5><b>Players</b></h5>
                     <div className='table-container'>
                         <table className='table table-striped'>
                             <thead>

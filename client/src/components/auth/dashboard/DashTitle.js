@@ -4,9 +4,9 @@ const DashTitle = props => {
     return (
         <div className='display-box'>
             <div className='title-box'>
-                <h2 className=''>
+                <h5 className=''>
                     {props.page_title}
-                </h2>
+                </h5>
             </div>
         </div>
     )
