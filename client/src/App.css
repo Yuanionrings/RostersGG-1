@@ -606,6 +606,9 @@ _______________________________________
 .form-control:focus {
     border-color: #218c74;
 }
+.form-control:active {
+    border: 1px solid #218c74;
+}
 .form-control, .btn {        
     border-radius: 16px;
 }
@@ -620,6 +623,15 @@ _______________________________________
     border-color: #218c74;
 }
 .react-datepicker-ignore-onclickoutside{        
+    border-radius: 16px;
+}
+.react-datepicker-wrapper {
+    display: block;
+    min-height: 41px;
+    box-shadow: none;   
+    border: none;
+    background: #ffffff;
+    width: 100%;
     border-radius: 16px;
 }
 

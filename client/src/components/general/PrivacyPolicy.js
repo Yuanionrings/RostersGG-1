@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import DashHeader from '../auth/dashboard/DashHeader';
+import DashFooter from '../auth/dashboard/DashFooter';
 
 export default class PrivacyPolicy extends Component {
     render() {
         return(
             <div className='text-page-container'>
+                <DashHeader />
+
                 <h2>Privacy Policy for Rosters.gg</h2>
                 <p>At Rosters.gg, accessible from https://www.rosters.gg, one of our main priorities is the privacy 
                     of our visitors. This Privacy Policy document contains types of information that is collected 
@@ -129,6 +133,8 @@ export default class PrivacyPolicy extends Component {
                     under the age of 13. If you think that your child provided this kind of information on 
                     our website, we strongly encourage you to contact us immediately and we will do our best 
                     efforts to promptly remove such information from our records.</p>
+
+                <DashFooter />
             </div>
         );
     }

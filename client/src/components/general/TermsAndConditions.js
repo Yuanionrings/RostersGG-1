@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import DashHeader from '../auth/dashboard/DashHeader';
+import DashFooter from '../auth/dashboard/DashFooter';
 
 export default class TermsAndConditions extends Component {
     render(){
         return(
             <div className='text-page-container'>
+                <DashHeader />
+
                 <h2>Terms and Conditions</h2>
                 <p>Welcome to Rosters.gg!</p>
 
@@ -173,6 +177,8 @@ export default class TermsAndConditions extends Component {
 
                 <p>As long as the website and the information and services on the website are provided free 
                     of charge, we will not be liable for any loss or damage of any nature.</p>
+                
+                <DashFooter />
             </div>
         );
     }
