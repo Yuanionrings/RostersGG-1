@@ -39,7 +39,7 @@ _______________________________________
 body {
     color: #ffffff;
     background: #ECEEEF;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     height: 100%;
 }
 .app-bg {
@@ -173,10 +173,15 @@ _______________________________________
             /* Title Box */
             .dashboard-container .content .display-box .title-box {
                 color: #ffffff;
-                background: #B4BAB8;
+                background: #34495E;
                 padding: 1rem;
                 border-radius: 8px;
                 box-shadow: 0px 5px 10px #D8D8D8;
+            }
+            .dashboard-container .content .display-box .title-box h5 {
+                color: #ffffff;
+                font-weight: bold;
+                margin-bottom: 0;
             }
 
             /* Display Box .box (Content) */

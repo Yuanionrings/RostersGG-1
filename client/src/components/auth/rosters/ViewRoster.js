@@ -51,7 +51,7 @@ class ViewRoster extends Component {
                             <h5><b>Game</b></h5>
                             <p>{this.state.game}</p>
                             
-                            <h5><b>Region</b></h5>
+                            <h5 className='mt-2'><b>Region</b></h5>
                             <p>{this.state.region}</p>
                         </div>
 
