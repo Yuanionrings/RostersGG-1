@@ -56,7 +56,12 @@ class Register extends Component {
       <div className='form-box'>
         <form className='signup-form' onSubmit={this.onSubmit}>
 
-          <div><Link to='/'><i className='fa fa-arrow-circle-left'></i> Back to Home</Link></div>
+          <div>
+            <Link to='/'>
+                <i className='fa fa-arrow-circle-left'></i>
+                {" "}To Home
+            </Link>
+          </div>
 
           <h3>Register</h3>
           

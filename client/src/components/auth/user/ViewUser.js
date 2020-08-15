@@ -56,10 +56,12 @@ export default class ViewUser extends Component {
         return (
             <div className='viewing-display-box'>
                 <div className='display-content'>
-                    <Link to='/dashboard'>
-                        <i className='fa fa-arrow-circle-left'></i>
-                        {" "}Back to Dashboard
-                    </Link>
+                    <div>
+                        <Link to='/dashboard'>
+                            <i className='fa fa-arrow-circle-left'></i>
+                            {" "}To Dashboard
+                        </Link>
+                    </div>
 
                     <h3 className=''>{this.state.name}</h3>
                     <h6 className='filler-text'>USER PROFILE</h6>

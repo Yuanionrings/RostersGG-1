@@ -72,6 +72,14 @@ class Login extends Component {
       <div className='form-box'>
 
         <form className='login-form' onSubmit={this.onSubmit}>
+
+          <div>
+            <Link to='/'>
+                <i className='fa fa-arrow-circle-left'></i>
+                {" "}To Home
+            </Link>
+          </div>
+
           <h3>Login</h3>
 
           <div className='form-group'>

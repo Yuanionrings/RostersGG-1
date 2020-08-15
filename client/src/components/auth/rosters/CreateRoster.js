@@ -53,10 +53,10 @@ class CreateRoster extends Component {
         <form className='signup-form' onSubmit={this.onSubmit}>
 
           <div>
-              <Link to='/dashboard'>
+            <Link to='/dashboard'>
                 <i className='fa fa-arrow-circle-left'></i>
-                Back to Dashboard
-              </Link>
+                {" "}To Dashboard
+            </Link>
           </div>
 
           <h3>Create New Roster</h3>
