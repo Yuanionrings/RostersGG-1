@@ -30,11 +30,11 @@ import PrivateRoute from './components/auth/PrivateRoute';
 import UserDashboard from './components/auth/dashboard/views/UserDashboard';
 import EventManager from './components/auth/dashboard/views/EventManager';
 import RosterView from './components/auth/dashboard/views/RosterView';
+import RosterManage from './components/auth/dashboard/views/RosterManage';
 
 import ViewUser from './components/auth/user/ViewUser';
 import EditUser from './components/auth/user/EditUser';
 import Logout from './components/auth/user/Logout';
-import EditRoster from './components/auth/rosters/EditRoster';
 import CreateRoster from './components/auth/rosters/CreateRoster';
 import DeleteRoster from './components/auth/rosters/DeleteRoster';
 
@@ -85,7 +85,7 @@ const App = () => {
               <PrivateRoute exact path='/logout' component={Logout} />
               <PrivateRoute exact path='/roster/create' component={CreateRoster} />
               <PrivateRoute exact path='/roster/:id' component={RosterView} />
-              <PrivateRoute exact path='/roster/:id/edit' component={EditRoster} />
+              <PrivateRoute exact path='/roster/:id/edit' component={RosterManage} />
               <PrivateRoute exact path='/roster/:id/delete' component={DeleteRoster} />
 
               <Route component={NotFound} />
