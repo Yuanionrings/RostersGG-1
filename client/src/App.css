@@ -148,6 +148,10 @@ _______________________________________
             margin: 1rem;
         }
 
+        .dashboard-container .content .form-box {
+            margin: 1rem;
+        }
+
             /* Event Card */
             .dashboard-container .content .display-box .event-card {
                 color: #2C3E50;
