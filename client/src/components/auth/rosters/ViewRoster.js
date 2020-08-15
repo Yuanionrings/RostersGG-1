@@ -26,7 +26,8 @@ class ViewRoster extends Component {
                     team_desc: res.data.team_desc,
                     leader: res.data.leader,
                     game: res.data.game,
-                    region: res.data.region
+                    region: res.data.region,
+                    players: res.data.players
                 })
             }).catch(err => {
                 console.log(err);
