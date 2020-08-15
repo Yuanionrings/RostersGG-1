@@ -600,7 +600,7 @@ _______________________________________
 .form-control {
     min-height: 41px;
     box-shadow: none;   
-    border-color: #95A5A6;
+    border: none;
     background: #ffffff;
 }
 .form-control:focus {
@@ -608,7 +608,20 @@ _______________________________________
 }
 .form-control, .btn {        
     border-radius: 16px;
-}    
+}
+
+.react-datepicker-ignore-onclickoutside {
+    min-height: 41px;
+    box-shadow: none;   
+    border: none;
+    background: #ffffff;
+}
+.react-datepicker-ignore-onclickoutside:focus {
+    border-color: #218c74;
+}
+.react-datepicker-ignore-onclickoutside{        
+    border-radius: 16px;
+}
 
 .form-box {
     width: 90%;
