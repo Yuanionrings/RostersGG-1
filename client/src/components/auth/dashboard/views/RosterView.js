@@ -20,6 +20,7 @@ class RosterView extends Component {
     }
 
     componentDidMount(){
+        console.log(this.props)
         this.displayToast()
     }
 
@@ -47,7 +48,7 @@ class RosterView extends Component {
 
                     <div className='content'>
                         <DashTitle page_title='Roster View' />
-                        <ViewRoster />
+                        <ViewRoster match={this.props.match}/>
                     </div>
 
                 <DashFooter />
