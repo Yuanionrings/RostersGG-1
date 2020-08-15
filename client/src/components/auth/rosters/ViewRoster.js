@@ -48,15 +48,15 @@ class ViewRoster extends Component {
                         <h3 className=''>{this.state.teamname}</h3>
 
                         <div className='roster-info'>
-                            <h5><b>Game</b></h5>
+                            <h5>Game</h5>
                             <p>{this.state.game}</p>
                             
-                            <h5 className='mt-2'><b>Region</b></h5>
+                            <h5 className='mt-2'>Region</h5>
                             <p>{this.state.region}</p>
                         </div>
 
                         <div className='roster-description'>
-                            <h5><b>Description</b></h5>
+                            <h5>Description</h5>
                             <p>{this.state.team_desc}</p>
                         </div>
 

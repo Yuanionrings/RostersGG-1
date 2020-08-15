@@ -131,7 +131,7 @@ _______________________________________
         font-weight: bold;
     }
     .dashboard-container .beta-text {
-        font-size: 10px;
+        font-size: 12px;
         font-weight: normal;
     }
 
@@ -180,7 +180,7 @@ _______________________________________
             }
             .dashboard-container .content .display-box .title-box h5 {
                 color: #ffffff;
-                font-weight: bold;
+                font-weight: 500;
                 margin-bottom: 0;
             }
 
@@ -203,14 +203,14 @@ _______________________________________
             
             .dashboard-container .content .display-box .btn {        
                 font-size: 16px;
-                font-weight: bold;
+                font-weight: 500;
                 background: #33D9B2;
                 min-width: 60px;
                 border: none;
             }
             .dashboard-container .content .display-box .btn-accept {        
                 font-size: 0.75rem;
-                font-weight: bold;
+                font-weight: 500;
                 background: #33D9B2;
                 min-width: 60px;
                 border-radius: 16px;
@@ -219,7 +219,7 @@ _______________________________________
             }
             .dashboard-container .content .display-box .btn-decline {        
                 font-size: 0.75rem;
-                font-weight: bold;
+                font-weight: 500;
                 color: #33D9B2;
                 background: #ffffff;
                 min-width: 60px;
@@ -237,19 +237,19 @@ _______________________________________
             }
             .dashboard-container .content .display-box h2 {
                 color: #ffffff;
-                font-weight: bold;
+                font-weight: 700;
                 margin-top: 0;
                 margin-bottom: 0;
             }
             .dashboard-container .content .display-box h3 {
                 color: #2C3E50;
-                font-weight: bold;
+                font-weight: 700;
                 margin-top: 0;
                 margin-bottom: 1rem;
             }
             .dashboard-container .content .display-box h5 {
                 color: #2C3E50;
-                font-weight: bold;
+                font-weight: 500;
                 margin-bottom: 0;
             }
             .dashboard-container .content .display-box p {
@@ -304,7 +304,7 @@ _______________________________________
         font-weight: 700;
     }
     .text-page-container h3 {
-        font-weight: 700;
+        font-weight: 500;
         margin-top: 2rem;
         margin-bottom: 0.5rem;
     }
@@ -313,10 +313,10 @@ _______________________________________
     box-shadow: #2C3E50;
 }
     .text-page-container h1 {
-        font-weight: bold;
+        font-weight: 800;
     }
     .text-page-container h3 {
-        font-weight: 700;
+        font-weight: 500;
         margin-top: 2rem;
         margin-bottom: 0.5rem;
     }
@@ -372,24 +372,24 @@ _______________________________________
 }
     .landing-page-display .landing-navbar {
         background: #171817;
-        color: #3a3b3b !important;
+        color: #5b5f5f !important;
         min-height: 72px;
     }
         .landing-page-display .landing-navbar-brand {
-            color: #3a3b3b !important;
-            font-weight: bold;
+            color: #5b5f5f !important;
+            font-weight: 700;
         }
             .landing-page-display .landing-navbar-brand:hover {
-                color: #4e5050 !important;
+                color: #7a8383 !important;
             }
         .landing-page-display .landing-navbar-nav {
-            color: #3a3b3b !important;
+            color: #5b5f5f !important;
         }
             .landing-page-display .landing-navbar-nav:hover {
-                color: #4e5050 !important;
+                color: #7a8383 !important;
             }
         .landing-page-display .beta-text {
-            color: #4d5252 !important;
+            color: #7a8383 !important;
             font-size: 10px;
             font-weight: normal;
         }
@@ -432,7 +432,7 @@ _______________________________________
             }
             .landing-page-display .header .content .register-button {
                 font-size: 16px;
-                font-weight: bold;
+                font-weight: 500;
                 margin-top: 2rem;
                 color: #ffffff;
                 background: #33d9b2;
@@ -472,10 +472,11 @@ _______________________________________
                 text-align: right;
             }
             .landing-page-display .section-1 .content h3 {
-                font-weight: bold;
+                font-weight: 700;
                 margin: 0 auto;
             }
             .landing-page-display .section-1 .content h4 {
+                font-weight: 300;
                 margin: 1rem auto;
                 color: #34495E;
             }
@@ -494,11 +495,12 @@ _______________________________________
             color: #2C3E50
         }
             .landing-page-display .section-2 .content h3 {
-                font-weight: bold;
+                font-weight: 700;
                 text-align: center;
                 margin-bottom: 1rem;
             }
             .landing-page-display .section-2 .content h4 {
+                font-weight: 300;
                 font-size: 16px;
                 text-align: center;
             }
@@ -690,7 +692,7 @@ _______________________________________
     }
     .form-box .btn-primary {        
         font-size: 0.75rem;
-        font-weight: bold;
+        font-weight: 500;
         background: #33D9B2;
         min-width: 60px;
         border-radius: 16px;
@@ -699,7 +701,7 @@ _______________________________________
     }
     .form-box .btn-secondary {        
         font-size: 0.75rem;
-        font-weight: bold;
+        font-weight: 500;
         color: #33D9B2;
         background: #ffffff;
         min-width: 60px;
@@ -726,7 +728,7 @@ _______________________________________
     }
     .form-box h3 {
         color: #ffffff;
-        font-weight: bold;
+        font-weight: 700;
         margin-top: 0.5rem;
         margin-bottom: 1rem;
     }
@@ -739,7 +741,7 @@ _______________________________________
     }
     .form-box .btn {        
         font-size: 16px;
-        font-weight: bold;
+        font-weight: 500;
         background: #33d9b2;
         border: none;
     }

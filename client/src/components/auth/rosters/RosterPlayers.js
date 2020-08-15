@@ -42,7 +42,7 @@ class RosterPlayers extends Component {
             <div className='display-box'>
                 <div className='box'>
     
-                    <h3><b>Players</b></h3>
+                    <h3>Players</h3>
                     <div className='table-container'>
                         <table className='table table-striped'>
                             <thead>

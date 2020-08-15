@@ -45,7 +45,7 @@ class RosterEvents extends Component {
             <div className='display-box'>
                 <div className='box'>
     
-                    <h3><b>Team Events</b></h3>
+                    <h3>Team Events</h3>
                     {(this.state.events.length > 0) ? 
                     <div className='table-container'>
                         <table className='table table-striped'>
