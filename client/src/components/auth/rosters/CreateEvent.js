@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import { createRosterEvent } from '../../../actions/rosterAuthActions';
 
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
 class CreateEvent extends Component {
     constructor(props) {
         super(props)
