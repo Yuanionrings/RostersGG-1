@@ -7,7 +7,7 @@ import DashTitle from '../DashTitle';
 import DashSidebar from '../DashSidebar';
 import DashFooter from '../DashFooter';
 
-import ViewRoster from '../../roster/ViewRoster';
+import ViewRoster from '../../rosters/ViewRoster';
 
 import { toast } from 'react-toastify';
 import toastNotif from '../../../../util/toastNotif';
