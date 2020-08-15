@@ -66,7 +66,6 @@ class ViewRoster extends Component {
 
                     <h3 className=''>{this.state.teamname}</h3>
                     <h6>{this.state.game} - {this.state.region}</h6>
-                    <hr />
 
                     <h6><b>Description:</b><br/>{this.state.team_desc}</h6>
                     
