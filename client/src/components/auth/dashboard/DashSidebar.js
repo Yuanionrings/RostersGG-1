@@ -33,7 +33,7 @@ const DashSidebar = props => {
             return 'player-directory'
         } else if (props.location.pathname === `/user/${props.auth.user.username}`) {
             return `user/${props.auth.user.username}`;
-        } else if (props.location.pathname === `user/${props.auth.user.username}/edit`) {
+        } else if (props.location.pathname === `/user/${props.auth.user.username}/edit`) {
             return `user/${props.auth.user.username}/edit`;
         } else {
             return 'none';

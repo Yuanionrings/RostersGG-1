@@ -20,7 +20,6 @@ class RosterManage extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props)
         this.displayToast()
     }
 
