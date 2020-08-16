@@ -94,15 +94,6 @@ body {
 .red-text { color: #ff5252; }
 
 
-/* 
-    TEXT STYLING
-*/
-.bold-text { font-weight: bold; }
-.italic-text { font-style: italic; }
-
-
-
-
 /*_____________________________________
 
     DASHBOARD RELATED STYLING
@@ -130,11 +121,11 @@ _______________________________________
     }
     .navbar-brand {
         font-weight: bold;
-        color: #2C3E50;
+        color: #2C3E50 !important;
     }
    .header-logo-text {
         font-weight: bold;
-        color: #2C3E50;
+        color: #2C3E50 !important;
     }
     .beta-text {
         font-size: 12px;
@@ -162,7 +153,7 @@ _______________________________________
             .dashboard-container .content .display-box .event-card {
                 color: #2C3E50;
                 background: #ffffff;
-                padding: 1rem;
+                padding: 1.5rem 1rem;
                 box-shadow: 0px 5px 10px #D8D8D8;
                 width: 100%;
                 padding-left: 3rem;
@@ -184,7 +175,7 @@ _______________________________________
             .dashboard-container .content .display-box .title-box {
                 color: #ffffff;
                 background: #34495E;
-                padding: 1rem;
+                padding: 1.5rem 1rem;
                 border-radius: 8px;
                 box-shadow: 0px 5px 10px #D8D8D8;
             }
@@ -198,7 +189,7 @@ _______________________________________
             .dashboard-container .content .display-box .box {
                 color: #2C3E50;
                 background: #ffffff;
-                padding: 1rem;
+                padding: 1.5rem 1rem;
                 box-shadow: 0px 5px 10px #D8D8D8;
                 border-radius: 8px;
             }
@@ -517,112 +508,6 @@ _______________________________________
             
 
 
-
-/*_____________________________________
-
-    VIEWING DISPLAY RELATED STYLING
-
-_______________________________________
-*/
-.viewing-display-box {
-    margin: 1.5rem;
-}
-    .viewing-display-box .display-content {
-        color: #2C3E50;
-        background: #ffffff;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0px 5px 10px #D8D8D8;
-    }
-    .viewing-display-box .btn {        
-        font-size: 8px;
-        font-weight: bold;
-        background: #33D9B2;
-        min-width: 120px;
-        border: none;
-    }
-    .viewing-display-box .btn-primary {        
-        font-size: 0.75rem;
-        font-weight: bold;
-        background: #33D9B2;
-        min-width: 60px;
-        border-radius: 8px;
-        border: none;
-        margin: -0.75px 0.5rem -0.75px 0px;
-    }
-    .viewing-display-box .btn-secondary {        
-        font-size: 0.75rem;
-        font-weight: bold;
-        color: #33D9B2;
-        background: #ffffff;
-        min-width: 60px;
-        border-radius: 8px;
-        border: 1px solid #33D9B2;
-        margin: -0.75px 0.5rem -0.75px 0px;
-    }
-    .viewing-display-box .btn:hover, .viewing-display-box .btn:focus {
-        background: #218C74;
-        outline: none !important;
-    }
-    .viewing-display-box .btn:active {
-        background: #1d7562;
-        box-shadow: none !important;
-    }
-    .viewing-display-box h3 {
-        color: #2C3E50;
-        font-weight: bold;
-        margin-top: 0.5rem;
-        margin-bottom: 0;
-    }
-    .viewing-display-box h4 {
-        color: #2C3E50;
-        font-weight: bold;
-        margin-top: 0;
-        margin-bottom: 0.5rem;
-    }
-    .viewing-display-box h5 {
-        color: #2C3E50;
-        font-weight: bold;
-        margin-bottom: 0;
-    }
-    .viewing-display-box p {
-        margin: 0;
-    }
-    .viewing-display-box hr {
-        border-top: 1px solid #95A5A6;
-        margin-top: 1rem;
-        margin-left: -1.5rem;
-        margin-right: -1.5rem;
-    }
-    .viewing-display-box a {
-        color: #33d9b2;
-        text-decoration: none;
-        margin-right: 15px;
-    }	
-    .viewing-display-box a:hover {
-        color: #218C74;
-    }
-    .viewing-display-box table {
-        color: #2C3E50;
-        background: #ffffff;
-    }
-    .viewing-display-box thead th {
-        border-bottom: 3px solid #95A5A6;
-        border-left: 1px solid #95A5A6;
-        border-right: 1px solid #95A5A6;
-    }
-    .viewing-display-box thead tr {
-        background: #ffffff;
-    }
-    .viewing-display-box th {
-        border-top: 1px solid #95A5A6;
-    }
-    .viewing-display-box td {
-        border-top: 1px solid #95A5A6;
-    }
-
-
-
 /*_____________________________________
 
     FORM RELATED STYLING
@@ -700,6 +585,7 @@ _______________________________________
     .form-box .btn-primary {        
         font-size: 0.75rem;
         font-weight: 500;
+        color: #ffffff !important;
         background: #33D9B2;
         min-width: 60px;
         border-radius: 8px;
@@ -709,11 +595,11 @@ _______________________________________
     .form-box .btn-secondary {        
         font-size: 0.75rem;
         font-weight: 500;
-        color: #33D9B2;
-        background: #ffffff;
+        color: #33D9B2 !important;
+        background: #ffffff !important;
         min-width: 60px;
         border-radius: 8px;
-        border: 1px solid #33D9B2;
+        border: 1px solid #33D9B2 !important;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
     .form-box .player-list table {
