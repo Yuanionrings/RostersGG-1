@@ -24,8 +24,10 @@ class RosterEvents extends Component {
         }
     }
     componentDidMount() {
+        console.log(this.props)
         axios.get(`/api/rosters/${this.props.match.params.id}/events`)
             .then(res => {
+                console.log(res.data)
                 this.setState({
                     events: res.data
                 });
@@ -36,6 +38,7 @@ class RosterEvents extends Component {
     }
 
     rosterEventList(){
+        console.log(this.state.events)
         return this.state.events.map(function(currentEvent, i){
             return <EventInfo event={currentEvent} key={i} />
         });

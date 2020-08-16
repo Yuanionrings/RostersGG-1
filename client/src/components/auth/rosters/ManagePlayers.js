@@ -60,7 +60,7 @@ class ManagePlayers extends Component {
         this.setState({ [e.target.id]: e.target.value })
     }
 
-    playerList(id, my_username){
+    playerList(my_username){
         return this.state.players.map(function(currentPlayer, i){
             if(currentPlayer.username !== my_username) { 
                 return <PlayerInfo 
@@ -79,7 +79,7 @@ class ManagePlayers extends Component {
                     
                     {(this.state.players.length > 1) ? 
                     <div className='table-container'>
-                        <table className='table table-striped' style={{ marginTop: 15 }}>
+                        <table className='table table-striped'>
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -89,7 +89,7 @@ class ManagePlayers extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                { this.playerList(this.props.match.params.id, this.props.auth.user.username) }
+                                { this.playerList(this.props.auth.user.username) }
                             </tbody>
                         </table>
                     </div>
