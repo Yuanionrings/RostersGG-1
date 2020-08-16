@@ -43,7 +43,7 @@ class ManagePlayers extends Component {
         this.setState({ [e.target.id]: e.target.value })
     }
 
-    PlayerInfo(user, i){
+    playerInfo(user, i){
         return(
             <tr>
                 <td className=''>
@@ -64,7 +64,7 @@ class ManagePlayers extends Component {
     playerList(my_username){
         return this.state.players.map(function(currentPlayer, i){
             if(currentPlayer.username !== my_username) { 
-                return this.PlayerInfo(currentPlayer, i);
+                return playerInfo(currentPlayer, i);
             }
         });
     }
