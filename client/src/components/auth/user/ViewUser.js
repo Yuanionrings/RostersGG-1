@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 
 const RosterInfo = props => (
     <tr>
-        <td className=''>{props.roster.teamname}</td>
+        <td className=''>
+            <Link to={`/roster/${props.roster._id}`}>{props.roster.teamname}</Link>
+        </td>
         <td className=''>{props.roster.game}</td>
         <td className=''>{props.roster.region}</td>
         <td className=''>{props.roster.players.length}</td>
-        <td>
-            <Link to={`/roster/${props.roster._id}`}>View</Link>
-        </td>
     </tr>
 );
 
@@ -82,8 +81,7 @@ export default class ViewUser extends Component {
                                     <th>Team Name</th>
                                     <th>Game</th>
                                     <th>Region</th>
-                                    <th>Size</th>
-                                    <th>Actions</th>
+                                    <th>Num Players</th>
                                 </tr>
                             </thead>
                             <tbody>
