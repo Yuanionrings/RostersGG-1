@@ -18,7 +18,7 @@ const PlayerInfo = props => (
         <td className=''>
             <Button
                 className='btn-secondary'
-                onClick={() => props.onKick(props.user.username)}
+                onClick={props.onKickPlayer(props.user.username)}
                 >Kick</Button>
         </td>
     </tr>
@@ -66,7 +66,7 @@ class ManagePlayers extends Component {
                 return <PlayerInfo 
                     user={currentPlayer}
                     key={i}
-                    onKick={this.onKickPlayer}/> 
+                    onKickPlayer={this.onKickPlayer}/> 
             }
         });
     }
