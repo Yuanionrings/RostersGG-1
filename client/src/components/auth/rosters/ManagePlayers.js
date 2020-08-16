@@ -8,22 +8,6 @@ import { formatDateString } from '../../../util/formatDateString';
 import { kickPlayerFromRoster } from '../../../actions/rosterAuthActions';
 
 
-const PlayerInfo = props => (
-    <tr>
-        <td className=''>
-            <Link to={`/user/${props.user.username}`}>{props.user.name}</Link>
-        </td>
-        <td className=''>{props.user.username}</td>
-        <td className=''>{formatDateString(props.user.date)}</td>
-        <td className=''>
-            <Button
-                className='btn-secondary'
-                onClick={props.onKickPlayer(props.user.username)}
-                >Kick</Button>
-        </td>
-    </tr>
-);
-
 class ManagePlayers extends Component {
     constructor(props) {
         super(props)
@@ -32,8 +16,7 @@ class ManagePlayers extends Component {
         }
     }
 
-    onKickPlayer = (e, given_username_to_remove) => {
-        e.preventDefault();
+    onKickPlayer = (given_username_to_remove) => {
         const rosterRemoveData = {
             team_id: this.props.team_id,
             data: {
@@ -60,13 +43,28 @@ class ManagePlayers extends Component {
         this.setState({ [e.target.id]: e.target.value })
     }
 
+    PlayerInfo(user, i){
+        return(
+            <tr>
+                <td className=''>
+                    <Link to={`/user/${user.username}`}>{user.name}</Link>
+                </td>
+                <td className=''>{user.username}</td>
+                <td className=''>{formatDateString(user.date)}</td>
+                <td className=''>
+                    <Button
+                        className='btn-secondary'
+                        onClick={() => this.onKickPlayer(user.username)}
+                        >Kick</Button>
+                </td>
+            </tr>
+        );
+    }
+
     playerList(my_username){
         return this.state.players.map(function(currentPlayer, i){
             if(currentPlayer.username !== my_username) { 
-                return <PlayerInfo 
-                    user={currentPlayer}
-                    key={i}
-                    onKickPlayer={this.onKickPlayer}/> 
+                return this.PlayerInfo(currentPlayer, i);
             }
         });
     }
