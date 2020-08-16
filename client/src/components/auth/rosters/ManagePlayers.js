@@ -16,15 +16,15 @@ const PlayerInfo = props => (
         <td className=''>
             <Button
                 className='btn-secondary'
-                onClick={() => onKickPlayer(props.user.username, props.history)}
+                onClick={() => onKickPlayer(props.user.username, props.team_id, props.history)}
                 >Kick</Button>
         </td>
     </tr>
 );
 
-function onKickPlayer(given_username_to_remove, history) {
+function onKickPlayer(given_username_to_remove, given_team_id, history) {
     const rosterRemoveData = {
-        team_id: this.props.team_id,
+        team_id: given_team_id,
         data: {
             username_to_remove: given_username_to_remove,
             player_initiated: false
@@ -33,21 +33,21 @@ function onKickPlayer(given_username_to_remove, history) {
 
     axios.post(`/api/rosters/roster/${rosterRemoveData.team_id}/remove`, rosterRemoveData.data)
         .then(res => {
-        const path = `/roster/${rosterRemoveData.team_id}`;
+            const path = `/roster/${rosterRemoveData.team_id}`;
 
-        var conditional_toast_message;
-        (rosterRemoveData.data.player_initiated) ? 
-            conditional_toast_message = `You successfully left roster ${rosterRemoveData.team_id}`
-        :
-            conditional_toast_message = `User ${rosterRemoveData.data.username_to_remove} successfully kicked from roster`;
+            var conditional_toast_message;
+            (rosterRemoveData.data.player_initiated) ? 
+                conditional_toast_message = `You successfully left roster ${rosterRemoveData.team_id}`
+            :
+                conditional_toast_message = `User ${rosterRemoveData.data.username_to_remove} successfully kicked from roster`;
 
-        history.push({
-            pathname: path,
-            state: { toast_message: conditional_toast_message }
-        });
+            history.push({
+                pathname: path,
+                state: { toast_message: conditional_toast_message }
+            });
         })
         .catch(err => {
-        console.log(err);
+            console.log(err);
         })
 }
 
@@ -75,12 +75,13 @@ class ManagePlayers extends Component {
     }
 
 
-    playerList(my_username){
+    playerList(my_username, my_team_id, my_history){
         return this.state.players.map(function(currentPlayer, i){
             if(currentPlayer.username !== my_username) { 
                 return <PlayerInfo
                         user={currentPlayer} 
-                        history={this.props.history} />
+                        team_id={my_team_id}
+                        history={my_history} />
             }
         });
     }
@@ -103,7 +104,11 @@ class ManagePlayers extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                { this.playerList(this.props.auth.user.username) }
+                                { this.playerList(
+                                        this.props.auth.user.username,
+                                        this.props.team_id,
+                                        this.props.history
+                                    ) }
                             </tbody>
                         </table>
                     </div>
