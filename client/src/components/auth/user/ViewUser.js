@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import formatDateString from '../../../util/formatDateString';
+import { formatDateString } from '../../../util/formatDateString';
 
 const RosterInfo = props => (
     <tr>
@@ -80,7 +80,7 @@ export default class ViewUser extends Component {
                         </div>
                     </div>
                 </div>
-                
+
                 <div className='display-box'>
                     <div className='box'>
                         <h5 className='mb-0'>Rosters</h5>
