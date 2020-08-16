@@ -29,6 +29,8 @@ import Landing from './components/layout/Landing';
 import PrivateRoute from './components/auth/PrivateRoute';
 import UserDashboard from './components/auth/dashboard/views/UserDashboard';
 import EventManager from './components/auth/dashboard/views/EventManager';
+import TeamDirectoryView from './components/auth/dashboard/views/TeamDirectoryView';
+import PlayerDirectoryView from './components/auth/dashboard/views/PlayerDirectoryView';
 
 import RosterCreate from './components/auth/dashboard/views/RosterCreate';
 import RosterView from './components/auth/dashboard/views/RosterView';
@@ -80,6 +82,8 @@ const App = () => {
               
               <PrivateRoute exact path='/dashboard' component={UserDashboard} />
               <PrivateRoute exact path='/event-manager' component={EventManager} />
+              <PrivateRoute exact path='/team-directory' component={TeamDirectoryView} />
+              <PrivateRoute exact path='/player-directory' component={PlayerDirectoryView} />
 
               <PrivateRoute exact path='/user/:username' component={UserView} />
               <PrivateRoute exact path='/user/:username/edit' component={UserManage} />

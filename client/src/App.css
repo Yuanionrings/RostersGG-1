@@ -596,7 +596,7 @@ _______________________________________
         font-size: 0.75rem;
         font-weight: 500;
         color: #33D9B2 !important;
-        background: #ffffff !important;
+        background: #2C3E50 !important;
         min-width: 60px;
         border-radius: 8px;
         border: 1px solid #33D9B2 !important;
@@ -639,7 +639,7 @@ _______________________________________
         border: none;
     }
     .form-box .btn:hover, .form-box .btn:focus {
-        background: #218c74;
+        background: #218c74 !important;
         outline: none !important;
     }
     .form-box .btn:active {
