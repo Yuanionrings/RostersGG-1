@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { formatDateString } from '../../../util/formatDateString';
 
@@ -13,10 +14,10 @@ const PlayerInfo = props => (
         <td className=''>{props.user.username}</td>
         <td className=''>{formatDateString(props.user.date)}</td>
         <td className=''>
-            <button
+            <Button
                 className='btn-secondary'
                 onClick={() => onKickPlayer(props.user.username, props.team_id, props.history)}
-                >Kick</button>
+                >Kick</Button>
         </td>
     </tr>
 );

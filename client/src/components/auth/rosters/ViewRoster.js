@@ -45,7 +45,14 @@ class ViewRoster extends Component {
                             {" "}To Dashboard
                         </Link>
 
-                        <h3 className='mb-0'>{this.state.teamname}</h3>
+                        {(this.props.auth.user.username === this.state.leader) ? 
+                            <div>
+                                <h3 className='mb-0'>{this.state.teamname}</h3>
+                                <Link to={`/roster/${this.props.match.params.id}/edit`}>Manage</Link>
+                            </div>
+                        :
+                            <h3 className='mb-0'>{this.state.teamname}</h3>
+                        }
                         <h6 className='mt-0 filler-text'>TEAM PROFILE</h6>
 
                         <div className='roster-info'>

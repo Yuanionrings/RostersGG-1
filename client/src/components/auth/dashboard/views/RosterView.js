@@ -47,7 +47,8 @@ class RosterView extends Component {
 
                     <div className='content'>
                         <DashTitle page_title='Viewing Roster' />
-                        <ViewRoster match={this.props.match}/>
+                        <ViewRoster match={this.props.match}
+                                    auth={this.props.auth} />
                     </div>
 
                 <DashFooter />
