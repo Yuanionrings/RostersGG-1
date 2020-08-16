@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import formatDateString from '../../../util/formatDateString';
 
 const RosterInfo = props => (
     <tr>
@@ -53,47 +54,60 @@ export default class ViewUser extends Component {
 
     render() {
         return (
-            <div className='display-box'>
-                <div className='box'>
-                    <div>
-                        <Link to='/dashboard'>
-                            <i className='fa fa-arrow-circle-left'></i>
-                            {" "}To Dashboard
-                        </Link>
+            <div>
+                <div className='display-box'>
+                    <div className='box'>
+
+                        <div className='mb-2'>
+                            <Link to='/dashboard'>
+                                <i className='fa fa-arrow-circle-left'></i>
+                                {" "}To Dashboard
+                            </Link>
+                        </div>
+
+                        <div className='user-title'>
+                            <h3 className='mb-0'>{this.state.name}</h3>
+                            <h6 className='mt-0 filler-text'>@{this.state.username}</h6>
+                        </div>
+
+                        <div className='user-info'>
+                            <h5 className=''>User Info </h5>
+                            <p>Username: <span className='filler-text'>{this.state.username}</span></p>
+                            <p>Member since: <span className='filler-text'>{formatDateString(this.state.date)}</span></p>
+
+                            <h5 className='mb-0'>User Description </h5>
+                            <p className='filler-text'>{this.state.biography}</p>
+                        </div>
                     </div>
-
-                    <h3 className='mb-0'>{this.state.name}</h3>
-                    <h6 className='mt-0 filler-text'>USER PROFILE</h6>
-
-                    <h5 className='mt-3'>User Info </h5>
-                    <p>Username: {this.state.username}</p>
-                    <p>Member since: {this.state.date}</p>
-
-                    <h5 className='mt-3'>About Me </h5>
-                    <p className='filler-text'>{this.state.biography}</p>
-
-                    <h5 className='mt-4'>Rosters</h5>
-                    {(this.state.rosters.length > 0) ?
-                    <div className='table-container'>
-                        <table className='table table-striped'>
-                            <thead>
-                                <tr>
-                                    <th>Team Name</th>
-                                    <th>Game</th>
-                                    <th>Region</th>
-                                    <th>Num Players</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                { this.rosterList() }
-                            </tbody>
-                        </table>
-                    </div>
-                    :
-                    <p><span className='filler-text'>This user is not a part of any rosters.</span></p>
-                    }
-
                 </div>
+                
+                <div className='display-box'>
+                    <div className='box'>
+                        <h5 className='mb-0'>Rosters</h5>
+
+                        {(this.state.rosters.length > 0) ?
+                        <div className='table-container'>
+                            <table className='table table-striped'>
+                                <thead>
+                                    <tr>
+                                        <th>Team Name</th>
+                                        <th>Game</th>
+                                        <th>Region</th>
+                                        <th>Num Players</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    { this.rosterList() }
+                                </tbody>
+                            </table>
+                        </div>
+                        :
+                        <p><span className='filler-text'>This user is not a part of any rosters.</span></p>
+                        }
+
+                    </div>
+                </div>
+
             </div>
         );
     }
