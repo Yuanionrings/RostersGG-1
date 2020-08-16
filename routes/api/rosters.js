@@ -245,13 +245,16 @@ router.post('/roster/:id/invite', async (req, res) => {
 });
 
 
-// @route PATCH api/rosters/roster/:id/:username/remove
+// @route PATCH api/rosters/roster/:id/remove
 // @desc Removes player from roster if found - cannot remove leaders
-router.patch('/roster/:id/:username/remove', async (req, res) => {
+router.patch('/roster/:id/remove', async (req, res) => {
 
     // Define filters for querying collections
     const rosterFilter = { _id: req.params.id };
-    const userFilter = { username: req.params.username };
+    const userFilter = { username: req.body.username_to_remove };
+
+    // This tell us if player initiated (voluntary leave) or leader initiated (kicked)
+    const playerInitiated = req.body.player_initiated;
 
     let res_errors = {};
     let res_success = {};

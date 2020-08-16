@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { formatDateString } from '../../../util/formatDateString';
+import { kickPlayerFromRoster } from '../../../actions/rosterAuthActions';
+
 
 const PlayerInfo = props => (
     <tr>
@@ -16,23 +18,11 @@ const PlayerInfo = props => (
         <td className=''>
             <Button
                 className='btn-secondary'
-                onClick={() => onRemovePlayer(props.team_id, props.user.username)}
+                onClick={() => props.onKick(props.user.username)}
                 >Kick</Button>
         </td>
     </tr>
 );
-
-function onRemovePlayer(team_id, given_username){
-    axios.patch(`/api/rosters/roster/${team_id}/${given_username}/remove`)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-
-    window.location.reload(false);
-}
 
 class ManagePlayers extends Component {
     constructor(props) {
@@ -41,6 +31,20 @@ class ManagePlayers extends Component {
             players: []
         }
     }
+
+    onKickPlayer = (e, given_username_to_remove) => {
+        e.preventDefault();
+        const rosterRemoveData = {
+            team_id: this.props.team_id,
+            data: {
+                username_to_remove: given_username_to_remove,
+                player_initiated: false
+            }
+        };
+
+        this.props.kickPlayerFromRoster(rosterRemoveData, this.props.history);
+    }
+
     componentDidMount() {
         axios.get(`/api/rosters/roster/${this.props.team_id}/players`)
             .then(res => {
@@ -58,7 +62,12 @@ class ManagePlayers extends Component {
 
     playerList(id, my_username){
         return this.state.players.map(function(currentPlayer, i){
-            if(currentPlayer.username !== my_username) { return <PlayerInfo team_id={id} user={currentPlayer} key={i} /> }
+            if(currentPlayer.username !== my_username) { 
+                return <PlayerInfo 
+                    user={currentPlayer}
+                    key={i}
+                    onKick={this.onKickPlayer}/> 
+            }
         });
     }
   
@@ -101,4 +110,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps)(ManagePlayers);
+export default connect(mapStateToProps, { kickPlayerFromRoster })(ManagePlayers);

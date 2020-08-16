@@ -71,6 +71,30 @@ export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
 }
 
 
+// Kick Player from Roster
+export const kickPlayerFromRoster = (rosterRemoveData, history) => dispatch => {
+  axios.post(`/api/rosters/roster/${rosterRemoveData.team_id}/remove`, rosterRemoveData.data)
+    .then(res => {
+      const path = `/roster/${rosterRemoveData.team_id}`;
+
+      var conditional_toast_message;
+      (rosterRemoveData.data.player_initiated) ? 
+        conditional_toast_message = `You successfully left roster ${rosterRemoveData.team_id}`
+      :
+        conditional_toast_message = `User ${rosterRemoveData.data.username_to_remove} successfully kicked from roster`;
+
+      history.push({
+        pathname: path,
+        state: { toast_message: conditional_toast_message }
+      });
+    })
+    .catch(err => dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data
+    }))
+}
+
+
 // Create Event for this Roster
 export const createRosterEvent = (createEventData, history) => dispatch => {
   axios.post('/api/rosters/roster/' + createEventData.team_id + '/create-event',
