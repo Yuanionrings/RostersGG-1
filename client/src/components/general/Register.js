@@ -57,7 +57,7 @@ class Register extends Component {
     const { name, username, email, password, password2, errors } = this.state;
 
     return (
-      <div className=''>
+      <div className='form-page'>
       <DashHeader />
       <div className='form-box'>
         <form className='signup-form' onSubmit={this.onSubmit}>

@@ -6,7 +6,7 @@ import DashFooter from '../auth/dashboard/DashFooter';
 export default class NotFound extends Component {
     render() {
         return(
-            <div>
+            <div className=''>
                 <DashHeader />
                 <div className='text-page-container not-found'>
                     <h1>404 Not Found</h1>

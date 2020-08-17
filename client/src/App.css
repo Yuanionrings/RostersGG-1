@@ -521,6 +521,9 @@ _______________________________________
 
 _______________________________________
 */
+.form-page {
+    padding: 2rem;
+}
 .form-control {
     min-height: 41px;
     box-shadow: none;   

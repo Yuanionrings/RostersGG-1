@@ -73,7 +73,7 @@ class Login extends Component {
     const { email, password, errors } = this.state;
     return (
 
-      <div className=''>
+      <div className='form-page'>
 
       <DashHeader />
       <div className='form-box'>
