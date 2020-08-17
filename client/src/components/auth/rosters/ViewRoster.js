@@ -40,34 +40,32 @@ class ViewRoster extends Component {
                 <div className='display-box'>
                     <div className='box'>
 
-                        <Link to='/dashboard'>
-                            <i className='fa fa-arrow-circle-left'></i>
-                            {" "}To Dashboard
-                        </Link>
-                        <h3 className='mb-0'>{this.state.teamname}</h3>
+                        <div className='mb-2'>
+                            <Link to='/dashboard'>
+                                <i className='fa fa-arrow-circle-left'></i>
+                                {" "}To Dashboard
+                            </Link>
+                        </div>
 
+                        <div className='title'>
+                        <h3 className='mb-0'>{this.state.teamname}</h3>
                         {(this.props.auth.user.username === this.state.leader) ? 
                             <div>
-                                <h6 className='mt-0 filler-text'>TEAM PROFILE: <Link to={`/roster/${this.props.match.params.id}/edit`}>Manage</Link></h6>
+                                <h6 className='mt-0 filler-text'>TEAM PROFILE | <Link to={`/roster/${this.props.match.params.id}/edit`}>Manage</Link></h6>
                             </div>
                         :
                             <h6 className='mt-0 filler-text'>TEAM PROFILE</h6>
                         }
-                        
-
-                        <div className='roster-info'>
-                            <h5>Game</h5>
-                            <p>{this.state.game}</p>
-                            
-                            <h5 className='mt-2'>Region</h5>
-                            <p>{this.state.region}</p>
                         </div>
 
-                        <div className='roster-description'>
-                            <h5>Description</h5>
-                            <p>{this.state.team_desc}</p>
-                        </div>
+                        <div className='information'>
+                        <h5 className=''>Team Info </h5>
+                            <p>Game: <span className='filler-text'>{this.state.game}</span></p>
+                            <p>Region: <span className='filler-text'>{this.state.region}</span></p>
 
+                            <h5 className='mt-4 mb-0'>Team Description </h5>
+                            <p className='filler-text'>{this.state.team_desc}</p>
+                        </div>
                     </div>
                 </div>
 

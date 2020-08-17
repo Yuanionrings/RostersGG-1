@@ -81,7 +81,7 @@ class EditUser extends Component {
             <div className='form-box'>
                 <form className='signup-form extra-margin-bottom' onSubmit={this.onSubmit}>
 
-                    <div>
+                    <div className='mb-2'>
                         <Link to='/dashboard'>
                             <i className='fa fa-arrow-circle-left'></i>
                             {" "}To Dashboard

@@ -65,17 +65,17 @@ export default class ViewUser extends Component {
                             </Link>
                         </div>
 
-                        <div className='user-title'>
+                        <div className='title'>
                             <h3 className='mb-0'>{this.state.name}</h3>
                             <h6 className='mt-0 filler-text'>@{this.state.username}</h6>
                         </div>
 
-                        <div className='user-info'>
+                        <div className='information'>
                             <h5 className=''>User Info </h5>
                             <p>Username: <span className='filler-text'>{this.state.username}</span></p>
                             <p>Member since: <span className='filler-text'>{this.state.date}</span></p>
 
-                            <h5 className='mt-1 mb-0'>User Description </h5>
+                            <h5 className='mt-4 mb-0'>User Biography </h5>
                             <p className='filler-text'>{this.state.biography}</p>
                         </div>
                     </div>

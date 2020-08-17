@@ -192,7 +192,7 @@ _______________________________________
                 box-shadow: 0px 5px 10px #D8D8D8;
                 border-radius: 8px;
             }
-            .dashboard-container .content .display-box .user-info {
+            .dashboard-container .content .display-box .information {
                 color: #2C3E50;
                 background: #ffffff;
                 margin-top: 1.5rem;
@@ -201,14 +201,6 @@ _______________________________________
                 border-radius: 8px;
             }
 
-            /* Roster View Related */
-            .dashboard-container .content .display-box .roster-info {
-                margin: 2rem 0;
-            }
-            .dashboard-container .content .display-box .roster-description {
-                margin: 2rem 0 0 0;
-            }
-            
             .dashboard-container .content .display-box .btn {        
                 font-size: 16px;
                 font-weight: 500;

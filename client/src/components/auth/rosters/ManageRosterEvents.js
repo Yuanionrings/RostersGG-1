@@ -70,7 +70,7 @@ class ManageRosterEvents extends Component {
                         </table>
                     </div>
                     :
-                    <p className='filler-text'>There are no events for this roster.</p>
+                    <p className='filler-text mb-0'>There are no events for this roster.</p>
                     }
                 </div>
             </div>

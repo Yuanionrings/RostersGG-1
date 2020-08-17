@@ -5,11 +5,12 @@ import Button from 'react-bootstrap/Button';
 
 const RosterInfo = props => (
     <tr>
-        <td className=''>{props.roster.teamname}</td>
+        <td className=''>
+            <Link to={`/roster/${props.roster._id}`}>{props.roster.teamname}</Link>
+        </td>
         <td className=''>{props.roster.game}</td>
         <td className=''>{props.roster.region}</td>
         <td>
-            <Link to={`/roster/${props.roster._id}`}>View</Link>
             <Link to={`/roster/${props.roster._id}/edit`}>Manage</Link>
             <Link to={`/roster/${props.roster._id}/delete`}>Delete</Link>
         </td>
@@ -78,7 +79,7 @@ export default class LedRosters extends Component {
                         </table>
                     </div>
                     :
-                    <p><span className='filler-text'>You do not lead any rosters.</span></p>
+                    <p className='filler-text'>You do not lead any rosters.</p>
                     }
 
                 </div>

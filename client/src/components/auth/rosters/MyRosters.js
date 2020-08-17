@@ -4,13 +4,11 @@ import { Link } from 'react-router-dom';
 
 const RosterInfo = props => (
     <tr>
-        <td className=''>{props.roster.teamname}</td>
+        <td className=''>
+            <Link to={`/roster/${props.roster._id}`}>{props.roster.teamname}</Link>
+        </td>
         <td className=''>{props.roster.game}</td>
         <td className=''>{props.roster.region}</td>
-        <td className=''>{props.roster.players.length}</td>
-        <td>
-            <Link to={`/roster/${props.roster._id}`}>View</Link>
-        </td>
     </tr>
 );
 
@@ -55,8 +53,6 @@ export default class MyRosters extends Component {
                                     <th>Team Name</th>
                                     <th>Game</th>
                                     <th>Region</th>
-                                    <th># Players</th>
-                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,7 +61,7 @@ export default class MyRosters extends Component {
                         </table>
                     </div>
                     :
-                    <p><span className='filler-text'>You are not a part of any rosters.</span></p>
+                    <p className='filler-text'>You are not a player on any roster.</p>
                     }
 
                 </div>

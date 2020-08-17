@@ -79,7 +79,8 @@ class EditRoster extends Component {
             <div>
                 <div className='form-box'>
                     <form className='signup-form' onSubmit={this.onSubmit}>
-                        <div>
+                        
+                        <div className='mb-2'>
                             <Link to='/dashboard'>
                                 <i className='fa fa-arrow-circle-left'></i>
                                 {" "}Back to Dashboard
