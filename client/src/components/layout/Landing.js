@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import LandingNavbar from './LandingNavbar';
 import Footer from './Footer';
 
+import rostersGGLogo from '../../assets/logos/rostersgg-full-logo.svg';
+
 class Landing extends Component {
   
   goToRegister = e => {
@@ -32,6 +34,8 @@ class Landing extends Component {
         <div className='section-1'>
           <div className='display'>
             <div className='content'>
+              <img src={rostersGGLogo} alt='RostersGG Roster Logo on RostersGG landing page' />
+
               <div className='text-area'>
                 <h3>FOR LEADERS</h3>
                 <h4>

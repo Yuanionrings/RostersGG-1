@@ -3,6 +3,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavbarBrand from 'react-bootstrap/NavbarBrand';
 import Nav from 'react-bootstrap/Nav';
 
+import rostersGGLogo from '../../assets/logos/rostersgg-beta-gray.svg';
+
 const LandingNavbar = () => {
 
     var conditionalNavItems = () => {
@@ -25,7 +27,7 @@ const LandingNavbar = () => {
         <div>
             <Navbar className='landing-navbar'>
                 <NavbarBrand className='mr-auto landing-navbar-brand' href='/'>
-                    RostersGG<span className='beta-text'>BETA</span>
+                    <img src={rostersGGLogo} alt='RostersGG Logo on Landing Page Navigation Bar' />
                 </NavbarBrand>
                 {conditionalNavItems()}
             </Navbar>

@@ -123,9 +123,8 @@ _______________________________________
         font-weight: bold;
         color: #2C3E50 !important;
     }
-   .header-logo-text {
-        font-weight: bold;
-        color: #2C3E50 !important;
+    .header-logo-text img {
+        height: 60px;
     }
     .beta-text {
         font-size: 12px;
@@ -387,6 +386,9 @@ _______________________________________
             color: #5b5f5f !important;
             font-weight: 700;
         }
+            .landing-page-display .landing-navbar-brand img {
+                height: 60px;
+            }
             .landing-page-display .landing-navbar-brand:hover {
                 color: #7a8383 !important;
             }
@@ -473,6 +475,11 @@ _______________________________________
         .landing-page-display .section-1 .content {
             color: #2C3E50;
         }
+            .landing-page-display .section-1 .content img {
+                display: block;
+                max-width: 620px;
+                margin: 100px auto 0px auto;
+            }
             .landing-page-display .section-1 .content .text-area {
                 padding-top: 100px;
             }
