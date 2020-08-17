@@ -75,7 +75,7 @@ export default class ViewUser extends Component {
                             <p>Username: <span className='filler-text'>{this.state.username}</span></p>
                             <p>Member since: <span className='filler-text'>{this.state.date}</span></p>
 
-                            <h5 className='mb-0'>User Description </h5>
+                            <h5 className='mt-1 mb-0'>User Description </h5>
                             <p className='filler-text'>{this.state.biography}</p>
                         </div>
                     </div>
@@ -83,7 +83,7 @@ export default class ViewUser extends Component {
 
                 <div className='display-box'>
                     <div className='box'>
-                        <h5 className='mb-0'>Rosters</h5>
+                        <h3 className='mb-0'>Rosters</h3>
 
                         {(this.state.rosters.length > 0) ?
                         <div className='table-container'>

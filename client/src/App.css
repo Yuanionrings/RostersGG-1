@@ -195,6 +195,7 @@ _______________________________________
             .dashboard-container .content .display-box .user-info {
                 color: #2C3E50;
                 background: #ffffff;
+                margin-top: 1.5rem;
                 padding: 1rem;
                 box-shadow: 0px 5px 10px #D8D8D8;
                 border-radius: 8px;
