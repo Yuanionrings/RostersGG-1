@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { formatDateString } from '../../../util/formatDateString';
+//import { formatDateString } from '../../../util/formatDateString';
 
 const RosterInfo = props => (
     <tr>
@@ -73,7 +73,7 @@ export default class ViewUser extends Component {
                         <div className='user-info'>
                             <h5 className=''>User Info </h5>
                             <p>Username: <span className='filler-text'>{this.state.username}</span></p>
-                            <p>Member since: <span className='filler-text'>{formatDateString(this.state.date)}</span></p>
+                            <p>Member since: <span className='filler-text'>{this.state.date}</span></p>
 
                             <h5 className='mb-0'>User Description </h5>
                             <p className='filler-text'>{this.state.biography}</p>
