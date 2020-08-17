@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
+import DashHeader from '../auth/dashboard/DashHeader';
+import DashFooter from '../auth/dashboard/DashFooter';
+
+
 export default class ConfirmEmail extends Component {
   constructor() {
     super()
@@ -33,30 +37,37 @@ export default class ConfirmEmail extends Component {
 
   render() {
     return (
-        <div className='form-box'>
-            <div className='display-info'>
-                {this.state.confirm_successful ?
-                    <h3>Confirm Successful</h3>
-                :
-                    <h3>Confirm Not Successful</h3>
-                }
 
-                {this.state.confirm_successful ?
-                    <div>
-                        <p>Your email is now confirmed. Press the button below to be directed to the login screen.</p>
-                        <Button
-                            onClick={this.onGoToLogin}
-                            >Go to Login</Button>
-                    </div>
-                :
-                    <div>
-                        <p>There was an error confirming your email, please contact support at contact@rosters.gg</p>
-                        <Button
-                            onClick={this.onGoToHome}
-                            >Go Back</Button>
-                    </div>
-                }
+        <div className=''>
+            <DashHeader />
+
+            <div className='form-box'>
+                <div className='display-info'>
+                    {this.state.confirm_successful ?
+                        <h3>Confirm Successful</h3>
+                    :
+                        <h3>Confirm Not Successful</h3>
+                    }
+
+                    {this.state.confirm_successful ?
+                        <div>
+                            <p>Your email is now confirmed. Press the button below to be directed to the login screen.</p>
+                            <Button
+                                onClick={this.onGoToLogin}
+                                >Go to Login</Button>
+                        </div>
+                    :
+                        <div>
+                            <p>There was an error confirming your email, please contact support at contact@rosters.gg</p>
+                            <Button
+                                onClick={this.onGoToHome}
+                                >Go Back</Button>
+                        </div>
+                    }
+                </div>
             </div>
+
+            <DashFooter />
         </div>
     )
   }

@@ -586,7 +586,7 @@ _______________________________________
         color: #ffffff;
         border-radius: 8px;
         background: #2C3E50;
-        padding: 1rem;
+        padding: 1.5rem 1rem 1rem 1rem;
         box-shadow: 0px 5px 10px #D8D8D8;
     }
     .form-box .btn-primary {        

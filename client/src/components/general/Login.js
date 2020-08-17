@@ -7,6 +7,9 @@ import classnames from 'classnames';
 import { toast } from 'react-toastify';
 import toastNotif from '../../util/toastNotif';
 
+import DashHeader from '../auth/dashboard/DashHeader';
+import DashFooter from '../auth/dashboard/DashFooter';
+
 class Login extends Component {
   constructor() {
     super()
@@ -69,8 +72,11 @@ class Login extends Component {
   render() {
     const { email, password, errors } = this.state;
     return (
-      <div className='form-box'>
 
+      <div className=''>
+
+      <DashHeader />
+      <div className='form-box'>
         <form className='login-form' onSubmit={this.onSubmit}>
 
           <div>
@@ -123,6 +129,8 @@ class Login extends Component {
           <div className='text-center'>Don't have an account? <Link to='/register'>Register</Link></div>
           
         </form>
+      </div>
+      <DashFooter />
       </div>
     )
   }

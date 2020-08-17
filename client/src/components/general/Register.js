@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import { registerUser } from '../../actions/userAuthActions';
 import classnames from 'classnames';
 
+import DashHeader from '../auth/dashboard/DashHeader';
+import DashFooter from '../auth/dashboard/DashFooter';
+
+
 class Register extends Component {
   constructor() {
     super();
@@ -53,6 +57,8 @@ class Register extends Component {
     const { name, username, email, password, password2, errors } = this.state;
 
     return (
+      <div className=''>
+      <DashHeader />
       <div className='form-box'>
         <form className='signup-form' onSubmit={this.onSubmit}>
 
@@ -143,6 +149,8 @@ class Register extends Component {
           <div className='text-center'>Already have an account? <Link to='/login'>Login here</Link></div>
           
         </form>
+      </div>
+      <DashFooter />
       </div>
     )
   }
