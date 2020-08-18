@@ -61,7 +61,7 @@ export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
       const path = `/roster/${rosterInviteData.team_id}`;
       history.push({
         pathname: path,
-        state: { toast_message: `User ${rosterInviteData.invited_player} was successfully invited` }
+        state: { toast_message: `User ${rosterInviteData.data.invited_player} was successfully invited` }
       });
     })
     .catch(err => dispatch({
