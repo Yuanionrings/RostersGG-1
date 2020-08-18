@@ -72,65 +72,67 @@ class Login extends Component {
   render() {
     const { email, password, errors } = this.state;
     return (
+      <div>
+        <DashHeader />
 
-      <div className='form-page'>
+        <div className='form-page'>
+          <div className='form-box'>
+            <form className='login-form' onSubmit={this.onSubmit}>
 
-      <DashHeader />
-      <div className='form-box'>
-        <form className='login-form' onSubmit={this.onSubmit}>
+              <div>
+                <Link to='/'>
+                    <i className='fa fa-arrow-circle-left'></i>
+                    {" "}To Home
+                </Link>
+              </div>
 
-          <div>
-            <Link to='/'>
-                <i className='fa fa-arrow-circle-left'></i>
-                {" "}To Home
-            </Link>
+              <h3>Login</h3>
+
+              <div className='form-group'>
+                <label>Email: </label>
+                <input type='email'
+                  id='email'
+                  placeholder='Email Address'
+                  value={email}
+                  error={errors}
+                  onChange={this.onChange}
+                  className={classnames('form-control', {
+                    invalid: errors.email || errors.emailnotfound
+                  })} />
+                <span className='red-text'>
+                  {errors.email}
+                  {errors.emailnotfound}
+                </span>
+              </div>
+
+              <div className='form-group'>
+                <label>Password: </label>
+                <input type='password'
+                  id='password'
+                  placeholder='Password'
+                  value={password}
+                  error={errors}
+                  onChange={this.onChange}
+                  className={classnames('form-control', {
+                    invalid: errors.password || errors.passwordincorrect
+                  })}
+                />
+                <span className='red-text'>
+                  {errors.password}
+                  {errors.passwordincorrect}
+                </span>
+              </div>
+
+              <div className='form-group'>
+                <button type='submit' className='btn btn-primary btn-block btn-lg'>Login</button>
+              </div>
+              <div className='text-center'>Don't have an account? <Link to='/register'>Register</Link></div>
+              
+            </form>
           </div>
+        </div>
 
-          <h3>Login</h3>
-
-          <div className='form-group'>
-            <label>Email: </label>
-            <input type='email'
-              id='email'
-              placeholder='Email Address'
-              value={email}
-              error={errors}
-              onChange={this.onChange}
-              className={classnames('form-control', {
-                invalid: errors.email || errors.emailnotfound
-              })} />
-            <span className='red-text'>
-              {errors.email}
-              {errors.emailnotfound}
-            </span>
-          </div>
-
-          <div className='form-group'>
-            <label>Password: </label>
-            <input type='password'
-              id='password'
-              placeholder='Password'
-              value={password}
-              error={errors}
-              onChange={this.onChange}
-              className={classnames('form-control', {
-                invalid: errors.password || errors.passwordincorrect
-              })}
-            />
-            <span className='red-text'>
-              {errors.password}
-              {errors.passwordincorrect}
-            </span>
-          </div>
-
-          <div className='form-group'>
-            <button type='submit' className='btn btn-primary btn-block btn-lg'>Login</button>
-          </div>
-          <div className='text-center'>Don't have an account? <Link to='/register'>Register</Link></div>
-          
-        </form>
-      </div>
-      <DashFooter />
+        <DashFooter />
       </div>
     )
   }
