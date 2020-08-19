@@ -284,7 +284,7 @@ _______________________________________
             }
             .dashboard-container .content .display-box td {
                 white-space: nowrap;
-                padding: 0.25rem 0.75rem;
+                padding: 0.5rem 1rem;
                 border-top: none;
             }
 
@@ -616,23 +616,56 @@ _______________________________________
         border: 1px solid #33D9B2 !important;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
+
+
+    .form-box .player-list table {
+        color: #ffffff;
+        background: #2C3E50;
+    }
+    
+    .form-box .player-list a {
+        color: #33d9b2;
+        text-decoration: none;
+    }	
+    .form-box .player-list a:hover {
+        color: #218C74;
+    }
     .form-box .player-list table {
         color: #ffffff;
         background: #2C3E50;
     }
     .form-box .player-list thead th {
-        border-bottom: 3px solid #95A5A6;
-        border-left: 1px solid #95A5A6;
-        border-right: 1px solid #95A5A6;
+        border-bottom: 1px solid #D8D8D8;
+        border-left: none;
+        border-right: none;
+        border-top: none
     }
-    .form-box .player-list a {
-        color: #33d9b2;
-        text-decoration: none;
-        margin-right: 1rem;
-    }	
-    .form-box .player-list a:hover {
-        color: #218C74;
+    .form-box .player-list thead tr {
+        background: #2C3E50;
     }
+    .form-box .player-list th {
+        border-top: 1px solid #D8D8D8;
+    }
+    .form-box .player-list tr {
+        white-space: nowrap;
+    }
+    .form-box .player-list td {
+        white-space: nowrap;
+        padding: 0.5rem 1rem;
+        border-top: none;
+    }
+    .form-box .player-list .btn-secondary {        
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #33D9B2 !important;
+        background: #2C3E50 !important;
+        min-width: 60px;
+        border-radius: 8px;
+        border: 1px solid #33D9B2 !important;
+        margin: -0.75rem 0.5rem -0.75rem 0px;
+    }
+
+
     .form-box h3 {
         color: #ffffff;
         font-weight: 700;
