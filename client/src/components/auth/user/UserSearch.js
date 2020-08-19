@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 //import { formatDateString } from '../../../util/formatDateString';
 
 const PlayerResultListing = props => (
@@ -19,12 +20,21 @@ export default class ViewUser extends Component {
         super(props);
         this.state = {
             name_search: '',
-            players: []
+            players: [],
+            errors: {}
         }
     }
 
     componentDidMount() {
         console.log(this.props)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
     }
 
     onChange = e => {
@@ -78,7 +88,7 @@ export default class ViewUser extends Component {
                             <input type='text'
                                 id='name_search'
                                 placeholder='Name to search for...'
-                                value={name_search}
+                                value={this.state.name_search}
                                 error={errors.name}
                                 onChange={this.onChange}
                                 className={classnames('form-control', {
