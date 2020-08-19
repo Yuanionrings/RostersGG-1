@@ -177,19 +177,24 @@ router.post('/roster-search', async (req, res) => {
     const searchQuery = { $text : { $search : req.body.roster_search }};
     const searchProjection = { teamname: 1, _id: 1, region: 1, game: 1 };
 
+
+    console.log(`Looking for rosters with: ${req.body.roster_search}`)
     try {
-        const rosters = await Roster.find(searchQuery, searchProjection);
+        const rosters = await Roster.find(searchQuery);
+        //const rosters = await Roster.find(searchQuery, searchProjection);
         if (!rosters) {
             errors.name = `Cannot find any rosters for search ${req.body.roster_search}`;
             res.status(404).json(errors);
             return;
 
         } else if (rosters.length < 1) {
+            console.log(`Cannot find any rosters for search ${req.body.roster_search}`);
             errors.name = `Cannot find any rosters for search ${req.body.roster_search}`;
             res.status(404).json(errors);
             return;
         }
 
+        console.log(rosters);
         res.json(rosters);
 
     } catch(error) {
