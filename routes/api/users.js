@@ -63,10 +63,14 @@ router.post('/user-search', async (req, res) => {
     try {
         const users = await User.find(searchQuery, searchProjection);
         if (!users) {
-            errors.name = `Cannot find any users for search ${req.body.name_search}`;
+            errors.name = `Cannot find any players for search ${req.body.name_search}`;
+            res.status(404).json(errors);
+
+        } else if (users.length < 1) {
+            errors.name = `Cannot find any players for search ${req.body.name_search}`;
             res.status(404).json(errors);
         }
-        
+
         res.json(users);
 
     } catch(error) {
