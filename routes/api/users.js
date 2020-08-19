@@ -49,24 +49,29 @@ router.get('/:username', async (req, res) => {
 // TODO - COMPLETE THIS
 router.get('/user-search', async (req, res) => {
 
-    // Define query for user search
-    const search_query = { $text : { $search : req.body.search }};
-
+    let errors = {};
     console.log(req.body);
 
+    // Define query for user search
+    if(req.body.name_search == null) {
+        errors.badrequest = `Bad request, name_search query is null`;
+        res.status(400).json(errors);
+    }
+    const searchQuery = { $text : { $search : req.body.name_search }};
+
     try {
-        const users = await User.find(search_query);
+        const users = await User.find(searchQuery);
         if (!users) {
-            res.status(400).send("Error finding Users");
-        } else if (users.length > 1) {
-            res.status(404).send("Could not find any users with this search");
+            errors.name = `Cannot find any users for search ${req.body.name_search}`;
+            res.status(404).json(errors);
         }
 
         console.log(users);
         res.json(users);
+
     } catch(error) {
-        console.log(error);
-        res.status(400).send("Error when finding users");
+        errors.badrequest = error;
+        res.status(400).json(errors);
     }
 });
 

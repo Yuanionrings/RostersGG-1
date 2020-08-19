@@ -18,8 +18,7 @@ const RosterSchema = new Schema({
     },
     team_desc: {
         type: String,
-        required: true,
-        text: true
+        required: true
     },
     leader: {
         type: String,

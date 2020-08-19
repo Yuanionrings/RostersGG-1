@@ -12,12 +12,11 @@ const UserSchema = new Schema({
         type: String,
         lowercase: true,
         match: /^[A-Za-z0-9-_]+$/,
-        required: true,
-        text: true
+        required: true
     },
     biography: {
         type: String,
-        default: 'I have not yet changed my biography, this is the default!'
+        default: 'No biography has been added yet.'
     },
     email: {
         type: String,
