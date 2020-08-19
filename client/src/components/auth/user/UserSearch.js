@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
-//import { formatDateString } from '../../../util/formatDateString';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 
 const PlayerResultListing = props => (
     <tr>
@@ -14,7 +16,7 @@ const PlayerResultListing = props => (
     </tr>
 );
 
-export default class ViewUser extends Component {
+class UserSearch extends Component {
 
     constructor(props){
         super(props);
@@ -83,7 +85,7 @@ export default class ViewUser extends Component {
                         <h3 className='mb-0'>Player Search</h3>
                         <p className='mt-0'>Enter the name of the player you are looking for.</p>
                         
-                        <div className="form-group">
+                        <div className='form-group'>
                             <label>Player Name: </label>
                             <input type='text'
                                 id='name_search'
@@ -94,10 +96,13 @@ export default class ViewUser extends Component {
                                 className={classnames('form-control', {
                                     invalid: this.state.errors.name
                                 })} />
+                            <span className='red-text'>{this.state.errors.name}</span>
+                        </div>
+
+                        <div className='form-group'>
                             <button type='submit' className='btn btn-primary btn-block btn-lg'>
                                 Search
                             </button>
-                            <span className='red-text'>{this.state.errors.name}</span>
                         </div>
                     </form>
                 </div>
@@ -109,7 +114,13 @@ export default class ViewUser extends Component {
 
                         {(this.state.players.length > 0) ?
                         <div className='table-container'>
-                            <h5>Players have been found: </h5>
+
+                            {(this.state.players.length === 1) ?
+                                <p className='filler-text'>Found a player.</p>
+                            :
+                            <p className='filler-text'>Found {this.state.players.length} players.</p>
+                            }
+
                             <table className='table table-striped'>
                                 <thead>
                                     <tr>
@@ -124,7 +135,7 @@ export default class ViewUser extends Component {
                             </table>
                         </div>
                         :
-                        <p><span className='filler-text'>Search for players with the search bar above.</span></p>
+                        <p className='filler-text'>Search for players with the search bar above.</p>
                         }
 
                     </div>
@@ -133,3 +144,13 @@ export default class ViewUser extends Component {
         );
     }
 }
+
+UserSearch.propTypes = {
+    errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+    errors: state.errors
+});
+
+export default connect(mapStateToProps)(UserSearch);
