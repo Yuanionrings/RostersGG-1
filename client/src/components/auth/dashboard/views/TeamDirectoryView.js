@@ -7,6 +7,8 @@ import DashTitle from '../DashTitle';
 import DashSidebar from '../DashSidebar';
 import DashFooter from '../DashFooter';
 
+import RosterSearch from '../../rosters/RosterSearch';
+
 import { toast } from 'react-toastify';
 import toastNotif from '../../../../util/toastNotif';
 
@@ -47,7 +49,8 @@ class TeamDirectoryView extends Component {
 
                     <div className='content'>
 
-                        <DashTitle page_title='Team Directory (in development)' />
+                        <DashTitle page_title='Team Directory' />
+                        <RosterSearch />
 
                     </div>
 

@@ -163,24 +163,39 @@ router.get('/:username/led-rosters', (req, res) => {
         });
 });
 
-// TODO - Finish this!!!!!
-// @route GET api/rosters/roster-search
-// @desc Searches for teams based on text search query
-router.get('/roster-search', async (req, res) => {
-    
-    // Define search query before finding Rosters 
-    const search_query = { $text : { $search : req.body.search }};
-    console.log(req.body);
+// @route POST api/rosters/roster-search
+// @desc Uses text index to find rosters
+router.post('/roster-search', async (req, res) => {
+
+    let errors = {};
+
+    // Define query for user search
+    if(req.body.roster_search == null) {
+        errors.badrequest = `Bad request, roster_search query is null`;
+        res.status(400).json(errors);
+    }
+    const searchQuery = { $text : { $search : req.body.roster_search }};
+    const searchProjection = { teamname: 1, _id: 1, region: 1, game: 1 };
+
     try {
-        const rosters = await Roster.find(search_query);
+        const rosters = await Roster.find(searchQuery, searchProjection);
         if (!rosters) {
-            res.status(404).send({errors: {search: 'There are no rosters found with this search'}});
+            errors.name = `Cannot find any rosters for search ${req.body.roster_search}`;
+            res.status(404).json(errors);
+            return;
+
+        } else if (rosters.length < 1) {
+            errors.name = `Cannot find any rosters for search ${req.body.roster_search}`;
+            res.status(404).json(errors);
+            return;
         }
+
         res.json(rosters);
 
     } catch(error) {
-        console.log(error);
-        res.status(400).send({errors: {other_error: 'Error finding rosters'}});
+        errors.badrequest = error;
+        res.status(400).json(errors);
+        return;
     }
 });
 

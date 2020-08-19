@@ -31,7 +31,7 @@ function onKickPlayer(given_username_to_remove, given_team_id, history) {
         }
     };
 
-    axios.post(`/api/rosters/roster/${rosterRemoveData.team_id}/remove`, rosterRemoveData.data)
+    axios.patch(`/api/rosters/roster/${rosterRemoveData.team_id}/remove`, rosterRemoveData.data)
         .then(res => {
             const path = `/roster/${rosterRemoveData.team_id}`;
 

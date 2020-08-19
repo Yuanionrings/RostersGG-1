@@ -6,23 +6,23 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 
-const PlayerResultListing = props => (
+const RosterResultListing = props => (
     <tr>
         <td className=''>
-            <Link to={`/user/${props.user.username}`}>{props.user.name}</Link>
+            <Link to={`/roster/${props.roster._id}`}>{props.roster.teamname}</Link>
         </td>
-        <td className=''>{props.user.username}</td>
-        <td className=''>{props.user.biography}</td>
+        <td className=''>{props.roster.game}</td>
+        <td className=''>{props.roster.region}</td>
     </tr>
 );
 
-class UserSearch extends Component {
+class RosterSearch extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            name_search: '',
-            players: [],
+            roster_search: '',
+            rosters: [],
             errors: {}
         }
     }
@@ -45,15 +45,15 @@ class UserSearch extends Component {
     onSubmitSearch = e => {
         e.preventDefault();
         
-        const userSearchBody = {
-            name_search: this.state.name_search
+        const rosterSearchBody = {
+            roster_search: this.state.roster_search
         }
 
-        axios.post(`/api/users/user-search`, userSearchBody)
+        axios.post(`/api/users/roster-search`, rosterSearchBody)
             .then(res => {
                 console.log(res);
                 this.setState({
-                    players: res.data
+                    rosters: res.data
                 });
             })
             .catch(err => {
@@ -61,9 +61,9 @@ class UserSearch extends Component {
             })
     }
 
-    playerResultsList(){
-        return this.state.players.map(function(currentPlayer, i){
-            return <PlayerResultListing user={currentPlayer} key={i} />
+    rosterResultsList(){
+        return this.state.rosters.map(function(currentRoster, i){
+            return <RosterResultListing roster={currentRoster} key={i} />
         });
     }
 
@@ -81,15 +81,15 @@ class UserSearch extends Component {
 
                 <div className='form-box'>
                     <form className='signup-form' onSubmit={this.onSubmitSearch}>
-                        <h3 className='mb-0'>Player Search</h3>
-                        <p className='mt-0'>Enter the name of the player you are looking for.</p>
+                        <h3 className='mb-0'>Team Search</h3>
+                        <p className='mt-0'>Enter a team name or a game to find rosters.</p>
                         
                         <div className='form-group'>
-                            <label>Player Name: </label>
+                            <label>Team: </label>
                             <input type='text'
-                                id='name_search'
-                                placeholder='Name to search for...'
-                                value={this.state.name_search}
+                                id='roster_search'
+                                placeholder='Team name / game to search for...'
+                                value={this.state.roster_search}
                                 error={this.state.errors.name}
                                 onChange={this.onChange}
                                 className={classnames('form-control', {
@@ -109,32 +109,32 @@ class UserSearch extends Component {
 
                 <div className='display-box'>
                     <div className='box'>
-                        <h3 className='mb-0'>Players</h3>
+                        <h3 className='mb-0'>Rosters</h3>
 
-                        {(this.state.players.length > 0) ?
+                        {(this.state.rosters.length > 0) ?
                         <div className='table-container'>
 
-                            {(this.state.players.length === 1) ?
-                                <p className='filler-text'>Found a player.</p>
+                            {(this.state.rosters.length === 1) ?
+                                <p className='filler-text'>Found a team.</p>
                             :
-                            <p className='filler-text'>Found {this.state.players.length} players.</p>
+                            <p className='filler-text'>Found {this.state.rosters.length} teams.</p>
                             }
 
                             <table className='table table-striped'>
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Username</th>
-                                        <th>Biography</th>
+                                        <th>Team Name</th>
+                                        <th>Game</th>
+                                        <th>Region</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    { this.playerResultsList() }
+                                    { this.rosterResultsList() }
                                 </tbody>
                             </table>
                         </div>
                         :
-                        <p className='filler-text'>Search for players with the search bar above.</p>
+                        <p className='filler-text'>Search for rosters with the search bar above.</p>
                         }
 
                     </div>
@@ -144,7 +144,7 @@ class UserSearch extends Component {
     }
 }
 
-UserSearch.propTypes = {
+RosterSearch.propTypes = {
     errors: PropTypes.object.isRequired
 }
 
@@ -152,4 +152,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps)(UserSearch);
+export default connect(mapStateToProps)(RosterSearch);
