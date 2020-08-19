@@ -7,6 +7,8 @@ import DashTitle from '../DashTitle';
 import DashSidebar from '../DashSidebar';
 import DashFooter from '../DashFooter';
 
+import UserSearch from '../../user/UserSearch';
+
 import { toast } from 'react-toastify';
 import toastNotif from '../../../../util/toastNotif';
 
@@ -48,6 +50,7 @@ class PlayerDirectoryView extends Component {
                     <div className='content'>
 
                         <DashTitle page_title='Player Directory (in development)' />
+                        <UserSearch />
 
                     </div>
 
