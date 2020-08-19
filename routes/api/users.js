@@ -46,8 +46,9 @@ router.get('/:username', async (req, res) => {
 });
 
 
-// TODO - COMPLETE THIS
-router.get('/user-search', async (req, res) => {
+// @route POST api/users/user-search
+// @desc Uses text index to find users
+router.post('/user-search', async (req, res) => {
 
     let errors = {};
     console.log(req.body);

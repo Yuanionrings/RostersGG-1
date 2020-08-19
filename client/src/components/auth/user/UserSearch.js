@@ -48,7 +48,7 @@ export default class ViewUser extends Component {
             name_search: this.state.name_search
         }
 
-        axios.get(`/api/users/user-search`, userSearchBody)
+        axios.post(`/api/users/user-search`, userSearchBody)
             .then(res => {
                 console.log(res);
                 this.setState({
