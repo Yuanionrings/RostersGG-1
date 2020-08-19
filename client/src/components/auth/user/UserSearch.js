@@ -89,12 +89,12 @@ export default class ViewUser extends Component {
                                 id='name_search'
                                 placeholder='Name to search for...'
                                 value={this.state.name_search}
-                                error={errors.name}
+                                error={this.state.errors.name}
                                 onChange={this.onChange}
                                 className={classnames('form-control', {
-                                    invalid: errors.name
+                                    invalid: this.state.errors.name
                                 })} />
-                            <span className='red-text'>{errors.name}</span>
+                            <span className='red-text'>{this.state.errors.name}</span>
                         </div>
                         
                         <div className='form-group'>
