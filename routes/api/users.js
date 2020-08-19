@@ -65,10 +65,12 @@ router.post('/user-search', async (req, res) => {
         if (!users) {
             errors.name = `Cannot find any players for search ${req.body.name_search}`;
             res.status(404).json(errors);
+            return;
 
         } else if (users.length < 1) {
             errors.name = `Cannot find any players for search ${req.body.name_search}`;
             res.status(404).json(errors);
+            return;
         }
 
         res.json(users);
@@ -76,6 +78,7 @@ router.post('/user-search', async (req, res) => {
     } catch(error) {
         errors.badrequest = error;
         res.status(400).json(errors);
+        return;
     }
 });
 
