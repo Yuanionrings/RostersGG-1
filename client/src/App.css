@@ -279,7 +279,11 @@ _______________________________________
             .dashboard-container .content .display-box th {
                 border-top: none;
             }
+            .dashboard-container .content .display-box tr {
+                white-space: nowrap;
+            }
             .dashboard-container .content .display-box td {
+                white-space: nowrap;
                 padding: 0.25rem 0.75rem;
                 border-top: none;
             }

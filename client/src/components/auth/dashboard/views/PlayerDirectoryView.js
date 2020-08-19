@@ -49,7 +49,7 @@ class PlayerDirectoryView extends Component {
 
                     <div className='content'>
 
-                        <DashTitle page_title='Player Directory (in development)' />
+                        <DashTitle page_title='Player Directory' />
                         <UserSearch />
 
                     </div>
