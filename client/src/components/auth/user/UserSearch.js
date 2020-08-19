@@ -61,8 +61,8 @@ export default class ViewUser extends Component {
     }
 
     playerResultsList(){
-        return this.state.players.map(function(currentUser, i){
-            return <PlayerResultListing roster={currentUser} key={i} />
+        return this.state.players.map(function(currentPlayer, i){
+            return <PlayerResultListing user={currentPlayer} key={i} />
         });
     }
 
@@ -109,6 +109,7 @@ export default class ViewUser extends Component {
 
                         {(this.state.players.length > 0) ?
                         <div className='table-container'>
+                            <h5>Players have been found: </h5>
                             <table className='table table-striped'>
                                 <thead>
                                     <tr>

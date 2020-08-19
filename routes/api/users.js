@@ -51,7 +51,6 @@ router.get('/:username', async (req, res) => {
 router.post('/user-search', async (req, res) => {
 
     let errors = {};
-    console.log(req.body);
 
     // Define query for user search
     if(req.body.name_search == null) {
@@ -59,15 +58,15 @@ router.post('/user-search', async (req, res) => {
         res.status(400).json(errors);
     }
     const searchQuery = { $text : { $search : req.body.name_search }};
+    const searchProjection = { name: 1, username: 1, biography: 1 };
 
     try {
-        const users = await User.find(searchQuery);
+        const users = await User.find(searchQuery, searchProjection);
         if (!users) {
             errors.name = `Cannot find any users for search ${req.body.name_search}`;
             res.status(404).json(errors);
         }
-
-        console.log(users);
+        
         res.json(users);
 
     } catch(error) {
