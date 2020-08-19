@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 const RosterSchema = new Schema({
     teamname: {
         type: String,
-        required: true,
-        text: true
+        required: true
     },
     game: {
         type: String,
@@ -32,6 +31,12 @@ const RosterSchema = new Schema({
         default: Date.now
     }
 });
+
+// Define compound text index
+RosterSchema.index(
+    { teamname: 'text', team_desc: 'text', game: 'text' },
+    {name: 'Roster Text Search Index', weights: {teamname: 5, team_desc: 4, game: 1}}
+);
 
 // Uses RosterSchema for documents in collection: rosters
 module.exports = mongoose.model('rosters', RosterSchema);

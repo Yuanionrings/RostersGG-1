@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     name: {
         type: String,
-        required: true,
-        text: true
+        required: true
     },
     username: {
         type: String,
@@ -40,6 +39,12 @@ const UserSchema = new Schema({
         default: false
     }
 });
+
+// Define compound text index
+UserSchema.index(
+    { name: 'text', username: 'text', biography: 'text' },
+    {name: 'User Text Search Index', weights: {name: 3, username: 5, biography: 2}}
+);
 
 // Uses UserSchema for documents in collection: users
 module.exports = mongoose.model('users', UserSchema);
