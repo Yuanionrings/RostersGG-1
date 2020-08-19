@@ -77,9 +77,9 @@ export default class ViewUser extends Component {
                     </div>
                 </div>*/}
 
+
                 <div className='form-box'>
                     <form className='signup-form' onSubmit={this.onSubmitSearch}>
-
                         <h3 className='mb-0'>Player Search</h3>
                         <p className='mt-0'>Enter the name of the player you are looking for.</p>
                         
@@ -94,23 +94,20 @@ export default class ViewUser extends Component {
                                 className={classnames('form-control', {
                                     invalid: this.state.errors.name
                                 })} />
-                            <span className='red-text'>{this.state.errors.name}</span>
-                        </div>
-                        
-                        <div className='form-group'>
                             <button type='submit' className='btn btn-primary btn-block btn-lg'>
                                 Search
                             </button>
+                            <span className='red-text'>{this.state.errors.name}</span>
                         </div>
-
                     </form>
                 </div>
+
 
                 <div className='display-box'>
                     <div className='box'>
                         <h3 className='mb-0'>Players</h3>
 
-                        {(this.state.users.length > 0) ?
+                        {(this.state.players.length > 0) ?
                         <div className='table-container'>
                             <table className='table table-striped'>
                                 <thead>
@@ -131,7 +128,6 @@ export default class ViewUser extends Component {
 
                     </div>
                 </div>
-
             </div>
         );
     }
