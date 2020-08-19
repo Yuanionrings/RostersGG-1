@@ -49,7 +49,7 @@ class RosterSearch extends Component {
             roster_search: this.state.roster_search
         }
 
-        axios.post(`/api/users/roster-search`, rosterSearchBody)
+        axios.post(`/api/rosters/roster-search`, rosterSearchBody)
             .then(res => {
                 console.log(res);
                 this.setState({
