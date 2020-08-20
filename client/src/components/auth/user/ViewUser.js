@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import calcTimeUntil from '../../../util/calcTimeUntil';
 //import { formatDateString } from '../../../util/formatDateString';
 
 const RosterInfo = props => (
@@ -73,7 +74,9 @@ export default class ViewUser extends Component {
                         <div className='information'>
                             <h5 className=''>User Info </h5>
                             <p>Username: <span className='filler-text'>{this.state.username}</span></p>
-                            <p>Member since: <span className='filler-text'>{this.state.date}</span></p>
+                            <p>Time on RostersGG: <span className='filler-text'>{
+                                                    calcTimeUntil(new Date(this.state.date), Date.now())
+                                                }</span></p>
 
                             <h5 className='mt-4 mb-0'>User Biography </h5>
                             <p className='filler-text'>{this.state.biography}</p>

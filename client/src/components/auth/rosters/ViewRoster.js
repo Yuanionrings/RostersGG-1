@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import calcTimeUntil from '../../../util/calcTimeUntil';
 
 import RosterPlayers from './RosterPlayers';
 import RosterEvents from './RosterEvents';
@@ -14,6 +15,7 @@ class ViewRoster extends Component {
             leader: '',
             game: '',
             region: '',
+            date_created: '',
             players: []
         }
     }
@@ -26,6 +28,7 @@ class ViewRoster extends Component {
                     leader: res.data.leader,
                     game: res.data.game,
                     region: res.data.region,
+                    date_created: res.data.date_created,
                     players: res.data.players
                 })
             }).catch(err => {
@@ -62,6 +65,9 @@ class ViewRoster extends Component {
                         <h5 className=''>Team Info </h5>
                             <p>Game: <span className='filler-text'>{this.state.game}</span></p>
                             <p>Region: <span className='filler-text'>{this.state.region}</span></p>
+                            <p>Time on RostersGG: <span className='filler-text'>{
+                                                calcTimeUntil(new Date(this.state.date_created), Date.now())
+                                            }</span></p>
 
                             <h5 className='mt-4 mb-0'>Team Description </h5>
                             <p className='filler-text'>{this.state.team_desc}</p>

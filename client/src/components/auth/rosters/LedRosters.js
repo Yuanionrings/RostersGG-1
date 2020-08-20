@@ -12,7 +12,6 @@ const RosterInfo = props => (
         <td className=''>{props.roster.region}</td>
         <td>
             <Link to={`/roster/${props.roster._id}/edit`}>Manage</Link>
-            <Link to={`/roster/${props.roster._id}/delete`}>Delete</Link>
         </td>
     </tr>
 );

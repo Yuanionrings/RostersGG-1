@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { deleteRoster } from '../../../actions/rosterAuthActions';
-import { logoutUser } from '../../../actions/userAuthActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -10,27 +7,8 @@ class DeleteRoster extends Component {
     constructor() {
         super()
         this.state = {
-            teamname: '',
-            free_to_delete: false,
             errors: {}
         }
-    }
-
-    componentDidMount() {
-        axios.get(`/api/rosters/roster/${this.props.match.params.id}`)
-            .then(res => {
-                if(this.props.auth.user.username === res.data.leader){
-                    this.setState({
-                        teamname: res.data.teamname,
-                        free_to_delete: true
-                    });
-                } else {
-                    this.props.logoutUser();
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -59,21 +37,14 @@ class DeleteRoster extends Component {
         <div>
             <div className='form-box'>
                 <form className='signup-form' onSubmit={this.onSubmit}>
-                    <div>
-                        <Link to='/dashboard'>
-                            <i className='fa fa-arrow-circle-left'></i>
-                            {" "}Back to Dashboard
-                        </Link>
-                    </div>
 
-                    <h3>Delete Roster - {this.state.teamname}</h3>
+                    <h3>Delete Roster - {this.props.teamname}</h3>
 
                     <div className='form-group'>
                         <label>Warning, you cannot save this roster once it is deleted.</label>
                         <button type='submit' className='btn btn-primary btn-block btn-lg'>
-                            Delete Roster Forever
+                            Delete Roster
                         </button>
-                        {/*<span className="red-text">{this.errors.delete}</span>*/}
                     </div>
 
                 </form>
@@ -84,7 +55,6 @@ class DeleteRoster extends Component {
 }
 
 DeleteRoster.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
     deleteRoster: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
@@ -95,4 +65,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { deleteRoster, logoutUser })(DeleteRoster);
+export default connect(mapStateToProps, { deleteRoster })(DeleteRoster);

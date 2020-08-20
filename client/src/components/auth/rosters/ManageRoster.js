@@ -14,6 +14,7 @@ import InvitePlayer from './InvitePlayer';
 import CreateEvent from './CreateEvent';
 import ManageRosterEvents from './ManageRosterEvents';
 import ManagePlayers from './ManagePlayers';
+import DeleteRoster from './DeleteRoster';
 
 
 class ManageRoster extends Component {
@@ -190,6 +191,10 @@ class ManageRoster extends Component {
                     auth={this.props.auth}
                     history={this.props.history}
                     team_id={this.props.match.params.id} />
+
+                <DeleteRoster
+                    match={this.props.match}
+                    teamname={this.state.teamname} />
 
             </div>
         );
