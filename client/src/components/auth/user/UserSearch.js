@@ -26,10 +26,7 @@ class UserSearch extends Component {
             errors: {}
         }
     }
-
-    componentDidMount() {
-    }
-
+    
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({
@@ -51,7 +48,6 @@ class UserSearch extends Component {
 
         axios.post(`/api/users/user-search`, userSearchBody)
             .then(res => {
-                console.log(res);
                 this.setState({
                     players: res.data
                 });
@@ -70,15 +66,6 @@ class UserSearch extends Component {
     render() {
         return (
             <div>
-                {/*<div className='display-box'>
-                    <div className='box'>
-
-                        <h3>User Directory Search</h3>
-
-                    </div>
-                </div>*/}
-
-
                 <div className='form-box'>
                     <form className='signup-form' onSubmit={this.onSubmitSearch}>
                         <h3 className='mb-0'>Player Search</h3>

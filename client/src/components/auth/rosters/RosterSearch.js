@@ -27,9 +27,6 @@ class RosterSearch extends Component {
         }
     }
 
-    componentDidMount() {
-    }
-
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({
@@ -51,7 +48,6 @@ class RosterSearch extends Component {
 
         axios.post(`/api/rosters/roster-search`, rosterSearchBody)
             .then(res => {
-                console.log(res);
                 this.setState({
                     rosters: res.data
                 });
@@ -70,25 +66,16 @@ class RosterSearch extends Component {
     render() {
         return (
             <div>
-                {/*<div className='display-box'>
-                    <div className='box'>
-
-                        <h3>User Directory Search</h3>
-
-                    </div>
-                </div>*/}
-
-
                 <div className='form-box'>
                     <form className='signup-form' onSubmit={this.onSubmitSearch}>
                         <h3 className='mb-0'>Team Search</h3>
-                        <p className='mt-0'>Enter a team name or a game to find rosters.</p>
+                        <p className='mt-0'>Enter a team name or game to find rosters.</p>
                         
                         <div className='form-group'>
-                            <label>Team: </label>
+                            <label>Team Name / Game: </label>
                             <input type='text'
                                 id='roster_search'
-                                placeholder='Team name / game to search for...'
+                                placeholder='Team Name / Game to search for...'
                                 value={this.state.roster_search}
                                 error={this.state.errors.name}
                                 onChange={this.onChange}
