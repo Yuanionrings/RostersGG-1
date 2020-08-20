@@ -113,7 +113,7 @@ class ManagePlayers extends Component {
                         </table>
                     </div>
                     :
-                    <p className='filler-text mb-0'>You are the only player on this roster.</p>
+                    <p className='filler-text mb-4'>You are the only player on this roster.</p>
                     }
                 </div>
             </div>

@@ -194,7 +194,8 @@ class ManageRoster extends Component {
 
                 <DeleteRoster
                     match={this.props.match}
-                    teamname={this.state.teamname} />
+                    teamname={this.state.teamname} 
+                    history={this.props.history} />
 
             </div>
         );
