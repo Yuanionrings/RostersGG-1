@@ -616,6 +616,16 @@ _______________________________________
         border: 1px solid #33D9B2 !important;
         margin: -0.75px 0.5rem -0.75px 0px;
     }
+    .form-box .btn-delete {
+        color: #ffffff !important;
+        background: #ff5252 !important;
+        border: none !important;
+    }
+    .form-box .btn-delete:hover {
+        color: #ffffff !important;
+        background: #b33939 !important;
+        border: none !important;
+    }
 
 
     .form-box .player-list table {

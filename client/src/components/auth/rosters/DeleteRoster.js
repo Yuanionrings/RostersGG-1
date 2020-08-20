@@ -42,7 +42,7 @@ class DeleteRoster extends Component {
 
                     <div className='form-group'>
                         <label>Warning, you cannot save this roster once it is deleted.</label>
-                        <button type='submit' className='btn btn-primary btn-block btn-lg'>
+                        <button type='submit' className='btn btn-delete btn-block btn-lg'>
                             Delete Roster
                         </button>
                     </div>
