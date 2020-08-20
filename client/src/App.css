@@ -301,7 +301,7 @@ _______________________________________
     padding-top: 4rem;
     padding-bottom: 4rem;
     color: #2C3E50;
-    max-width: 800px;
+    max-width: 920px;
     width: 90%;
 }
     .text-page-container h2 {
@@ -309,23 +309,28 @@ _______________________________________
     }
     .text-page-container h3 {
         font-weight: 600;
-        margin-top: 2.5rem;
-        margin-bottom: 0.5rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
     }
 
 .not-found {
-    box-shadow: #2C3E50;
+    color: #2C3E50;
 }
-    .text-page-container h1 {
+    .not-found h1 {
         font-weight: 800;
+        margin-bottom: 1rem;
     }
-    .text-page-container h3 {
+    .not-found h5 {
         font-weight: 500;
-        margin-top: 2rem;
-        margin-bottom: 0.5rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
     }
-
-
+    .not-found a, .not-found a:hover {
+        color: #2C3E50 !important
+    }
+    .not-found a:hover {
+        text-decoration: underline;
+    }
 
 
 /*_____________________________________
