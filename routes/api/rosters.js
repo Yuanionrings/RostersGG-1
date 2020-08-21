@@ -184,7 +184,7 @@ router.post('/roster-search', async (req, res) => {
         searchQuery = { $text : { $search : req.body.roster_search }, 
                         game: req.body.game_search };
 
-    } else if(req.body.game_search && !req.body.region_search) {
+    } else if(!req.body.game_search && req.body.region_search) {
         searchQuery = { $text : { $search : req.body.roster_search }, 
                         region: req.body.region_search };
 
@@ -197,12 +197,12 @@ router.post('/roster-search', async (req, res) => {
     try {
         const rosters = await Roster.find(searchQuery, searchProjection);
         if (!rosters) {
-            errors.name = `Cannot find any rosters for search ${req.body.roster_search}`;
+            errors.name = `Error finding any rosters for search ${req.body.roster_search}`;
             res.status(404).json(errors);
             return;
 
         } else if (rosters.length < 1) {
-            errors.name = `Cannot find any rosters for search ${req.body.roster_search}`;
+            errors.name = `Found 0 rosters for search ${req.body.roster_search}`;
             res.status(404).json(errors);
             return;
         }
