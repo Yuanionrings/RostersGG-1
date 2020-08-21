@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { supportedGamesList, supportedGames } from '../../../util/selectSupportedGames';
+import { supportedRegionsList, supportedRegions } from '../../../util/selectSupportedRegions';
 
 
 const RosterResultListing = props => (
@@ -45,18 +47,18 @@ class RosterSearch extends Component {
         e.preventDefault();
         
         var rosterSearchBody;
-        if (game === '' && region === '') {
+        if (this.state.game === '' && this.state.region === '') {
             rosterSearchBody = {
                 roster_search: this.state.roster_search
             }
 
-        } else if (game !== '' && region === '') {
+        } else if (this.state.game !== '' && this.state.region === '') {
             rosterSearchBody = {
                 roster_search: this.state.roster_search,
                 game_search: this.state.game
             }
 
-        } else if (game === '' && region !== '') {
+        } else if (this.state.game === '' && this.state.region !== '') {
             rosterSearchBody = {
                 roster_search: this.state.roster_search,
                 region_search: this.state.region
@@ -113,15 +115,15 @@ class RosterSearch extends Component {
                             <select 
                             value={this.state.game} 
                             id='game'
-                            error={errors.game}
+                            error={this.state.errors.game}
                             onChange={this.onChange} 
                             className={classnames('form-control', {
-                                invalid: errors.game
+                                invalid: this.state.errors.game
                             })}>
                             <option selected value=''>Any Game</option>
                             {supportedGamesList(supportedGames)}
                             </select>
-                            <span className='red-text'>{errors.game}</span>
+                            <span className='red-text'>{this.state.errors.game}</span>
                         </div>
                         
 
@@ -130,15 +132,15 @@ class RosterSearch extends Component {
                             <select 
                             value={this.state.region} 
                             id='region'
-                            error={errors.region}
+                            error={this.state.errors.region}
                             onChange={this.onChange} 
                             className={classnames('form-control', {
-                                invalid: errors.region
+                                invalid: this.state.errors.region
                             })}>
                             <option selected value=''>Any Region</option>
                             {supportedRegionsList(supportedRegions)}
                             </select>
-                            <span className='red-text'>{errors.region}</span>
+                            <span className='red-text'>{this.state.errors.region}</span>
                         </div>
 
                         <div className='form-group'>
