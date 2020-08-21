@@ -200,6 +200,14 @@ _______________________________________
                 box-shadow: 0px 5px 10px #D8D8D8;
                 border-radius: 8px;
             }
+            .dashboard-container .contact .display-box .box .user-listing-card {
+                background: #f1f1f1;
+                color: #2C3E50;
+                margin-bottom: 1rem;
+            }
+            .dashboard-container .contact .display-box .box .user-listing-card .text{
+                margin-right: 2rem;
+            }
 
             .dashboard-container .content .display-box .btn {        
                 font-size: 16px;

@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import UserListingCard from './UserListingCard';
 
-const PlayerResultListing = props => (
-    <tr>
-        <td className=''>
-            <Link to={`/user/${props.user.username}`}>{props.user.name}</Link>
-        </td>
-        <td className=''>{props.user.username}</td>
-        <td className=''>{props.user.biography}</td>
-    </tr>
-);
 
 class UserSearch extends Component {
 
@@ -59,7 +50,7 @@ class UserSearch extends Component {
 
     playerResultsList(){
         return this.state.players.map(function(currentPlayer, i){
-            return <PlayerResultListing user={currentPlayer} key={i} />
+            return <UserListingCard user={currentPlayer} key={i} />
         });
     }
 
@@ -99,29 +90,12 @@ class UserSearch extends Component {
                         <h3 className='mb-0'>Players</h3>
 
                         {(this.state.players.length > 0) ?
-                        <div className='table-container'>
-
-                            {(this.state.players.length === 1) ?
-                                <p className='filler-text'>Found a player.</p>
-                            :
-                            <p className='filler-text'>Found {this.state.players.length} players.</p>
-                            }
-
-                            <table className='table table-striped'>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Username</th>
-                                        <th>Biography</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    { this.playerResultsList() }
-                                </tbody>
-                            </table>
+                        <div className=''>
+                            <p className='filler-text'>Found {this.state.players.length} players. </p>
+                            { this.playerResultsList() }
                         </div>
                         :
-                        <p className='filler-text'>Search for players with the search bar above.</p>
+                        <p className='filler-text'>Search for players with the search bar above. </p>
                         }
 
                     </div>
