@@ -174,8 +174,25 @@ router.post('/roster-search', async (req, res) => {
         errors.badrequest = `Bad request, roster_search query is null`;
         res.status(400).json(errors);
     }
-    const searchQuery = { $text : { $search : req.body.roster_search }};
+    const searchQuery;
     const searchProjection = { teamname: 1, _id: 1, region: 1, game: 1 };
+
+    if(!req.body.game_search && !req.body.region_search) {
+        searchQuery = { $text : { $search : req.body.roster_search }};
+
+    } else if(req.body.game_search && !req.body.region_search) {
+        searchQuery = { $text : { $search : req.body.roster_search }, 
+                        game: req.body.game_search };
+
+    } else if(req.body.game_search && !req.body.region_search) {
+        searchQuery = { $text : { $search : req.body.roster_search }, 
+                        region: req.body.region_search };
+
+    } else {
+        searchQuery = { $text : { $search : req.body.roster_search }, 
+                        region: req.body.region_search,
+                        game: req.body.game_search };
+    }
 
     try {
         const rosters = await Roster.find(searchQuery, searchProjection);

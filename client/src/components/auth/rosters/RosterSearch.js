@@ -22,6 +22,8 @@ class RosterSearch extends Component {
         super(props);
         this.state = {
             roster_search: '',
+            game: '',
+            region: '',
             rosters: [],
             errors: {}
         }
@@ -42,8 +44,30 @@ class RosterSearch extends Component {
     onSubmitSearch = e => {
         e.preventDefault();
         
-        const rosterSearchBody = {
-            roster_search: this.state.roster_search
+        const rosterSearchBody;
+        if (game === '' && region === '') {
+            rosterSearchBody = {
+                roster_search: this.state.roster_search
+            }
+
+        } else if (game !== '' && region === '') {
+            rosterSearchBody = {
+                roster_search: this.state.roster_search,
+                game_search: this.state.game
+            }
+
+        } else if (game === '' && region !== '') {
+            rosterSearchBody = {
+                roster_search: this.state.roster_search,
+                region_search: this.state.region
+            }
+
+        } else {
+            rosterSearchBody = {
+                roster_search: this.state.roster_search,
+                game_search: this.state.game,
+                region_search: this.state.region
+            }
         }
 
         axios.post(`/api/rosters/roster-search`, rosterSearchBody)
@@ -69,10 +93,9 @@ class RosterSearch extends Component {
                 <div className='form-box'>
                     <form className='signup-form' onSubmit={this.onSubmitSearch}>
                         <h3 className='mb-0'>Team Search</h3>
-                        <p className='mt-0'>Enter a team name or game to find rosters.</p>
                         
                         <div className='form-group'>
-                            <label>Team Name / Game: </label>
+                            <label>Team Name: </label>
                             <input type='text'
                                 id='roster_search'
                                 placeholder='Team Name / Game to search for...'
@@ -83,6 +106,39 @@ class RosterSearch extends Component {
                                     invalid: this.state.errors.name
                                 })} />
                             <span className='red-text'>{this.state.errors.name}</span>
+                        </div>
+
+                        <div className='form-group'>
+                            <label>Game: </label>
+                            <select 
+                            value={this.state.game} 
+                            id='game'
+                            error={errors.game}
+                            onChange={this.onChange} 
+                            className={classnames('form-control', {
+                                invalid: errors.game
+                            })}>
+                            <option selected value=''>Any Game</option>
+                            {supportedGamesList(supportedGames)}
+                            </select>
+                            <span className='red-text'>{errors.game}</span>
+                        </div>
+                        
+
+                        <div className='form-group'>
+                            <label>Region: </label>
+                            <select 
+                            value={this.state.region} 
+                            id='region'
+                            error={errors.region}
+                            onChange={this.onChange} 
+                            className={classnames('form-control', {
+                                invalid: errors.region
+                            })}>
+                            <option selected value=''>Any Region</option>
+                            {supportedRegionsList(supportedRegions)}
+                            </select>
+                            <span className='red-text'>{errors.region}</span>
                         </div>
 
                         <div className='form-group'>
