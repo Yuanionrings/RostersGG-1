@@ -119,7 +119,7 @@ class RosterSearch extends Component {
                             id='game'
                             error={this.state.errors.game}
                             onChange={this.onChange} 
-                            className={classnames('half-form-control-left', {
+                            className={classnames('form-control', {
                                 invalid: this.state.errors.game
                             })}>
                             <option selected value=''>Any Game</option>
@@ -133,7 +133,7 @@ class RosterSearch extends Component {
                             id='region'
                             error={this.state.errors.region}
                             onChange={this.onChange} 
-                            className={classnames('half-form-control-right', {
+                            className={classnames('form-control', {
                                 invalid: this.state.errors.region
                             })}>
                             <option selected value=''>Any Region</option>
