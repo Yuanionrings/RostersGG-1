@@ -174,7 +174,7 @@ router.post('/roster-search', async (req, res) => {
         errors.badrequest = `Bad request, roster_search query is null`;
         res.status(400).json(errors);
     }
-    const searchQuery;
+    var searchQuery;
     const searchProjection = { teamname: 1, _id: 1, region: 1, game: 1 };
 
     if(!req.body.game_search && !req.body.region_search) {

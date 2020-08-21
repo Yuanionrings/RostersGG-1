@@ -44,7 +44,7 @@ class RosterSearch extends Component {
     onSubmitSearch = e => {
         e.preventDefault();
         
-        const rosterSearchBody;
+        var rosterSearchBody;
         if (game === '' && region === '') {
             rosterSearchBody = {
                 roster_search: this.state.roster_search
