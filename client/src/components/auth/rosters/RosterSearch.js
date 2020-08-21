@@ -125,7 +125,7 @@ class RosterSearch extends Component {
                             </select>
                             <span className='red-text'>{this.state.errors.game}</span>
                         </div>
-                        
+
                         <div className='form-group'>
                             <label className=''>Region: </label>
                             <select 

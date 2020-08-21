@@ -20,8 +20,14 @@ class EditUser extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.auth.isAuthenticated) {
-            this.props.history.push('/login');
+        if (this.props.auth.user.username !== this.props.match.params.username) {
+            const path = `/dashboard`;
+            const toast_message = `You are not autherized to edit other user's accounts`;
+            this.props.history.push({
+                pathname: path,
+                state: { toast_message: toast_message,
+                         toast_status: 'error' }
+            });
         }
         axios.get(`/api/users/${this.props.auth.user.username}`)
             .then(res => {
