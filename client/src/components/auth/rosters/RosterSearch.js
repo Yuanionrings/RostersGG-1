@@ -97,7 +97,6 @@ class RosterSearch extends Component {
                         <h3 className='mb-0'>Team Search</h3>
                         
                         <div className='form-group'>
-                            <div className=''>
                             <label>Team Name: </label>
                             <input type='text'
                                 id='roster_search'
@@ -109,11 +108,10 @@ class RosterSearch extends Component {
                                     invalid: this.state.errors.name
                                 })} />
                             <span className='red-text'>{this.state.errors.name}</span>
-                            </div>
                         </div>
 
                         <div className='form-group'>
-                            <label className='mr-2'>Game: </label>
+                            <label className=''>Game: </label>
                             <select 
                             value={this.state.game} 
                             id='game'
@@ -126,8 +124,10 @@ class RosterSearch extends Component {
                             {supportedGamesList(supportedGames)}
                             </select>
                             <span className='red-text'>{this.state.errors.game}</span>
+                        </div>
                         
-                            <label className='mr-2'>Region: </label>
+                        <div className='form-group'>
+                            <label className=''>Region: </label>
                             <select 
                             value={this.state.region} 
                             id='region'
