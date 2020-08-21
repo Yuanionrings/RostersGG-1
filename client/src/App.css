@@ -539,23 +539,14 @@ _______________________________________
     border: none;
     background: #ffffff;
 }
-.half-form-control-left {
+.half-form-control {
     display: inline-block;
-    width: 48%;
-    margin-right: 1rem;
+    width: 35%;
     min-height: 41px;
     box-shadow: none;   
     border: none;
     background: #ffffff;
-}
-.half-form-control-right {
-    display: inline-block;
-    width: 48%;
-    margin-left: 1rem;
-    min-height: 41px;
-    box-shadow: none;   
-    border: none;
-    background: #ffffff;
+    border-radius: 8px;
 }
 .form-control:focus {
     border-color: #218c74;
