@@ -70,7 +70,9 @@ class RosterSearch extends Component {
                 });
             })
             .catch(err => {
-                console.log(err);
+                this.setState({
+                    errors: err.response.data
+                });
             })
     }
 
@@ -99,6 +101,7 @@ class RosterSearch extends Component {
                                     invalid: this.state.errors.name
                                 })} />
                             <span className='red-text'>{this.state.errors.name}</span>
+                            <span className='red-text'>{this.state.errors.badrequest}</span>
                         </div>
 
                         <div className='form-group'>

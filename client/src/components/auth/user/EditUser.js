@@ -168,6 +168,7 @@ class EditUser extends Component {
 
                     <div className='form-group'>
                         <button type='submit' className='btn btn-primary btn-block btn-lg'>Submit Changes</button>
+                        <span className='red-text'>{errors.badrequest}</span>
                     </div>
 
                 </form>
