@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+import RosterListingCard from './RosterListingCard';
 import { supportedGamesList, supportedGames } from '../../../util/selectSupportedGames';
 import { supportedRegionsList, supportedRegions } from '../../../util/selectSupportedRegions';
 
-
-const RosterResultListing = props => (
-    <tr>
-        <td className=''>
-            <Link to={`/roster/${props.roster._id}`}>{props.roster.teamname}</Link>
-        </td>
-        <td className=''>{props.roster.game}</td>
-        <td className=''>{props.roster.region}</td>
-    </tr>
-);
 
 class RosterSearch extends Component {
 
@@ -85,7 +76,7 @@ class RosterSearch extends Component {
 
     rosterResultsList(){
         return this.state.rosters.map(function(currentRoster, i){
-            return <RosterResultListing roster={currentRoster} key={i} />
+            return <RosterListingCard roster={currentRoster} key={i} />
         });
     }
 
@@ -156,26 +147,9 @@ class RosterSearch extends Component {
                         <h3 className='mb-0'>Rosters</h3>
 
                         {(this.state.rosters.length > 0) ?
-                        <div className='table-container'>
-
-                            {(this.state.rosters.length === 1) ?
-                                <p className='filler-text'>Found a team.</p>
-                            :
-                            <p className='filler-text'>Found {this.state.rosters.length} teams.</p>
-                            }
-
-                            <table className='table table-striped'>
-                                <thead>
-                                    <tr>
-                                        <th>Team Name</th>
-                                        <th>Game</th>
-                                        <th>Region</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    { this.rosterResultsList() }
-                                </tbody>
-                            </table>
+                        <div className=''>
+                            <p className='mb-4 filler-text'>Found {this.state.rosters.length} teams. </p>
+                            { this.rosterResultsList() }
                         </div>
                         :
                         <p className='filler-text'>Search for rosters with the search bar above.</p>

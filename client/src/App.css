@@ -200,16 +200,29 @@ _______________________________________
                 box-shadow: 0px 5px 10px #D8D8D8;
                 border-radius: 8px;
             }
-            .dashboard-container .content .display-box .box .user-listing-card {
-                background: #fafafa;
-                color: #2C3E50;
-                margin-bottom: 1rem;
-                padding: 0.75rem 0.5rem;
-                box-shadow: 0px 5px 10px #D8D8D8;
-            }
-            .dashboard-container .content .display-box .box .user-listing-card .text{
-                padding-left: 36px;
-            }
+                .dashboard-container .content .display-box .box .user-listing-card {
+                    background: #f5f5f5;
+                    color: #2C3E50;
+                    margin-bottom: 1rem;
+                    padding: 0.75rem 0.5rem;
+                    box-shadow: 0px 5px 10px #D8D8D8;
+                    border-radius: 8px;
+                }
+                .dashboard-container .content .display-box .box .user-listing-card .text{
+                    padding-left: 64px;
+                }
+
+                .dashboard-container .content .display-box .box .roster-listing-card {
+                    background: #f5f5f5;
+                    color: #2C3E50;
+                    margin-bottom: 1rem;
+                    padding: 0.75rem 0.5rem;
+                    box-shadow: 0px 5px 10px #D8D8D8;
+                    border-radius: 8px;
+                }
+                .dashboard-container .content .display-box .box .roster-listing-card .text{
+                    padding-left: 64px;
+                }
 
             .dashboard-container .content .display-box .btn {        
                 font-size: 16px;
