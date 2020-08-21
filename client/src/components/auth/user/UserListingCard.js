@@ -6,7 +6,7 @@ const UserListingCard = props => {
         <div className='user-listing-card'>
             <div className='text'>
                 <h5 className='mb-0'>
-                    <Link to={`/user/${props.user.username}`}>{props.user.name}</Link>
+                    <Link to={`/user/${props.user.username}`}>{props.user.name}</Link> @{props.user.username}
                 </h5>
                 <p className='mt-0 filler-text'>{props.user.biography}</p>
             </div>
