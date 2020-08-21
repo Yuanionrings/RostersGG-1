@@ -543,11 +543,19 @@ _______________________________________
     display: inline-block;
     width: 48%;
     margin-right: 1rem;
+    min-height: 41px;
+    box-shadow: none;   
+    border: none;
+    background: #ffffff;
 }
 .half-form-control-right {
     display: inline-block;
     width: 48%;
     margin-left: 1rem;
+    min-height: 41px;
+    box-shadow: none;   
+    border: none;
+    background: #ffffff;
 }
 .form-control:focus {
     border-color: #218c74;
@@ -709,7 +717,9 @@ _______________________________________
         margin-bottom: 1rem;
     }
     .form-box .form-group {
-        margin-bottom: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
     }
     .form-box label {
         font-weight: normal;
