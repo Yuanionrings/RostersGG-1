@@ -539,15 +539,6 @@ _______________________________________
     border: none;
     background: #ffffff;
 }
-.half-form-control {
-    display: inline-block;
-    width: 35%;
-    min-height: 41px;
-    box-shadow: none;   
-    border: none;
-    background: #ffffff;
-    border-radius: 8px;
-}
 .form-control:focus {
     border-color: #218c74;
 }
@@ -708,8 +699,6 @@ _______________________________________
         margin-bottom: 1rem;
     }
     .form-box .form-group {
-        display: flex;
-        justify-content: space-between;
         margin-bottom: 1rem;
     }
     .form-box label {
