@@ -117,24 +117,21 @@ class RosterSearch extends Component {
                             id='game'
                             error={this.state.errors.game}
                             onChange={this.onChange} 
-                            className={classnames('form-control', {
+                            className={classnames('half-form-control-left', {
                                 invalid: this.state.errors.game
                             })}>
                             <option selected value=''>Any Game</option>
                             {supportedGamesList(supportedGames)}
                             </select>
                             <span className='red-text'>{this.state.errors.game}</span>
-                        </div>
                         
-
-                        <div className='form-group'>
                             <label>Region: </label>
                             <select 
                             value={this.state.region} 
                             id='region'
                             error={this.state.errors.region}
                             onChange={this.onChange} 
-                            className={classnames('form-control', {
+                            className={classnames('half-form-control-right', {
                                 invalid: this.state.errors.region
                             })}>
                             <option selected value=''>Any Region</option>

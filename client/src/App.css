@@ -539,6 +539,16 @@ _______________________________________
     border: none;
     background: #ffffff;
 }
+.half-form-control-left {
+    display: inline-block;
+    width: 48%;
+    margin-right: 1rem;
+}
+.half-form-control-right {
+    display: inline-block;
+    width: 48%;
+    margin-left: 1rem;
+}
 .form-control:focus {
     border-color: #218c74;
 }
