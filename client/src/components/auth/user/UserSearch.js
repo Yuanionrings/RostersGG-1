@@ -45,7 +45,9 @@ class UserSearch extends Component {
                 });
             })
             .catch(err => {
-                console.log(err);
+                this.setState({
+                    errors: err.response.data
+                })
             })
     }
 

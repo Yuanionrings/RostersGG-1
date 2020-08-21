@@ -22,7 +22,7 @@ class EditUser extends Component {
     componentDidMount() {
         if (this.props.auth.user.username !== this.props.match.params.username) {
             const path = `/dashboard`;
-            const toast_message = `You are not autherized to edit other user's accounts`;
+            const toast_message = `You are not authorized to edit other accounts`;
             this.props.history.push({
                 pathname: path,
                 state: { toast_message: toast_message,

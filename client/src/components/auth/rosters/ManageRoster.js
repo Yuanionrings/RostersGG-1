@@ -43,8 +43,14 @@ class ManageRoster extends Component {
                         leader: res.data.leader
                     });
                 } else {
-                    this.props.logoutUser();
-                }})
+                    const path = `/dashboard`;
+                    const toast_message = `You are not authorized to edit other rosters`;
+                    this.props.history.push({
+                        pathname: path,
+                        state: { toast_message: toast_message,
+                                    toast_status: 'error' }
+                    });
+            }})
             .catch(err => {
                 console.log(err);
             });
