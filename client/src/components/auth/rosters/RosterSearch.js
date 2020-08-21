@@ -91,7 +91,7 @@ class RosterSearch extends Component {
                             <label>Team Name: </label>
                             <input type='text'
                                 id='roster_search'
-                                placeholder='Team Name / Game to search for...'
+                                placeholder='Name to search for...'
                                 value={this.state.roster_search}
                                 error={this.state.errors.name}
                                 onChange={this.onChange}

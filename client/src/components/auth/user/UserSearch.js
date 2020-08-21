@@ -19,6 +19,7 @@ class UserSearch extends Component {
     }
     
     componentWillReceiveProps(nextProps) {
+        console.log(`got errors: ${nextProps.errors}`)
         if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
