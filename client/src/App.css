@@ -201,14 +201,14 @@ _______________________________________
                 border-radius: 8px;
             }
             .dashboard-container .content .display-box .box .user-listing-card {
-                background: #f1f1f1;
+                background: #fafafa;
                 color: #2C3E50;
                 margin-bottom: 1rem;
-                padding: 1rem;
+                padding: 0.75rem 0.5rem;
                 box-shadow: 0px 5px 10px #D8D8D8;
             }
             .dashboard-container .content .display-box .box .user-listing-card .text{
-                margin-right: 2rem;
+                padding-left: 36px;
             }
 
             .dashboard-container .content .display-box .btn {        

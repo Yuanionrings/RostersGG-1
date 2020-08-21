@@ -91,7 +91,7 @@ class UserSearch extends Component {
 
                         {(this.state.players.length > 0) ?
                         <div className=''>
-                            <p className='filler-text'>Found {this.state.players.length} players. </p>
+                            <p className='mb-4 filler-text'>Found {this.state.players.length} players. </p>
                             { this.playerResultsList() }
                         </div>
                         :
