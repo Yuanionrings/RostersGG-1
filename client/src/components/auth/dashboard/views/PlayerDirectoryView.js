@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import { getCorrectPath } from '../../../../util/developmentHelper';
 
 import DashHeader from '../DashHeader';
 import DashTitle from '../DashTitle';
@@ -17,11 +19,24 @@ class PlayerDirectoryView extends Component {
 
     constructor(props){
         super(props);
-        this.state = {}
+        this.state = {
+            myRosters: []
+        }
     }
 
     componentDidMount(){
-        this.displayToast()
+        this.displayToast();
+
+        const getLedRostersRoute = getCorrectPath(`/api/rosters/${this.props.auth.user.username}/led-rosters`);
+        axios.get(getLedRostersRoute)
+            .then(res => {
+                this.setState({
+                    myRosters: res.data
+                });
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
     }
 
     displayToast() {
@@ -50,7 +65,9 @@ class PlayerDirectoryView extends Component {
                     <div className='content'>
 
                         <DashTitle page_title='Player Directory' />
-                        <UserSearch />
+                        <UserSearch auth={this.props.auth} 
+                                    history={this.props.history} 
+                                    rosters={this.state.myRosters} />
 
                     </div>
 
@@ -61,7 +78,6 @@ class PlayerDirectoryView extends Component {
 }
 
 PlayerDirectoryView.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
 

@@ -201,16 +201,80 @@ _______________________________________
                 border-radius: 8px;
             }
                 .dashboard-container .content .display-box .box .user-listing-card {
-                    background: linear-gradient(to right, #ffffff, #f5f5f5);
+                    display: flex;
+                    justify-content: space-between;
+                    white-space: nowrap;
+                    background: linear-gradient(to left, #ffffff, #f5f5f5);
                     color: #2C3E50;
                     margin-bottom: 0.5rem;
                     padding: 0.75rem 0.5rem;
                     border-radius: 8px;
                 }
-                .dashboard-container .content .display-box .box .user-listing-card .text{
-                    padding-left: 64px;
-                }
-
+                    .dashboard-container .content .display-box .box .user-listing-card .text{
+                        padding-left: 64px;
+                    }
+                    .dashboard-container .content .display-box .box .user-listing-card .invite-button{
+                        color: #909193;
+                        background: #ffffff;
+                        display: inline-block;
+                        width: 45px;
+                        height: 45px;
+                        margin-right: 1.5rem;
+                        border-radius: 8px;
+                        border: none;
+                    }
+                    .dashboard-container .content .display-box .box .user-listing-card .invite-button:hover {
+                        background: #f5f5f5;
+                    }
+                    .dashboard-container .content .display-box .box .user-listing-card img{
+                        width: 26px;
+                    }
+                    .invitation-modal {
+                        position: absolute;
+                        color: #2C3E50;
+                        background: #ffffff;
+                        width: 300px;
+                        min-width: 300px;
+                        top: 50%;
+                        right: 2rem;
+                        padding: 1.5rem 1rem;
+                        border-radius: 8px;
+                        border: none;
+                        box-shadow: 0px 0px 20px #818181;
+                    }
+                    .invitation-modal h5 {
+                        font-weight: 600;
+                    }
+                    .invitation-modal .btn-primary {        
+                        font-size: 1rem;
+                        font-weight: 500;
+                        color: #ffffff !important;
+                        background: #33D9B2;
+                        width: 100%;
+                        border-radius: 8px;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        margin: 1rem 0 0 0;
+                    }
+                    .invitation-modal .btn-secondary {        
+                        font-size: 1rem;
+                        font-weight: 500;
+                        color: #33D9B2 !important;
+                        background: #ffffff;
+                        width: 100%;
+                        border-radius: 8px;
+                        border: 1px solid #33D9B2 !important;
+                        padding: 0.5rem 1rem;
+                        margin: 1rem 0 0 0;
+                    }
+                    .invitation-modal .btn-primary:hover, .invitation-modal .btn-secondary:hover {
+                        background: #218C74;
+                    }
+                    .invitation-modal:hover, .invitation-modal:active {
+                        border-radius: 8px;
+                        border: none;
+                        box-shadow: 0px 0px 20px #818181;
+                    }
                 .dashboard-container .content .display-box .box .roster-listing-card {
                     background: linear-gradient(to right, #ffffff, #f5f5f5);
                     color: #2C3E50;

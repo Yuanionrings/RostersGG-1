@@ -97,6 +97,7 @@ router.get('/:username/invitations', async (req, res) => {
         if (!user) {
             errors.username = `No user found with the username: ${userFilter.username}`;
             res.status(404).json(errors);
+            return;
         }
 
         // Define filter for querying rosters collection

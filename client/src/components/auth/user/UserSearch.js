@@ -19,6 +19,7 @@ class UserSearch extends Component {
         }
     }
     
+    /*
     componentWillReceiveProps(nextProps) {
         console.log(`got errors: ${nextProps.errors}`)
         if (nextProps.errors) {
@@ -27,6 +28,7 @@ class UserSearch extends Component {
             });
         }
     }
+    */
 
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value })
@@ -54,8 +56,16 @@ class UserSearch extends Component {
     }
 
     playerResultsList(){
+        let auth_props = this.props.auth;
+        let history_props = this.props.history;
+        let roster_props = this.props.rosters;
+        console.log(this.props)
         return this.state.players.map(function(currentPlayer, i){
-            return <UserListingCard user={currentPlayer} key={i} />
+            return <UserListingCard user={currentPlayer} 
+                                    key={i}
+                                    auth={auth_props}
+                                    history={history_props} 
+                                    rosters={roster_props} />
         });
     }
 
@@ -97,7 +107,7 @@ class UserSearch extends Component {
 
                         {(this.state.players.length > 0) ?
                         <div className=''>
-                            <p className='mb-4 filler-text'>Found {this.state.players.length} players. </p>
+                            <p className='mb-4 filler-text'>Found {this.state.players.length} player(s). </p>
                             { this.playerResultsList() }
                         </div>
                         :
