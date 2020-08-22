@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 const RosterInfo = props => (
     <tr>
@@ -23,7 +24,8 @@ export default class MyRosters extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/rosters/${this.state.username}/rosters`)
+        const getRosterInfoRoute = getCorrectPath(`/api/rosters/${this.state.username}/rosters`);
+        axios.get(getRosterInfoRoute)
             .then(res => {
                 this.setState({
                     username: this.state.username,

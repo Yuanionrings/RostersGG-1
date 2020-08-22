@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { formatDateString } from '../../../util/formatDateString';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 const PlayerInfo = props => (
     <tr>
@@ -21,7 +22,8 @@ class RosterPlayers extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`/api/rosters/roster/${this.props.match.params.id}/players`)
+        const getRosterPlayersRoute = getCorrectPath(`/api/rosters/roster/${this.props.match.params.id}/players`);
+        axios.get(getRosterPlayersRoute)
             .then(res => {
                 this.setState({
                     players: res.data

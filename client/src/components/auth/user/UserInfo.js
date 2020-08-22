@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 const InvitationInfo = props => (
     <tr>
@@ -25,8 +26,8 @@ const InvitationInfo = props => (
 );
 
 function onAccept(team_id, given_username){
-    axios.patch(`/api/rosters/roster/${team_id}/accept-invite`,
-        {username: given_username})
+    const acceptRoute = getCorrectPath(`/api/rosters/roster/${team_id}/accept-invite`);
+    axios.patch(acceptRoute, {username: given_username})
         .then(res => {
             console.log(res)
         })
@@ -38,8 +39,8 @@ function onAccept(team_id, given_username){
 }
 
 function onDecline(team_id, given_username){
-    axios.patch(`/api/rosters/roster/${team_id}/decline-invite`,
-        {username: given_username})
+    const declineRoute = getCorrectPath(`/api/rosters/roster/${team_id}/decline-invite`);
+    axios.patch(declineRoute, {username: given_username})
         .then(res => {
             console.log(res)
         })
@@ -76,7 +77,8 @@ class UserInfo extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/users/${this.props.given_username}`)
+        const getUserInfoRoute = getCorrectPath(`/api/users/${this.props.given_username}`);
+        axios.get(getUserInfoRoute)
             .then(res => {
                 this.setState({
                     user_name: res.data.name,
@@ -91,7 +93,8 @@ class UserInfo extends Component {
                 window.location.reload(false);
             });
 
-        axios.get(`/api/users/${this.props.given_username}/invitations`)
+        const getUserInvitations = getCorrectPath(`/api/users/${this.props.given_username}/invitations`);
+        axios.get(getUserInvitations)
             .then(res => {
                 this.setState({
                     user_invitations: res.data

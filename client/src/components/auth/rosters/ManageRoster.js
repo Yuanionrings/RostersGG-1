@@ -6,6 +6,7 @@ import { editRoster } from '../../../actions/rosterAuthActions';
 import { logoutUser } from '../../../actions/userAuthActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 import { supportedGamesList, supportedGames } from '../../../util/selectSupportedGames';
 import { supportedRegionsList, supportedRegions } from '../../../util/selectSupportedRegions';
@@ -32,7 +33,8 @@ class ManageRoster extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/rosters/roster/${this.props.match.params.id}`)
+        const getRosterInfoRoute = getCorrectPath(`/api/rosters/roster/${this.props.match.params.id}`);
+        axios.get(getRosterInfoRoute)
             .then(res => {
                 if(this.props.auth.user.username === res.data.leader){
                     this.setState({
@@ -44,7 +46,7 @@ class ManageRoster extends Component {
                     });
                 } else {
                     const path = `/dashboard`;
-                    const toast_message = `You are not authorized to edit other rosters`;
+                    const toast_message = `You are not authorized to edit this roster`;
                     this.props.history.push({
                         pathname: path,
                         state: { toast_message: toast_message,

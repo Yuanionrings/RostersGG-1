@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { getCorrectPath } from '../../util/developmentHelper';
 
 import DashHeader from '../auth/dashboard/DashHeader';
 import DashFooter from '../auth/dashboard/DashFooter';
@@ -16,7 +17,8 @@ export default class ConfirmEmail extends Component {
   }
 
   componentDidMount() {
-    axios.post('/api/users/confirm-email/' + this.props.match.params.id)
+    const confirmEmailRoute = getCorrectPath(`/api/users/confirm-email/${this.props.match.params.id}`);
+    axios.post(confirmEmailRoute)
         .then(res => {
             console.log(res);
             this.setState({

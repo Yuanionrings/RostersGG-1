@@ -1,9 +1,15 @@
 import axios from 'axios';
 import { GET_ERRORS } from './types';
+import { getCorrectPath } from '../util/developmentHelper';
 
-// Create Roster
+/**
+ * Create Roster and redirect to dashboard or send errors to component
+ * @param {object} rosterData 
+ * @param {React Router History} history 
+ */
 export const createRoster = (rosterData, history) => dispatch => {
-  axios.post('/api/rosters/create', rosterData)
+  const createRosterRoute = getCorrectPath('/api/rosters/create');
+  axios.post(createRosterRoute, rosterData)
     .then(res => {
       history.push({
         pathname: '/dashboard',
@@ -17,9 +23,14 @@ export const createRoster = (rosterData, history) => dispatch => {
 }
 
 
-// Delete Roster
+/**
+ * Delete Roster and redirect to dashboard or send errors to component
+ * @param {object} deleteRosterData 
+ * @param {React Router History} history 
+ */
 export const deleteRoster = (deleteRosterData, history) => dispatch => {
-  axios.patch('/api/rosters/roster/' + deleteRosterData.id + '/delete-roster', deleteRosterData)
+  const deleteRosterRoute = getCorrectPath(`/api/rosters/roster/${deleteRosterData.id}/delete-roster`);
+  axios.patch(deleteRosterRoute, deleteRosterData)
     .then(res => {
       history.push({
         pathname: '/dashboard',
@@ -33,10 +44,14 @@ export const deleteRoster = (deleteRosterData, history) => dispatch => {
 }
 
 
-// Edit Roster
+/**
+ * Edit Roster and redirect to roster page or send errors to component
+ * @param {object} updatedRosterData 
+ * @param {React Router History} history 
+ */
 export const editRoster = (updatedRosterData, history) => dispatch => {
-  axios.patch('/api/rosters/roster/' + updatedRosterData.id + '/edit-roster',
-    updatedRosterData.data)
+  const editRosterRoute = getCorrectPath(`/api/rosters/roster/${updatedRosterData.id}/edit-roster`);
+  axios.patch(editRosterRoute, updatedRosterData.data)
     .then(res => {
       const path = `/roster/${updatedRosterData.id}`;
       history.push({
@@ -53,10 +68,14 @@ export const editRoster = (updatedRosterData, history) => dispatch => {
 }
 
 
-// Invite Player to Roster
+/**
+ * Invites player to roster and redirects to roster page or sends errors to component
+ * @param {object} rosterInviteData 
+ * @param {React Router History} history 
+ */
 export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
-  axios.post('/api/rosters/roster/' + rosterInviteData.team_id + '/invite',
-    rosterInviteData.data)
+  const invitePlayerRoute = getCorrectPath(`/api/rosters/roster/${rosterInviteData.team_id}/invite`);
+  axios.post(invitePlayerRoute, rosterInviteData.data)
     .then(res => {
       const path = `/roster/${rosterInviteData.team_id}`;
       history.push({
@@ -71,9 +90,14 @@ export const invitePlayerToRoster = (rosterInviteData, history) => dispatch => {
 }
 
 
-// Kick Player from Roster
+/**
+ * Removes player from roster and redirects to roster page or sends errors to component
+ * @param {object} rosterRemoveData 
+ * @param {React Router History} history 
+ */
 export const kickPlayerFromRoster = (rosterRemoveData, history) => dispatch => {
-  axios.post(`/api/rosters/roster/${rosterRemoveData.team_id}/remove`, rosterRemoveData.data)
+  const kickPlayerRoute = getCorrectPath(`/api/rosters/roster/${rosterRemoveData.team_id}/remove`);
+  axios.post(kickPlayerRoute, rosterRemoveData.data)
     .then(res => {
       const path = `/roster/${rosterRemoveData.team_id}`;
 
@@ -95,10 +119,14 @@ export const kickPlayerFromRoster = (rosterRemoveData, history) => dispatch => {
 }
 
 
-// Create Event for this Roster
+/**
+ * Creates event for roster and redirects to roster page or sends errors to component
+ * @param {object} createEventData 
+ * @param {React Router History} history 
+ */
 export const createRosterEvent = (createEventData, history) => dispatch => {
-  axios.post('/api/rosters/roster/' + createEventData.team_id + '/create-event',
-    createEventData.data)
+  const createEventRoute = getCorrectPath(`/api/rosters/roster/${createEventData.team_id}/create-event`);
+  axios.post(createEventRoute, createEventData.data)
     .then(res => {
       const path = `/roster/${createEventData.team_id}`;
       history.push({

@@ -6,6 +6,8 @@ import { editRoster } from '../../../actions/rosterAuthActions';
 import { logoutUser } from '../../../actions/userAuthActions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getCorrectPath } from '../../../util/developmentHelper';
+
 import InvitePlayer from './InvitePlayer';
 import CreateEvent from './CreateEvent';
 import ManageRosterEvents from './ManageRosterEvents';
@@ -29,7 +31,8 @@ class EditRoster extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/rosters/roster/${this.props.match.params.id}`)
+        const getRosterInfoRoute = getCorrectPath(`/api/rosters/roster/${this.props.match.params.id}`);
+        axios.get(getRosterInfoRoute)
             .then(res => {
                 if(this.props.auth.user.username === res.data.leader){
                     this.setState({

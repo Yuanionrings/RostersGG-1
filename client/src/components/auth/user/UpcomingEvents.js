@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { getCorrectPath } from '../../../util/developmentHelper';
+
 import EventCard from '../events/EventCard';
 import Slider from 'infinite-react-carousel';
 
@@ -12,7 +14,8 @@ class UpcomingEvents extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/users/${this.props.username}/upcoming-events`)
+        const getUpcomingEventsRoute = getCorrectPath(`/api/users/${this.props.username}/upcoming-events`);
+        axios.get(getUpcomingEventsRoute)
             .then(res => {
                 this.setState({
                     events: res.data

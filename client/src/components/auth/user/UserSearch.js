@@ -3,6 +3,7 @@ import axios from 'axios';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 import UserListingCard from './UserListingCard';
 
@@ -38,7 +39,8 @@ class UserSearch extends Component {
             name_search: this.state.name_search
         }
 
-        axios.post(`/api/users/user-search`, userSearchBody)
+        const userSearchRoute = getCorrectPath(`/api/users/user-search`);
+        axios.post(userSearchRoute, userSearchBody)
             .then(res => {
                 this.setState({
                     players: res.data

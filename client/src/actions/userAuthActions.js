@@ -1,16 +1,23 @@
 import axios from 'axios';
 import setAuthToken from '../util/setAuthToken';
 import jwt_decode from 'jwt-decode';
+import { getCorrectPath } from '../util/developmentHelper';
 
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
 
-//Register User
+
+/**
+ * Register User then Redirect to Login or Send Errors to Component
+ * @param {Object} userData 
+ * @param {React Router History} history 
+ */
 export const registerUser = (userData, history) => dispatch => {
-  axios.post('/api/users/register', userData)
+  const registerUserRoute = getCorrectPath('/api/users/register');
+  axios.post(registerUserRoute, userData)
     .then(res => {
       history.push({
         pathname: '/login',
-        state: { toast_message: 'Please confirm email before logging in, check inbox.' }
+        state: { toast_message: 'Please confirm email before logging in, check inbox or spam folder.' }
       });
     })
     .catch(err => dispatch({
@@ -19,24 +26,36 @@ export const registerUser = (userData, history) => dispatch => {
     }))
 }
 
-//Edit User
+
+/**
+ * Edit User Document then Redirect to Dashboard or Send Errors to Component
+ * @param {Object} userData 
+ * @param {React Router History} history 
+ */
 export const editUser = (userData, history) => dispatch => {
-  axios.patch('/api/users/' + userData.username + '/update', userData)
-  .then(res => {
-    history.push({
-      pathname: '/dashboard',
-      state: { toast_message: 'User account information was successfully updated' }
-    });
-  })
+  const editUserRoute = getCorrectPath(`/api/users/${userData.username}/update`);
+  axios.patch(editUserRoute, userData)
+    .then(res => {
+      history.push({
+        pathname: '/dashboard',
+        state: { toast_message: 'User account information was successfully updated' }
+      });
+    })
     .catch(err => dispatch({
       type: GET_ERRORS,
       payload: err.response.data
     }))
 }
 
-//Login
+
+/**
+ * Login User and set JWT token or Send Errors to Component
+ * @param {Object} userData 
+ * @param {React Router History} history 
+ */
 export const loginUser = (userData) => dispatch => {
-  axios.post('/api/users/login', userData)
+  const loginRoute = getCorrectPath('/api/users/login');
+  axios.post(loginRoute, userData)
     .then(res => {
       const { token } = res.data;
       // Set token to localStorage

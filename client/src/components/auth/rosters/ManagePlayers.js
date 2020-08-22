@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { getCorrectPath } from '../../../util/developmentHelper';
 import { formatDateString } from '../../../util/formatDateString';
 
 const PlayerInfo = props => (
@@ -31,7 +32,8 @@ function onKickPlayer(given_username_to_remove, given_team_id, history) {
         }
     };
 
-    axios.patch(`/api/rosters/roster/${rosterRemoveData.team_id}/remove`, rosterRemoveData.data)
+    const removePlayerRoute = getCorrectPath(`/api/rosters/roster/${rosterRemoveData.team_id}/remove`);
+    axios.patch(removePlayerRoute, rosterRemoveData.data)
         .then(res => {
             const path = `/roster/${rosterRemoveData.team_id}`;
 

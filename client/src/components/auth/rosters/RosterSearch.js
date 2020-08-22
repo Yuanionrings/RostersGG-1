@@ -3,6 +3,7 @@ import axios from 'axios';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 import RosterListingCard from './RosterListingCard';
 import { supportedGamesList, supportedGames } from '../../../util/selectSupportedGames';
@@ -63,7 +64,8 @@ class RosterSearch extends Component {
             }
         }
 
-        axios.post(`/api/rosters/roster-search`, rosterSearchBody)
+        const rosterSearchRoute = getCorrectPath(`/api/rosters/roster-search`);
+        axios.post(rosterSearchRoute, rosterSearchBody)
             .then(res => {
                 this.setState({
                     rosters: res.data

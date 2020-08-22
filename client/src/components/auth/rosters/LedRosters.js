@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 const RosterInfo = props => (
     <tr>
@@ -27,7 +28,8 @@ export default class LedRosters extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/rosters/${this.state.username}/led-rosters`)
+        const getLedRostersRoute = getCorrectPath(`/api/rosters/${this.state.username}/led-rosters`);
+        axios.get(getLedRostersRoute)
             .then(res => {
                 this.setState({
                     username: this.state.username,

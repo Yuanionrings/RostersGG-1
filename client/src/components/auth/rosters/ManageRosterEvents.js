@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import calcTimeUntil from '../../../util/calcTimeUntil';
 import dateFormat from 'dateformat';
 import axios from 'axios';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 function formatDateString(dateISO) {
     const date = new Date(dateISO);
@@ -27,7 +28,8 @@ class ManageRosterEvents extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`/api/rosters/roster/${this.props.team_id}/events`)
+        const getRosterEventsRoute = getCorrectPath(`/api/rosters/roster/${this.props.team_id}/events`);
+        axios.get(getRosterEventsRoute)
             .then(res => {
                 this.setState({
                     events: res.data

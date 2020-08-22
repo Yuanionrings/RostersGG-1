@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { editUser } from '../../../actions/userAuthActions';
 import classnames from 'classnames';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 class EditUser extends Component {
     constructor() {
@@ -29,7 +30,9 @@ class EditUser extends Component {
                          toast_status: 'error' }
             });
         }
-        axios.get(`/api/users/${this.props.auth.user.username}`)
+
+        const getUserInfoRoute = getCorrectPath(`/api/users/${this.props.auth.user.username}`);
+        axios.get(getUserInfoRoute)
             .then(res => {
                 this.setState({
                     name: res.data.name,

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/userAuthActions';
 import classnames from 'classnames';
+
 import { toast } from 'react-toastify';
 import toastNotif from '../../util/toastNotif';
 

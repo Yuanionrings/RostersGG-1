@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import calcTimeUntil from '../../../util/calcTimeUntil';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 import RosterPlayers from './RosterPlayers';
 import RosterEvents from './RosterEvents';
@@ -20,7 +21,8 @@ class ViewRoster extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`/api/rosters/roster/${this.props.match.params.id}`)
+        const getRosterInfoRoute = getCorrectPath(`/api/rosters/roster/${this.props.match.params.id}`);
+        axios.get(getRosterInfoRoute)
             .then(res => {
                 this.setState({
                     teamname: res.data.teamname,

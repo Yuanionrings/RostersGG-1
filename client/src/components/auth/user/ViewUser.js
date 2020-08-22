@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import calcTimeUntil from '../../../util/calcTimeUntil';
-//import { formatDateString } from '../../../util/formatDateString';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 const RosterInfo = props => (
     <tr>
@@ -29,14 +29,16 @@ export default class ViewUser extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/rosters/${this.props.match.params.username}/rosters`)
+        const getUserRosters = getCorrectPath(`/api/rosters/${this.props.match.params.username}/rosters`);
+        axios.get(getUserRosters)
             .then(res => {
                 this.setState({ rosters: res.data });
             }).catch(function(err) {
                 console.log(err);
             });
 
-        axios.get(`/api/users/${this.props.match.params.username}`)
+        const getUserInfo = getCorrectPath(`/api/users/${this.props.match.params.username}`);
+        axios.get(getUserInfo)
             .then(res => {
                 this.setState({ name: res.data.name,
                                 username: res.data.username,

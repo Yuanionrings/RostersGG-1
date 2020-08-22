@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import calcTimeUntil from '../../../util/calcTimeUntil';
 import dateFormat from 'dateformat';
+import { getCorrectPath } from '../../../util/developmentHelper';
 
 function formatDateString(dateISO) {
     const date = new Date(dateISO);
@@ -24,7 +25,8 @@ class RosterEvents extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`/api/rosters/roster/${this.props.match.params.id}/events`)
+        const getRosterEventsRoute = getCorrectPath(`/api/rosters/roster/${this.props.match.params.id}/events`);
+        axios.get(getRosterEventsRoute)
             .then(res => {
                 this.setState({
                     events: res.data
