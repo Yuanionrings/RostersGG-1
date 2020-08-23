@@ -11,11 +11,13 @@ function displayRostersInModal(auth, username_to_invite, history, rosters) {
     if(rosters) {
         if (rosters.length > 0) {
             return rosters.map(function(currentRoster, i){
-                return <InviteRosterListing roster={currentRoster} 
-                                        key={i}
-                                        auth={auth} 
-                                        invitee={username_to_invite} 
-                                        history={history} />
+                if(!currentRoster.players.includes(username_to_invite)){
+                    return <InviteRosterListing roster={currentRoster} 
+                                            key={i}
+                                            auth={auth} 
+                                            invitee={username_to_invite} 
+                                            history={history} />
+                }
             });
         } else {
             return <p className='filler-text'>You do not lead any rosters.</p>
