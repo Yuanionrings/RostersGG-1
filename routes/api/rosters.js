@@ -261,10 +261,14 @@ router.post('/roster/:id/invite', async (req, res) => {
         user.invitations.push(req.params.id);
         const invitedUser = await user.save();
 
-        try {
-            sendEmail(user.email, templates.new_invitation())
-        } catch(err) {
-            console.log(err);
+        if(process.env.NODE_ENV === 'production') {
+            try {
+                sendEmail(user.email, templates.new_invitation())
+            } catch(err) {
+                console.log(err);
+            }
+        } else {
+            console.log(`[SERVER] Not sending email on invitation, NODE_ENV=${process.env.NODE_ENV}`)
         }
         res_success.success = `User ${invitedUser.username} successfully invited`;
         res.json(res_success);
