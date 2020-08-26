@@ -248,12 +248,12 @@ router.post('/roster/:id/invite', async (req, res) => {
             return;
 
         } else if (roster.players.includes(user.username)) {
-            res_errors.player_username = 'This player is already on this roster';
+            res_errors.player_username = 'Already on this roster';
             res.status(400).json(res_errors);
             return;
 
         } else if (user.invitations.includes(roster._id)) {
-            res_errors.player_username = 'This player already has an invite from this roster';
+            res_errors.player_username = 'Already has an invite';
             res.status(400).json(res_errors);
             return;
         }
