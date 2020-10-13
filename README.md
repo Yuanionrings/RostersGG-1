@@ -1,4 +1,4 @@
-![rosters_gg_logo](path to image here)
+![rosters_gg_logo](Rosters-GG-Banner.png)
 
 `RostersGG` is an all-in-one tool that helps amateur Esports teams succeed.
 
