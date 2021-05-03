@@ -2,22 +2,22 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
+const keys = require('../../../config/keys');
 
-const sendEmail = require('../../email/email.send');
-const msgs = require('../../email/email.msgs');
-const templates = require('../../email/email.templates');
+const sendEmail = require('../../../email/email.send');
+const msgs = require('../../../email/email.msgs');
+const templates = require('../../../email/email.templates');
 
 
 // Load input validation
-const validateRegisterInput = require('../../validation/user/register');
-const validateLoginInput = require('../../validation/user/login');
-const validateEditUserInput = require('../../validation/user/edituser')
+const validateRegisterInput = require('./validation/register');
+const validateLoginInput = require('./validation/login');
+const validateEditUserInput = require('./validation/edituser')
 
 // Load mongoose User and Roster models
-const User = require('../../models/UserSchema');
-const Roster = require('../../models/RosterSchema');
-const Event = require('../../models/EventSchema');
+const User = require('../../../models/UserSchema');
+const Roster = require('../../../models/RosterSchema');
+const Event = require('../../../models/EventSchema');
 
 
 // @route GET api/users/user/:username

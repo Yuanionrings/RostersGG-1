@@ -1,19 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-const sendEmail = require('../../email/email.send');
-const msgs = require('../../email/email.msgs');
-const templates = require('../../email/email.templates');
+const sendEmail = require('../../../email/email.send');
+const msgs = require('../../../email/email.msgs');
+const templates = require('../../../email/email.templates');
 
 // Load input validation
-const validateCreateEditRosterInput = require('../../validation/roster/create_edit_roster');
-const validateInvitePlayerToRosterInput = require('../../validation/roster/invite_player');
-const validateCreateEventInput = require('../../validation/event/create_event');
+const validateCreateEditRosterInput = require('./validation/create_edit_roster');
+const validateInvitePlayerToRosterInput = require('./validation/invite_player');
+const validateCreateEventInput = require('../EventsAPI/validation/create_event');
 
 // Load mongoose Roster and User models
-const Roster = require('../../models/RosterSchema');
-const User = require('../../models/UserSchema');
-const Event = require('../../models/EventSchema');
+const Roster = require('../../../models/RosterSchema');
+const User = require('../../../models/UserSchema');
+const Event = require('../../../models/EventSchema');
 
 
 // @route GET api/rosters/roster/:id

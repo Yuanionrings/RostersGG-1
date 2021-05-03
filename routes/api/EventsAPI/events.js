@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Load mongoose Roster and Event models
 //const Roster = require("../../models/RosterSchema");
-const Event = require('../../models/EventSchema');
+const Event = require('../../../models/EventSchema');
 
 
 // @route GET api/events/event/:id
